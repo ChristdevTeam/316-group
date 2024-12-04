@@ -77,7 +77,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [Archive, CallToAction, Content, FormBlock, MediaBlock],
               required: true,
             },
           ],

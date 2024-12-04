@@ -29,6 +29,20 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: ['@/components/BeforeDashboard'],
+      graphics: {
+        Logo: '@/graphics/Logo',
+        Icon: '@/graphics/Icon',
+      },
+    },
+    meta: {
+      titleSuffix: '| 316 Group',
+      icons: [
+        {
+          rel: 'icon',
+          type: 'image/svg',
+          url: `${process.env.NEXT_PUBLIC_SERVER_URL}/favicon.svg`,
+        },
+      ],
     },
     importMap: {
       baseDir: path.resolve(dirname),
