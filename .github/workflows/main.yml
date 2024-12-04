@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install dependencies
-      run: npm install -g pnpm && pnpm install && pnpm build
-
     - name: SSH into server and deploy
       env:
         SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
