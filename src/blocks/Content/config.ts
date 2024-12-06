@@ -59,6 +59,11 @@ const columnFields: Field[] = [
       },
     },
   }),
+  {
+    name: 'image',
+    type: 'upload',
+    relationTo: 'media',
+  },
 ]
 
 export const Content: Block = {

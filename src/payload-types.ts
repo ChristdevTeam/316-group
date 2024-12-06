@@ -85,7 +85,7 @@ export interface Page {
   id: string;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'specialHome';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'specialHero' | 'productHero';
     richText?: {
       root: {
         type: string;
@@ -112,12 +112,14 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'outline') | null;
+            appearance?: ('default' | 'outline' | 'ghost' | 'secondary') | null;
           };
           id?: string | null;
         }[]
       | null;
     media?: (string | null) | Media;
+    heroGraphic?: (string | null) | Media;
+    includeStoreLinks?: boolean | null;
   };
   layout: (ArchiveBlock | CallToActionBlock | ContentBlock | FormBlock | MediaBlock)[];
   meta?: {
@@ -403,8 +405,9 @@ export interface ContentBlock {
           } | null;
           url?: string | null;
           label: string;
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'outline' | 'ghost' | 'secondary') | null;
         };
+        image?: (string | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -792,6 +795,8 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        heroGraphic?: T;
+        includeStoreLinks?: T;
       };
   layout?:
     | T
@@ -849,6 +854,7 @@ export interface PagesSelect<T extends boolean = true> {
                           label?: T;
                           appearance?: T;
                         };
+                    image?: T;
                     id?: T;
                   };
               id?: T;

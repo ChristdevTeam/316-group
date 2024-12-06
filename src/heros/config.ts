@@ -36,8 +36,12 @@ export const hero: Field = {
           value: 'lowImpact',
         },
         {
-          label: 'Special Home',
-          value: 'specialHome',
+          label: 'Special Home Hero',
+          value: 'specialHero',
+        },
+        {
+          label: 'Product Page Hero',
+          value: 'productHero',
         },
       ],
       required: true,
@@ -56,7 +60,11 @@ export const hero: Field = {
         },
       }),
       label: false,
+      // admin: {
+      //   condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'lowImpact'].includes(type),
+      // },
     },
+
     linkGroup({
       overrides: {
         maxRows: 2,
@@ -64,12 +72,30 @@ export const hero: Field = {
     }),
     {
       name: 'media',
+      label: 'Hero Background Image',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact', 'specialHero', 'productHero'].includes(type),
       },
       relationTo: 'media',
       required: true,
+    },
+    {
+      name: 'heroGraphic',
+      type: 'upload',
+      admin: {
+        condition: (_, { type } = {}) => ['productHero'].includes(type),
+      },
+      relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'includeStoreLinks',
+      type: 'checkbox',
+      admin: {
+        condition: (_, { type } = {}) => ['productHero', 'specialHero'].includes(type),
+      },
     },
   ],
   label: false,
