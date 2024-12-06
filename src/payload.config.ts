@@ -77,6 +77,11 @@ export default buildConfig({
     url: process.env.DATABASE_URI || '',
   }),
   collections: [Pages, Posts, Media, Categories, Users],
+  upload: {
+    limits: {
+      fileSize: 300000000, // 5MB, written in bytes
+    },
+  },
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
