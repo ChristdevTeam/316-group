@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useState } from 'react'
 import { Menu, X, MoveLeft } from 'lucide-react'
 // import { cn } from "@/lib/utils";
@@ -91,7 +92,7 @@ const menuData: MenuSection[] = [
   },
 ]
 
-export const MegaMenu = () => {
+export const MegaMenu = ({ className }: { className: string }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
@@ -131,7 +132,7 @@ export const MegaMenu = () => {
   }
 
   return (
-    <div className="relative pl">
+    <div className={cn('relative', className)}>
       {/* Mobile Menu Button */}
       <button
         onClick={handleToggle}
@@ -175,7 +176,7 @@ export const MegaMenu = () => {
       {/* Desktop Mega Menu */}
       <div
         className={cn(
-          'hidden md:block fixed top-0 right-0 bg-white shadow-xl z-50 transition-all duration-300 ease-in-out pl-8',
+          'hidden md:block fixed top-0 right-0 bg-white dark:bg-gray-900 shadow-xl z-50 transition-all duration-300 ease-in-out pl-8',
           'rounded-l-2xl w-[max(45%, 800px)]',
           'animate-in slide-in-from-top',
           {

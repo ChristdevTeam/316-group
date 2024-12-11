@@ -16,7 +16,7 @@ export const MenuItem = ({ title, hasMegaMenu, isActive, onClick, isMobile }: Me
     onClick={onClick}
     className={cn(
       'hover:text-emerald-600 flex items-center justify-between gap-1 transition-colors duration-200 py-2 w-[100%]',
-      isActive && 'text-gray-900',
+      isActive && 'text-emerald-600',
       isMobile && 'font-small text-2xl',
       !isMobile && 'font-medium',
     )}
