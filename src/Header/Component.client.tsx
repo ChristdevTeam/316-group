@@ -7,7 +7,8 @@ import React, { useEffect, useState } from 'react'
 import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
-import { HeaderNav } from './Nav'
+// import { HeaderNav } from './Nav'
+import { MegaMenu } from './MegaMenu'
 
 interface HeaderClientProps {
   header: Header
@@ -30,12 +31,16 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
   }, [headerTheme])
 
   return (
-    <header className="container relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
+    <header
+      className="container max-w-screen-2xl relative z-20   "
+      {...(theme ? { 'data-theme': theme } : {})}
+    >
       <div className="py-8 border-border flex justify-between">
         <Link href="/">
           <Logo loading="eager" priority="high" className="dark:invert invert-0" />
         </Link>
-        <HeaderNav header={header} />
+        {/* <HeaderNav header={header} /> */}
+        <MegaMenu />
       </div>
     </header>
   )

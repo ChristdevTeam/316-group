@@ -17,12 +17,12 @@ export const SpecialHero: React.FC<Page['hero']> = ({ links, media, richText }) 
 
   return (
     <div data-theme="light">
-      <div className="sm:px-10 lg:mx-24 inset-0 flex flex-col justify-end items-center">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col sm:flex-row gap-8 justify-between sm:items-end items-start bg-white px-0 mb-[2em] min-h-[20vh]">
+      <div className="px-0 2xl:mx-14 inset-0 flex flex-col justify-end items-center">
+        <div className="container max-w-screen-2xl mx-auto px-6 sm:px-10">
+          <div className="flex flex-col sm:flex-row gap-8 justify-end sm:justify-between sm:items-end items-start bg-white px-0 mb-[2em] min-h-[30vh] md:min-h-[40vh]">
             {richText && (
               <RichText
-                className="text-4xl font-normal"
+                className="text-black font-medium text-5xl sm:text-5xl md:text-8xl text-start"
                 content={richText}
                 enableGutter={false}
                 enableProse={false}
@@ -41,15 +41,34 @@ export const SpecialHero: React.FC<Page['hero']> = ({ links, media, richText }) 
             )}
           </div>
         </div>
-        <div className="relative w-full h-[40vh] md:h-[40vh] shadow-md bg-center rounded-t-[3em] overflow-hidden">
+        <div className="w-full hidden md:block">
           {media && typeof media === 'object' && (
-            <Media
-              fill
-              imgClassName="-z-10 object-cover"
-              priority={false}
-              loading="lazy"
-              resource={media}
-            />
+            <div className="shadow-md relative rounded-t-[3em] h-[60vh]">
+              <Media
+                fill
+                imgClassName="-z-10 object-cover inset-0 w-full h-full"
+                videoClassName="-z-10 absolute object-cover inset-0 w-full max-h-[100%]"
+                priority={false}
+                loading="lazy"
+                resource={media}
+                className="rounded-t-[3em]"
+              />
+            </div>
+          )}
+        </div>
+        <div className="w-[100%]  block md:hidden">
+          {media && typeof media === 'object' && (
+            <div className="relative shadow-md rounded-t-[3em] h-[50vh]">
+              <Media
+                fill
+                imgClassName="-z-10 object-cover inset-0 w-full h-full"
+                videoClassName="-z-10 absolute object-cover inset-0 w-full h-full"
+                priority={false}
+                loading="lazy"
+                resource={media}
+                className="rounded-t-[3em]"
+              />
+            </div>
           )}
         </div>
       </div>
