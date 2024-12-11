@@ -213,7 +213,7 @@ export const MegaMenu = ({ className }: { className: string }) => {
       {/* Mobile Menu */}
       <div
         className={cn(
-          'fixed inset-0 top-0 bg-white z-50 transition-all duration-300 ease-in-out overflow-auto md:hidden p-4',
+          'fixed inset-0 top-0 bg-white dark:bg-gray-900 z-50 transition-all duration-300 ease-in-out overflow-auto md:hidden p-4',
           {
             'translate-y-0': isOpen,
             'translate-y-full': !isOpen,
@@ -240,7 +240,7 @@ export const MegaMenu = ({ className }: { className: string }) => {
               onClick={handleBack}
               className="flex items-center text-gray-600 hover:text-gray-900 py-4 px-4 w-[100%]"
             >
-              <MoveLeft className="h-8 w-8 mr-2" />
+              <MoveLeft className="h-8 w-8 mr-2 text-gray-900 dark:text-gray-100" />
               {/* Back to Menu */}
             </button>
             <div className="p-4">
