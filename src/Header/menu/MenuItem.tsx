@@ -15,10 +15,10 @@ export const MenuItem = ({ title, hasMegaMenu, isActive, onClick, isMobile }: Me
   <button
     onClick={onClick}
     className={cn(
-      'hover:text-emerald-600 flex items-center justify-between gap-1 transition-colors duration-200 py-2 w-[100%]',
+      'hover:text-emerald-600 flex items-center  gap-1 transition-colors duration-200 py-2',
       isActive && 'text-emerald-600',
-      isMobile && 'font-small text-2xl',
-      !isMobile && 'font-medium',
+      isMobile && 'font-small text-2xl justify-between w-[100%]',
+      !isMobile && 'font-medium justify-start',
     )}
   >
     {title}

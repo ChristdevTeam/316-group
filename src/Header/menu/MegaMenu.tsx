@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { Menu, X, MoveLeft } from 'lucide-react'
 // import { cn } from "@/lib/utils";
-import { MenuItem } from './menu/MenuItem'
-import { MegaMenuContent } from './menu/MegaMenuContent'
-import type { MenuSection } from './menu/types'
+import { MenuItem } from './MenuItem'
+import { MegaMenuContent } from './MegaMenuContent'
+import type { MenuSection } from './types'
 import { cn } from '@/utilities/cn'
 
 const menuData: MenuSection[] = [
@@ -177,18 +177,18 @@ export const MegaMenu = ({ className }: { className: string }) => {
       <div
         className={cn(
           'hidden md:block fixed top-0 right-0 bg-white dark:bg-gray-900 shadow-xl z-50 transition-all duration-300 ease-in-out pl-8',
-          'rounded-l-2xl w-[max(45%, 800px)]',
+          'rounded-l-2xl',
           'animate-in slide-in-from-top',
           {
             'translate-y-0 opacity-100': activeSection,
             '-translate-y-4 opacity-0 pointer-events-none': !activeSection,
           },
         )}
-        style={{ height: '100vh' }}
+        style={{ height: '100vh', width: 'max(45%, 800px)' }}
       >
         <div className="p-8">
           {/* Menu Items at Top */}
-          <div className="flex space-x-8 mb-8 border-b border-gray-100 pb-4">
+          <div className="flex gap-6 justify-start mb-8 border-b border-gray-100 pb-4">
             {menuData.map((section) => (
               <MenuItem
                 isMobile={false}

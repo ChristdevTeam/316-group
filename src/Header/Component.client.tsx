@@ -8,7 +8,7 @@ import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 // import { HeaderNav } from './Nav'
-import { MegaMenu } from './MegaMenu'
+import { MegaMenu } from './menu/MegaMenu'
 
 interface HeaderClientProps {
   header: Header
