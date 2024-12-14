@@ -17,6 +17,8 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
 import './globals.css'
+import '@radix-ui/themes/styles.css'
+
 import { getServerSideURL } from '@/utilities/getURL'
 
 const urbanist = Urbanist({

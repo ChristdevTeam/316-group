@@ -21,6 +21,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { getServerSideURL } from '@/utilities/getURL'
+import { BusinessSlider } from '@/blocks/BusinessSlider/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -77,7 +78,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Archive, CallToAction, Content, FormBlock, MediaBlock],
+              blocks: [Archive, CallToAction, Content, FormBlock, MediaBlock, BusinessSlider],
               required: true,
             },
           ],
