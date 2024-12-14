@@ -40,7 +40,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
           <Logo loading="eager" priority="high" className="dark:invert invert-0" />
         </Link>
         {/* <HeaderNav header={header} /> */}
-        <MegaMenu className="dark:text-gray-100" />
+        <MegaMenu className="dark:text-gray-100" header={header} />
       </div>
     </header>
   )

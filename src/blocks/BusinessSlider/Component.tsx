@@ -13,19 +13,19 @@ type Props = {
 } & BusinessSliderBlockProps
 
 const getHref = (link: BusinessSliderBlockProps['sliderItems'][0]['link']) => {
-  if (link.type === 'reference' && typeof link.reference?.value === 'object') {
+  if (link?.type === 'reference' && typeof link.reference?.value === 'object') {
     return `${
       link.reference.relationTo !== 'pages' ? `/${link.reference.relationTo}` : ''
     }/${link.reference.value.slug}`
   }
-  return link.url || ''
+  return link?.url || ''
 }
 
 export const BusinessSliderBlock: React.FC<Props> = ({ className, sliderItems }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [swiper, setSwiper] = useState<any>(null)
 
-  console.log(`activeIndex: ${activeIndex}`)
+  // console.log(`activeIndex: ${activeIndex}`)
 
   const goNext = () => {
     if (swiper) {
@@ -109,7 +109,7 @@ export const BusinessSliderBlock: React.FC<Props> = ({ className, sliderItems })
                       className="rounded-full w-fit group-hover:border-none"
                       asChild
                     >
-                      <a href={href} target={item.link.newTab ? '_blank' : undefined}>
+                      <a href={href} target={item.link?.newTab ? '_blank' : undefined}>
                         Learn more
                         <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </a>

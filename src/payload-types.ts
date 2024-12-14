@@ -103,7 +103,7 @@ export interface Page {
     } | null;
     links?:
       | {
-          link: {
+          link?: {
             type?: ('reference' | 'custom') | null;
             newTab?: boolean | null;
             reference?:
@@ -359,7 +359,7 @@ export interface CallToActionBlock {
   } | null;
   links?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -638,7 +638,7 @@ export interface BusinessSliderBlock {
   sliderItems: {
     title: string;
     description: string;
-    link: {
+    link?: {
       type?: ('reference' | 'custom') | null;
       newTab?: boolean | null;
       reference?:
@@ -1336,7 +1336,9 @@ export interface Header {
   id: string;
   navItems?:
     | {
-        link: {
+        title?: string | null;
+        hasMegaMenu?: boolean | null;
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -1351,6 +1353,30 @@ export interface Header {
           url?: string | null;
           label: string;
         };
+        megaMenuItems?:
+          | {
+              type?: ('link' | 'subHeading' | 'text' | 'divider') | null;
+              label?: string | null;
+              description?: string | null;
+              link?: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: string | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: string | Post;
+                    } | null);
+                url?: string | null;
+                label: string;
+                appearance?: ('default' | 'outline' | 'ghost' | 'secondary') | null;
+              };
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1365,7 +1391,7 @@ export interface Footer {
   id: string;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -1394,6 +1420,8 @@ export interface HeaderSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
+        title?: T;
+        hasMegaMenu?: T;
         link?:
           | T
           | {
@@ -1402,6 +1430,24 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+            };
+        megaMenuItems?:
+          | T
+          | {
+              type?: T;
+              label?: T;
+              description?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                    appearance?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };

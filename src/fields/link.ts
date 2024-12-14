@@ -27,14 +27,21 @@ type LinkType = (options?: {
   appearances?: LinkAppearances[] | false
   disableLabel?: boolean
   overrides?: Record<string, unknown>
+  condition?: (_, siblingData) => boolean
 }) => Field
 
-export const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
+export const link: LinkType = ({
+  appearances,
+  disableLabel = false,
+  overrides = {},
+  condition = () => true,
+} = {}) => {
   const linkResult: Field = {
     name: 'link',
     type: 'group',
     admin: {
       hideGutter: true,
+      condition,
     },
     fields: [
       {

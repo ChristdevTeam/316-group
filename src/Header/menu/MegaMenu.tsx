@@ -4,98 +4,16 @@ import { Menu, X, MoveLeft } from 'lucide-react'
 // import { cn } from "@/lib/utils";
 import { MenuItem } from './MenuItem'
 import { MegaMenuContent } from './MegaMenuContent'
-import type { MenuSection } from './types'
+import type { Link, MegaMenuItem, MenuSection } from './types'
 import { cn } from '@/utilities/cn'
+import { Header } from '@/payload-types'
+import { useRouter } from 'next/navigation'
 
-const menuData: MenuSection[] = [
-  {
-    title: 'Products',
-    hasMegaMenu: true,
-    items: [
-      { type: 'link', label: 'Analytics', href: '#' },
-      { type: 'link', label: 'Engagement', href: '#' },
-      { type: 'divider' },
-      { type: 'subheading', label: 'Advanced Tools' },
-      {
-        type: 'link',
-        label: 'Security',
-        href: '#',
-        description: 'Protect your data.',
-      },
-      { type: 'link', label: 'Integrations', href: '#' },
-    ],
-  },
-  {
-    title: 'Resources',
-    hasMegaMenu: true,
-    items: [
-      { type: 'link', label: 'Documentation', href: '#' },
-      { type: 'link', label: 'Guides', href: '#' },
-      {
-        type: 'text',
-        label: 'API Reference provides detailed information about all endpoints.',
-      },
-    ],
-  },
-  {
-    title: 'Random',
-    hasMegaMenu: true,
-    items: [
-      {
-        label: 'Documentation',
-        href: '#',
-        type: 'link',
-      },
-      {
-        label: 'Guides',
-        href: '#',
-        type: 'link',
-      },
-      {
-        label: 'Help Center',
-        href: '#',
-        type: 'link',
-      },
-      {
-        label: 'API Reference',
-        href: '#',
-        type: 'link',
-      },
-    ],
-  },
-  {
-    title: 'About',
-    hasMegaMenu: true,
-    items: [
-      {
-        label: 'Company',
-        href: '#',
-        type: 'link',
-      },
-      {
-        label: 'Team',
-        href: '#',
-        type: 'link',
-      },
-      {
-        label:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos magnam alias tenetur voluptates iste ea, quidem voluptatem temporibus praesentium autem facilis mollitia dicta, doloremque impedit minima saepe! Nemo, quisquam debitis.',
-        href: '#',
-        type: 'text',
-      },
-    ],
-  },
-  {
-    title: 'Contact',
-    hasMegaMenu: false,
-    href: '/contact',
-  },
-]
-
-export const MegaMenu = ({ className }: { className: string }) => {
+export const MegaMenu = ({ className, header }: { className: string; header: Header }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState<string | null>(null)
+  const [activeSection, setActiveSection] = useState<number | null>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     // Set initial value and listen for changes
@@ -114,22 +32,45 @@ export const MegaMenu = ({ className }: { className: string }) => {
     setActiveSection(null)
   }
 
-  const handleSectionClick = (section: MenuSection) => {
-    if (!section.hasMegaMenu) {
-      window.location.href = section.href as string
-      return
-    }
-
-    if (isMobile) {
-      setActiveSection(section.title)
-    } else {
-      setActiveSection(activeSection === section.title ? null : section.title)
-    }
+  const handleSectionClick = (section: Link) => {
+    const href = getHref(section)
   }
 
   const handleBack = () => {
     setActiveSection(null)
   }
+
+  const getHref = (link?: Link): string => {
+    if (!link) {
+      console.warn('No link provided to getHref.')
+      return '#'
+    }
+
+    if (link.type === 'custom') {
+      return link.url || '#'
+    }
+
+    if (link.type === 'reference') {
+      if (link.reference?.relationTo === 'pages' && typeof link.reference.value !== 'string') {
+        return `/${link.reference.value.slug}`
+      } else if (
+        link.reference?.relationTo === 'posts' &&
+        typeof link.reference.value !== 'string'
+      ) {
+        return `/posts/${link.reference.value.slug}`
+      }
+    }
+
+    console.warn('Invalid link structure:', link)
+    return '#'
+  }
+
+  const getMegaMenuItems = (index: number) => {
+    if (!header.navItems) return []
+    return header.navItems[index].megaMenuItems || []
+  }
+
+  // console.log(header.navItems)
 
   return (
     <div className={cn('relative', className)}>
@@ -144,14 +85,18 @@ export const MegaMenu = ({ className }: { className: string }) => {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-8">
-        {menuData.map((section) => (
+        {header.navItems?.map((section, index) => (
           <MenuItem
-            isMobile={false}
-            key={section.title}
-            title={section.title}
-            hasMegaMenu={section.hasMegaMenu}
-            isActive={activeSection === section.title}
-            onClick={() => handleSectionClick(section)}
+            isMobile={isMobile}
+            key={index}
+            title={section.hasMegaMenu ? section.title : section.link?.label}
+            href={getHref(section.link)}
+            hasMegaMenu={section.hasMegaMenu ? section.hasMegaMenu : false}
+            isActive={activeSection === index}
+            onClick={() => {
+              if (section.hasMegaMenu !== true) {
+              } else setActiveSection(activeSection === index ? null : index)
+            }}
           />
         ))}
       </nav>
@@ -189,24 +134,24 @@ export const MegaMenu = ({ className }: { className: string }) => {
         <div className="p-8">
           {/* Menu Items at Top */}
           <div className="flex gap-6 justify-start mb-8 border-b border-gray-100 pb-4">
-            {menuData.map((section) => (
+            {header.navItems?.map((section, index) => (
               <MenuItem
-                isMobile={false}
-                key={section.title}
+                isMobile={isMobile}
+                key={index}
+                href={getHref(section.link)}
                 title={section.title}
-                hasMegaMenu={section.hasMegaMenu}
-                isActive={activeSection === section.title}
-                onClick={() => handleSectionClick(section)}
+                hasMegaMenu={section.hasMegaMenu ? section.hasMegaMenu : false}
+                isActive={activeSection === index}
+                onClick={() => {
+                  if (section.hasMegaMenu !== true) {
+                  } else setActiveSection(activeSection === index ? null : index)
+                }}
               />
             ))}
           </div>
 
           {/* Active Section Content */}
-          {activeSection && (
-            <MegaMenuContent
-              items={menuData.find((section) => section.title === activeSection)?.items || []}
-            />
-          )}
+          {activeSection && <MegaMenuContent items={getMegaMenuItems(activeSection)} />}
         </div>
       </div>
 
@@ -244,21 +189,23 @@ export const MegaMenu = ({ className }: { className: string }) => {
               {/* Back to Menu */}
             </button>
             <div className="p-4">
-              <MegaMenuContent
-                items={menuData.find((section) => section.title === activeSection)?.items || []}
-              />
+              <MegaMenuContent items={getMegaMenuItems(activeSection)} />
             </div>
           </div>
         ) : (
           <div className="p-4 space-y-4">
-            {menuData.map((section) => (
+            {header.navItems?.map((section, index) => (
               <MenuItem
                 key={section.title}
                 title={section.title}
-                hasMegaMenu={section.hasMegaMenu}
+                hasMegaMenu={section.hasMegaMenu ? section.hasMegaMenu : false}
                 isActive={false}
-                onClick={() => handleSectionClick(section)}
-                isMobile={true}
+                href={getHref(section.link)}
+                onClick={() => {
+                  if (section.hasMegaMenu !== true) {
+                  } else setActiveSection(activeSection === index ? null : index)
+                }}
+                isMobile={isMobile}
               />
             ))}
           </div>
