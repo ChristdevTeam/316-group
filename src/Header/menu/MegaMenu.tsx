@@ -133,7 +133,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       >
         <div className="p-8">
           {/* Menu Items at Top */}
-          <div className="flex gap-6 justify-start mb-8 border-b border-gray-100 pb-4">
+          <div className="flex gap-6 justify-start mb-8  pb-4">
             {header.navItems?.map((section, index) => (
               <MenuItem
                 isMobile={isMobile}

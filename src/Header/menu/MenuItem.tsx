@@ -11,6 +11,7 @@ interface MenuItemProps {
   onClick: () => void
   isMobile: boolean
   href?: string
+  className?: string
 }
 
 export const MenuItem = ({
@@ -20,10 +21,11 @@ export const MenuItem = ({
   onClick,
   isMobile,
   href,
+  className,
 }: MenuItemProps) => {
   if (href && href !== '#') {
     return (
-      <Link href={href} className="my-4">
+      <Link href={href}>
         <button
           onClick={onClick}
           className={cn(
@@ -31,6 +33,7 @@ export const MenuItem = ({
             isActive && 'text-emerald-600',
             isMobile && 'font-small text-2xl justify-between w-[100%]',
             !isMobile && 'font-medium justify-start text-xl',
+            className,
           )}
         >
           {title}
