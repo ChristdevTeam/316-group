@@ -61,7 +61,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       }
     }
 
-    console.warn('Invalid link structure:', link)
+    // console.warn('Invalid link structure:', link)
     return '#'
   }
 

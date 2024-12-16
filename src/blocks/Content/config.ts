@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 
 const columnFields: Field[] = [
   {
@@ -40,7 +41,7 @@ const columnFields: Field[] = [
       features: ({ rootFeatures }) => {
         return [
           ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
         ]
@@ -74,6 +75,33 @@ export const Content: Block = {
       name: 'columns',
       type: 'array',
       fields: columnFields,
+    },
+    {
+      name: 'backgroundType',
+      type: 'select',
+      defaultValue: 'color',
+      options: [
+        { label: 'Color', value: 'color' },
+        { label: 'Media', value: 'media' },
+      ],
+    },
+
+    bgColorPickerAll({
+      overrides: {
+        label: 'Content Background Color',
+        name: 'sectionBackgroundColor',
+        admin: {
+          condition: (_, { backgroundType }) => backgroundType === 'color',
+        },
+      },
+    }),
+    {
+      name: 'backgroundMedia',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        condition: (_, { backgroundType }) => backgroundType === 'media',
+      },
     },
   ],
 }

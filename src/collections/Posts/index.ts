@@ -28,6 +28,7 @@ import {
 import { slugField } from '@/fields/slug'
 import { getServerSideURL } from '@/utilities/getURL'
 import { BusinessSlider } from '@/blocks/BusinessSlider/config'
+import { HoverSliderBlock } from '@/blocks/HoverSlider/config'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
@@ -90,7 +91,9 @@ export const Posts: CollectionConfig<'posts'> = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock, BusinessSlider] }),
+                    BlocksFeature({
+                      blocks: [Banner, Code, MediaBlock, BusinessSlider, HoverSliderBlock],
+                    }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),

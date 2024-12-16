@@ -18,8 +18,8 @@ export const SpecialHero: React.FC<Page['hero']> = ({ links, media, richText }) 
   return (
     <div data-theme="light">
       <div className="px-0 2xl:mx-14 inset-0 flex flex-col justify-end items-center">
-        <div className="container max-w-screen-2xl mx-auto px-6 sm:px-10">
-          <div className="flex flex-col sm:flex-row gap-8 justify-end sm:justify-between sm:items-end items-start bg-white px-0 mb-[2em] min-h-[30vh] md:min-h-[40vh]">
+        <div className="container max-w-screen-2xl ">
+          <div className="flex flex-col sm:flex-row gap-8 justify-end sm:justify-between sm:items-end items-start bg-white px-0 mb-[2em] min-h-[30vh] md:min-h-[47vh]">
             {richText && (
               <RichText
                 className="text-black font-medium text-5xl sm:text-5xl md:text-8xl text-start"

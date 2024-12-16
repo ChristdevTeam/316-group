@@ -9,6 +9,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { BusinessSliderBlock } from './BusinessSlider/Component'
+import { HoverSlider } from './HoverSlider/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -17,6 +18,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   bslider: BusinessSliderBlock,
+  hoverSlider: HoverSlider,
 }
 
 export const RenderBlocks: React.FC<{
@@ -37,7 +39,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <div className={cn(blocks.length !== index + 1 && 'my-16')} key={index}>
                   {/* @ts-expect-error */}
                   <Block {...block} />
                 </div>
