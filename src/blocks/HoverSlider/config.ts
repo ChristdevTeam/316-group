@@ -7,6 +7,11 @@ export const HoverSliderBlock: Block = {
   interfaceName: 'HoverSliderBlock',
   fields: [
     {
+      name: 'sliderTitle',
+      type: 'text',
+      // required: true,
+    },
+    {
       name: 'sliderItems',
       type: 'array',
       required: true,

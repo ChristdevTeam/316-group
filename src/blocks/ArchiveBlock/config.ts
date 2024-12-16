@@ -6,6 +6,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 
 export const Archive: Block = {
   slug: 'archive',
@@ -85,6 +86,33 @@ export const Archive: Block = {
       hasMany: true,
       label: 'Selection',
       relationTo: ['posts'],
+    },
+    {
+      name: 'backgroundType',
+      type: 'select',
+      defaultValue: 'color',
+      options: [
+        { label: 'Color', value: 'color' },
+        { label: 'Media', value: 'media' },
+      ],
+    },
+
+    bgColorPickerAll({
+      overrides: {
+        label: 'Content Background Color',
+        name: 'sectionBackgroundColor',
+        admin: {
+          condition: (_, { backgroundType }) => backgroundType === 'color',
+        },
+      },
+    }),
+    {
+      name: 'backgroundMedia',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        condition: (_, { backgroundType }) => backgroundType === 'media',
+      },
     },
   ],
   labels: {

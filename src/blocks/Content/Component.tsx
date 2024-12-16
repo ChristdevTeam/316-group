@@ -111,7 +111,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   {richText && <RichText content={richText} enableGutter={false} />}
                   {image && typeof image !== 'string' && (
                     <div className="my-4">
-                      <Media resource={image} size="33vw" />
+                      <Media resource={image} size="33vw" imgClassName="rounded-xl" />
                     </div>
                   )}
                   {enableLink && <CMSLink {...link} className="mt-16" />}

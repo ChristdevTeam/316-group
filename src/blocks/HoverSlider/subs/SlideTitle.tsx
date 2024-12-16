@@ -19,7 +19,7 @@ const SlideTitle = ({ title, isActive, onHover, className }: SlideTitleProps) =>
       )}
       onMouseEnter={onHover}
     >
-      <h2 className="text-4xl lg:text-5xl font-medium text-left py-4">{title}</h2>
+      <h2 className="text-3xl lg:text-4xl font-medium text-left py-4">{title}</h2>
       <MoveRight
         className={cn(
           'transition-all duration-300 transform',

@@ -21,7 +21,7 @@ type Props = {
   className?: string
 } & HoverSliderBlockProps
 
-export const HoverSlider: React.FC<Props> = ({ className, sliderItems }) => {
+export const HoverSlider: React.FC<Props> = ({ className, sliderItems, sliderTitle }) => {
   const [activeSlide, setActiveSlide] = useState(0)
   const totalSlides = sliderItems?.length || 0
   if (totalSlides === 0) return null
@@ -46,6 +46,7 @@ export const HoverSlider: React.FC<Props> = ({ className, sliderItems }) => {
   return (
     <div className={cn('w-full max-w-[1500px] mx-auto px-4 md:px-6 lg:px-8', className)}>
       {/* Mobile Navigation */}
+      <h3 className={'text-3xl font-normal md: hidden'}>{sliderTitle} </h3>
       <div className="flex justify-between items-center mb-6 md:hidden">
         <div className="text-xl font-medium">
           {String(activeSlide + 1).padStart(2, '0')}{' '}
@@ -69,12 +70,13 @@ export const HoverSlider: React.FC<Props> = ({ className, sliderItems }) => {
 
       {/* Desktop Layout */}
       <div className="hidden md:flex justify-between gap-20">
-        <div className="w-1/2">
-          <div className="text-3xl font-medium mb-12">
+        <div className="w-[47%]">
+          <h3 className={'text-4xl font-bold mb-12'}>{sliderTitle} </h3>
+          <div className="text-3xl font-medium mb-6">
             {String(activeSlide + 1).padStart(2, '0')}{' '}
             <span className="text-gray-400"> — {String(totalSlides).padStart(2, '0')}</span>
           </div>
-          <div className="space-y-8">
+          <div className="space-y-12">
             {sliderItems?.map((slide, index) => (
               <a
                 key={index}
@@ -101,8 +103,20 @@ export const HoverSlider: React.FC<Props> = ({ className, sliderItems }) => {
 
       {/* Mobile Layout */}
       <div className="md:hidden">
-        <SlideTitle title={sliderItems[activeSlide]?.title} isActive={true} className="mb-6" />
-        <SlideCard slide={sliderItems[activeSlide]} />
+        <a
+          href={getHref(sliderItems[activeSlide].link)}
+          target={sliderItems[activeSlide].link?.newTab ? '_blank' : '_self'}
+          className="mb-6"
+        >
+          <SlideTitle title={sliderItems[activeSlide]?.title} isActive={true} />
+        </a>
+        <a
+          href={getHref(sliderItems[activeSlide].link)}
+          target={sliderItems[activeSlide].link?.newTab ? '_blank' : '_self'}
+          className="mb-6"
+        >
+          <SlideCard slide={sliderItems[activeSlide]} />
+        </a>
       </div>
     </div>
   )

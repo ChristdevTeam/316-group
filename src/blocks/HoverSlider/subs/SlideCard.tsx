@@ -35,9 +35,9 @@ const SlideCard = ({ slide }: SlideCardProps) => {
 
   return (
     <div
-      className={`${slide.bgColor} rounded-[2em] aspect-square md:aspect-[1.2/1] p-8 flex flex-col items-start justify-center w-full`}
+      className={`${slide.bgColor} rounded-[2em] p-8 flex flex-col items-start justify-center w-full`}
     >
-      <div className="w-full aspect-square rounded-[2em] overflow-hidden relative flex justify-center align-center items-center">
+      <div className="w-full aspect-[4/3] rounded-[2em] overflow-hidden relative flex justify-center align-center items-center">
         {isVideo
           ? typeof slide.mediaFile === 'object' && <VideoComponent url={getUrl(slide.mediaFile)} />
           : typeof slide.mediaFile === 'object' && (
