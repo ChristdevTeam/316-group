@@ -91,6 +91,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
 }
 
@@ -161,4 +162,16 @@ html[data-theme='light'] {
 
 .animate-out-left {
   animation: slide-out-to-left 0.3s ease-out;
+}
+
+@layer utilities {
+  .font-jost {
+    font-family: 'Jost', sans-serif !important;
+  }
+  .font-urbanist {
+    font-family: 'Urbanist', sans-serif !important;
+  }
+  .font-Ubuntu {
+    font-family: 'Ubuntu', sans-serif !important;
+  }
 }
