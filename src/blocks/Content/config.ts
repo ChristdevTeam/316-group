@@ -9,6 +9,7 @@ import {
 
 import { link } from '@/fields/link'
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
+import { VerticalCTAFields } from '../VerticalCTA/config'
 
 const columnFields: Field[] = [
   {
@@ -64,6 +65,19 @@ const columnFields: Field[] = [
     name: 'image',
     type: 'upload',
     relationTo: 'media',
+  },
+  {
+    name: 'addVerticalCTA',
+    type: 'checkbox',
+    defaultValue: false,
+  },
+  {
+    name: 'verticalCTA',
+    type: 'group', // or 'array' if multiple entries are allowed
+    fields: VerticalCTAFields,
+    admin: {
+      condition: (_, { addVerticalCTA }) => Boolean(addVerticalCTA),
+    },
   },
 ]
 

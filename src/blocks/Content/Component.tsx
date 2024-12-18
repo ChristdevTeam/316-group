@@ -95,11 +95,11 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     >
       {backgroundType === 'media' && renderBackgroundMedia()}
       <div className="container max-w-screen-2xl z-5">
-        <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-16 gap-x-16">
+        <div className="grid grid-cols-4 lg:grid-cols-12 gap-6 lg:gap-y-12 lg:gap-x-16">
           {columns &&
             columns.length > 0 &&
             columns.map((col, index) => {
-              const { enableLink, link, richText, size, image } = col
+              const { enableLink, link, richText, size, image, verticalCTA } = col
 
               return (
                 <div
@@ -115,6 +115,34 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     </div>
                   )}
                   {enableLink && <CMSLink {...link} className="mt-16" />}
+
+                  {verticalCTA && (
+                    <div className="max-w-[813px]">
+                      {verticalCTA.subtitle && <p className="lg:text-xl">{verticalCTA.subtitle}</p>}
+                      {verticalCTA.title && (
+                        <h3
+                          className={cn(
+                            'text-3xl lg:text-6xl lg:max-w-[80%] py-4 font-semibold ',
+                            verticalCTA.titleColour,
+                          )}
+                        >
+                          {verticalCTA.title}
+                        </h3>
+                      )}
+                      {verticalCTA.description && (
+                        <RichText
+                          className="mb-4 lg:text-xl"
+                          content={verticalCTA.description}
+                          enableGutter={false}
+                        />
+                      )}
+                      <div className="flex gap-8">
+                        {(verticalCTA.links || []).map(({ link }, i) => {
+                          return <CMSLink key={i} size="lg" {...link} />
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )
             })}

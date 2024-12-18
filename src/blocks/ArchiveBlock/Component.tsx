@@ -8,6 +8,7 @@ import RichText from '@/components/RichText'
 import Image from 'next/image'
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { cn } from '@/utilities/cn'
+import { Button } from '@/components/ui/button'
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
@@ -142,8 +143,22 @@ export const ArchiveBlock: React.FC<
     >
       {backgroundType === 'media' && renderBackgroundMedia()}
       {introContent && (
-        <div className="container max-w-screen-2xl mb-16 z-5">
+        <div className="container max-w-screen-2xl mb-16 z-5 flex justify-between">
           <RichText className="ml-0 max-w-[48rem]" content={introContent} enableGutter={false} />
+          {/* <Button size={'lg'} variant={'outline'} className="flex gap-2 hover:gap-4">
+            <span> See All</span> <span className="text-xl">→</span>
+          </Button> */}
+
+          <Button
+            size="lg"
+            variant="outline"
+            className="flex items-center gap-2 relative transition-all"
+          >
+            <span>See All</span>
+            <span className="text-xl transform transition-transform duration-300 ease-in-out hover:translate-x-2">
+              →
+            </span>
+          </Button>
         </div>
       )}
       <CollectionArchive posts={posts} className="z-5" />
