@@ -71,7 +71,7 @@ export const HoverSlider: React.FC<Props> = ({ className, sliderItems, sliderTit
       {/* Desktop Layout */}
       <div className="hidden md:flex justify-between gap-20">
         <div className="w-[47%]">
-          <h3 className={'text-4xl font-bold mb-12'}>{sliderTitle} </h3>
+          <h3 className={'text-2xl font-normal mb-12'}>{sliderTitle} </h3>
           <div className="text-3xl font-medium mb-6">
             {String(activeSlide + 1).padStart(2, '0')}{' '}
             <span className="text-gray-400"> — {String(totalSlides).padStart(2, '0')}</span>

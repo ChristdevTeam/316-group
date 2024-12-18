@@ -666,6 +666,7 @@ export interface ContentBlock {
           };
           [k: string]: unknown;
         } | null;
+        richTextClasses?: string | null;
         enableLink?: boolean | null;
         link?: {
           type?: ('reference' | 'custom') | null;
@@ -1777,6 +1778,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     size?: T;
                     richText?: T;
+                    richTextClasses?: T;
                     enableLink?: T;
                     link?:
                       | T

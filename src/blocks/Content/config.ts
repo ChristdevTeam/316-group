@@ -51,6 +51,10 @@ const columnFields: Field[] = [
     label: false,
   },
   {
+    name: 'richTextClasses',
+    type: 'text',
+  },
+  {
     name: 'enableLink',
     type: 'checkbox',
   },

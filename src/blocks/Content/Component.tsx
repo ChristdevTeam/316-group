@@ -99,7 +99,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
           {columns &&
             columns.length > 0 &&
             columns.map((col, index) => {
-              const { enableLink, link, richText, size, image, verticalCTA } = col
+              const { enableLink, link, richText, size, image, verticalCTA, richTextClasses } = col
 
               return (
                 <div
@@ -108,7 +108,13 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   })}
                   key={index}
                 >
-                  {richText && <RichText content={richText} enableGutter={false} />}
+                  {richText && (
+                    <RichText
+                      content={richText}
+                      enableGutter={false}
+                      className={richTextClasses ? richTextClasses : ''}
+                    />
+                  )}
                   {image && typeof image !== 'string' && (
                     <div className="my-4">
                       <Media resource={image} size="33vw" imgClassName="rounded-xl" />
