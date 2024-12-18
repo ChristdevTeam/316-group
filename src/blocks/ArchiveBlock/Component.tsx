@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { cn } from '@/utilities/cn'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
@@ -148,17 +149,18 @@ export const ArchiveBlock: React.FC<
           {/* <Button size={'lg'} variant={'outline'} className="flex gap-2 hover:gap-4">
             <span> See All</span> <span className="text-xl">→</span>
           </Button> */}
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="flex items-center gap-2 relative transition-all"
-          >
-            <span>See All</span>
-            <span className="text-xl transform transition-transform duration-300 ease-in-out hover:translate-x-2">
-              →
-            </span>
-          </Button>
+          <Link href={'/posts'}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="flex items-center gap-2 relative transition-all"
+            >
+              <span>See All</span>
+              <span className="text-xl transform transition-transform duration-300 ease-in-out hover:translate-x-2">
+                →
+              </span>
+            </Button>
+          </Link>
         </div>
       )}
       <CollectionArchive posts={posts} className="z-5" />
