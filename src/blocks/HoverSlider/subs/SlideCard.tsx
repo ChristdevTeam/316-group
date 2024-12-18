@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import type { Slide } from '../Component'
+// import type { Slide } from '../Component'
 // import { Media } from '@/components/Media'
 import { HoverSliderBlock, Media } from '@/payload-types'
 import VideoComponent from './VideoComponent'
@@ -18,7 +18,7 @@ const SlideCard = ({ slide }: SlideCardProps) => {
     const timer = setTimeout(() => {
       setAnimationClass('animate__fadeInDown animate__faster') // Apply new animation
     }, 50) // Short delay ensures class reapplication is noticed by the DOM
-
+    // console.log('transition applied')
     return () => clearTimeout(timer) // Cleanup timeout
   }, [slide.id])
 
@@ -44,11 +44,11 @@ const SlideCard = ({ slide }: SlideCardProps) => {
               <ImageComponent src={getUrl(slide.mediaFile)} alt={slide.title} />
             )}
       </div>
-      <p className={`mt-6 text-lg text-left max-w-md animate__animated ${animationClass}`}>
+      <p className={`mt-6 text-lg text-left animate__animated ${animationClass}`}>
         {slide.description}
       </p>
       <button
-        className={`mt-6 bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors text-left animate__animated ${animationClass}`}
+        className={`mt-6 bg-cyan-200 text-black px-6 py-2 rounded-full hover:bg-slate-900 hover:text-white transition-colors text-left animate__animated ${animationClass}`}
       >
         Get started →
       </button>
