@@ -144,11 +144,9 @@ export const ArchiveBlock: React.FC<
     >
       {backgroundType === 'media' && renderBackgroundMedia()}
       {introContent && (
-        <div className="container max-w-screen-2xl mb-16 z-5 flex justify-between">
+        <div className="container max-w-screen-2xl mb-16 z-5 flex gap-8 flex-col sm:flex-row justify-between">
           <RichText className="ml-0 max-w-[48rem]" content={introContent} enableGutter={false} />
-          {/* <Button size={'lg'} variant={'outline'} className="flex gap-2 hover:gap-4">
-            <span> See All</span> <span className="text-xl">→</span>
-          </Button> */}
+
           <Link href={'/posts'}>
             <Button
               size="lg"
