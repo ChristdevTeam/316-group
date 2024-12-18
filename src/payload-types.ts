@@ -666,6 +666,7 @@ export interface ContentBlock {
           };
           [k: string]: unknown;
         } | null;
+        fontFamily?: ('urbanist' | 'inter' | 'ubuntu' | 'jost') | null;
         richTextClasses?: string | null;
         enableLink?: boolean | null;
         link?: {
@@ -1778,6 +1779,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     size?: T;
                     richText?: T;
+                    fontFamily?: T;
                     richTextClasses?: T;
                     enableLink?: T;
                     link?:

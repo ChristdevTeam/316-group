@@ -4,6 +4,9 @@ import { cn } from 'src/utilities/cn'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import { Urbanist } from 'next/font/google'
+import { Inter } from 'next/font/google'
+import { Ubuntu } from 'next/font/google'
+import { Jost } from 'next/font/google'
 
 import React from 'react'
 
@@ -25,11 +28,33 @@ const urbanist = Urbanist({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
 })
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
+})
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+})
+
+const ubuntu = Ubuntu({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+})
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable, urbanist)}
+      className={cn(
+        GeistSans.variable,
+        GeistMono.variable,
+        urbanist.className,
+        inter.className,
+        jost.className,
+        ubuntu.className,
+      )}
       lang="en"
       suppressHydrationWarning
     >

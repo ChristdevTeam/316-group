@@ -96,6 +96,10 @@ export default {
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
+        inter: ['Inter', 'sans-serif'],
+        urbanist: ['Urbanist', 'sans-serif'],
+        ubuntu: ['Ubuntu', 'sans-serif'],
+        jost: ['Jost', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

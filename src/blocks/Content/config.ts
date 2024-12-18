@@ -51,6 +51,16 @@ const columnFields: Field[] = [
     label: false,
   },
   {
+    name: 'fontFamily',
+    type: 'select',
+    options: [
+      { label: 'Urbanist', value: 'urbanist' },
+      { label: 'Inter', value: 'inter' },
+      { label: 'Ubuntu', value: 'ubuntu' },
+      { label: 'Jost', value: 'jost' },
+    ],
+  },
+  {
     name: 'richTextClasses',
     type: 'text',
   },
