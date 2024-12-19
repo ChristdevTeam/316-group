@@ -21,7 +21,12 @@ type Props = {
   className?: string
 } & HoverSliderBlockProps
 
-export const HoverSlider: React.FC<Props> = ({ className, sliderItems, sliderTitle }) => {
+export const HoverSlider: React.FC<Props> = ({
+  className,
+  sliderItems,
+  sliderTitle,
+  paddingType,
+}) => {
   const [activeSlide, setActiveSlide] = useState(0)
   const totalSlides = sliderItems?.length || 0
   if (totalSlides === 0) return null
@@ -44,10 +49,24 @@ export const HoverSlider: React.FC<Props> = ({ className, sliderItems, sliderTit
   }
 
   return (
-    <div className={cn('w-full max-w-[1500px] mx-auto px-4 md:px-6 lg:px-8', className)}>
+    <div
+      className={cn(
+        'w-full max-w-[1500px] mx-auto px-4 md:px-0 lg:px-8 ',
+        className,
+        paddingType === 'default' && 'py-16',
+        paddingType === 'noPadding' && 'py-0',
+        paddingType === 'paddingAdded' && 'py-32',
+        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
+        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
+        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
+        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
+        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
+        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
+      )}
+    >
       {/* Mobile Navigation */}
-      <h3 className={'text-3xl font-normal md: hidden'}>{sliderTitle} </h3>
-      <div className="flex justify-between items-center mb-6 md:hidden">
+      <h3 className={'text-xl font-normal md:hidden'}>{sliderTitle} </h3>
+      <div className="flex justify-between items-center mb-3 md:hidden">
         <div className="text-xl font-medium">
           {String(activeSlide + 1).padStart(2, '0')}{' '}
           <span className="text-gray-400"> — {String(totalSlides).padStart(2, '0')}</span>

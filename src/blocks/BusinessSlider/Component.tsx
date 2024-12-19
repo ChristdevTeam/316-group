@@ -7,6 +7,7 @@ import { ArrowRightIcon, MoveRight, MoveLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import { cn } from '@/utilities/cn'
 
 type Props = {
   className?: string
@@ -21,7 +22,12 @@ const getHref = (link: BusinessSliderBlockProps['sliderItems'][0]['link']) => {
   return link?.url || ''
 }
 
-export const BusinessSliderBlock: React.FC<Props> = ({ className, sliderItems }) => {
+export const BusinessSliderBlock: React.FC<Props> = ({
+  className,
+  sliderItems,
+  paddingType,
+  sliderTitle,
+}) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [swiper, setSwiper] = useState<any>(null)
 
@@ -40,9 +46,23 @@ export const BusinessSliderBlock: React.FC<Props> = ({ className, sliderItems })
   }
 
   return (
-    <div className="overflow-hidden min-h-[300px] bg-white">
+    <div
+      className={cn(
+        'overflow-hidden min-h-[300px] bg-white',
+        className,
+        paddingType === 'default' && 'py-16',
+        paddingType === 'noPadding' && 'py-0',
+        paddingType === 'paddingAdded' && 'py-32',
+        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
+        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
+        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
+        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
+        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
+        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
+      )}
+    >
       <div className="container relative px-4 py-12 max-w-screen-2xl">
-        <h2 className="text-4xl font-medium mb-8">Who we are working with</h2>
+        {sliderTitle && <h2 className="text-4xl font-medium mb-8">{sliderTitle}</h2>}
 
         <div className="flex justify-between items-center mb-8">
           <div className="text-2xl font-medium">

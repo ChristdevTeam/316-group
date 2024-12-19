@@ -18,6 +18,7 @@ export const VerticalCTAFields: Field[] = [
     name: 'title',
     type: 'text',
   },
+  { name: 'padTheTitle', type: 'checkbox', defaultValue: false },
   textColorPickerAll({
     overrides: {
       label: 'Title Colour',

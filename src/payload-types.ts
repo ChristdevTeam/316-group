@@ -594,6 +594,19 @@ export interface ArchiveBlock {
       )
     | null;
   backgroundMedia?: (string | null) | Media;
+  paddingType?:
+    | (
+        | 'default'
+        | 'noPadding'
+        | 'paddingAdded'
+        | 'paddingTopOnly'
+        | 'paddingBottomOnly'
+        | 'paddingTopOnlyAdded'
+        | 'paddingBottomOnlyAdded'
+        | 'paddingTopAdded'
+        | 'paddingBottomAdded'
+      )
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'archive';
@@ -690,6 +703,7 @@ export interface ContentBlock {
         verticalCTA?: {
           subtitle?: string | null;
           title?: string | null;
+          padTheTitle?: boolean | null;
           titleColour?:
             | (
                 | 'text-inherit'
@@ -982,6 +996,19 @@ export interface ContentBlock {
       }[]
     | null;
   backgroundType?: ('color' | 'media') | null;
+  paddingType?:
+    | (
+        | 'default'
+        | 'noPadding'
+        | 'paddingAdded'
+        | 'paddingTopOnly'
+        | 'paddingBottomOnly'
+        | 'paddingTopOnlyAdded'
+        | 'paddingBottomOnlyAdded'
+        | 'paddingTopAdded'
+        | 'paddingBottomAdded'
+      )
+    | null;
   sectionBackgroundColor?:
     | (
         | 'bg-inherit'
@@ -1443,6 +1470,7 @@ export interface MediaBlock {
  * via the `definition` "BusinessSliderBlock".
  */
 export interface BusinessSliderBlock {
+  sliderTitle?: string | null;
   sliderItems: {
     title: string;
     description: string;
@@ -1464,6 +1492,19 @@ export interface BusinessSliderBlock {
     };
     id?: string | null;
   }[];
+  paddingType?:
+    | (
+        | 'default'
+        | 'noPadding'
+        | 'paddingAdded'
+        | 'paddingTopOnly'
+        | 'paddingBottomOnly'
+        | 'paddingTopOnlyAdded'
+        | 'paddingBottomOnlyAdded'
+        | 'paddingTopAdded'
+        | 'paddingBottomAdded'
+      )
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'bslider';
@@ -1544,6 +1585,19 @@ export interface HoverSliderBlock {
         )
       | null;
   }[];
+  paddingType?:
+    | (
+        | 'default'
+        | 'noPadding'
+        | 'paddingAdded'
+        | 'paddingTopOnly'
+        | 'paddingBottomOnly'
+        | 'paddingTopOnlyAdded'
+        | 'paddingBottomOnlyAdded'
+        | 'paddingTopAdded'
+        | 'paddingBottomAdded'
+      )
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'hoverSlider';
@@ -1746,6 +1800,7 @@ export interface PagesSelect<T extends boolean = true> {
               backgroundType?: T;
               sectionBackgroundColor?: T;
               backgroundMedia?: T;
+              paddingType?: T;
               id?: T;
               blockName?: T;
             };
@@ -1799,6 +1854,7 @@ export interface PagesSelect<T extends boolean = true> {
                       | {
                           subtitle?: T;
                           title?: T;
+                          padTheTitle?: T;
                           titleColour?: T;
                           description?: T;
                           links?:
@@ -1820,6 +1876,7 @@ export interface PagesSelect<T extends boolean = true> {
                     id?: T;
                   };
               backgroundType?: T;
+              paddingType?: T;
               sectionBackgroundColor?: T;
               backgroundMedia?: T;
               id?: T;
@@ -1844,6 +1901,7 @@ export interface PagesSelect<T extends boolean = true> {
         bslider?:
           | T
           | {
+              sliderTitle?: T;
               sliderItems?:
                 | T
                 | {
@@ -1861,6 +1919,7 @@ export interface PagesSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
+              paddingType?: T;
               id?: T;
               blockName?: T;
             };
@@ -1887,6 +1946,7 @@ export interface PagesSelect<T extends boolean = true> {
                     mediaFile?: T;
                     bgColor?: T;
                   };
+              paddingType?: T;
               id?: T;
               blockName?: T;
             };

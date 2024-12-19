@@ -9,7 +9,7 @@ import { Media } from '@/components/Media'
 import Image from 'next/image'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
-  const { columns, backgroundMedia, backgroundType, sectionBackgroundColor } = props
+  const { columns, backgroundMedia, backgroundType, sectionBackgroundColor, paddingType } = props
 
   const colsSpanClasses = {
     full: '12',
@@ -87,7 +87,16 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   return (
     <div
       className={cn(
-        'py-16 w-full relative',
+        'w-full relative',
+        paddingType === 'default' && 'py-16',
+        paddingType === 'noPadding' && 'py-0',
+        paddingType === 'paddingAdded' && 'py-32',
+        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
+        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
+        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
+        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
+        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
+        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
         backgroundType === 'color' && sectionBackgroundColor,
         backgroundType === 'color' && getBestContrastTextColor(sectionBackgroundColor),
         backgroundType === 'media' && 'text-white',
@@ -125,6 +134,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       enableGutter={false}
                       className={cn(
                         richTextClasses && richTextClasses,
+                        richTextClasses && 'md:text-3xl',
                         fontFamily === 'jost' && 'font-jost',
                         fontFamily === 'urbanist' && 'font-urbanist',
                         fontFamily === 'ubuntu' && 'font-ubuntu',
@@ -145,8 +155,9 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       {verticalCTA.title && (
                         <h3
                           className={cn(
-                            'text-3xl lg:text-6xl lg:max-w-[80%] py-4 font-semibold ',
+                            'text-3xl lg:text-6xl lg:max-w-[80%] font-semibold ',
                             verticalCTA.titleColour,
+                            verticalCTA.padTheTitle ? 'py-6' : 'py-3',
                           )}
                         >
                           {verticalCTA.title}

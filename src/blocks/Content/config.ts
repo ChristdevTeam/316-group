@@ -113,7 +113,22 @@ export const Content: Block = {
         { label: 'Media', value: 'media' },
       ],
     },
-
+    {
+      name: 'paddingType',
+      type: 'select',
+      defaultValue: 'default',
+      options: [
+        { label: 'Default', value: 'default' },
+        { label: 'No Padding', value: 'noPadding' },
+        { label: 'Padding Both Added', value: 'paddingAdded' },
+        { label: 'Padding Top Only', value: 'paddingTopOnly' },
+        { label: 'Padding Bottom Only', value: 'paddingBottomOnly' },
+        { label: 'Padding Top Only Added', value: 'paddingTopOnlyAdded' },
+        { label: 'Padding Bottom Only Added', value: 'paddingBottomOnlyAdded' },
+        { label: 'Padding Top Added', value: 'paddingTopAdded' },
+        { label: 'Padding Bottom Added', value: 'paddingBottomAdded' },
+      ],
+    },
     bgColorPickerAll({
       overrides: {
         label: 'Content Background Color',

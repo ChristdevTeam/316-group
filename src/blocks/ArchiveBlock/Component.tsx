@@ -26,6 +26,7 @@ export const ArchiveBlock: React.FC<
     backgroundMedia,
     backgroundType,
     sectionBackgroundColor,
+    paddingType,
   } = props
 
   const limit = limitFromProps || 3
@@ -135,10 +136,19 @@ export const ArchiveBlock: React.FC<
   return (
     <div
       className={cn(
-        'py-16 w-full relative',
+        'w-full relative',
         backgroundType === 'color' && sectionBackgroundColor,
         backgroundType === 'color' && getBestContrastTextColor(sectionBackgroundColor),
         backgroundType === 'media' && 'text-white',
+        paddingType === 'default' && 'py-16',
+        paddingType === 'noPadding' && 'py-0',
+        paddingType === 'paddingAdded' && 'py-32',
+        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
+        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
+        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
+        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
+        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
+        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
       )}
       id={`block-${id}`}
     >
