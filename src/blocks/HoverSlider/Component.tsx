@@ -51,7 +51,7 @@ export const HoverSlider: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        'w-full max-w-[1500px] mx-auto px-4 md:px-0 lg:px-8 ',
+        'w-full max-w-[1500px] mx-auto px-4 md:px-0',
         className,
         paddingType === 'default' && 'py-16',
         paddingType === 'noPadding' && 'py-0',
