@@ -157,7 +157,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                           className={cn(
                             'text-3xl lg:text-6xl lg:max-w-[80%] font-semibold ',
                             verticalCTA.titleColour,
-                            verticalCTA.padTheTitle ? 'py-6' : 'py-3',
+                            verticalCTA.padTheTitle ? 'my-8' : 'my-2',
                           )}
                         >
                           {verticalCTA.title}
