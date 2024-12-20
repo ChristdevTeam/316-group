@@ -43,7 +43,7 @@ export const SpecialHero: React.FC<Page['hero']> = ({ links, media, richText }) 
         </div>
         <div className="w-full hidden md:block">
           {media && typeof media === 'object' && (
-            <div className="shadow-md relative rounded-t-[3em] h-[60vh]">
+            <div className="relative rounded-t-[3em] h-[60vh]">
               <Media
                 fill
                 imgClassName="-z-10 object-cover inset-0 w-full h-full"
@@ -58,7 +58,7 @@ export const SpecialHero: React.FC<Page['hero']> = ({ links, media, richText }) 
         </div>
         <div className="w-[100%]  block md:hidden">
           {media && typeof media === 'object' && (
-            <div className="relative shadow-md rounded-t-[3em] h-[50vh]">
+            <div className="relative rounded-t-[3em] h-[50vh]">
               <Media
                 fill
                 imgClassName="-z-10 object-cover inset-0 w-full h-full"
