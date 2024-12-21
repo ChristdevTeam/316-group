@@ -136,6 +136,7 @@ export const VerticalCTAFields: Field[] = [
       { label: 'PB (lg) - 7XL (32)', value: 'lg:pb-32' },
       { label: 'PB (lg) - 8XL (40)', value: 'lg:pb-40' },
     ],
+    hasMany: true,
   },
   textColorPickerAll({
     overrides: {
