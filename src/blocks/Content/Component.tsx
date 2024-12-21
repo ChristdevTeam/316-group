@@ -143,7 +143,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     />
                   )}
                   {image && typeof image !== 'string' && (
-                    <div className="my-4">
+                    <div className="rounded-xl overflow-hidden">
                       <Media resource={image} size="33vw" imgClassName="rounded-xl" />
                     </div>
                   )}

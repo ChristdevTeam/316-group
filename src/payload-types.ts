@@ -815,7 +815,7 @@ export interface ContentBlock {
                 | 'lg:pb-24'
                 | 'lg:pb-32'
                 | 'lg:pb-40'
-              )[]
+              )
             | null;
           titleColour?:
             | (
