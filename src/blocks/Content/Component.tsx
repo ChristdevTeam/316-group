@@ -154,18 +154,17 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       {verticalCTA.subtitle && <p className="lg:text-xl">{verticalCTA.subtitle}</p>}
                       {verticalCTA.title && (
                         <h3
+                          dangerouslySetInnerHTML={{ __html: verticalCTA.title }}
                           className={cn(
-                            'text-3xl lg:text-6xl lg:max-w-[80%] font-semibold ',
                             verticalCTA.titleColour,
-                            verticalCTA.padTheTitle ? 'my-8' : 'my-2',
+
+                            verticalCTA.titleClasses,
                           )}
-                        >
-                          {verticalCTA.title}
-                        </h3>
+                        ></h3>
                       )}
                       {verticalCTA.description && (
                         <RichText
-                          className="mb-4 lg:text-xl"
+                          className={cn(verticalCTA.descriptionClasses)}
                           content={verticalCTA.description}
                           enableGutter={false}
                         />
