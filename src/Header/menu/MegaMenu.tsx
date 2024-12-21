@@ -151,7 +151,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
           </div>
 
           {/* Active Section Content */}
-          {activeSection && <MegaMenuContent items={getMegaMenuItems(activeSection)} />}
+          {activeSection !== null && <MegaMenuContent items={getMegaMenuItems(activeSection)} />}
         </div>
       </div>
 
