@@ -24,6 +24,7 @@ export const buttonClasses: buttonClassesType = ({
       { label: 'Rounded Medium', value: 'rounded' },
       { label: 'Rounded Small', value: 'rounded-sm' },
       { label: 'Border', value: 'border' },
+      { label: 'Border Width 1', value: 'border-[1px]' },
       { label: 'Border Width 2', value: 'border-2' },
       { label: 'Bordered Dark', value: 'border-dark' },
       //border colors
