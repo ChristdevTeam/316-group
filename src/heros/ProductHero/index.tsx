@@ -83,16 +83,19 @@ export const ProductHero: React.FC<Page['hero']> = ({
       <div className="relative w-[full] h-full overflow-hidden">
         {renderBackground()}
 
-        <div className="container max-w-screen-2xl py-28 flex gap-16">
+        <div className="container max-w-screen-2xl py-16 md:py-28 flex gap-16">
           <div className="w-full md:w-5/12 lg:w-5/12 xl:w-1/2 ">
             {Array.isArray(links) && links.length > 0 && (
               <ul className="flex gap-4">
-                {links.map(({ link }, i) => {
+                {links.map(({ link, buttonClasses }, i) => {
                   return (
                     <li key={i}>
                       <CMSLink
                         {...link}
-                        className="rounded-xl bg-transparent border-slate-950 border-2 hover:border-0"
+                        className={cn(
+                          'rounded-xl bg-transparent border-slate-950 border-2 hover:border-0',
+                          buttonClasses,
+                        )}
                       />
                     </li>
                   )
