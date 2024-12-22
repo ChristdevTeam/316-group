@@ -44,6 +44,22 @@ export const buttonClasses: buttonClassesType = ({
       { label: 'Transparent', value: 'bg-transparent' },
       { label: 'Black', value: 'bg-black' },
       { label: 'White', value: 'bg-white' },
+      //hover backgrounds
+      { label: 'Hover bg transparent', value: 'hover:bg-transparent' },
+      { label: 'Hover bg black', value: 'hover:bg-black' },
+      { label: 'Hover bg white', value: 'hover:bg-white' },
+      //hover border colors
+      { label: 'Hover border red', value: 'hover:border-red' },
+      { label: 'Hover border green', value: 'hover:border-green' },
+      { label: 'Hover border blue', value: 'hover:border-blue' },
+      { label: 'Hover border yellow', value: 'hover:border-yellow' },
+      { label: 'Hover border indigo', value: 'hover:border-indigo' },
+      { label: 'Hover border purple', value: 'hover:border-purple' },
+      { label: 'Hover border pink', value: 'hover:border-pink' },
+      { label: 'Hover border gray', value: 'hover:border-gray' },
+      { label: 'Hover border black', value: 'hover:border-black' },
+      { label: 'Hover border white', value: 'hover:border-white' },
+      { label: 'Hover border transparent', value: 'hover:border-transparent' },
     ],
   }
 
