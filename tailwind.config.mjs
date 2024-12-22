@@ -126,10 +126,10 @@ export default {
       }),
       screens: {
         // Custom breakpoints
-        smb: { max: '38rem' },
-        mdb: { max: '46rem' },
-        lgb: { max: '62rem' },
-        xlb: { max: '78rem' },
+        smb: { max: '41rem' },
+        mdb: { max: '49rem' },
+        lgb: { max: '65rem' },
+        xlb: { max: '81rem' },
         '2xlb': { max: '84rem' },
       },
     },
