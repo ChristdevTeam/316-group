@@ -86,21 +86,30 @@ export const ProductHero: React.FC<Page['hero']> = ({
         <div className="container max-w-screen-2xl py-16 md:py-28 flex gap-16">
           <div className="w-full md:w-5/12 lg:w-5/12 xl:w-1/2 ">
             {Array.isArray(links) && links.length > 0 && (
-              <ul className="flex gap-4">
+              <div className="flex gap-4">
                 {links.map(({ link, buttonClasses }, i) => {
                   return (
-                    <li key={i}>
+                    <div key={i} className="flex">
                       <CMSLink
+                        size={'lg'}
                         {...link}
                         className={cn(
-                          'rounded-xl bg-transparent border-slate-950 border-2',
+                          'rounded-xl bg-transparent border-slate-950 smb:hidden',
                           buttonClasses,
                         )}
                       />
-                    </li>
+                      <CMSLink
+                        size={'sm'}
+                        {...link}
+                        className={cn(
+                          'rounded-xl bg-transparent border-slate-950 md:hidden',
+                          buttonClasses,
+                        )}
+                      />
+                    </div>
                   )
                 })}
-              </ul>
+              </div>
             )}
             {title && (
               <h1 dangerouslySetInnerHTML={{ __html: title }} className={cn(titleClasses)}></h1>
