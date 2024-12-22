@@ -91,20 +91,9 @@ export const ProductHero: React.FC<Page['hero']> = ({
                   return (
                     <div key={i} className="flex">
                       <CMSLink
-                        size={'lg'}
-                        {...link}
-                        className={cn(
-                          'rounded-xl bg-transparent border-slate-950 smb:hidden',
-                          buttonClasses,
-                        )}
-                      />
-                      <CMSLink
                         size={'sm'}
                         {...link}
-                        className={cn(
-                          'rounded-xl bg-transparent border-slate-950 md:hidden',
-                          buttonClasses,
-                        )}
+                        className={cn('rounded-xl bg-transparent border-slate-950', buttonClasses)}
                       />
                     </div>
                   )
