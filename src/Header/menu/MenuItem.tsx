@@ -37,7 +37,7 @@ export const MenuItem = ({
           )}
           style={isMobile ? { marginTop: '1rem' } : {}}
         >
-          {title}
+          {title && <span dangerouslySetInnerHTML={{ __html: title }}></span>}
           {hasMegaMenu && isMobile && (
             <MoveRight
               className={cn('h-6 w-6 transition-transform duration-200', isActive && 'rotate-180')}
@@ -62,7 +62,7 @@ export const MenuItem = ({
           !isMobile && 'font-medium justify-start text-xl',
         )}
       >
-        {title}
+        {title && <span dangerouslySetInnerHTML={{ __html: title }}></span>}
         {hasMegaMenu && isMobile && (
           <MoveRight
             className={cn('h-6 w-6 transition-transform duration-200', isActive && 'rotate-180')}

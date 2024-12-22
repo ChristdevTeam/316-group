@@ -41,9 +41,12 @@ export const MegaMenuContent = ({ items }: MegaMenuContentProps) => {
           if (item.type === 'subHeading') {
             return (
               <h4 key={item.label} className="text-base font-small text-gray-400 pt-4 ">
-                {item.label}
+                {item.label && <span dangerouslySetInnerHTML={{ __html: item.label }}></span>}
                 {item.description && (
-                  <span className="block text-sm text-gray-900 mt-1">{item.description}</span>
+                  <span
+                    className="block text-sm text-gray-900 mt-1"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  ></span>
                 )}
               </h4>
             )
@@ -60,9 +63,11 @@ export const MegaMenuContent = ({ items }: MegaMenuContentProps) => {
 
           if (item.type === 'text') {
             return (
-              <p key={item.label} className="text-sm text-gray-900 max-w-[500px]">
-                {item.label}
-              </p>
+              <p
+                key={item.label}
+                className="text-sm text-gray-900 max-w-[500px]"
+                dangerouslySetInnerHTML={{ __html: item.label ? item.label : '' }}
+              ></p>
             )
           }
 
@@ -72,7 +77,9 @@ export const MegaMenuContent = ({ items }: MegaMenuContentProps) => {
               href={getHref(item.link)}
               className="block text-2xl font-base text-gray-1000 hover:text-teal-600 py-2 transition-colors duration-200"
             >
-              {item.link?.label}
+              {item.link?.label && (
+                <span dangerouslySetInnerHTML={{ __html: item.link?.label }}></span>
+              )}
               {item.description && (
                 <span className="block text-sm text-gray-900 mt-1 hover:text-teal-600">
                   {item.description}

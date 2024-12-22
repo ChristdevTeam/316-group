@@ -93,7 +93,7 @@ export const ProductHero: React.FC<Page['hero']> = ({
                       <CMSLink
                         {...link}
                         className={cn(
-                          'rounded-xl bg-transparent border-slate-950 border-2 hover:border-0',
+                          'rounded-xl bg-transparent border-slate-950 border-2',
                           buttonClasses,
                         )}
                       />
