@@ -10,6 +10,7 @@ import {
 import { link } from '@/fields/link'
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { VerticalCTAFields } from '../VerticalCTA/config'
+import { buttonClasses } from '@/fields/buttonClasses'
 
 const columnFields: Field[] = [
   {
@@ -73,6 +74,14 @@ const columnFields: Field[] = [
       admin: {
         condition: (_, { enableLink }) => Boolean(enableLink),
       },
+    },
+  }),
+  buttonClasses({
+    overrides: {
+      admin: {
+        condition: (_, { enableLink }) => Boolean(enableLink),
+      },
+      name: 'linkClasses',
     },
   }),
   {

@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation'
 
 export const MegaMenu = ({ className, header }: { className: string; header: Header }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState<number | null>(null)
+  const [activeSection, setActiveSection] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
   const router = useRouter()
 
@@ -65,9 +65,9 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
     return '#'
   }
 
-  const getMegaMenuItems = (index: number) => {
+  const getMegaMenuItems = (title: string) => {
     if (!header.navItems) return []
-    return header.navItems[index].megaMenuItems || []
+    return header.navItems.find((item) => item.title === title)?.megaMenuItems || []
   }
 
   // console.log(header.navItems)
@@ -92,10 +92,12 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
             title={section.hasMegaMenu ? section.title : section.link?.label}
             href={getHref(section.link)}
             hasMegaMenu={section.hasMegaMenu ? section.hasMegaMenu : false}
-            isActive={activeSection === index}
+            isActive={activeSection === section.title}
             onClick={() => {
               if (section.hasMegaMenu !== true) {
-              } else setActiveSection(activeSection === index ? null : index)
+              } else
+                section.title &&
+                  setActiveSection(activeSection === section.title ? null : section.title)
             }}
           />
         ))}
@@ -141,10 +143,12 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
                 href={getHref(section.link)}
                 title={section.title}
                 hasMegaMenu={section.hasMegaMenu ? section.hasMegaMenu : false}
-                isActive={activeSection === index}
+                isActive={activeSection === section.title}
                 onClick={() => {
                   if (section.hasMegaMenu !== true) {
-                  } else setActiveSection(activeSection === index ? null : index)
+                  } else
+                    section.title &&
+                      setActiveSection(activeSection === section.title ? null : section.title)
                 }}
               />
             ))}
@@ -203,7 +207,9 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
                 href={getHref(section.link)}
                 onClick={() => {
                   if (section.hasMegaMenu !== true) {
-                  } else setActiveSection(activeSection === index ? null : index)
+                  } else
+                    section.title &&
+                      setActiveSection(activeSection === section.title ? null : section.title)
                 }}
                 isMobile={isMobile}
               />

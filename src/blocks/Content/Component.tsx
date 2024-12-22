@@ -117,6 +117,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                 verticalCTA,
                 richTextClasses,
                 fontFamily,
+                linkClasses,
               } = col
 
               // console.log(richTextClasses)
@@ -147,7 +148,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       <Media resource={image} size="33vw" imgClassName="rounded-xl" />
                     </div>
                   )}
-                  {enableLink && <CMSLink {...link} className="mt-16" />}
+                  {enableLink && <CMSLink {...link} className={cn('mt-16', linkClasses)} />}
 
                   {verticalCTA && (
                     <div className="max-w-[813px]">
@@ -170,8 +171,10 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                         />
                       )}
                       <div className="flex gap-8">
-                        {(verticalCTA.links || []).map(({ link }, i) => {
-                          return <CMSLink key={i} size="lg" {...link} />
+                        {(verticalCTA.links || []).map(({ link, buttonClasses }, i) => {
+                          return (
+                            <CMSLink key={i} size="lg" {...link} className={cn(buttonClasses)} />
+                          )
                         })}
                       </div>
                     </div>

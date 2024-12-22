@@ -4,6 +4,7 @@ import type { LinkAppearances } from './link'
 
 import deepMerge from '@/utilities/deepMerge'
 import { link } from './link'
+import { buttonClasses } from './buttonClasses'
 
 type LinkGroupType = (options?: {
   appearances?: LinkAppearances[] | false
@@ -18,6 +19,7 @@ export const linkGroup: LinkGroupType = ({ appearances, overrides = {} } = {}) =
       link({
         appearances,
       }),
+      buttonClasses(),
     ],
   }
 

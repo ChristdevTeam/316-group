@@ -29,12 +29,13 @@ export const MenuItem = ({
         <button
           onClick={onClick}
           className={cn(
-            'hover:text-emerald-600 flex items-center  gap-1 transition-colors duration-200',
+            'hover:text-emerald-600 flex items-center gap-1 transition-colors duration-200',
             isActive && 'text-emerald-600',
             isMobile && 'font-small text-2xl justify-between w-[100%]',
             !isMobile && 'font-medium justify-start text-xl',
             className,
           )}
+          style={isMobile ? { marginTop: '1rem' } : {}}
         >
           {title}
           {hasMegaMenu && isMobile && (
