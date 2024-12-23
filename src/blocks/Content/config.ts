@@ -11,6 +11,7 @@ import { link } from '@/fields/link'
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { VerticalCTAFields } from '../VerticalCTA/config'
 import { buttonClasses } from '@/fields/buttonClasses'
+import { textClasses } from '@/fields/textClasses'
 
 const columnFields: Field[] = [
   {
@@ -61,10 +62,13 @@ const columnFields: Field[] = [
       { label: 'Jost', value: 'jost' },
     ],
   },
-  {
-    name: 'richTextClasses',
-    type: 'text',
-  },
+  textClasses({
+    overrides: {
+      name: 'richTextClasses',
+      label: 'Rich Text Classes',
+      defaultValue: ['md:text-3xl', 'text-xl', 'font-jost'],
+    },
+  }),
   {
     name: 'enableLink',
     type: 'checkbox',

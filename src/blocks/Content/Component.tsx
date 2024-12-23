@@ -134,8 +134,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       content={richText}
                       enableGutter={false}
                       className={cn(
-                        richTextClasses && richTextClasses,
-                        richTextClasses && 'md:text-3xl',
+                        richTextClasses,
                         fontFamily === 'jost' && 'font-jost',
                         fontFamily === 'urbanist' && 'font-urbanist',
                         fontFamily === 'ubuntu' && 'font-ubuntu',
