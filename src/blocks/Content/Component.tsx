@@ -133,6 +133,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     <RichText
                       content={richText}
                       enableGutter={false}
+                      enableProse={false}
                       className={cn(
                         richTextClasses,
                         fontFamily === 'jost' && 'font-jost',
