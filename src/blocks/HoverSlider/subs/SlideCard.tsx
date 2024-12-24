@@ -51,6 +51,7 @@ const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
               )
             : typeof slide.mediaFile === 'object' && (
                 <ImageComponent
+                  isProductSlider
                   src={getUrl(slide.mediaFile)}
                   alt={slide.title}
                   width={slide.mediaFile.width || 500}

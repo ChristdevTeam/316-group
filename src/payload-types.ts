@@ -4413,8 +4413,6 @@ export interface HoverSliderBlock {
             value: string | Post;
           } | null);
       url?: string | null;
-      label: string;
-      appearance?: ('default' | 'outline' | 'ghost' | 'secondary') | null;
     };
     mediaFile: string | Media;
     bgColor?:
@@ -4836,8 +4834,6 @@ export interface PagesSelect<T extends boolean = true> {
                           newTab?: T;
                           reference?: T;
                           url?: T;
-                          label?: T;
-                          appearance?: T;
                         };
                     mediaFile?: T;
                     bgColor?: T;
