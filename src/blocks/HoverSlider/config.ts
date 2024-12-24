@@ -22,7 +22,7 @@ export const HoverSliderBlock: Block = {
       overrides: {
         name: 'sliderTitleClasses',
         label: 'Slider Title Classes',
-        defaultValue: ['text-xl', 'pb-16', 'md:text-2xl '],
+        defaultValue: ['text-xl', 'pb-16', 'md:text-2xl'],
       },
     }),
     {
@@ -64,7 +64,10 @@ export const HoverSliderBlock: Block = {
             },
           }),
         },
-        link(),
+        link({
+          appearances: false,
+          disableLabel: true,
+        }),
         {
           name: 'mediaFile',
           type: 'upload',
@@ -94,6 +97,7 @@ export const HoverSliderBlock: Block = {
     },
     {
       name: 'paddingType',
+      label: 'Section Padding',
       type: 'select',
       options: [
         { label: 'Default', value: 'default' },
