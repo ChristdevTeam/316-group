@@ -22,7 +22,7 @@ export const HoverSliderBlock: Block = {
       overrides: {
         name: 'sliderTitleClasses',
         label: 'Slider Title Classes',
-        defaultValue: ['text-xl', 'font-normal', 'pb-16', 'md:text-2xl '],
+        defaultValue: ['text-xl', 'pb-16', 'md:text-2xl '],
       },
     }),
     {
@@ -95,7 +95,6 @@ export const HoverSliderBlock: Block = {
     {
       name: 'paddingType',
       type: 'select',
-      defaultValue: 'default',
       options: [
         { label: 'Default', value: 'default' },
         { label: 'No Padding', value: 'noPadding' },
