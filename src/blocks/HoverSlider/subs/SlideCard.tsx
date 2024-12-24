@@ -76,7 +76,7 @@ const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
             )}
       </div>
       <RichText
-        className={`mt-6 text-lg text-left animate__animated ${animationClass}`}
+        className={`mt-8 md:mt-16 text-lg text-left animate__animated ${animationClass}`}
         content={slide.description}
         enableGutter={false}
         enableProse={false}
