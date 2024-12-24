@@ -1,5 +1,6 @@
 import { bgColorPickerLight } from '@/fields/bgColorPicker'
 import { link } from '@/fields/link'
+import { textClasses } from '@/fields/textClasses'
 import {
   FixedToolbarFeature,
   HeadingFeature,
@@ -17,6 +18,13 @@ export const HoverSliderBlock: Block = {
       type: 'text',
       // required: true,
     },
+    textClasses({
+      overrides: {
+        name: 'sliderTitleClasses',
+        label: 'Slider Title Classes',
+        defaultValue: ['text-xl', 'font-normal', 'mb-16', 'md:text-2xl '],
+      },
+    }),
     {
       name: 'isProductSlider',
       type: 'checkbox',

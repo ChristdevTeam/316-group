@@ -19,7 +19,7 @@ export const ImageComponent = ({
       <Image
         src={src}
         alt={alt}
-        className={cn('object-fit h-full', className)}
+        className={cn('object-fit', className)}
         width={width}
         height={height}
       />
