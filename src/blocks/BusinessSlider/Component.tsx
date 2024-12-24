@@ -27,6 +27,7 @@ export const BusinessSliderBlock: React.FC<Props> = ({
   sliderItems,
   paddingType,
   sliderTitle,
+  sliderTitleClasses,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [swiper, setSwiper] = useState<any>(null)
@@ -62,7 +63,7 @@ export const BusinessSliderBlock: React.FC<Props> = ({
       )}
     >
       <div className="container relative px-4 py-12 max-w-screen-2xl">
-        {sliderTitle && <h2 className="text-4xl font-medium mb-8">{sliderTitle}</h2>}
+        {sliderTitle && <h2 className={cn(sliderTitleClasses)}>{sliderTitle}</h2>}
 
         <div className="flex justify-between items-center mb-8">
           <div className="text-2xl font-medium">

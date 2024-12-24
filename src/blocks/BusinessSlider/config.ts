@@ -1,10 +1,18 @@
 import { link } from '@/fields/link'
+import { textClasses } from '@/fields/textClasses'
 import type { Block } from 'payload'
 
 export const BusinessSlider: Block = {
   slug: 'bslider',
   fields: [
     { name: 'sliderTitle', type: 'text' },
+    textClasses({
+      overrides: {
+        name: 'sliderTitleClasses',
+        label: 'Slider Title Classes',
+        defaultValue: ['text-4xl', 'md:text-6xl', 'pb-8', 'md:text-2xl'],
+      },
+    }),
     {
       name: 'sliderItems',
       type: 'array',
