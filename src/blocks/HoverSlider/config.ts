@@ -22,7 +22,7 @@ export const HoverSliderBlock: Block = {
       overrides: {
         name: 'sliderTitleClasses',
         label: 'Slider Title Classes',
-        defaultValue: ['text-xl', 'font-normal', 'mb-16', 'md:text-2xl '],
+        defaultValue: ['text-xl', 'font-normal', 'pb-16', 'md:text-2xl '],
       },
     }),
     {
