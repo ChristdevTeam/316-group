@@ -3952,10 +3952,25 @@ export interface BusinessSliderBlock {
  */
 export interface HoverSliderBlock {
   sliderTitle?: string | null;
+  isProductSlider?: boolean | null;
   sliderItems: {
     id: string | null;
     title: string;
-    description: string;
+    description: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
     link?: {
       type?: ('reference' | 'custom') | null;
       newTab?: boolean | null;
@@ -4377,6 +4392,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               sliderTitle?: T;
+              isProductSlider?: T;
               sliderItems?:
                 | T
                 | {

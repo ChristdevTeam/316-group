@@ -4,12 +4,14 @@ import React, { useEffect, useState } from 'react'
 import { HoverSliderBlock, Media } from '@/payload-types'
 import VideoComponent from './VideoComponent'
 import { ImageComponent } from './ImageComponent'
+import RichText from '@/components/RichText'
 
 interface SlideCardProps {
+  isProductSlider?: boolean
   slide: HoverSliderBlock['sliderItems'][0]
 }
 
-const SlideCard = ({ slide }: SlideCardProps) => {
+const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
   const [animationClass, setAnimationClass] = useState('')
 
   useEffect(() => {
@@ -33,6 +35,34 @@ const SlideCard = ({ slide }: SlideCardProps) => {
     return '#'
   }
 
+  if (isProductSlider === true) {
+    // console.log('Product Slider is enabled')
+    return (
+      <div
+        className={`${slide.bgColor} rounded-[2em] flex flex-col items-start justify-between w-full aspect-[1/1] overflow-hidden`}
+      >
+        <div className=" text-lg text-left p-8 animate__animated">
+          <RichText content={slide.description} enableGutter={false} enableProse={false}></RichText>
+        </div>
+        <div className="w-full overflow-hidden relative flex justify-center align-center items-center max-h-[80%] px-8">
+          {isVideo
+            ? typeof slide.mediaFile === 'object' && (
+                <VideoComponent url={getUrl(slide.mediaFile)} />
+              )
+            : typeof slide.mediaFile === 'object' && (
+                <ImageComponent
+                  src={getUrl(slide.mediaFile)}
+                  alt={slide.title}
+                  width={slide.mediaFile.width || 500}
+                  height={slide.mediaFile.height || 500}
+                  className="object-fit m-auto"
+                />
+              )}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       className={`${slide.bgColor} rounded-[2em] p-8 flex flex-col items-start justify-center w-full`}
@@ -44,9 +74,12 @@ const SlideCard = ({ slide }: SlideCardProps) => {
               <ImageComponent src={getUrl(slide.mediaFile)} alt={slide.title} />
             )}
       </div>
-      <p className={`mt-6 text-lg text-left animate__animated ${animationClass}`}>
-        {slide.description}
-      </p>
+      <RichText
+        className={`mt-6 text-lg text-left animate__animated ${animationClass}`}
+        content={slide.description}
+        enableGutter={false}
+        enableProse={false}
+      ></RichText>
       <button
         className={`mt-6 bg-cyan-200 text-black px-6 py-2 rounded-full hover:bg-slate-900 hover:text-white transition-colors text-left animate__animated ${animationClass}`}
       >

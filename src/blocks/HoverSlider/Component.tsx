@@ -26,6 +26,7 @@ export const HoverSlider: React.FC<Props> = ({
   sliderItems,
   sliderTitle,
   paddingType,
+  isProductSlider,
 }) => {
   const [activeSlide, setActiveSlide] = useState(0)
   const totalSlides = sliderItems?.length || 0
@@ -116,7 +117,10 @@ export const HoverSlider: React.FC<Props> = ({
           target={sliderItems[activeSlide].link?.newTab ? '_blank' : '_self'}
           className="w-1/2 flex justify-center"
         >
-          <SlideCard slide={sliderItems[activeSlide]} />
+          <SlideCard
+            slide={sliderItems[activeSlide]}
+            isProductSlider={isProductSlider ? isProductSlider : false}
+          />
         </a>
       </div>
 
@@ -134,7 +138,10 @@ export const HoverSlider: React.FC<Props> = ({
           target={sliderItems[activeSlide].link?.newTab ? '_blank' : '_self'}
           className="mb-6"
         >
-          <SlideCard slide={sliderItems[activeSlide]} />
+          <SlideCard
+            slide={sliderItems[activeSlide]}
+            isProductSlider={isProductSlider ? isProductSlider : false}
+          />
         </a>
       </div>
     </div>

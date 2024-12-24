@@ -1,5 +1,11 @@
 import { bgColorPickerLight } from '@/fields/bgColorPicker'
 import { link } from '@/fields/link'
+import {
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
 
 export const HoverSliderBlock: Block = {
@@ -10,6 +16,11 @@ export const HoverSliderBlock: Block = {
       name: 'sliderTitle',
       type: 'text',
       // required: true,
+    },
+    {
+      name: 'isProductSlider',
+      type: 'checkbox',
+      defaultValue: false,
     },
     {
       name: 'sliderItems',
@@ -32,8 +43,18 @@ export const HoverSliderBlock: Block = {
         },
         {
           name: 'description',
-          type: 'text',
+          type: 'richText',
           required: true,
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => {
+              return [
+                ...rootFeatures,
+                HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+              ]
+            },
+          }),
         },
         link(),
         {
