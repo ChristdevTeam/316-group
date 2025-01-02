@@ -108,19 +108,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
           {columns &&
             columns.length > 0 &&
             columns.map((col, index) => {
-              const {
-                enableLink,
-                link,
-                richText,
-                size,
-                image,
-                verticalCTA,
-                richTextClasses,
-                fontFamily,
-                linkClasses,
-              } = col
-
-              // console.log(richTextClasses)
+              const size = col.size
 
               return (
                 <div
@@ -129,56 +117,96 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   })}
                   key={index}
                 >
-                  {richText && (
-                    <RichText
-                      content={richText}
-                      enableGutter={false}
-                      enableProse={false}
-                      className={cn(
-                        richTextClasses,
-                        fontFamily === 'jost' && 'font-jost',
-                        fontFamily === 'urbanist' && 'font-urbanist',
-                        fontFamily === 'ubuntu' && 'font-ubuntu',
-                        fontFamily === 'inter' && 'font-inter',
-                      )}
-                    />
-                  )}
-                  {image && typeof image !== 'string' && (
-                    <div className="rounded-xl overflow-hidden">
-                      <Media resource={image} size="33vw" imgClassName="rounded-xl" />
-                    </div>
-                  )}
-                  {enableLink && <CMSLink {...link} className={cn('mt-16', linkClasses)} />}
+                  {col.columnContent?.map((content, index) => {
+                    const { contentType, links, richText, media, verticalCTA } = content
 
-                  {verticalCTA && (
-                    <div className="max-w-[813px]">
-                      {verticalCTA.subtitle && <p className="lg:text-xl">{verticalCTA.subtitle}</p>}
-                      {verticalCTA.title && (
-                        <h3
-                          dangerouslySetInnerHTML={{ __html: verticalCTA.title }}
-                          className={cn(
-                            verticalCTA.titleColour,
+                    if (contentType === 'media' && media && typeof media !== 'string') {
+                      return (
+                        <div className="rounded-xl overflow-hidden" key={index}>
+                          <Media resource={media} size="33vw" imgClassName="rounded-xl" />
+                        </div>
+                      )
+                    }
 
-                            verticalCTA.titleClasses,
-                          )}
-                        ></h3>
-                      )}
-                      {verticalCTA.description && (
-                        <RichText
-                          className={cn(verticalCTA.descriptionClasses)}
-                          content={verticalCTA.description}
-                          enableGutter={false}
-                        />
-                      )}
-                      <div className="flex gap-8">
-                        {(verticalCTA.links || []).map(({ link, buttonClasses }, i) => {
-                          return (
-                            <CMSLink key={i} size="lg" {...link} className={cn(buttonClasses)} />
-                          )
-                        })}
-                      </div>
-                    </div>
-                  )}
+                    if (contentType === 'richText') {
+                      // const richText = content.richText
+                      const richTextClasses = content.richTextClasses
+                      return (
+                        richText && (
+                          <RichText
+                            content={richText}
+                            enableGutter={false}
+                            enableProse={true}
+                            className={cn(richTextClasses)}
+                          />
+                        )
+                      )
+                    }
+
+                    if (contentType === 'verticalCTA') {
+                      // const verticalCTA = content.verticalCTA
+                      return (
+                        verticalCTA && (
+                          <div className="max-w-[813px]" key={index}>
+                            {verticalCTA.subtitle && (
+                              <p className="lg:text-xl">{verticalCTA.subtitle}</p>
+                            )}
+                            {verticalCTA.title && (
+                              <h3
+                                dangerouslySetInnerHTML={{ __html: verticalCTA.title }}
+                                className={cn(
+                                  verticalCTA.titleColour,
+
+                                  verticalCTA.titleClasses,
+                                )}
+                              ></h3>
+                            )}
+                            {verticalCTA.description && (
+                              <RichText
+                                className={cn(verticalCTA.descriptionClasses)}
+                                content={verticalCTA.description}
+                                enableGutter={false}
+                              />
+                            )}
+                            <div className="flex gap-8">
+                              {(verticalCTA.links || []).map(({ link, buttonClasses }, i) => {
+                                return (
+                                  <CMSLink
+                                    key={i}
+                                    size="lg"
+                                    {...link}
+                                    className={cn(buttonClasses)}
+                                  />
+                                )
+                              })}
+                            </div>
+                          </div>
+                        )
+                      )
+                    }
+
+                    return (
+                      Array.isArray(links) &&
+                      links.length > 0 && (
+                        <div className="flex gap-4" key={index}>
+                          {links.map(({ link, buttonClasses }, i) => {
+                            return (
+                              <div key={i} className="flex">
+                                <CMSLink
+                                  size={'sm'}
+                                  {...link}
+                                  className={cn(
+                                    'rounded-xl bg-transparent border-slate-950',
+                                    buttonClasses,
+                                  )}
+                                />
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )
+                    )
+                  })}
                 </div>
               )
             })}

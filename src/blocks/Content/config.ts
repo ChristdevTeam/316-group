@@ -7,17 +7,16 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { link } from '@/fields/link'
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
-import { VerticalCTAFields } from '../VerticalCTA/config'
-import { buttonClasses } from '@/fields/buttonClasses'
+import { VerticalCTAFields } from '@/fields/vcta'
 import { textClasses } from '@/fields/textClasses'
+import { linkGroup } from '@/fields/linkGroup'
 
 const columnFields: Field[] = [
   {
     name: 'size',
     type: 'select',
-    defaultValue: 'oneThird',
+    defaultValue: 'full',
     options: [
       {
         label: 'One Third',
@@ -38,73 +37,74 @@ const columnFields: Field[] = [
     ],
   },
   {
-    name: 'richText',
-    type: 'richText',
-    editor: lexicalEditor({
-      features: ({ rootFeatures }) => {
-        return [
-          ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-          FixedToolbarFeature(),
-          InlineToolbarFeature(),
-        ]
+    name: 'columnContent',
+    type: 'array',
+    label: 'Column Content',
+    fields: [
+      {
+        name: 'contentType',
+        type: 'select',
+        required: true,
+        defaultValue: 'richText',
+        options: [
+          { label: 'Rich Text', value: 'richText' },
+          { label: 'Media', value: 'media' },
+          { label: 'Link', value: 'link' },
+          { label: 'Vertical CTA', value: 'verticalCTA' },
+        ],
       },
-    }),
-    label: false,
-  },
-  {
-    name: 'fontFamily',
-    type: 'select',
-    options: [
-      { label: 'Urbanist', value: 'urbanist' },
-      { label: 'Inter', value: 'inter' },
-      { label: 'Ubuntu', value: 'ubuntu' },
-      { label: 'Jost', value: 'jost' },
+      {
+        name: 'richText',
+        type: 'richText',
+        editor: lexicalEditor({
+          features: ({ rootFeatures }) => [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ],
+        }),
+        admin: {
+          condition: (_, { contentType }) => contentType === 'richText',
+        },
+      },
+      textClasses({
+        overrides: {
+          name: 'richTextClasses',
+          label: 'Rich Text Classes',
+          defaultValue: [],
+          admin: {
+            condition: (_, { contentType }) => contentType === 'richText',
+          },
+        },
+      }),
+      {
+        name: 'media',
+        type: 'upload',
+        relationTo: 'media',
+        admin: {
+          condition: (_, { contentType }) => contentType === 'media',
+        },
+      },
+
+      linkGroup({
+        overrides: {
+          maxRows: 3,
+          admin: {
+            condition: (_, { contentType }) => contentType === 'link',
+          },
+        },
+      }),
+
+      {
+        name: 'verticalCTA',
+        type: 'group',
+        fields: VerticalCTAFields,
+        admin: {
+          condition: (_, { contentType }) => contentType === 'verticalCTA',
+        },
+      },
     ],
-  },
-  textClasses({
-    overrides: {
-      name: 'richTextClasses',
-      label: 'Rich Text Classes',
-      defaultValue: ['md:text-3xl', 'text-xl', 'font-jost'],
-    },
-  }),
-  {
-    name: 'enableLink',
-    type: 'checkbox',
-  },
-  link({
-    overrides: {
-      admin: {
-        condition: (_, { enableLink }) => Boolean(enableLink),
-      },
-    },
-  }),
-  buttonClasses({
-    overrides: {
-      admin: {
-        condition: (_, { enableLink }) => Boolean(enableLink),
-      },
-      name: 'linkClasses',
-    },
-  }),
-  {
-    name: 'image',
-    type: 'upload',
-    relationTo: 'media',
-  },
-  {
-    name: 'addVerticalCTA',
-    type: 'checkbox',
-    defaultValue: false,
-  },
-  {
-    name: 'verticalCTA',
-    type: 'group', // or 'array' if multiple entries are allowed
-    fields: VerticalCTAFields,
-    admin: {
-      condition: (_, { addVerticalCTA }) => Boolean(addVerticalCTA),
-    },
   },
 ]
 

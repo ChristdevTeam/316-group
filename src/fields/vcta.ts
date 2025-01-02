@@ -6,10 +6,9 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { linkGroup } from '../../fields/linkGroup'
+import { linkGroup } from '@/fields/linkGroup'
 import { textColorPickerAll } from '@/fields/textColorPicker'
 import { textClasses } from '@/fields/textClasses'
-import { Label } from '@radix-ui/react-select'
 
 export const VerticalCTAFields: Field[] = [
   {
