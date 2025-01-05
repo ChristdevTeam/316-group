@@ -1,5 +1,5 @@
 # Base stage
-FROM node:18.8-alpine as base
+FROM node:lts as base
 
 # Builder stage
 FROM base as builder
