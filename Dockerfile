@@ -25,6 +25,9 @@ FROM base as runtime
 # Set environment to production
 ENV NODE_ENV=production
 
+# Install pnpm globally
+RUN npm install -g pnpm
+
 # Set working directory
 WORKDIR /home/node/app
 
