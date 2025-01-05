@@ -12,26 +12,12 @@ services:
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app
     command: sh -c "pnpm install && pnpm start"
-    depends_on:
-      - mongo
     env_file:
       - .env
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.payload.rule=Host(`77.223.214.122`)'
       - 'traefik.http.routers.payload.entrypoints=web'
-
-  mongo:
-    image: mongo:latest
-    restart: always
-    # ports:
-    #   - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
-    volumes:
-      - mongodb-data:/data/db
-    logging:
-      driver: none
 
   traefik:
     image: traefik:v2.10
@@ -48,10 +34,8 @@ services:
     restart: always
 
 volumes:
-  mongodb-data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /var/lib/docker-volumes/mongodb-data
   node_modules:
+
+networks:
+  316-group:
+    external: true

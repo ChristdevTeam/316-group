@@ -32,11 +32,7 @@ RUN npm install -g pnpm
 WORKDIR /home/node/app
 
 # Copy production dependencies
-COPY package*.json pnpm-lock.yaml ./
 RUN pnpm install --production
-
-# Copy built artifacts from builder stage
-COPY --from=builder /home/node/app/dist ./dist
 
 # Expose the application port
 EXPOSE 3000
