@@ -30,7 +30,8 @@ RUN npm install -g pnpm
 
 # Set working directory
 WORKDIR /home/node/app
-
+# Make sure the necessary files are copied from the builder stage
+COPY --from=builder /home/node/app/package*.json /home/node/app/pnpm-lock.yaml ./
 # Copy production dependencies
 RUN pnpm install --production
 
