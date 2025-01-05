@@ -3,6 +3,8 @@ import React from 'react'
 
 import { SeedButton } from './SeedButton'
 import './index.scss'
+import { Button } from '@payloadcms/ui'
+import { HomeIcon } from 'lucide-react'
 
 const baseClass = 'before-dashboard'
 
@@ -12,6 +14,10 @@ const BeforeDashboard: React.FC = () => {
       <Banner className={`${baseClass}__banner`} type="success">
         <h4>Welcome to your dashboard!</h4>
       </Banner>
+
+      <a href="/" target="_blank" rel="noopener noreferrer">
+        <Button>Home Page</Button>
+      </a>
 
       {/* <p>
         <SeedButton />

@@ -20,6 +20,7 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
 import './globals.css'
+import 'payloadcms-lexical-ext/client/client.css'
 import '@radix-ui/themes/styles.css'
 
 import { getServerSideURL } from '@/utilities/getURL'

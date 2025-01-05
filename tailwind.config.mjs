@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   content: [
     './pages/**/*.{ts,tsx}',
@@ -131,6 +132,21 @@ export default {
         lgb: { max: '65rem' },
         xlb: { max: '81rem' },
         '2xlb': { max: '84rem' },
+      },
+      width: {
+        '1/6': '16.6667%',
+        '1/5': '20%',
+        '1/4': '25%',
+        '1/3': '33.3333%',
+        '2/5': '40%',
+        '1/2': '50%',
+        '3/5': '60%',
+        '2/3': '66.6667%',
+        '7/10': '70%',
+        '3/4': '75%',
+        '4/5': '80%',
+        '5/6': '83.3333%',
+        full: '100%',
       },
     },
   },

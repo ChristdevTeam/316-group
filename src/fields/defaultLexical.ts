@@ -7,6 +7,13 @@ import {
   lexicalEditor,
   UnderlineFeature,
 } from '@payloadcms/richtext-lexical'
+// import {
+//   BgColorFeature,
+//   HighlightColorFeature,
+//   TextColorFeature,
+//   YoutubeFeature,
+//   VimeoFeature,
+// } from 'payloadcms-lexical-ext'
 
 export const defaultLexical: Config['editor'] = lexicalEditor({
   features: () => {
@@ -37,6 +44,19 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
           ]
         },
       }),
+      // TextColorFeature({
+      //   colors: [
+      //     {
+      //       type: 'button',
+      //       label: 'Custom color',
+      //       color: '#1155aa',
+      //     },
+      //   ],
+      // }),
+      // HighlightColorFeature(),
+      // BgColorFeature(),
+      // YoutubeFeature(),
+      // VimeoFeature(),
     ]
   },
 })
