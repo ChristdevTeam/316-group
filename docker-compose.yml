@@ -35,7 +35,6 @@ services:
 
 volumes:
   node_modules:
-
-networks:
-  316-group:
-    external: true
+# networks:
+#   316-group:
+#     external: true
