@@ -1,22 +1,25 @@
 # Base stage
-FROM node:lts as base
+FROM node:lts-alpine as base
+
+# Set working directory
+WORKDIR /app
+
+# Install pnpm globally (using corepack is more efficient)
+RUN corepack enable
 
 # Builder stage
 FROM base as builder
 
-# Install pnpm globally
-RUN npm install -g pnpm
-
-# Set working directory
-WORKDIR /home/node/app
-
-# Copy package files and install dependencies
+# Copy package files
 COPY package*.json pnpm-lock.yaml ./
-COPY .env ./
-RUN pnpm install
 
-# Copy application code and build
+# Install dependencies (using --frozen-lockfile is crucial)
+RUN pnpm install --frozen-lockfile
+
+# Copy application code
 COPY . .
+
+# Build the application
 RUN pnpm build
 
 # Runtime stage
@@ -25,17 +28,13 @@ FROM base as runtime
 # Set environment to production
 ENV NODE_ENV=production
 
-# Install pnpm globally
-RUN npm install -g pnpm
+# Copy built application from builder stage
+COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/package*.json /app/
+COPY --from=builder /app/.env /app/.env
 
-# Set working directory
-WORKDIR /home/node/app
-# Make sure the necessary files are copied from the builder stage
-COPY --from=builder /home/node/app/package*.json /home/node/app/pnpm-lock.yaml ./
-# Copy production dependencies
-RUN pnpm install --production
-
-# Expose the application port
+# Expose the application port (this is still needed internally)
 EXPOSE 3000
 
 # Start the application

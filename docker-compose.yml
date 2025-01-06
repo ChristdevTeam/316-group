@@ -1,40 +1,55 @@
 version: '3.9'
 
 services:
-  payload:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app
-    command: sh -c "pnpm install && pnpm start"
-    env_file:
-      - .env
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.http.routers.payload.rule=Host(`77.223.214.122`)'
-      - 'traefik.http.routers.payload.entrypoints=web'
-
+  # payload:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   env_file:
+  #     - .env
+  #   labels:
+  #     - 'traefik.enable=true'
+  #     - 'traefik.http.routers.payload.rule=Host(`payload.local`)'
+  #     - 'traefik.http.routers.payload.entrypoints=web'
+  #     - 'traefik.http.services.payload.loadbalancer.server.port=3000'
+  #   networks: # Connect to the 'web' network
+  #     - web
+  #   depends_on:
+  #     - traefik
   traefik:
     image: traefik:v2.10
     command:
       - --api.insecure=true
       - --providers.docker=true
+      - --providers.file.directory=/etc/traefik/
+      - --providers.file.watch=true
       - --entrypoints.web.address=:80
     ports:
       - '80:80'
       - '8080:8080'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik/traefik.yml:/etc/traefik/traefik.yml
+      - ./traefik:/etc/traefik/
+    networks: # Connect to the 'web' network
+      - web
     restart: always
 
-volumes:
-  node_modules:
-# networks:
-#   316-group:
-#     external: true
+  payload:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.payload.rule=Host(`payload.local`)'
+      - 'traefik.http.routers.payload.entrypoints=web'
+      - 'traefik.http.services.payload.loadbalancer.server.port=3000' # This is essential
+    networks:
+      - web
+    depends_on:
+      - traefik
+
+networks: # Define the 'web' network
+  web:
+    external: false
