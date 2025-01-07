@@ -41,7 +41,7 @@ services:
       - .env
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.payload.rule=Host(`payload.local`)'
+      - 'traefik.http.routers.payload.rule=Host(`77.223.214.122`)'
       - 'traefik.http.routers.payload.entrypoints=web'
       - 'traefik.http.services.payload.loadbalancer.server.port=3000' # This is essential
     networks:
