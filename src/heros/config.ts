@@ -95,7 +95,7 @@ export const hero: Field = {
         },
       }),
       admin: {
-        condition: (_, { type } = {}) => ['productHero'].includes(type),
+        condition: (_, { type } = {}) => ['productHero', 'specialHero'].includes(type),
       },
     },
     textClasses({
