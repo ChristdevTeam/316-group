@@ -44,10 +44,14 @@ services:
       - 'traefik.http.routers.payload.rule=Host(`77.223.214.122`)'
       - 'traefik.http.routers.payload.entrypoints=web'
       - 'traefik.http.services.payload.loadbalancer.server.port=3000' # This is essential
+      - 'traefik.http.middlewares.large-upload.headers.customrequestheaders.Content-Length=524288000'
+      - 'traefik.http.routers.payload.middlewares=large-upload'
     networks:
       - web
     depends_on:
       - traefik
+    volumes:
+      - ./public/media:/app/public/media
 
 networks: # Define the 'web' network
   web:
