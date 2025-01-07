@@ -21,7 +21,6 @@ services:
     command:
       - --api.insecure=true
       - --providers.docker=true
-      - --providers.file.directory=/etc/traefik/
       - --providers.file.watch=true
       - --entrypoints.web.address=:80
     ports:
@@ -29,7 +28,7 @@ services:
       - '8080:8080'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik:/etc/traefik/
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml
     networks: # Connect to the 'web' network
       - web
     restart: always
