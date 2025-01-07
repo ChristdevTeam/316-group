@@ -29,6 +29,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ../traefik/traefik.yml:/etc/traefik/traefik.yml
+      - ./public/media:/media
     networks: # Connect to the 'web' network
       - web
     restart: always
@@ -42,6 +43,8 @@ services:
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.payload.rule=Host(`77.223.214.122`)'
+      - 'traefik.http.routers.payload-media.rule=PathPrefix(`/media`)'
+      - 'traefik.http.routers.payload-media.entrypoints=web'
       - 'traefik.http.routers.payload.entrypoints=web'
       - 'traefik.http.services.payload.loadbalancer.server.port=3000' # This is essential
       - 'traefik.http.middlewares.large-upload.headers.customrequestheaders.Content-Length=524288000'
@@ -52,6 +55,7 @@ services:
       - traefik
     volumes:
       - ./public/media:/app/public/media
+    restart: always
 
 networks: # Define the 'web' network
   web:
