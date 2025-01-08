@@ -17,6 +17,6 @@ jobs:
           sshpass -p $SERVER_PASSWORD ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} <<EOF
             cd 316-group
             git pull origin
-            docker compose build payload
+            docker compose build --no-cache payload
             docker compose up -d
           EOF
