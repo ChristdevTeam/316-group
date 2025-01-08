@@ -128,7 +128,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
         )}
         style={{
           height: '100vh',
-          width: 'max(45%, 800px)',
+          width: 'max(55%, 800px)',
           visibility: activeSection ? 'visible' : 'hidden',
         }}
       >
