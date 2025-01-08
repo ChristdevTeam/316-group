@@ -3,9 +3,11 @@ import { Link, MegaMenuItem } from './types'
 
 interface MegaMenuContentProps {
   items: MegaMenuItem[]
+  setIsOpen: (isOpen: boolean) => void
+  setActiveSection: (activeSection: string | null) => void
 }
 
-export const MegaMenuContent = ({ items }: MegaMenuContentProps) => {
+export const MegaMenuContent = ({ items, setIsOpen, setActiveSection }: MegaMenuContentProps) => {
   const getHref = (link?: Link): string => {
     if (!link) {
       console.warn('No link provided to getHref.')
@@ -76,6 +78,10 @@ export const MegaMenuContent = ({ items }: MegaMenuContentProps) => {
               key={index}
               href={getHref(item.link)}
               className="block text-2xl font-base text-gray-1000 hover:text-teal-600 py-2 transition-colors duration-200"
+              onClick={() => {
+                setIsOpen(false)
+                setActiveSection(null)
+              }}
             >
               {item.link?.label && (
                 <span dangerouslySetInnerHTML={{ __html: item.link?.label }}></span>

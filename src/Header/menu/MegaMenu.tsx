@@ -1,19 +1,21 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { Menu, X, MoveLeft } from 'lucide-react'
-// import { cn } from "@/lib/utils";
 import { MenuItem } from './MenuItem'
 import { MegaMenuContent } from './MegaMenuContent'
-import type { Link, MegaMenuItem, MenuSection } from './types'
+import type { Link } from './types'
 import { cn } from '@/utilities/cn'
 import { Header } from '@/payload-types'
-import { useRouter } from 'next/navigation'
 
 export const MegaMenu = ({ className, header }: { className: string; header: Header }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
-  const router = useRouter()
+  const [isHydrated, setIsHydrated] = useState(false)
+
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
 
   useEffect(() => {
     // Set initial value and listen for changes
@@ -30,10 +32,6 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
   const handleToggle = () => {
     setIsOpen(!isOpen)
     setActiveSection(null)
-  }
-
-  const handleSectionClick = (section: Link) => {
-    const href = getHref(section)
   }
 
   const handleBack = () => {
@@ -61,7 +59,6 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       }
     }
 
-    // console.warn('Invalid link structure:', link)
     return '#'
   }
 
@@ -69,8 +66,6 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
     if (!header.navItems) return []
     return header.navItems.find((item) => item.title === title)?.megaMenuItems || []
   }
-
-  // console.log(header.navItems)
 
   return (
     <div className={cn('relative', className)}>
@@ -131,7 +126,11 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
             '-translate-y-4 opacity-0 pointer-events-none': !activeSection,
           },
         )}
-        style={{ height: '100vh', width: 'max(45%, 800px)' }}
+        style={{
+          height: '100vh',
+          width: 'max(45%, 800px)',
+          visibility: activeSection ? 'visible' : 'hidden',
+        }}
       >
         <div className="p-8">
           {/* Menu Items at Top */}
@@ -146,6 +145,8 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
                 isActive={activeSection === section.title}
                 onClick={() => {
                   if (section.hasMegaMenu !== true) {
+                    setIsOpen(false)
+                    setActiveSection(null)
                   } else
                     section.title &&
                       setActiveSection(activeSection === section.title ? null : section.title)
@@ -155,7 +156,13 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
           </div>
 
           {/* Active Section Content */}
-          {activeSection !== null && <MegaMenuContent items={getMegaMenuItems(activeSection)} />}
+          {activeSection !== null && (
+            <MegaMenuContent
+              setActiveSection={setActiveSection}
+              setIsOpen={setIsOpen}
+              items={getMegaMenuItems(activeSection)}
+            />
+          )}
         </div>
       </div>
 
@@ -193,7 +200,11 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
               {/* Back to Menu */}
             </button>
             <div className="p-4">
-              <MegaMenuContent items={getMegaMenuItems(activeSection)} />
+              <MegaMenuContent
+                setActiveSection={setActiveSection}
+                setIsOpen={setIsOpen}
+                items={getMegaMenuItems(activeSection)}
+              />
             </div>
           </div>
         ) : (
@@ -207,6 +218,8 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
                 href={getHref(section.link)}
                 onClick={() => {
                   if (section.hasMegaMenu !== true) {
+                    setIsOpen(false)
+                    setActiveSection(null)
                   } else
                     section.title &&
                       setActiveSection(activeSection === section.title ? null : section.title)
