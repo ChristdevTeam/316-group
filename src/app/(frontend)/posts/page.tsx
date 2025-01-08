@@ -32,7 +32,7 @@ export default async function Page() {
       <PageClient />
       <div className="container max-w-screen-2xl mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>Resource Centre</h1>
         </div>
       </div>
 
