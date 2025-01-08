@@ -32,12 +32,24 @@ services:
       - ./public/media:/media
     networks: # Connect to the 'web' network
       - web
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
     restart: always
 
   payload:
     build:
       context: .
       dockerfile: Dockerfile
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
     env_file:
       - .env
     labels:
