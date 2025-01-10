@@ -67,25 +67,27 @@ export const HoverSlider: React.FC<Props> = ({
       )}
     >
       {/* Mobile Navigation */}
-      <h3 className={cn('md:hidden', sliderTitleClasses)}>{sliderTitle} </h3>
-      <div className="flex justify-between items-center mb-3 md:hidden">
-        <div className="text-xl font-medium">
-          {String(activeSlide + 1).padStart(2, '0')}{' '}
-          <span className="text-gray-400"> — {String(totalSlides).padStart(2, '0')}</span>
-        </div>
-        <div className="flex gap-4">
-          <button
-            onClick={handlePrevSlide}
-            className="p-2 transition-colors duration-300 hover:text-teal-500"
-          >
-            <MoveLeft className="w-6 h-6 transition-transform duration-300 hover:-translate-x-1" />
-          </button>
-          <button
-            onClick={handleNextSlide}
-            className="p-2 transition-colors duration-300 hover:text-teal-500"
-          >
-            <MoveRight className="w-6 h-6 transition-transform duration-300 hover:translate-x-1" />
-          </button>
+      <div className="md:hidden">
+        <h3 className={cn(sliderTitleClasses)}>{sliderTitle} </h3>
+        <div className="flex justify-between items-center mb-3">
+          <div className="text-xl font-medium">
+            {String(activeSlide + 1).padStart(2, '0')}{' '}
+            <span className="text-gray-400"> — {String(totalSlides).padStart(2, '0')}</span>
+          </div>
+          <div className="flex gap-4">
+            <button
+              onClick={handlePrevSlide}
+              className="p-2 transition-colors duration-300 hover:text-teal-500"
+            >
+              <MoveLeft className="w-6 h-6 transition-transform duration-300 hover:-translate-x-1" />
+            </button>
+            <button
+              onClick={handleNextSlide}
+              className="p-2 transition-colors duration-300 hover:text-teal-500"
+            >
+              <MoveRight className="w-6 h-6 transition-transform duration-300 hover:translate-x-1" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -124,7 +126,6 @@ export const HoverSlider: React.FC<Props> = ({
           />
         </a>
       </div>
-
       {/* Mobile Layout */}
       <div className="md:hidden">
         <a
