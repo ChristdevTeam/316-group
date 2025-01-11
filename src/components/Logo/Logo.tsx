@@ -1,4 +1,6 @@
+'use client'
 import clsx from 'clsx'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 interface Props {
@@ -9,6 +11,7 @@ interface Props {
 
 export const Logo = (props: Props) => {
   const { loading: loadingFromProps, priority: priorityFromProps, className } = props
+  const router = useRouter()
 
   const loading = loadingFromProps || 'lazy'
   const priority = priorityFromProps || 'low'
@@ -16,6 +19,7 @@ export const Logo = (props: Props) => {
   return (
     /* eslint-disable @next/next/no-img-element */
     <img
+      onClick={() => router.push('/')}
       alt="Payload Logo"
       width={193}
       height={34}

@@ -51,7 +51,7 @@ export const AdminBar: React.FC<{
         hidden: !show,
       })}
     >
-      <div className="container">
+      <div className="container max-w-screen-2xl">
         <PayloadAdminBar
           {...adminBarProps}
           className="py-2 text-white"
