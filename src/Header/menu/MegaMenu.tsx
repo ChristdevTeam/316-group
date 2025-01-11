@@ -1,11 +1,13 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Menu, X, MoveLeft } from 'lucide-react'
+import { Menu, X, ArrowLeft } from 'lucide-react'
 import { MenuItem } from './MenuItem'
 import { MegaMenuContent } from './MegaMenuContent'
-import type { Link } from './types'
+import type { Link as LinkType } from './types'
 import { cn } from '@/utilities/cn'
 import { Header } from '@/payload-types'
+import { Logo } from '@/components/Logo/Logo'
+import Link from 'next/link'
 
 export const MegaMenu = ({ className, header }: { className: string; header: Header }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,7 +40,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
     setActiveSection(null)
   }
 
-  const getHref = (link?: Link): string => {
+  const getHref = (link?: LinkType): string => {
     if (!link) {
       console.warn('No link provided to getHref.')
       return '#'
@@ -82,6 +84,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       <nav className="hidden md:flex items-center space-x-8">
         {header.navItems?.map((section, index) => (
           <MenuItem
+            className={cn('font-normal justify-start text-lg')}
             isMobile={isMobile}
             key={index}
             title={section.hasMegaMenu ? section.title : section.link?.label}
@@ -137,6 +140,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
           <div className="flex gap-6 justify-start mb-8  pb-4">
             {header.navItems?.map((section, index) => (
               <MenuItem
+                className={cn('font-normal justify-start text-lg')}
                 isMobile={isMobile}
                 key={index}
                 href={getHref(section.link)}
@@ -176,13 +180,16 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
           },
         )}
       >
-        <div className="flex items-center justify-end p-1">
+        <div className="flex items-center justify-between px-1 pb-16 pt-4">
+          <Link href="/">
+            <Logo loading="eager" priority="high" className="dark:invert invert-0" />
+          </Link>
           <button
             onClick={handleToggle}
-            className="md:hidden p-2 hover:bg-gray-100 rounded-md transition-colors"
+            className="md:hidden hover:bg-gray-100 rounded-md transition-colors"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
+            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
           </button>
         </div>
         {activeSection ? (
@@ -194,12 +201,12 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
           >
             <button
               onClick={handleBack}
-              className="flex items-center text-gray-600 hover:text-gray-900 py-4 px-4 w-[100%]"
+              className="flex items-center text-gray-600 hover:text-gray-900 py-4 px-1 w-[100%]"
             >
-              <MoveLeft className="h-8 w-8 mr-2 text-gray-900 dark:text-gray-100" />
+              <ArrowLeft className="h-6 w-6 mr-2 text-gray-900 dark:text-gray-100" />
               {/* Back to Menu */}
             </button>
-            <div className="p-4">
+            <div className="p-1">
               <MegaMenuContent
                 setActiveSection={setActiveSection}
                 setIsOpen={setIsOpen}
@@ -208,9 +215,10 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
             </div>
           </div>
         ) : (
-          <div className="p-4 space-y-4">
-            {header.navItems?.map((section, index) => (
+          <div className="p-1 space-y-8">
+            {header.navItems?.map((section) => (
               <MenuItem
+                className={cn('font-small text-2xl justify-between w-[100%]')}
                 key={section.title}
                 title={section.title}
                 hasMegaMenu={section.hasMegaMenu ? section.hasMegaMenu : false}
