@@ -23,6 +23,7 @@ import {
 import { getServerSideURL } from '@/utilities/getURL'
 import { BusinessSlider } from '@/blocks/BusinessSlider/config'
 import { HoverSliderBlock } from '@/blocks/HoverSlider/config'
+import { ServicesAccordion } from '@/blocks/ServicesAccordion/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -88,6 +89,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 MediaBlock,
                 BusinessSlider,
                 HoverSliderBlock,
+                ServicesAccordion,
               ],
               required: true,
             },

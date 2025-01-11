@@ -10,6 +10,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { BusinessSliderBlock } from './BusinessSlider/Component'
 import { HoverSlider } from './HoverSlider/Component'
+import { ServicesAccordion } from './ServicesAccordion/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -19,6 +20,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   bslider: BusinessSliderBlock,
   hoverSlider: HoverSlider,
+  servicesAccordion: ServicesAccordion,
 }
 
 export const RenderBlocks: React.FC<{
