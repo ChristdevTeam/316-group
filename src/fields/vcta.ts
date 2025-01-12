@@ -20,13 +20,6 @@ export const VerticalCTAFields: Field[] = [
     type: 'text',
   },
   textClasses({ overrides: { name: 'titleClasses', label: 'Title Classes' } }),
-  textColorPickerAll({
-    overrides: {
-      label: 'Title Colour',
-      name: 'titleColour',
-    },
-  }),
-
   {
     name: 'description',
     type: 'richText',

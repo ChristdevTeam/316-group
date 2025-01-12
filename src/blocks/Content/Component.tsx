@@ -147,18 +147,14 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       // const verticalCTA = content.verticalCTA
                       return (
                         verticalCTA && (
-                          <div className="max-w-[813px]" key={index}>
+                          <div key={index}>
                             {verticalCTA.subtitle && (
                               <p className="lg:text-xl">{verticalCTA.subtitle}</p>
                             )}
                             {verticalCTA.title && (
                               <h3
                                 dangerouslySetInnerHTML={{ __html: verticalCTA.title }}
-                                className={cn(
-                                  verticalCTA.titleColour,
-
-                                  verticalCTA.titleClasses,
-                                )}
+                                className={cn(verticalCTA.titleClasses)}
                               ></h3>
                             )}
                             {verticalCTA.description && (
