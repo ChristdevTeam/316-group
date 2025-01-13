@@ -84,7 +84,7 @@ const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
       <button
         className={`mt-6 bg-cyan-200 text-black px-6 py-2 rounded-full hover:bg-slate-900 hover:text-white transition-colors text-left animate__animated ${animationClass}`}
       >
-        Get started →
+        Learn More →
       </button>
     </div>
   )

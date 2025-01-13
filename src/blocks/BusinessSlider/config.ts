@@ -17,7 +17,6 @@ export const BusinessSlider: Block = {
       name: 'sliderItems',
       type: 'array',
       required: true,
-      minRows: 4,
       fields: [
         {
           name: 'title',
@@ -29,7 +28,10 @@ export const BusinessSlider: Block = {
           type: 'text',
           required: true,
         },
-        link(),
+        link({
+          disableLabel: true,
+          overrides: {},
+        }),
       ],
     },
     {
