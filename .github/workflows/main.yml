@@ -15,6 +15,7 @@ jobs:
           SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
         run: |
           sshpass -p $SERVER_PASSWORD ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} <<EOF
+            docker builder prune -f
             cd 316-group
             git pull origin
             docker compose build payload
