@@ -21,7 +21,8 @@ FROM node:22.13.0-slim AS base
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
-COPY ./node_modules ./node_modules
+# No need to copy node_modules separately since it is exluded from the .dockerignore
+# COPY ./node_modules ./node_modules
 COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
