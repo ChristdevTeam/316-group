@@ -1,5 +1,5 @@
 # Ignore node_modules to avoid conflicts
-node_modules
+# node_modules
 
 # Ignore version control files
 .git
