@@ -9,6 +9,7 @@ services:
       - --providers.file.watch=true
       - --entrypoints.web.address=:80
       - --metrics.prometheus=true
+      - --metrics.prometheus.buckets=0.1,0.3,1.2,5.0
       - --metrics.prometheus.addrouterslabels=true
       - --metrics.prometheus.addServicesLabels=true
       - --metrics.prometheus.addEntryPointsLabels=true
@@ -28,6 +29,13 @@ services:
         max-size: '10m'
         max-file: '3'
     restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ../traefik/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - '9090:9090'
 
   payload:
     build:
@@ -63,3 +71,6 @@ services:
 networks: # Create a network called 'web'
   web:
     external: false
+
+volumes:
+  prometheus_data:
