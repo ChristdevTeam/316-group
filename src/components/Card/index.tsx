@@ -33,7 +33,7 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-white 0 hover:cursor-pointer',
+        'border border-border rounded-lg overflow-hidden bg-white 0 hover:cursor-pointer flex flex-col h-full',
         className,
       )}
       ref={card.ref}
@@ -68,18 +68,23 @@ export const Card: React.FC<{
           </div>
         )}
       </div>
-      <div className="p-4">
-        {titleToUse && (
-          <div className="prose">
-            <h3>
-              <Link className="not-prose text-3xl text-extrabold" href={href} ref={link.ref}>
-                {titleToUse}
-              </Link>
-            </h3>
-          </div>
-        )}
-        {description && <div className="my-2">{description && <p>{sanitizedDescription}</p>}</div>}
-        <Link href={href} ref={link.ref}>
+      <div className="flex flex-col flex-grow p-4">
+        <div className=" flex-grow">
+          {titleToUse && (
+            <div className="prose">
+              <h3>
+                <Link className="not-prose text-3xl text-extrabold" href={href} ref={link.ref}>
+                  {titleToUse}
+                </Link>
+              </h3>
+            </div>
+          )}
+          {description && (
+            <div className="my-2">{description && <p>{sanitizedDescription}</p>}</div>
+          )}
+        </div>
+
+        <Link href={href} ref={link.ref} className="mt-auto">
           <Button variant={'default'} className="rounded-full bg-blue-800">
             Learn More
           </Button>
