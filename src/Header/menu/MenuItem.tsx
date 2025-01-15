@@ -2,7 +2,6 @@ import React from 'react'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '@/utilities/cn'
 import Link from 'next/link'
-// import { cn } from "@/lib/utils";
 
 interface MenuItemProps {
   title: string | null | undefined
@@ -25,16 +24,16 @@ export const MenuItem = ({
 }: MenuItemProps) => {
   if (href && href !== '#') {
     return (
-      <Link href={href}>
-        <button
-          onClick={onClick}
-          className={cn(
-            'hover:text-emerald-600 flex items-center gap-1 transition-colors duration-200',
-            isActive && 'text-emerald-600',
-            className,
-          )}
-          style={isMobile ? { marginTop: '2rem' } : {}}
-        >
+      <div
+        onClick={onClick}
+        className={cn(
+          'hover:text-emerald-600 flex items-center gap-1 transition-colors duration-200',
+          isActive && 'text-emerald-600',
+          className,
+        )}
+        style={isMobile ? { marginTop: '2rem' } : {}}
+      >
+        <Link href={href}>
           {title && <span dangerouslySetInnerHTML={{ __html: title }}></span>}
           {hasMegaMenu && isMobile && (
             <ArrowRight
@@ -46,18 +45,17 @@ export const MenuItem = ({
               className={cn('h-4 w-4 transition-transform duration-200', isActive && 'rotate-180')}
             />
           )}
-        </button>
-      </Link>
+        </Link>
+      </div>
     )
   } else {
     return (
-      <button
+      <div
         onClick={onClick}
         className={cn(
           'hover:text-emerald-600 flex items-center gap-1 transition-colors duration-200',
           isActive && 'text-emerald-600',
-          isMobile && 'font-small text-2xl justify-between w-[100%]',
-          !isMobile && 'font-medium justify-start text-xl',
+          className,
         )}
       >
         {title && <span dangerouslySetInnerHTML={{ __html: title }}></span>}
@@ -71,7 +69,7 @@ export const MenuItem = ({
             className={cn('h-4 w-4 transition-transform duration-200', isActive && 'rotate-180')}
           />
         )}
-      </button>
+      </div>
     )
   }
 }

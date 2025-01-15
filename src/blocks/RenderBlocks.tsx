@@ -11,6 +11,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { BusinessSliderBlock } from './BusinessSlider/Component'
 import { HoverSlider } from './HoverSlider/Component'
 import { ServicesAccordion } from './ServicesAccordion/Component'
+import { ContentClipPathBlock } from './ContentClipPath/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -21,6 +22,7 @@ const blockComponents = {
   bslider: BusinessSliderBlock,
   hoverSlider: HoverSlider,
   servicesAccordion: ServicesAccordion,
+  contentClipPath: ContentClipPathBlock,
 }
 
 export const RenderBlocks: React.FC<{
