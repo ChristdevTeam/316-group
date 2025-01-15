@@ -84,7 +84,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       <nav className="hidden md:flex items-center space-x-8">
         {header.navItems?.map((section, index) => (
           <MenuItem
-            className={cn('font-normal justify-start text-lg')}
+            className={cn('font-normal justify-start text-xl')}
             isMobile={isMobile}
             key={index}
             title={section.hasMegaMenu ? section.title : section.link?.label}
@@ -140,7 +140,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
           <div className="flex gap-6 justify-start mb-8  pb-4">
             {header.navItems?.map((section, index) => (
               <MenuItem
-                className={cn('font-normal justify-start text-lg')}
+                className={cn('font-normal justify-start text-xl')}
                 isMobile={isMobile}
                 key={index}
                 href={getHref(section.link)}
