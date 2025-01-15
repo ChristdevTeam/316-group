@@ -21,3 +21,6 @@ logs
 .next
 dist
 out
+
+# media files
+public/media/
