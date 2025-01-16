@@ -154,7 +154,7 @@ export const ProductHero: React.FC<Page['hero']> = ({
             )}
           </div>
         </div>
-        <div className="md:hidden container max-w-screen-2xl py-16 sm:pr-8">
+        <div className="md:hidden container max-w-screen-2xl py-8 sm:pr-4">
           <div>
             {Array.isArray(links) && links.length > 0 && (
               <div className="flex gap-4 mdb:pt-16">
@@ -191,7 +191,7 @@ export const ProductHero: React.FC<Page['hero']> = ({
             )}
 
             {includeStoreLinks && (
-              <div className="flex justify-start gap-4 pt-16">
+              <div className="flex justify-start gap-4 pt-8 pb-4">
                 <Link href={'#'}>
                   <Image
                     src="/assets/applestore.svg"
