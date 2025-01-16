@@ -83,7 +83,7 @@ export const ProductHero: React.FC<Page['hero']> = ({
         {renderBackground()}
 
         <div className="container max-w-screen-2xl py-16 md:py-28 grid grid-cols-12 gap-16">
-          <div className="col-span-12 md:col-span-5 xl:col-span-6">
+          <div className="col-span-12 md:col-span-5 xl:col-span-5">
             {Array.isArray(links) && links.length > 0 && (
               <div className="flex gap-4">
                 {links.map(({ link, buttonClasses }, i) => {
@@ -139,7 +139,7 @@ export const ProductHero: React.FC<Page['hero']> = ({
               </div>
             )}
           </div>
-          <div className="hidden md:block md:col-span-7 xl:col-span-6 flex items-center content-center">
+          <div className="hidden md:block md:col-span-7 xl:col-span-7 flex items-center content-center">
             {heroGraphic && typeof heroGraphic === 'object' && (
               <div className=" ">
                 <Media

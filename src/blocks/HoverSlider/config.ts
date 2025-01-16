@@ -64,6 +64,13 @@ export const HoverSliderBlock: Block = {
             },
           }),
         },
+        textClasses({
+          overrides: {
+            name: 'descriptionClasses',
+            label: 'Description Classes',
+            defaultValue: ['text-lg', 'md:text-xl'],
+          },
+        }),
         link({
           appearances: false,
           disableLabel: true,

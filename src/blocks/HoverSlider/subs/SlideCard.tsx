@@ -5,6 +5,7 @@ import { HoverSliderBlock, Media } from '@/payload-types'
 import VideoComponent from './VideoComponent'
 import { ImageComponent } from './ImageComponent'
 import RichText from '@/components/RichText'
+import { cn } from '@/utilities/cn'
 
 interface SlideCardProps {
   isProductSlider?: boolean
@@ -42,7 +43,12 @@ const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
         className={`${slide.bgColor} rounded-[2em] flex flex-col items-start justify-between w-full aspect-[1/1] overflow-hidden`}
       >
         <div className=" text-lg text-left p-8 animate__animated">
-          <RichText content={slide.description} enableGutter={false} enableProse={false}></RichText>
+          <RichText
+            content={slide.description}
+            enableGutter={false}
+            enableProse={false}
+            className={cn(slide.descriptionClasses)}
+          ></RichText>
         </div>
         <div className="w-full overflow-hidden relative flex justify-center align-center items-center max-h-[80%] px-8">
           {isVideo
