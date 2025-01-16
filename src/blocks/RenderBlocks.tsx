@@ -12,6 +12,7 @@ import { BusinessSliderBlock } from './BusinessSlider/Component'
 import { HoverSlider } from './HoverSlider/Component'
 import { ServicesAccordion } from './ServicesAccordion/Component'
 import { ContentClipPathBlock } from './ContentClipPath/Component'
+import { FullCardGradient } from './FullCardGradient/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -23,6 +24,7 @@ const blockComponents = {
   hoverSlider: HoverSlider,
   servicesAccordion: ServicesAccordion,
   contentClipPath: ContentClipPathBlock,
+  fullCardGradient: FullCardGradient,
 }
 
 export const RenderBlocks: React.FC<{

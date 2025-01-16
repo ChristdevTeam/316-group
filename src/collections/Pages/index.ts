@@ -25,6 +25,7 @@ import { BusinessSlider } from '@/blocks/BusinessSlider/config'
 import { HoverSliderBlock } from '@/blocks/HoverSlider/config'
 import { ServicesAccordion } from '@/blocks/ServicesAccordion/config'
 import { ContentClipPath } from '@/blocks/ContentClipPath/config'
+import { FullCardGradient } from '@/blocks/FullCardGradient/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -92,6 +93,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 HoverSliderBlock,
                 ServicesAccordion,
                 ContentClipPath,
+                FullCardGradient,
               ],
               required: true,
             },
