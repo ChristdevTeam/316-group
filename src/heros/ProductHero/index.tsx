@@ -82,10 +82,10 @@ export const ProductHero: React.FC<Page['hero']> = ({
       <div className="relative w-[full] h-full overflow-hidden">
         {renderBackground()}
 
-        <div className="container max-w-screen-2xl py-16 md:py-28 grid grid-cols-12 gap-16">
-          <div className="col-span-12 md:col-span-5 xl:col-span-5">
+        <div className="hidden container max-w-screen-2xl py-16 md:py-28 md:grid grid-cols-12 gap-16">
+          <div className="col-span-6 sm:w-full md:col-span-5 xl:col-span-5">
             {Array.isArray(links) && links.length > 0 && (
-              <div className="flex gap-4">
+              <div className="flex gap-4 mdb:pt-8">
                 {links.map(({ link, buttonClasses }, i) => {
                   return (
                     <div key={i} className="flex">
@@ -150,6 +150,64 @@ export const ProductHero: React.FC<Page['hero']> = ({
                   resource={heroGraphic}
                   className="rounded-t-[3em]"
                 />
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="md:hidden container max-w-screen-2xl py-16 sm:pr-8">
+          <div>
+            {Array.isArray(links) && links.length > 0 && (
+              <div className="flex gap-4 mdb:pt-16">
+                {links.map(({ link, buttonClasses }, i) => {
+                  return (
+                    <div key={i} className="flex">
+                      <CMSLink
+                        size={'sm'}
+                        {...link}
+                        className={cn('rounded-xl bg-transparent border-slate-950', buttonClasses)}
+                      />
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+            {title && (
+              <h1 dangerouslySetInnerHTML={{ __html: title }} className={cn(titleClasses)}></h1>
+            )}
+            {subTitle && (
+              <h4
+                dangerouslySetInnerHTML={{ __html: subTitle }}
+                className={cn(subTitleClasses)}
+              ></h4>
+            )}
+
+            {descriptionText && (
+              <RichText
+                content={descriptionText}
+                enableGutter={false}
+                enableProse={false}
+                className={cn(descriptionClasses)}
+              />
+            )}
+
+            {includeStoreLinks && (
+              <div className="flex justify-start gap-4 pt-16">
+                <Link href={'#'}>
+                  <Image
+                    src="/assets/applestore.svg"
+                    alt="apple store link"
+                    height={40}
+                    width={120}
+                  />
+                </Link>
+                <Link href={'#'}>
+                  <Image
+                    src="/assets/googleplay.svg"
+                    alt="apple store link"
+                    height={40}
+                    width={120}
+                  />
+                </Link>
               </div>
             )}
           </div>

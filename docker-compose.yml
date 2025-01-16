@@ -44,7 +44,7 @@ services:
       context: .
       dockerfile: Dockerfile
     deploy:
-      replicas: 3
+      replicas: 2
       update_config:
         parallelism: 1
         delay: 10s
