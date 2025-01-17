@@ -162,6 +162,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                 className={cn(verticalCTA.descriptionClasses)}
                                 content={verticalCTA.description}
                                 enableGutter={false}
+                                enableProse={false}
                               />
                             )}
                             <div className="flex gap-8">
