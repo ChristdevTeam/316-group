@@ -185,11 +185,11 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       Array.isArray(links) &&
                       links.length > 0 && (
                         <div className="flex gap-4" key={index}>
-                          {links.map(({ link, buttonClasses }, i) => {
+                          {links.map(({ link, buttonClasses, size }, i) => {
                             return (
                               <div key={i} className="flex">
                                 <CMSLink
-                                  size={'sm'}
+                                  size={size ? size : 'lg'}
                                   {...link}
                                   className={cn(
                                     'rounded-xl bg-transparent border-slate-950',

@@ -20,6 +20,16 @@ export const linkGroup: LinkGroupType = ({ appearances, overrides = {} } = {}) =
         appearances,
       }),
       buttonClasses(),
+      {
+        name: 'size',
+        type: 'select',
+        defaultValue: 'default',
+        options: [
+          { label: 'Default', value: 'default' },
+          { label: 'Small', value: 'sm' },
+          { label: 'Large', value: 'lg' },
+        ],
+      },
     ],
   }
 

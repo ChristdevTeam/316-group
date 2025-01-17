@@ -2185,6 +2185,7 @@ export interface Page {
                 | 'hover:bg-rose-950'
               )[]
             | null;
+          size?: ('default' | 'sm' | 'lg') | null;
           id?: string | null;
         }[]
       | null;
@@ -3362,6 +3363,7 @@ export interface CallToActionBlock {
               | 'hover:bg-rose-950'
             )[]
           | null;
+        size?: ('default' | 'sm' | 'lg') | null;
         id?: string | null;
       }[]
     | null;
@@ -4520,6 +4522,7 @@ export interface ContentBlock {
                           | 'hover:bg-rose-950'
                         )[]
                       | null;
+                    size?: ('default' | 'sm' | 'lg') | null;
                     id?: string | null;
                   }[]
                 | null;
@@ -6135,6 +6138,7 @@ export interface ContentBlock {
                             | 'hover:bg-rose-950'
                           )[]
                         | null;
+                      size?: ('default' | 'sm' | 'lg') | null;
                       id?: string | null;
                     }[]
                   | null;
@@ -8863,6 +8867,7 @@ export interface ServicesAccordionBlock {
                 | 'hover:bg-rose-950'
               )[]
             | null;
+          size?: ('default' | 'sm' | 'lg') | null;
           id?: string | null;
         }[]
       | null;
@@ -11486,6 +11491,7 @@ export interface ContentClipPath {
               | 'hover:bg-rose-950'
             )[]
           | null;
+        size?: ('default' | 'sm' | 'lg') | null;
         id?: string | null;
       }[]
     | null;
@@ -13346,6 +13352,7 @@ export interface FullCardGradient {
               | 'hover:bg-rose-950'
             )[]
           | null;
+        size?: ('default' | 'sm' | 'lg') | null;
         id?: string | null;
       }[]
     | null;
@@ -14065,6 +14072,7 @@ export interface PagesSelect<T extends boolean = true> {
                     appearance?: T;
                   };
               buttonClasses?: T;
+              size?: T;
               id?: T;
             };
         media?: T;
@@ -14139,6 +14147,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
               appearance?: T;
             };
         buttonClasses?: T;
+        size?: T;
         id?: T;
       };
   id?: T;
@@ -14174,6 +14183,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
                           appearance?: T;
                         };
                     buttonClasses?: T;
+                    size?: T;
                     id?: T;
                   };
               verticalCTA?:
@@ -14198,6 +14208,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
                                 appearance?: T;
                               };
                           buttonClasses?: T;
+                          size?: T;
                           id?: T;
                         };
                   };
@@ -14314,6 +14325,7 @@ export interface ServicesAccordionBlockSelect<T extends boolean = true> {
                     appearance?: T;
                   };
               buttonClasses?: T;
+              size?: T;
               id?: T;
             };
         firstSectionBackgroundColor?: T;
@@ -14360,6 +14372,7 @@ export interface ContentClipPathSelect<T extends boolean = true> {
               appearance?: T;
             };
         buttonClasses?: T;
+        size?: T;
         id?: T;
       };
   media?: T;
@@ -14390,6 +14403,7 @@ export interface FullCardGradientSelect<T extends boolean = true> {
               appearance?: T;
             };
         buttonClasses?: T;
+        size?: T;
         id?: T;
       };
   iconList?:
