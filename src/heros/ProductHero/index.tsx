@@ -78,7 +78,7 @@ export const ProductHero: React.FC<Page['hero']> = ({
   }
 
   return (
-    <div data-theme="light mt-[-64px]">
+    <div data-theme="light mt-[-128px] md:mt-[-128px]">
       <div className="relative w-[full] h-full overflow-hidden">
         {renderBackground()}
 
