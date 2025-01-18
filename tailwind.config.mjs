@@ -46,6 +46,7 @@ export default {
     extend: {
       zIndex: {
         '-1': '-1',
+        '-2': '-2',
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',

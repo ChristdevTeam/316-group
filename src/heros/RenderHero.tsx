@@ -7,6 +7,7 @@ import { LowImpactHero } from '@/heros/LowImpact'
 import { MediumImpactHero } from '@/heros/MediumImpact'
 import { SpecialHero } from './SpecialHero'
 import { ProductHero } from './ProductHero'
+import { ProductHero2 } from './ProductHero2'
 
 const heroes = {
   highImpact: HighImpactHero,
@@ -14,6 +15,7 @@ const heroes = {
   mediumImpact: MediumImpactHero,
   specialHero: SpecialHero,
   productHero: ProductHero,
+  productHero2: ProductHero2,
 }
 
 export const RenderHero: React.FC<Page['hero']> = (props) => {

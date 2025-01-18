@@ -9,6 +9,8 @@ import {
 
 import { linkGroup } from '@/fields/linkGroup'
 import { textClasses } from '@/fields/textClasses'
+import { buttonClasses } from '@/fields/buttonClasses'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 
 export const hero: Field = {
   name: 'hero',
@@ -41,17 +43,44 @@ export const hero: Field = {
           value: 'specialHero',
         },
         {
-          label: 'Product Page Hero',
+          label: 'Product Page Hero 1',
           value: 'productHero',
+        },
+        {
+          label: 'Product Page Hero 2',
+          value: 'productHero2',
         },
       ],
       required: true,
     },
     {
+      name: 'heroTitle',
+      type: 'text',
+      admin: { condition: (_, { type }) => ['productHero2', 'productHero'].includes(type) },
+    },
+    buttonClasses({
+      overrides: {
+        name: 'heroTitleClasses',
+        label: 'Hero Title Classes',
+        admin: { condition: (_, { type }) => ['productHero2', 'productHero'].includes(type) },
+        defaultValue: [
+          'mt-4',
+          'md:mt-10',
+          'bg-transparent',
+          'text-black',
+          'border',
+          'border-black',
+          'py-6',
+          'px-6',
+          'rounded-xl',
+        ],
+      },
+    }),
+    {
       name: 'title',
       type: 'text',
       admin: {
-        condition: (_, { type } = {}) => ['productHero'].includes(type),
+        condition: (_, { type } = {}) => ['productHero', 'productHero2'].includes(type),
       },
       required: true,
     },
@@ -60,7 +89,7 @@ export const hero: Field = {
         name: 'titleClasses',
         label: 'Title Classes',
         admin: {
-          condition: (_, { type }) => ['productHero'].includes(type),
+          condition: (_, { type }) => ['productHero', 'productHero2'].includes(type),
         },
       },
     }),
@@ -68,7 +97,7 @@ export const hero: Field = {
       name: 'subTitle',
       type: 'text',
       admin: {
-        condition: (_, { type } = {}) => ['productHero'].includes(type),
+        condition: (_, { type } = {}) => ['productHero', 'productHero2'].includes(type),
       },
     },
     textClasses({
@@ -76,7 +105,7 @@ export const hero: Field = {
         name: 'subTitleClasses',
         label: 'Sub Title Classes',
         admin: {
-          condition: (_, { type }) => ['productHero'].includes(type),
+          condition: (_, { type }) => ['productHero', 'productHero2'].includes(type),
         },
       },
     }),
@@ -95,7 +124,8 @@ export const hero: Field = {
         },
       }),
       admin: {
-        condition: (_, { type } = {}) => ['productHero', 'specialHero'].includes(type),
+        condition: (_, { type } = {}) =>
+          ['productHero', 'specialHero', 'productHero2'].includes(type),
       },
     },
     textClasses({
@@ -103,7 +133,7 @@ export const hero: Field = {
         name: 'descriptionClasses',
         label: 'Description Classes',
         admin: {
-          condition: (_, { type }) => ['productHero'].includes(type),
+          condition: (_, { type }) => ['productHero', 'productHero2'].includes(type),
         },
       },
     }),
@@ -137,26 +167,39 @@ export const hero: Field = {
       type: 'upload',
       admin: {
         condition: (_, { type } = {}) =>
-          ['highImpact', 'mediumImpact', 'specialHero', 'productHero'].includes(type),
+          ['highImpact', 'mediumImpact', 'specialHero', 'productHero', 'productHero2'].includes(
+            type,
+          ),
       },
       relationTo: 'media',
       required: true,
     },
+
     {
       name: 'mediaMobile',
       label: 'Hero Background Image for Mobile View',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['productHero'].includes(type),
+        condition: (_, { type } = {}) => ['productHero', 'productHero2'].includes(type),
       },
       relationTo: 'media',
       required: true,
     },
+    bgColorPickerAll({
+      overrides: {
+        name: 'bgColor',
+        label: 'Background Color',
+        admin: {
+          condition: (_, { type }) => ['productHero2'].includes(type),
+        },
+        defaultValue: 'bg-sky-800',
+      },
+    }),
     {
       name: 'heroGraphic',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['productHero'].includes(type),
+        condition: (_, { type } = {}) => ['productHero', 'productHero2'].includes(type),
       },
       relationTo: 'media',
       required: true,
@@ -165,7 +208,8 @@ export const hero: Field = {
       name: 'includeStoreLinks',
       type: 'checkbox',
       admin: {
-        condition: (_, { type } = {}) => ['productHero', 'specialHero'].includes(type),
+        condition: (_, { type } = {}) =>
+          ['productHero', 'productHero2', 'specialHero'].includes(type),
       },
     },
     {
