@@ -1,4 +1,4 @@
-import { bgColorPickerLight } from '@/fields/bgColorPicker'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { link } from '@/fields/link'
 import { textClasses } from '@/fields/textClasses'
 import {
@@ -81,7 +81,7 @@ export const HoverSliderBlock: Block = {
           relationTo: 'media',
           required: true,
         },
-        bgColorPickerLight,
+        bgColorPickerAll(),
       ],
       hooks: {
         beforeChange: [

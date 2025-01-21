@@ -82,12 +82,12 @@ export const ProductHero2: React.FC<Page['hero']> = ({
       <div className={cn('relative w-full h-full overflow-hidden z-[-2] pt-16 md:pt-28', bgColor)}>
         {renderBackground()}
 
-        <div className="relative container max-w-screen-2xl flex flex-col md:flex-row gap-16 justify-between overflow-hidden pb-16 md:pb-28">
+        <div className="relative container max-w-screen-2xl flex flex-col lg:flex-row gap-16 justify-between overflow-hidden pb-16 md:pb-28">
           <div
             className={cn('top-0 left-0 absolute w-[100%] h-full md:hidden z-[1]', bgColor)}
             style={{ clipPath: 'polygon(0 44%, 100% 0, 100% 100%, 0 100%)' }}
           ></div>
-          <div className="sm:w-full md:max-w-[1/2] lg:max-w-[37%] z-[2] mdb:px-3">
+          <div className="sm:w-full md:max-w-[1/2] lg:max-w-[37%] z-[2] smb:px-3">
             {heroTitle && <button className={cn(heroTitleClasses)}>{heroTitle}</button>}
             {title && (
               <h1 dangerouslySetInnerHTML={{ __html: title }} className={cn(titleClasses)}></h1>

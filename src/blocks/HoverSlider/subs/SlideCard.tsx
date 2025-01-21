@@ -40,7 +40,7 @@ const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
     // console.log('Product Slider is enabled')
     return (
       <div
-        className={`${slide.bgColor} rounded-[2em] flex flex-col items-start justify-between w-full md:aspect-[1/1] overflow-hidden`}
+        className={`${slide.bgColor} rounded-[2em] flex flex-col items-start justify-between w-full aspect-[1/1] overflow-hidden`}
       >
         <div className=" text-lg text-left p-8 animate__animated">
           <RichText

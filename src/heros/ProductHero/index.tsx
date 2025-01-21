@@ -158,21 +158,8 @@ export const ProductHero: React.FC<Page['hero']> = ({
         </div>
         <div className="md:hidden container max-w-screen-2xl py-8 sm:pr-4">
           <div>
-            {Array.isArray(links) && links.length > 0 && (
-              <div className="flex gap-4 mdb:pt-16">
-                {links.map(({ link, buttonClasses }, i) => {
-                  return (
-                    <div key={i} className="flex">
-                      <CMSLink
-                        size={'sm'}
-                        {...link}
-                        className={cn('rounded-xl bg-transparent border-slate-950', buttonClasses)}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            )}
+            {heroTitle && <button className={cn(heroTitleClasses)}>{heroTitle}</button>}
+
             {title && (
               <h1 dangerouslySetInnerHTML={{ __html: title }} className={cn(titleClasses)}></h1>
             )}
@@ -191,7 +178,21 @@ export const ProductHero: React.FC<Page['hero']> = ({
                 className={cn(descriptionClasses)}
               />
             )}
-
+            {Array.isArray(links) && links.length > 0 && (
+              <div className="flex gap-4 mdb:pt-16">
+                {links.map(({ link, buttonClasses }, i) => {
+                  return (
+                    <div key={i} className="flex">
+                      <CMSLink
+                        size={'sm'}
+                        {...link}
+                        className={cn('rounded-xl bg-transparent border-slate-950', buttonClasses)}
+                      />
+                    </div>
+                  )
+                })}
+              </div>
+            )}
             {includeStoreLinks && (
               <div className="flex justify-start gap-4 pt-8 pb-4">
                 <Link href={'#'}>

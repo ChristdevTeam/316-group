@@ -13,12 +13,6 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
-  const [isHydrated, setIsHydrated] = useState(false)
-
-  useEffect(() => {
-    setIsHydrated(true)
-  }, [])
-
   useEffect(() => {
     // Set initial value and listen for changes
     const handleResize = () => {
@@ -74,14 +68,14 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       {/* Mobile Menu Button */}
       <button
         onClick={handleToggle}
-        className="md:hidden p-2 hover:bg-gray-100 rounded-md transition-colors"
+        className="lg:hidden p-2 hover:bg-gray-100 rounded-md transition-colors"
         aria-label="Toggle menu"
       >
         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center space-x-8">
+      <nav className="hidden lg:flex items-center space-x-8">
         {header.navItems?.map((section, index) => (
           <MenuItem
             className={cn('font-normal justify-start text-xl')}
@@ -121,7 +115,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       {/* Desktop Mega Menu */}
       <div
         className={cn(
-          'hidden md:block fixed top-0 right-0 bg-white dark:bg-gray-900 shadow-xl z-50 transition-all duration-300 ease-in-out pl-8',
+          'hidden lg:block fixed top-0 right-0 bg-white dark:bg-gray-900 shadow-xl z-50 transition-all duration-300 ease-in-out pl-8',
           'rounded-l-2xl',
           'animate-in slide-in-from-top',
           {
@@ -131,7 +125,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
         )}
         style={{
           height: '100vh',
-          width: 'max(55%, 800px)',
+          width: 'max(55%, 900px)',
           visibility: activeSection ? 'visible' : 'hidden',
         }}
       >
@@ -173,7 +167,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       {/* Mobile Menu */}
       <div
         className={cn(
-          'fixed inset-0 top-0 bg-white dark:bg-gray-900 z-50 transition-all duration-300 ease-in-out overflow-auto md:hidden p-4',
+          'fixed inset-0 top-0 bg-white dark:bg-gray-900 z-50 transition-all duration-300 ease-in-out overflow-auto lg:hidden p-4',
           {
             'translate-y-0': isOpen,
             'translate-y-full': !isOpen,
@@ -186,7 +180,7 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
           </Link>
           <button
             onClick={handleToggle}
-            className="md:hidden hover:bg-gray-100 rounded-md transition-colors"
+            className="lg:hidden hover:bg-gray-100 rounded-md transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
