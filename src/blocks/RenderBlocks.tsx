@@ -9,6 +9,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { BusinessSliderBlock } from './BusinessSlider/Component'
+import { BusinessSliderBlock2 } from './BusinessSlider2/Component'
 import { HoverSlider } from './HoverSlider/Component'
 import { ServicesAccordion } from './ServicesAccordion/Component'
 import { ContentClipPathBlock } from './ContentClipPath/Component'
@@ -21,6 +22,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   bslider: BusinessSliderBlock,
+  bslider2: BusinessSliderBlock2,
   hoverSlider: HoverSlider,
   servicesAccordion: ServicesAccordion,
   contentClipPath: ContentClipPathBlock,
