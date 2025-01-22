@@ -2,11 +2,12 @@ import { cn } from 'src/utilities/cn'
 import React from 'react'
 import RichText from '@/components/RichText'
 
-import type { ContentBlock as ContentBlockProps } from '@/payload-types'
+import type { ContentBlock as ContentBlockProps, TestimonialsBlock } from '@/payload-types'
 
 import { CMSLink } from '../../components/Link'
 import { Media } from '@/components/Media'
 import Image from 'next/image'
+import { TestimonialCarousel } from '@/components/ui/testimonial'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns, backgroundMedia, backgroundType, sectionBackgroundColor, paddingType } = props
@@ -125,6 +126,20 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                         <div className="rounded-xl overflow-hidden" key={index}>
                           <Media resource={media} size="33vw" imgClassName="rounded-xl" />
                         </div>
+                      )
+                    }
+
+                    if (contentType === 'testimonials' && content.testimonials) {
+                      const testimonials = content.testimonials
+
+                      return (
+                        <TestimonialCarousel
+                          testimonials={testimonials}
+                          showArrows={true}
+                          showBars={true}
+                          key={index}
+                          className="md:w-[70%] m-auto"
+                        />
                       )
                     }
 

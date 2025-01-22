@@ -11,6 +11,7 @@ import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { VerticalCTAFields } from '@/fields/vcta'
 import { textClasses } from '@/fields/textClasses'
 import { linkGroup } from '@/fields/linkGroup'
+import { Testimonials } from '@/fields/testimonials'
 
 const columnFields: Field[] = [
   {
@@ -51,6 +52,7 @@ const columnFields: Field[] = [
           { label: 'Media', value: 'media' },
           { label: 'Link', value: 'link' },
           { label: 'Vertical CTA', value: 'verticalCTA' },
+          { label: 'Testimonials', value: 'testimonials' },
         ],
       },
       {
@@ -95,13 +97,21 @@ const columnFields: Field[] = [
           },
         },
       }),
-
       {
         name: 'verticalCTA',
         type: 'group',
         fields: VerticalCTAFields,
         admin: {
           condition: (_, { contentType }) => contentType === 'verticalCTA',
+        },
+      },
+      {
+        name: 'testimonials',
+        type: 'array',
+        minRows: 1,
+        fields: Testimonials,
+        admin: {
+          condition: (_, { contentType }) => contentType === 'testimonials',
         },
       },
     ],

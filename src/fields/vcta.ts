@@ -7,7 +7,6 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
-import { textColorPickerAll } from '@/fields/textColorPicker'
 import { textClasses } from '@/fields/textClasses'
 
 export const VerticalCTAFields: Field[] = [
