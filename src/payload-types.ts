@@ -4425,7 +4425,7 @@ export interface ContentBlock {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
         columnContent?:
           | {
-              contentType: 'richText' | 'media' | 'link' | 'verticalCTA' | 'testimonials';
+              contentType: 'richText' | 'media' | 'link' | 'verticalCTA' | 'testimonials' | 'carousel';
               richText?: {
                 root: {
                   type: string;
@@ -7313,6 +7313,20 @@ export interface ContentBlock {
                     id?: string | null;
                   }[]
                 | null;
+              carousel?: {
+                imageColumns?: {
+                  mobile?: number | null;
+                  tablet?: number | null;
+                  desktop?: number | null;
+                };
+                images?:
+                  | {
+                      image?: (string | null) | Media;
+                      partnerUrl?: string | null;
+                      id?: string | null;
+                    }[]
+                  | null;
+              };
               id?: string | null;
             }[]
           | null;
@@ -15935,7 +15949,7 @@ export interface FullCardGradient {
  */
 export interface Typesgenerator {
   id: string;
-  Types?: (TestimonialsBlock | VerticalCallToActionBlock)[] | null;
+  Types?: (TestimonialsBlock | VerticalCallToActionBlock | CarouselBlock)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -17643,6 +17657,27 @@ export interface VerticalCallToActionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock".
+ */
+export interface CarouselBlock {
+  imageColumns?: {
+    mobile?: number | null;
+    tablet?: number | null;
+    desktop?: number | null;
+  };
+  images?:
+    | {
+        image?: (string | null) | Media;
+        partnerUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carouselBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -17985,6 +18020,24 @@ export interface ContentBlockSelect<T extends boolean = true> {
                     name?: T;
                     description?: T;
                     id?: T;
+                  };
+              carousel?:
+                | T
+                | {
+                    imageColumns?:
+                      | T
+                      | {
+                          mobile?: T;
+                          tablet?: T;
+                          desktop?: T;
+                        };
+                    images?:
+                      | T
+                      | {
+                          image?: T;
+                          partnerUrl?: T;
+                          id?: T;
+                        };
                   };
               id?: T;
             };
@@ -18379,6 +18432,7 @@ export interface TypesgeneratorSelect<T extends boolean = true> {
     | {
         testimonials?: T | TestimonialsBlockSelect<T>;
         vcta?: T | VerticalCallToActionBlockSelect<T>;
+        carouselBlock?: T | CarouselBlockSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -18419,6 +18473,28 @@ export interface VerticalCallToActionBlockSelect<T extends boolean = true> {
             };
         buttonClasses?: T;
         size?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock_select".
+ */
+export interface CarouselBlockSelect<T extends boolean = true> {
+  imageColumns?:
+    | T
+    | {
+        mobile?: T;
+        tablet?: T;
+        desktop?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        partnerUrl?: T;
         id?: T;
       };
   id?: T;

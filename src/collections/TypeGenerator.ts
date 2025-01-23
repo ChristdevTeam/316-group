@@ -1,5 +1,6 @@
 import { authenticated } from '@/access/authenticated'
 import { nobody } from '@/access/nobody'
+import { CarouselBlock } from '@/fields/carousel'
 import { TestimonialsBlock } from '@/fields/testimonials'
 import { VerticalCallToAction } from '@/fields/vcta'
 import { CollectionConfig } from 'payload'
@@ -13,7 +14,7 @@ export const TypeGenerator: CollectionConfig = {
     {
       name: 'Types',
       type: 'blocks',
-      blocks: [TestimonialsBlock, VerticalCallToAction],
+      blocks: [TestimonialsBlock, VerticalCallToAction, CarouselBlock],
     },
   ],
 }

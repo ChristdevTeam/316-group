@@ -172,11 +172,7 @@ const TestimonialCarousel = React.forwardRef<HTMLDivElement, TestimonialCarousel
     }
 
     return (
-      <div
-        ref={ref}
-        className={cn('w-full flex items-center justify-center', className)}
-        {...props}
-      >
+      <div ref={ref} className={cn('flex items-center justify-center', className)} {...props}>
         <div
           className="relative w-full"
           style={{ height: containerHeight > 0 ? `${containerHeight}px` : 'auto' }}
@@ -198,6 +194,7 @@ const TestimonialCarousel = React.forwardRef<HTMLDivElement, TestimonialCarousel
                   'absolute w-full rounded-2xl cursor-grab active:cursor-grabbing',
                   'bg-white shadow-xl',
                   'dark:bg-card dark:shadow-[2px_2px_4px_rgba(0,0,0,0.4),-1px_-1px_3px_rgba(255,255,255,0.1)]',
+                  'p-8',
                 )}
                 style={{
                   zIndex: isCurrentCard ? 3 : isPrevCard ? 2 : 1,
@@ -240,7 +237,7 @@ const TestimonialCarousel = React.forwardRef<HTMLDivElement, TestimonialCarousel
                   <RichText
                     enableProse={false}
                     enableGutter={false}
-                    className="text-center text-lg text-gray-900 dark:text-muted-foreground"
+                    className="text-center text-xl text-gray-900 dark:text-muted-foreground"
                     content={testimonial.description}
                   />
                   {testimonial.avatar && (
@@ -250,7 +247,7 @@ const TestimonialCarousel = React.forwardRef<HTMLDivElement, TestimonialCarousel
                       className="w-16 h-16 rounded-full object-cover"
                     />
                   )}
-                  <h3 className="text-2xl font-semibold text-gray-950 dark:text-foreground">
+                  <h3 className="text-3xl font-semibold text-gray-950 dark:text-foreground">
                     {testimonial.name}
                   </h3>
                 </div>

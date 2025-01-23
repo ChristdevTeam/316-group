@@ -2,12 +2,13 @@ import { cn } from 'src/utilities/cn'
 import React from 'react'
 import RichText from '@/components/RichText'
 
-import type { ContentBlock as ContentBlockProps, TestimonialsBlock } from '@/payload-types'
+import type { ContentBlock as ContentBlockProps } from '@/payload-types'
 
 import { CMSLink } from '../../components/Link'
 import { Media } from '@/components/Media'
 import Image from 'next/image'
 import { TestimonialCarousel } from '@/components/ui/testimonial'
+import Carousel from '@/components/ui/Carousel'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns, backgroundMedia, backgroundType, sectionBackgroundColor, paddingType } = props
@@ -138,9 +139,15 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                           showArrows={true}
                           showBars={true}
                           key={index}
-                          className="md:w-[70%] m-auto"
+                          className="w-[95%] md:w-[70%] lg:[w-60%] m-auto"
                         />
                       )
+                    }
+
+                    if (contentType === 'carousel' && content.carousel) {
+                      const carousel = content.carousel
+
+                      return <Carousel key={index} {...carousel} />
                     }
 
                     if (contentType === 'richText') {

@@ -12,6 +12,8 @@ import { VerticalCTAFields } from '@/fields/vcta'
 import { textClasses } from '@/fields/textClasses'
 import { linkGroup } from '@/fields/linkGroup'
 import { Testimonials } from '@/fields/testimonials'
+import { link } from '@/fields/link'
+import { Carousel } from '@/fields/carousel'
 
 const columnFields: Field[] = [
   {
@@ -53,6 +55,7 @@ const columnFields: Field[] = [
           { label: 'Link', value: 'link' },
           { label: 'Vertical CTA', value: 'verticalCTA' },
           { label: 'Testimonials', value: 'testimonials' },
+          { label: 'Image Carousel', value: 'carousel' },
         ],
       },
       {
@@ -112,6 +115,14 @@ const columnFields: Field[] = [
         fields: Testimonials,
         admin: {
           condition: (_, { contentType }) => contentType === 'testimonials',
+        },
+      },
+      {
+        name: 'carousel',
+        type: 'group',
+        fields: Carousel,
+        admin: {
+          condition: (_, { contentType }) => contentType === 'carousel',
         },
       },
     ],
