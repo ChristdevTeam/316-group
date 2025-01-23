@@ -1,5 +1,7 @@
 import { Block, Field } from 'payload'
 import { link } from './link'
+import { bgColorPickerAll } from './bgColorPicker'
+import { textClasses } from './textClasses'
 
 export const Carousel: Field[] = [
   {

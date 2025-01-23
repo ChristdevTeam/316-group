@@ -12,7 +12,6 @@ import { VerticalCTAFields } from '@/fields/vcta'
 import { textClasses } from '@/fields/textClasses'
 import { linkGroup } from '@/fields/linkGroup'
 import { Testimonials } from '@/fields/testimonials'
-import { link } from '@/fields/link'
 import { Carousel } from '@/fields/carousel'
 
 const columnFields: Field[] = [
@@ -113,6 +112,29 @@ const columnFields: Field[] = [
         type: 'array',
         minRows: 1,
         fields: Testimonials,
+        admin: {
+          condition: (_, { contentType }) => contentType === 'testimonials',
+        },
+      },
+      {
+        name: 'testimonialCustomizer',
+        type: 'group',
+        fields: [
+          bgColorPickerAll({
+            overrides: {
+              name: 'cardBgColor',
+              label: 'Card Background Color',
+              defaultValue: 'bg-white',
+            },
+          }),
+          textClasses({
+            overrides: {
+              name: 'textClasses',
+              label: 'Text Classes',
+              defaultValue: ['text-slate-900'],
+            },
+          }),
+        ],
         admin: {
           condition: (_, { contentType }) => contentType === 'testimonials',
         },

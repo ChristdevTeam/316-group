@@ -132,16 +132,29 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
                     if (contentType === 'testimonials' && content.testimonials) {
                       const testimonials = content.testimonials
-
-                      return (
-                        <TestimonialCarousel
-                          testimonials={testimonials}
-                          showArrows={true}
-                          showBars={true}
-                          key={index}
-                          className="w-[95%] md:w-[70%] lg:[w-60%] m-auto"
-                        />
-                      )
+                      const bgColor = content.testimonialCustomizer?.cardBgColor
+                      const textClasses = content.testimonialCustomizer?.textClasses
+                      if (bgColor && textClasses) {
+                        return (
+                          <TestimonialCarousel
+                            testimonials={testimonials}
+                            testimonialModifier={{ bgColor, textClasses }}
+                            showArrows={true}
+                            showBars={true}
+                            key={index}
+                            className="w-[95%] md:w-[70%] lg:[w-60%] m-auto"
+                          />
+                        )
+                      } else
+                        return (
+                          <TestimonialCarousel
+                            testimonials={testimonials}
+                            showArrows={true}
+                            showBars={true}
+                            key={index}
+                            className="w-[95%] md:w-[70%] lg:[w-60%] m-auto"
+                          />
+                        )
                     }
 
                     if (contentType === 'carousel' && content.carousel) {
