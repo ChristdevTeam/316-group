@@ -18,13 +18,8 @@ jobs:
             docker builder prune -f
             cd 316-group
             git pull origin
-            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
-            if echo "$CHANGED_FILES" | grep -qE 'package.json|pnpm-lock.yaml'; then
-              echo "Dependencies have changed. Installing dependencies..."
-              pnpm install
-            else
-              echo "Dependencies unchanged. Skipping install."
-            fi
+            echo "Installing dependencies..."
+            pnpm install
             docker compose build payload
             docker compose up -d
             docker builder prune -f

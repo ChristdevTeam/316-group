@@ -41,6 +41,7 @@ export default {
         md: '48rem',
         sm: '40rem',
         xl: '80rem',
+        xs: '10rem',
       },
     },
     extend: {

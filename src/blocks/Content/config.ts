@@ -39,6 +39,10 @@ const columnFields: Field[] = [
     ],
   },
   {
+    name: 'mobileOrder',
+    type: 'number',
+  },
+  {
     name: 'columnContent',
     type: 'array',
     label: 'Column Content',

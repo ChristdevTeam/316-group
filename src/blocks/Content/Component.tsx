@@ -19,6 +19,20 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     oneThird: '4',
     twoThirds: '8',
   }
+  const orderClasses = {
+    1: 'order-1',
+    2: 'order-2',
+    3: 'order-3',
+    4: 'order-4',
+    5: 'order-5',
+    6: 'order-6',
+    7: 'order-7',
+    8: 'order-8',
+    9: 'order-9',
+    10: 'order-10',
+    11: 'order-11',
+    12: 'order-12',
+  }
 
   function getBestContrastTextColor(bgClass: string | null | undefined): string {
     // Extract the suffix after the last "-"
@@ -106,142 +120,146 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     >
       {backgroundType === 'media' && renderBackgroundMedia()}
       <div className="container max-w-screen-2xl z-5">
-        <div className="grid grid-cols-4 lg:grid-cols-12 gap-6 lg:gap-y-12 lg:gap-x-16">
-          {columns &&
-            columns.length > 0 &&
-            columns.map((col, index) => {
-              const size = col.size
+        <div className="flex flex-col gap-6 md:grid md:grid-cols-12 lg:gap-y-12 lg:gap-x-16">
+          {columns?.map((col, index) => {
+            const size = col.size || 'full'
+            const mobileOrder = col.mobileOrder || index + 1
+            const orderClass = orderClasses[mobileOrder as keyof typeof orderClasses] || ''
 
-              return (
-                <div
-                  className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
-                    'md:col-span-2': size !== 'full',
-                  })}
-                  key={index}
-                >
-                  {col.columnContent?.map((content, index) => {
-                    const { contentType, links, richText, media, verticalCTA } = content
+            return (
+              <div
+                key={index}
+                className={cn(
+                  'w-full', // Full width on mobile
+                  `md:col-span-${colsSpanClasses[size]}`, // Responsive column spans
+                  size !== 'full' && 'md:col-span-2', // Half columns
+                  orderClass, // Mobile order
+                  'md:order-0', // Reset order on desktop
+                )}
+              >
+                {col.columnContent?.map((content, index) => {
+                  const { contentType, links, richText, media, verticalCTA } = content
 
-                    if (contentType === 'media' && media && typeof media !== 'string') {
-                      return (
-                        <div className="rounded-xl overflow-hidden" key={index}>
-                          <Media resource={media} size="33vw" imgClassName="rounded-xl" />
-                        </div>
-                      )
-                    }
-
-                    if (contentType === 'testimonials' && content.testimonials) {
-                      const testimonials = content.testimonials
-                      const bgColor = content.testimonialCustomizer?.cardBgColor
-                      const textClasses = content.testimonialCustomizer?.textClasses
-                      if (bgColor && textClasses) {
-                        return (
-                          <TestimonialCarousel
-                            testimonials={testimonials}
-                            testimonialModifier={{ bgColor, textClasses }}
-                            showArrows={true}
-                            showBars={true}
-                            key={index}
-                            className="w-[95%] md:w-[70%] lg:[w-60%] m-auto"
-                          />
-                        )
-                      } else
-                        return (
-                          <TestimonialCarousel
-                            testimonials={testimonials}
-                            showArrows={true}
-                            showBars={true}
-                            key={index}
-                            className="w-[95%] md:w-[70%] lg:[w-60%] m-auto"
-                          />
-                        )
-                    }
-
-                    if (contentType === 'carousel' && content.carousel) {
-                      const carousel = content.carousel
-
-                      return <Carousel key={index} {...carousel} />
-                    }
-
-                    if (contentType === 'richText') {
-                      // const richText = content.richText
-                      const richTextClasses = content.richTextClasses
-                      return (
-                        richText && (
-                          <RichText
-                            content={richText}
-                            enableGutter={false}
-                            enableProse={false}
-                            className={cn(richTextClasses)}
-                          />
-                        )
-                      )
-                    }
-
-                    if (contentType === 'verticalCTA') {
-                      // const verticalCTA = content.verticalCTA
-                      return (
-                        verticalCTA && (
-                          <div key={index}>
-                            {verticalCTA.subtitle && (
-                              <p className="lg:text-xl">{verticalCTA.subtitle}</p>
-                            )}
-                            {verticalCTA.title && (
-                              <h3
-                                dangerouslySetInnerHTML={{ __html: verticalCTA.title }}
-                                className={cn(verticalCTA.titleClasses)}
-                              ></h3>
-                            )}
-                            {verticalCTA.description && (
-                              <RichText
-                                className={cn(verticalCTA.descriptionClasses)}
-                                content={verticalCTA.description}
-                                enableGutter={false}
-                                enableProse={false}
-                              />
-                            )}
-                            <div className="flex gap-8">
-                              {(verticalCTA.links || []).map(({ link, buttonClasses }, i) => {
-                                return (
-                                  <CMSLink
-                                    key={i}
-                                    size="lg"
-                                    {...link}
-                                    className={cn(buttonClasses)}
-                                  />
-                                )
-                              })}
-                            </div>
-                          </div>
-                        )
-                      )
-                    }
-
+                  if (contentType === 'media' && media && typeof media !== 'string') {
                     return (
-                      Array.isArray(links) &&
-                      links.length > 0 && (
-                        <div className="flex gap-4" key={index}>
-                          {links.map(({ link, buttonClasses, size }, i) => {
-                            return (
-                              <div key={i} className="flex">
+                      <div className="rounded-xl overflow-hidden" key={index}>
+                        <Media resource={media} size="33vw" imgClassName="rounded-xl" />
+                      </div>
+                    )
+                  }
+
+                  if (contentType === 'testimonials' && content.testimonials) {
+                    const testimonials = content.testimonials
+                    const bgColor = content.testimonialCustomizer?.cardBgColor
+                    const textClasses = content.testimonialCustomizer?.textClasses
+                    if (bgColor && textClasses) {
+                      return (
+                        <TestimonialCarousel
+                          testimonials={testimonials}
+                          testimonialModifier={{ bgColor, textClasses }}
+                          showArrows={true}
+                          showBars={true}
+                          key={index}
+                          className="w-[95%] md:w-[70%] lg:[w-60%] m-auto"
+                        />
+                      )
+                    } else
+                      return (
+                        <TestimonialCarousel
+                          testimonials={testimonials}
+                          showArrows={true}
+                          showBars={true}
+                          key={index}
+                          className="w-[95%] md:w-[70%] lg:[w-60%] m-auto"
+                        />
+                      )
+                  }
+
+                  if (contentType === 'carousel' && content.carousel) {
+                    const carousel = content.carousel
+
+                    return <Carousel key={index} {...carousel} />
+                  }
+
+                  if (contentType === 'richText') {
+                    // const richText = content.richText
+                    const richTextClasses = content.richTextClasses
+                    return (
+                      richText && (
+                        <RichText
+                          content={richText}
+                          enableGutter={false}
+                          enableProse={false}
+                          className={cn(richTextClasses)}
+                        />
+                      )
+                    )
+                  }
+
+                  if (contentType === 'verticalCTA') {
+                    // const verticalCTA = content.verticalCTA
+                    return (
+                      verticalCTA && (
+                        <div key={index}>
+                          {verticalCTA.subtitle && (
+                            <p className="lg:text-xl">{verticalCTA.subtitle}</p>
+                          )}
+                          {verticalCTA.title && (
+                            <h3
+                              dangerouslySetInnerHTML={{ __html: verticalCTA.title }}
+                              className={cn(verticalCTA.titleClasses)}
+                            ></h3>
+                          )}
+                          {verticalCTA.description && (
+                            <RichText
+                              className={cn(verticalCTA.descriptionClasses)}
+                              content={verticalCTA.description}
+                              enableGutter={false}
+                              enableProse={false}
+                            />
+                          )}
+                          <div className="flex gap-8">
+                            {(verticalCTA.links || []).map(({ link, buttonClasses }, i) => {
+                              return (
                                 <CMSLink
-                                  size={size ? size : 'lg'}
+                                  key={i}
+                                  size="lg"
                                   {...link}
-                                  className={cn(
-                                    'rounded-xl bg-transparent border-slate-950',
-                                    buttonClasses,
-                                  )}
+                                  className={cn(buttonClasses)}
                                 />
-                              </div>
-                            )
-                          })}
+                              )
+                            })}
+                          </div>
                         </div>
                       )
                     )
-                  })}
-                </div>
-              )
-            })}
+                  }
+
+                  return (
+                    Array.isArray(links) &&
+                    links.length > 0 && (
+                      <div className="flex gap-4" key={index}>
+                        {links.map(({ link, buttonClasses, size }, i) => {
+                          return (
+                            <div key={i} className="flex">
+                              <CMSLink
+                                size={size ? size : 'lg'}
+                                {...link}
+                                className={cn(
+                                  'rounded-xl bg-transparent border-slate-950',
+                                  buttonClasses,
+                                )}
+                              />
+                            </div>
+                          )
+                        })}
+                      </div>
+                    )
+                  )
+                })}
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>

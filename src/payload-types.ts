@@ -4423,6 +4423,7 @@ export interface ContentBlock {
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+        mobileOrder?: number | null;
         columnContent?:
           | {
               contentType: 'richText' | 'media' | 'link' | 'verticalCTA' | 'testimonials' | 'carousel';
@@ -18686,6 +18687,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
     | T
     | {
         size?: T;
+        mobileOrder?: T;
         columnContent?:
           | T
           | {

@@ -66,9 +66,8 @@ export const HoverSlider: React.FC<Props> = ({
         paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
       )}
     >
-      {/* Mobile Navigation */}
+      <h3 className={cn(sliderTitleClasses)}>{sliderTitle}</h3>
       <div className="md:hidden">
-        <h3 className={cn(sliderTitleClasses)}>{sliderTitle} </h3>
         <div className="flex justify-between items-center mb-3">
           <div className="text-xl font-medium">
             {String(activeSlide + 1).padStart(2, '0')}{' '}
@@ -94,7 +93,6 @@ export const HoverSlider: React.FC<Props> = ({
       {/* Desktop Layout */}
       <div className="hidden md:flex justify-between gap-20">
         <div className="w-[47%]">
-          <h3 className={cn(sliderTitleClasses)}>{sliderTitle} </h3>
           <div className="text-3xl font-medium mb-6">
             {String(activeSlide + 1).padStart(2, '0')}{' '}
             <span className="text-gray-400"> — {String(totalSlides).padStart(2, '0')}</span>
