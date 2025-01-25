@@ -14,10 +14,10 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns, backgroundMedia, backgroundType, sectionBackgroundColor, paddingType } = props
 
   const colsSpanClasses = {
-    full: '12',
-    half: '6',
-    oneThird: '4',
-    twoThirds: '8',
+    full: 'lg:col-span-12 md:col-span-4',
+    half: 'lg:col-span-6 md:col-span-4',
+    oneThird: 'lg:col-span-4 md:col-span-4',
+    twoThirds: 'lg:col-span-8 md:col-span-4',
   }
   const orderClasses = {
     1: 'order-1',
@@ -120,19 +120,17 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     >
       {backgroundType === 'media' && renderBackgroundMedia()}
       <div className="container max-w-screen-2xl z-5">
-        <div className="flex flex-col gap-6 md:grid md:grid-cols-12 lg:gap-y-12 lg:gap-x-16">
+        <div className="mobile-only:flex mobile-only:flex-col gap-8 md:grid lg:grid-cols-12 md:grid-cols-4 lg:gap-y-12 lg:gap-x-16">
           {columns?.map((col, index) => {
             const size = col.size || 'full'
             const mobileOrder = col.mobileOrder || index + 1
             const orderClass = orderClasses[mobileOrder as keyof typeof orderClasses] || ''
-
+            const colWidth = colsSpanClasses[size]
             return (
               <div
                 key={index}
                 className={cn(
-                  'w-full', // Full width on mobile
-                  `md:col-span-${colsSpanClasses[size]}`, // Responsive column spans
-                  size !== 'full' && 'md:col-span-2', // Half columns
+                  colWidth, // Responsive column spans
                   orderClass, // Mobile order
                   'md:order-0', // Reset order on desktop
                 )}

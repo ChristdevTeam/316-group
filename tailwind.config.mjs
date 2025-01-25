@@ -36,12 +36,13 @@ export default {
         xl: '2rem',
       },
       screens: {
-        '2xl': '86rem',
-        lg: '64rem',
-        md: '48rem',
-        sm: '40rem',
-        xl: '80rem',
-        xs: '10rem',
+        xs: '20rem', // 320px
+        sm: '40rem', // 640px
+        md: '48rem', // 768px
+        lg: '64rem', // 1024px
+        xl: '80rem', // 1280px
+        '2xl': '86rem', // 1376px
+        '3xl': '96rem', // 1536px
       },
     },
     extend: {
@@ -129,11 +130,7 @@ export default {
       }),
       screens: {
         // Custom breakpoints
-        smb: { max: '41rem' },
-        mdb: { max: '49rem' },
-        lgb: { max: '65rem' },
-        xlb: { max: '81rem' },
-        '2xlb': { max: '84rem' },
+        'mobile-only': { max: '767px' },
       },
       width: {
         '1/6': '16.6667%',
