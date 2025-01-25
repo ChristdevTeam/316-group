@@ -33,6 +33,31 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     11: 'order-11',
     12: 'order-12',
   }
+  const mdOrderClasses = {
+    1: 'md:order-1',
+    2: 'md:order-2',
+    3: 'md:order-3',
+    4: 'md:order-4',
+    5: 'md:order-5',
+    6: 'md:order-6',
+    7: 'md:order-7',
+    8: 'md:order-8',
+    9: 'md:order-9',
+    10: 'md:order-10',
+    11: 'md:order-11',
+    12: 'md:order-12',
+    13: 'md:order-13',
+    14: 'md:order-14',
+    15: 'md:order-15',
+    16: 'md:order-16',
+    17: 'md:order-17',
+    18: 'md:order-18',
+    19: 'md:order-19',
+    20: 'md:order-20',
+    21: 'md:order-21',
+    22: 'md:order-22',
+    23: 'md:order-23',
+  }
 
   function getBestContrastTextColor(bgClass: string | null | undefined): string {
     // Extract the suffix after the last "-"
@@ -125,6 +150,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
             const size = col.size || 'full'
             const mobileOrder = col.mobileOrder || index + 1
             const orderClass = orderClasses[mobileOrder as keyof typeof orderClasses] || ''
+            const mdOrderClass = mdOrderClasses[index + 1] || 'md:order-0'
             const colWidth = colsSpanClasses[size]
             return (
               <div
@@ -132,7 +158,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                 className={cn(
                   colWidth, // Responsive column spans
                   orderClass, // Mobile order
-                  'md:order-0', // Reset order on desktop
+                  mdOrderClass, // Reset order on desktop
                 )}
               >
                 {col.columnContent?.map((content, index) => {
