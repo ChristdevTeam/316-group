@@ -33,7 +33,7 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-white 0 hover:cursor-pointer flex flex-col h-full',
+        'border border-border rounded-xl overflow-hidden bg-white 0 hover:cursor-pointer flex flex-col h-full hover:shadow-lg transition-shadow duration-300',
         className,
       )}
       ref={card.ref}
@@ -68,7 +68,7 @@ export const Card: React.FC<{
           </div>
         )}
       </div>
-      <div className="flex flex-col flex-grow p-4">
+      <div className="flex flex-col flex-grow p-6 md:p-8">
         <div className=" flex-grow">
           {titleToUse && (
             <div className="prose">
@@ -85,7 +85,7 @@ export const Card: React.FC<{
         </div>
 
         <Link href={href} ref={link.ref} className="mt-auto">
-          <Button variant={'default'} className="rounded-full bg-blue-800">
+          <Button variant={'default'} className="rounded-full bg-blue-800 mt-4">
             Learn More
           </Button>
         </Link>
