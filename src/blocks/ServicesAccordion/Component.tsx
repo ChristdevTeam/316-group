@@ -14,22 +14,22 @@ export const ServicesAccordion: React.FC<Props> = ({ serviceItems, headingSectio
     <section className="flex flex-col md:flex-row flex-1">
       <div
         className={cn(
-          'md:w-[45%] p-8 md:p-16 flex items-start py-16 xl:pl-16 2xl:pl-44',
+          'md:w-[40%] p-8 md:p-16 md:pr-20 flex items-start py-16 2xl:pl-44',
           headingSection.firstSectionBackgroundColor,
         )}
       >
         <div className="w-full">
           <div className="md:max-w-none">
-            <h2 className="text-small uppercase tracking-wider text-gray-200 mb-4">
+            <h4 className={cn(headingSection.smallHeadingClasses)}>
               {headingSection.smallHeading}
-            </h2>
-            <h1
-              className="text-3xl lg:text-4xl font-semibold text-white mb-6"
+            </h4>
+            <h2
+              className={cn(headingSection.mainHeadingClasses)}
               dangerouslySetInnerHTML={{ __html: headingSection.mainHeading }}
-            ></h1>
+            ></h2>
             <RichText
               content={headingSection.description}
-              className="text-gray-200 mb-8 text-xl leading-relaxed"
+              className={cn('leading-relaxed', headingSection.descriptionClasses)}
               enableGutter={false}
               enableProse={false}
             />
@@ -38,14 +38,7 @@ export const ServicesAccordion: React.FC<Props> = ({ serviceItems, headingSectio
                 {headingSection.links.map(({ link, buttonClasses }, i) => {
                   return (
                     <div key={i} className="flex">
-                      <CMSLink
-                        size={'lg'}
-                        {...link}
-                        className={cn(
-                          'bg-cyan-400 hover:bg-cyan-100 text-white hover:text-gray-900 px-8 py-3 font-medium transition-colors text-lg',
-                          buttonClasses,
-                        )}
-                      />
+                      <CMSLink size={'lg'} {...link} className={cn(buttonClasses)} />
                     </div>
                   )
                 })}
@@ -56,7 +49,7 @@ export const ServicesAccordion: React.FC<Props> = ({ serviceItems, headingSectio
       </div>
       <div
         className={cn(
-          'md:w-[55%] p-8 md:p-16 flex items-center  py-16 xl:pr-16 2xl:pr-44',
+          'md:w-[60%] p-8 md:p-16 flex items-center  py-16 xl:pr-16 2xl:pr-44',
           headingSection.secondSectionBackgroundColor,
         )}
       >

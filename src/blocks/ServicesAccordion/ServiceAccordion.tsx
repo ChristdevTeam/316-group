@@ -20,7 +20,7 @@ export const ServiceAccordion: React.FC<Props> = ({ serviceItems }) => {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="flex w-full items-center justify-between text-left text-3xl font-medium hover:text-primary transition-colors"
               >
-                <span>{item.title}</span>
+                <h2>{item.title}</h2>
                 <ChevronDown
                   className={`h-7 w-7 transform transition-transform duration-200 ${
                     openIndex === index ? 'rotate-180' : ''

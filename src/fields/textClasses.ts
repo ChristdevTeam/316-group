@@ -9,7 +9,6 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
   const textResult: Field = {
     name: 'textClasses',
     type: 'select',
-    label: 'Text Classes',
     hasMany: true,
     admin: {
       condition,
@@ -494,6 +493,22 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'Center Align (lg)', value: 'lg:text-center' },
       { label: 'Right Align (lg)', value: 'lg:text-right' },
       { label: 'Justify Align (lg)', value: 'lg:text-justify' },
+      // Text transform classes
+      { label: 'Uppercase', value: 'uppercase' },
+      { label: 'Lowercase', value: 'lowercase' },
+      { label: 'Capitalize', value: 'capitalize' },
+      { label: 'Normal Case', value: 'normal-case' },
+      // Text decoration classes
+      { label: 'No Underline', value: 'no-underline' },
+      { label: 'Line Through', value: 'line-through' },
+      { label: 'Underline', value: 'underline' },
+      { label: 'Hover Underline', value: 'hover:underline' },
+      // Text spacing classes
+      { label: 'Tracking Tight', value: 'tracking-tight' },
+      { label: 'Tracking Normal', value: 'tracking-normal' },
+      { label: 'Tracking Wide', value: 'tracking-wide' },
+      { label: 'Tracking Wider', value: 'tracking-wider' },
+      { label: 'Tracking Widest', value: 'tracking-widest' },
     ],
   }
 

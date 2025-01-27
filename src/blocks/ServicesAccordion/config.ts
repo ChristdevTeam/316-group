@@ -1,5 +1,6 @@
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { linkGroup } from '@/fields/linkGroup'
+import { textClasses } from '@/fields/textClasses'
 import { Block } from 'payload'
 
 export const ServicesAccordion: Block = {
@@ -18,6 +19,12 @@ export const ServicesAccordion: Block = {
           defaultValue: 'Core Services',
           required: true,
         },
+        textClasses({
+          overrides: {
+            name: 'smallHeadingClasses',
+            defaultValue: ['text-sm', 'text-gray-200', 'pb-8', 'uppercase'],
+          },
+        }),
         {
           name: 'mainHeading',
           type: 'text',
@@ -25,12 +32,24 @@ export const ServicesAccordion: Block = {
           defaultValue: 'Explore our suite of Digital Advisory Services',
           required: true,
         },
+        textClasses({
+          overrides: {
+            name: 'mainHeadingClasses',
+            defaultValue: ['text-3xl', 'lg:text-4xl', 'font-semibold', 'text-white', 'pb-10'],
+          },
+        }),
         {
           name: 'description',
           type: 'richText',
           label: 'Description',
           required: true,
         },
+        textClasses({
+          overrides: {
+            name: 'descriptionClasses',
+            defaultValue: ['text-gray-200', 'pb-8', 'text-xl'],
+          },
+        }),
         linkGroup(),
         bgColorPickerAll({
           overrides: {
