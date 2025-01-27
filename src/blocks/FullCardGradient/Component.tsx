@@ -45,7 +45,7 @@ export const FullCardGradient: React.FC<FullCardGradientProps> = (props) => {
       </div>
 
       <div
-        className={cn('rounded-[40px] p-12 md:p-16 relative overflow-hidden')}
+        className={cn('rounded-[40px] p-12 md:p-16 lg:py-20 relative overflow-hidden')}
         style={{
           backgroundImage: `linear-gradient(to bottom, ${resolvedColor1}, ${resolvedColor2})`,
         }}
