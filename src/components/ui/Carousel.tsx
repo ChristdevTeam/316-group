@@ -36,7 +36,7 @@ const Carousel: React.FC<CarouselProps> = ({ imageColumns, images, id, blockName
             {image.image && (
               <a
                 href={image.partnerUrl ? image.partnerUrl : '#'}
-                className="p-2 lg:p-4 xl:p-8"
+                className="p-2 lg:p-6 xl:p-14"
                 target="_blank"
                 rel="noopener noreferrer"
               >
