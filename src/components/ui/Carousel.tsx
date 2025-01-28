@@ -15,7 +15,7 @@ const Carousel: React.FC<CarouselProps> = ({ imageColumns, images, id, blockName
   const desktopColumns = imageColumns?.desktop || 4
 
   return (
-    <div className="container mx-auto py-16" id={id || undefined}>
+    <div className="container py-16" id={id || undefined}>
       {blockName && <h2 className="text-center text-2xl font-bold mb-4">{blockName}</h2>}
       <div
         className={cn(
@@ -28,7 +28,7 @@ const Carousel: React.FC<CarouselProps> = ({ imageColumns, images, id, blockName
           desktopColumns === 4 && 'lg:grid-cols-4',
           desktopColumns === 5 && 'lg:grid-cols-5',
           desktopColumns === 6 && 'lg:grid-cols-6',
-          'gap-12',
+          'gap-12 md:gap-16 xl:gap-28',
         )}
       >
         {images?.map((image, index) => (
