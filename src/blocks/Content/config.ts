@@ -13,6 +13,7 @@ import { textClasses } from '@/fields/textClasses'
 import { linkGroup } from '@/fields/linkGroup'
 import { Testimonials } from '@/fields/testimonials'
 import { Carousel } from '@/fields/carousel'
+import CardInvert from '@/components/CardInvert'
 
 const columnFields: Field[] = [
   {
@@ -59,7 +60,34 @@ const columnFields: Field[] = [
           { label: 'Vertical CTA', value: 'verticalCTA' },
           { label: 'Testimonials', value: 'testimonials' },
           { label: 'Image Carousel', value: 'carousel' },
+          { label: 'Card Invert', value: 'cardInvert' },
         ],
+      },
+      {
+        name: 'cardInvert',
+        type: 'group',
+        fields: [
+          {
+            name: 'cardTitle',
+
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'cardDescription',
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'cardImage',
+            type: 'upload',
+            relationTo: 'media',
+            required: true,
+          },
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'cardInvert',
+        },
       },
       {
         name: 'richText',

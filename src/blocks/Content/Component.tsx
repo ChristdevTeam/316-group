@@ -9,6 +9,7 @@ import { Media } from '@/components/Media'
 import Image from 'next/image'
 import { TestimonialCarousel } from '@/components/ui/testimonial'
 import Carousel from '@/components/ui/Carousel'
+import CardInvert from '@/components/CardInvert'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns, backgroundMedia, backgroundType, sectionBackgroundColor, paddingType } = props
@@ -171,6 +172,18 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       </div>
                     )
                   }
+                  if (contentType === 'cardInvert' && content.cardInvert) {
+                    const { cardTitle, cardDescription, cardImage } = content.cardInvert
+                    if (typeof cardImage === 'object')
+                      return (
+                        <CardInvert
+                          key={index}
+                          cardTitle={cardTitle}
+                          cardDescription={cardDescription}
+                          cardImage={cardImage}
+                        />
+                      )
+                  }
 
                   if (contentType === 'testimonials' && content.testimonials) {
                     const testimonials = content.testimonials
@@ -224,10 +237,19 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     // const verticalCTA = content.verticalCTA
                     return (
                       verticalCTA && (
-                        <div key={index}>
+                        <div
+                          key={index}
+                          className={cn(
+                            'flex flex-col',
+                            verticalCTA.alignment === 'top' && 'justify-start h-full',
+                            verticalCTA.alignment === 'center' && 'justify-center h-full',
+                            verticalCTA.alignment === 'bottom' && 'justify-end h-full',
+                          )}
+                        >
                           {verticalCTA.subtitle && (
                             <p className="lg:text-xl">{verticalCTA.subtitle}</p>
                           )}
+
                           {verticalCTA.title && (
                             <h3
                               dangerouslySetInnerHTML={{ __html: verticalCTA.title }}

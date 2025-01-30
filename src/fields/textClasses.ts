@@ -479,6 +479,8 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'Line Height 25', value: 'leading-27' },
       { label: 'Line Height 26', value: 'leading-28' },
       { label: 'Line Height 27', value: 'leading-29' },
+      { label: 'Line Height Relaxed', value: 'leading-relaxed' },
+      { label: 'Line Height Loose', value: 'leading-loose' },
       // classes for text alignment
       { label: 'Left Align', value: 'text-left' },
       { label: 'Center Align', value: 'text-center' },

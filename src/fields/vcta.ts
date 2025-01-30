@@ -41,6 +41,12 @@ export const VerticalCTAFields: Field[] = [
       required: false,
     },
   }),
+  {
+    name: 'alignment',
+    type: 'select',
+    options: ['top', 'center', 'bottom'],
+    defaultValue: 'top',
+  },
 ]
 
 export const VerticalCallToAction: Block = {
