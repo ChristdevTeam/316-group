@@ -10,15 +10,18 @@ interface CardInvertProps {
 
 const CardInvert: React.FC<CardInvertProps> = ({ cardTitle, cardDescription, cardImage }) => {
   return (
-    <div className="flex flex-col md:flex-col-reverse bg-white rounded-t-[2em] md:rounded-[2em] shadow-md hover:shadow-xl transition-all duration-300 w-full">
+    <div className="flex flex-col md:flex-col-reverse bg-white rounded-t-[1.9em] md:rounded-[1.9em] shadow-md hover:shadow-xl transition-all duration-300 w-full">
       <div className="p-8 lg:p-12">
         <h2
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800"
+          className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold md:font-semibold text-gray-800"
           dangerouslySetInnerHTML={{ __html: cardTitle }}
         />
-        <p className="mt-4 text-lg" dangerouslySetInnerHTML={{ __html: cardDescription }} />
+        <p
+          className="mt-4 md:mt-8 lg:mt-12 text-lg leading-8"
+          dangerouslySetInnerHTML={{ __html: cardDescription }}
+        />
       </div>
-      <div className="rounded-t-[2em] overflow-hidden">
+      <div className="rounded-t-[1.9em] overflow-hidden">
         <Media
           resource={cardImage}
           alt={cardImage.alt ? cardImage.alt : 'Card Image'}
