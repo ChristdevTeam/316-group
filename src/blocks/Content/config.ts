@@ -61,6 +61,7 @@ const columnFields: Field[] = [
           { label: 'Testimonials', value: 'testimonials' },
           { label: 'Image Carousel', value: 'carousel' },
           { label: 'Card Invert', value: 'cardInvert' },
+          { label: 'Card with List', value: 'cardWithList' },
         ],
       },
       {
@@ -177,6 +178,58 @@ const columnFields: Field[] = [
         fields: Carousel,
         admin: {
           condition: (_, { contentType }) => contentType === 'carousel',
+        },
+      },
+      {
+        name: 'cardWithList',
+        type: 'group',
+        fields: [
+          {
+            name: 'cardTitle',
+            type: 'text',
+            required: true,
+          },
+          textClasses({
+            overrides: {
+              name: 'titleClasses',
+              label: 'Title Classes',
+              defaultValue: ['text-white', 'text-3xl', 'md:text-4xl', 'font-semibold'],
+            },
+          }),
+          {
+            name: 'listItems',
+            type: 'array',
+            fields: [
+              {
+                name: 'icon',
+                type: 'upload',
+                relationTo: 'media',
+              },
+              {
+                name: 'text',
+                type: 'text',
+                required: true,
+                defaultValue: 'Lorem ipsum dolor sit amet consectetur',
+              },
+              textClasses({
+                overrides: {
+                  name: 'textClasses',
+                  label: 'Text Classes',
+                  defaultValue: ['text-white', 'text-2xl', 'font-semibold'],
+                },
+              }),
+            ],
+          },
+          bgColorPickerAll({
+            overrides: {
+              name: 'cardBgColor',
+              label: 'Card Background Color',
+              defaultValue: 'bg-slate-800',
+            },
+          }),
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'cardWithList',
         },
       },
     ],

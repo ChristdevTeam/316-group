@@ -7,6 +7,7 @@ import { Media } from '@/payload-types'
 import { Link } from '@/Header/menu/types'
 import type { HoverSliderBlock as HoverSliderBlockProps } from '@/payload-types'
 import { cn } from '@/utilities/cn'
+import RichText from '@/components/RichText'
 
 export interface Slide {
   id: number
@@ -26,6 +27,8 @@ export const HoverSlider: React.FC<Props> = ({
   sliderItems,
   sliderTitle,
   sliderTitleClasses,
+  sliderDescription,
+  sliderDescriptionClasses,
   paddingType,
   isProductSlider,
 }) => {
@@ -67,6 +70,14 @@ export const HoverSlider: React.FC<Props> = ({
       )}
     >
       <h3 className={cn(sliderTitleClasses)}>{sliderTitle}</h3>
+      {sliderDescription && (
+        <RichText
+          content={sliderDescription}
+          className={cn(sliderDescriptionClasses)}
+          enableGutter={false}
+          enableProse={false}
+        />
+      )}
       <div className="md:hidden">
         <div className="flex justify-between items-center mb-3">
           <div className="text-xl font-medium">

@@ -26,6 +26,27 @@ export const HoverSliderBlock: Block = {
       },
     }),
     {
+      name: 'sliderDescription',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+    },
+    textClasses({
+      overrides: {
+        name: 'sliderDescriptionClasses',
+        label: 'Slider Description Classes',
+        defaultValue: ['text-lg', 'pb-8', 'md:text-xl'],
+      },
+    }),
+    {
       name: 'isProductSlider',
       type: 'checkbox',
       defaultValue: false,
@@ -34,7 +55,7 @@ export const HoverSliderBlock: Block = {
       name: 'sliderItems',
       type: 'array',
       required: true,
-      minRows: 2,
+      // minRows: 2,
       fields: [
         {
           name: 'id',
@@ -51,18 +72,8 @@ export const HoverSliderBlock: Block = {
         },
         {
           name: 'description',
-          type: 'richText',
+          type: 'text',
           required: true,
-          editor: lexicalEditor({
-            features: ({ rootFeatures }) => {
-              return [
-                ...rootFeatures,
-                HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                FixedToolbarFeature(),
-                InlineToolbarFeature(),
-              ]
-            },
-          }),
         },
         textClasses({
           overrides: {
@@ -71,9 +82,17 @@ export const HoverSliderBlock: Block = {
             defaultValue: ['text-lg', 'md:text-xl'],
           },
         }),
+        { name: 'enableLink', type: 'checkbox', defaultValue: false },
         link({
           appearances: false,
-          disableLabel: true,
+          // disableLabel: true,
+          overrides: {
+            name: 'link',
+            label: 'Link',
+            admin: {
+              condition: (_, siblingData) => siblingData.enableLink,
+            },
+          },
         }),
         {
           name: 'mediaFile',

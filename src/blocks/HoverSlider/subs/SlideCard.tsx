@@ -6,6 +6,7 @@ import VideoComponent from './VideoComponent'
 import { ImageComponent } from './ImageComponent'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/cn'
+import { CMSLink } from '@/components/Link'
 
 interface SlideCardProps {
   isProductSlider?: boolean
@@ -40,15 +41,21 @@ const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
     // console.log('Product Slider is enabled')
     return (
       <div
-        className={`${slide.bgColor} rounded-[2em] flex flex-col items-start justify-between w-full aspect-[1/1] overflow-hidden`}
+        className={`${slide.bgColor} rounded-[2em] flex flex-col items-start justify-between w-full md:aspect-[6/7] xl:aspect-[1/1] overflow-hidden`}
       >
-        <div className=" text-lg text-left p-8 animate__animated">
-          <RichText
-            content={slide.description}
-            enableGutter={false}
-            enableProse={false}
+        <div className="gap-y-8 flex flex-col text-lg text-left p-8 animate__animated">
+          <p
             className={cn(slide.descriptionClasses)}
-          ></RichText>
+            dangerouslySetInnerHTML={{ __html: slide.description }}
+          />
+          <div>
+            {slide.link && slide.enableLink && (
+              <CMSLink
+                {...slide.link}
+                className="bg-black text-white px-6 py-3 rounded-full hover:bg-slate-200 hover:text-slate-900 transition-colors text-left animate__animated"
+              />
+            )}
+          </div>
         </div>
         <div className="w-full overflow-hidden relative flex justify-center align-center items-center max-h-[80%] px-8">
           {isVideo
@@ -81,12 +88,10 @@ const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
               <ImageComponent src={getUrl(slide.mediaFile)} alt={slide.title} />
             )}
       </div>
-      <RichText
-        className={`mt-8 md:mt-16 text-lg text-left animate__animated ${animationClass}`}
-        content={slide.description}
-        enableGutter={false}
-        enableProse={false}
-      ></RichText>
+      <p
+        className={cn(slide.descriptionClasses)}
+        dangerouslySetInnerHTML={{ __html: slide.description }}
+      />
       <button
         className={`mt-6 bg-cyan-200 text-black px-6 py-2 rounded-full hover:bg-slate-900 hover:text-white transition-colors text-left animate__animated ${animationClass}`}
       >

@@ -163,7 +163,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                 )}
               >
                 {col.columnContent?.map((content, index) => {
-                  const { contentType, links, richText, media, verticalCTA } = content
+                  const { contentType, links, richText, media, verticalCTA, cardWithList } = content
 
                   if (contentType === 'media' && media && typeof media !== 'string') {
                     return (
@@ -278,6 +278,26 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                           </div>
                         </div>
                       )
+                    )
+                  }
+
+                  if (contentType === 'cardWithList' && cardWithList) {
+                    const { cardTitle, listItems, cardBgColor, titleClasses } = cardWithList
+                    return (
+                      <div key={index} className={cn('p-16 md:p-24 rounded-2xl', cardBgColor)}>
+                        <h3
+                          className={cn(titleClasses)}
+                          dangerouslySetInnerHTML={{ __html: cardTitle }}
+                        />
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          {listItems?.map((item, i) => (
+                            <li key={i} className="flex items-center gap-2">
+                              {item.icon && <Media resource={item.icon} className="w-6 h-6" />}
+                              <span className={cn(item.textClasses)}>{item.text}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     )
                   }
 
