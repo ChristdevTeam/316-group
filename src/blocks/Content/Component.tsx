@@ -284,7 +284,10 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   if (contentType === 'cardWithList' && cardWithList) {
                     const { cardTitle, listItems, cardBgColor, titleClasses } = cardWithList
                     return (
-                      <div key={index} className={cn('p-16 md:p-24 rounded-2xl', cardBgColor)}>
+                      <div
+                        key={index}
+                        className={cn('p-8 md:p-16 lg:p-24 rounded-2xl', cardBgColor)}
+                      >
                         <h3
                           className={cn(titleClasses)}
                           dangerouslySetInnerHTML={{ __html: cardTitle }}

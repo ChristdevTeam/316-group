@@ -1,6 +1,5 @@
-import { ArrowRight, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { cn } from '@/utilities/cn'
-import Image from 'next/image'
 import type { GlobalAccountsBlock as GlobalAccountsBlockProps } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import React from 'react'
@@ -40,7 +39,7 @@ export const GlobalAccounts: React.FC<Props> = ({
         className,
       )}
     >
-      <div className="bg-slate-100 rounded-2xl p-8 md:p-16 shadow-sm">
+      <div className="bg-slate-100 rounded-2xl px-4 md:px-8 lg:px-16 py-16 md:py-24 shadow-lg">
         <h1 className={cn(titleClasses)} dangerouslySetInnerHTML={{ __html: title }} />
 
         <div className="flex flex-col lg:flex-row gap-12 items-center py-16">
@@ -60,7 +59,9 @@ export const GlobalAccounts: React.FC<Props> = ({
                 features.length > 0 &&
                 features.map((item, index) => (
                   <p key={index} className="flex items-center gap-2 md:gap-4">
-                    <Plus strokeWidth={3} className="w-6 h-6 text-green-600" />
+                    <div className="h-6 w-6">
+                      <Plus strokeWidth={3} className="w-6 h-6 text-green-600" />
+                    </div>
                     <span className="text-lg md:text-xl xl:text-2xl">{item.feature}</span>
                   </p>
                 ))}
