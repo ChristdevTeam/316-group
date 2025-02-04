@@ -585,9 +585,87 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       // ------------------------
       // 8) MARGIN BOTTOM (MB)
       // ------------------------
+      // Negative bottom margins
       { label: 'MB - (-8XL)', value: '-mb-40' },
+      { label: 'MB - (-7XL)', value: '-mb-32' },
+      { label: 'MB - (-6XL)', value: '-mb-24' },
+      { label: 'MB - (-5XL)', value: '-mb-20' },
+      { label: 'MB - (-4XL)', value: '-mb-16' },
+      { label: 'MB - (-3XL)', value: '-mb-12' },
+      { label: 'MB - (-2XL)', value: '-mb-10' },
+      { label: 'MB - (-XL)', value: '-mb-8' },
+      { label: 'MB - (-L)', value: '-mb-6' },
+      { label: 'MB - (-M)', value: '-mb-4' },
+      { label: 'MB - (-S)', value: '-mb-2' },
+      { label: 'MB - (-XS)', value: '-mb-1' },
+
+      // Positive bottom margins
+      { label: 'MB - None', value: 'mb-0' },
+      { label: 'MB - XS', value: 'mb-1' },
+      { label: 'MB - S', value: 'mb-2' },
+      { label: 'MB - M', value: 'mb-4' },
+      { label: 'MB - L', value: 'mb-6' },
+      { label: 'MB - XL', value: 'mb-8' },
+      { label: 'MB - 2XL', value: 'mb-10' },
+      { label: 'MB - 3XL', value: 'mb-12' },
+      { label: 'MB - 4XL', value: 'mb-16' },
+      { label: 'MB - 5XL', value: 'mb-20' },
+      { label: 'MB - 6XL', value: 'mb-24' },
+      { label: 'MB - 7XL', value: 'mb-32' },
       { label: 'MB - 8XL', value: 'mb-40' },
+
+      // MD margin bottom
       { label: 'MD: MB - (-8XL)', value: 'md:-mb-40' },
+      { label: 'MD: MB - (-7XL)', value: 'md:-mb-32' },
+      { label: 'MD: MB - (-6XL)', value: 'md:-mb-24' },
+      { label: 'MD: MB - (-5XL)', value: 'md:-mb-20' },
+      { label: 'MD: MB - (-4XL)', value: 'md:-mb-16' },
+      { label: 'MD: MB - (-3XL)', value: 'md:-mb-12' },
+      { label: 'MD: MB - (-2XL)', value: 'md:-mb-10' },
+      { label: 'MD: MB - (-XL)', value: 'md:-mb-8' },
+      { label: 'MD: MB - (-L)', value: 'md:-mb-6' },
+      { label: 'MD: MB - (-M)', value: 'md:-mb-4' },
+      { label: 'MD: MB - (-S)', value: 'md:-mb-2' },
+      { label: 'MD: MB - (-XS)', value: 'md:-mb-1' },
+      { label: 'MD: MB - None', value: 'md:mb-0' },
+      { label: 'MD: MB - XS', value: 'md:mb-1' },
+      { label: 'MD: MB - S', value: 'md:mb-2' },
+      { label: 'MD: MB - M', value: 'md:mb-4' },
+      { label: 'MD: MB - L', value: 'md:mb-6' },
+      { label: 'MD: MB - XL', value: 'md:mb-8' },
+      { label: 'MD: MB - 2XL', value: 'md:mb-10' },
+      { label: 'MD: MB - 3XL', value: 'md:mb-12' },
+      { label: 'MD: MB - 4XL', value: 'md:mb-16' },
+      { label: 'MD: MB - 5XL', value: 'md:mb-20' },
+      { label: 'MD: MB - 6XL', value: 'md:mb-24' },
+      { label: 'MD: MB - 7XL', value: 'md:mb-32' },
+      { label: 'MD: MB - 8XL', value: 'md:mb-40' },
+
+      // LG margin bottom
+      { label: 'LG: MB - (-8XL)', value: 'lg:-mb-40' },
+      { label: 'LG: MB - (-7XL)', value: 'lg:-mb-32' },
+      { label: 'LG: MB - (-6XL)', value: 'lg:-mb-24' },
+      { label: 'LG: MB - (-5XL)', value: 'lg:-mb-20' },
+      { label: 'LG: MB - (-4XL)', value: 'lg:-mb-16' },
+      { label: 'LG: MB - (-3XL)', value: 'lg:-mb-12' },
+      { label: 'LG: MB - (-2XL)', value: 'lg:-mb-10' },
+      { label: 'LG: MB - (-XL)', value: 'lg:-mb-8' },
+      { label: 'LG: MB - (-L)', value: 'lg:-mb-6' },
+      { label: 'LG: MB - (-M)', value: 'lg:-mb-4' },
+      { label: 'LG: MB - (-S)', value: 'lg:-mb-2' },
+      { label: 'LG: MB - (-XS)', value: 'lg:-mb-1' },
+      { label: 'LG: MB - None', value: 'lg:mb-0' },
+      { label: 'LG: MB - XS', value: 'lg:mb-1' },
+      { label: 'LG: MB - S', value: 'lg:mb-2' },
+      { label: 'LG: MB - M', value: 'lg:mb-4' },
+      { label: 'LG: MB - L', value: 'lg:mb-6' },
+      { label: 'LG: MB - XL', value: 'lg:mb-8' },
+      { label: 'LG: MB - 2XL', value: 'lg:mb-10' },
+      { label: 'LG: MB - 3XL', value: 'lg:mb-12' },
+      { label: 'LG: MB - 4XL', value: 'lg:mb-16' },
+      { label: 'LG: MB - 5XL', value: 'lg:mb-20' },
+      { label: 'LG: MB - 6XL', value: 'lg:mb-24' },
+      { label: 'LG: MB - 7XL', value: 'lg:mb-32' },
       { label: 'LG: MB - 8XL', value: 'lg:mb-40' },
 
       // ------------------------
@@ -660,6 +738,68 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'LH - Relaxed', value: 'leading-relaxed' },
       { label: 'LH - Loose', value: 'leading-loose' },
 
+      // MD line height
+      { label: 'MD: LH - 1', value: 'md:leading-3' },
+      { label: 'MD: LH - 2', value: 'md:leading-4' },
+      { label: 'MD: LH - 3', value: 'md:leading-5' },
+      { label: 'MD: LH - 4', value: 'md:leading-6' },
+      { label: 'MD: LH - 5', value: 'md:leading-7' },
+      { label: 'MD: LH - 6', value: 'md:leading-8' },
+      { label: 'MD: LH - 7', value: 'md:leading-9' },
+      { label: 'MD: LH - 8', value: 'md:leading-10' },
+      { label: 'MD: LH - 9', value: 'md:leading-11' },
+      { label: 'MD: LH - 10', value: 'md:leading-12' },
+      { label: 'MD: LH - 11', value: 'md:leading-13' },
+      { label: 'MD: LH - 12', value: 'md:leading-14' },
+      { label: 'MD: LH - 13', value: 'md:leading-15' },
+      { label: 'MD: LH - 14', value: 'md:leading-16' },
+      { label: 'MD: LH - 15', value: 'md:leading-17' },
+      { label: 'MD: LH - 16', value: 'md:leading-18' },
+      { label: 'MD: LH - 17', value: 'md:leading-19' },
+      { label: 'MD: LH - 18', value: 'md:leading-20' },
+      { label: 'MD: LH - 19', value: 'md:leading-21' },
+      { label: 'MD: LH - 20', value: 'md:leading-22' },
+      { label: 'MD: LH - 21', value: 'md:leading-23' },
+      { label: 'MD: LH - 22', value: 'md:leading-24' },
+      { label: 'MD: LH - 23', value: 'md:leading-25' },
+      { label: 'MD: LH - 24', value: 'md:leading-26' },
+      { label: 'MD: LH - 25', value: 'md:leading-27' },
+      { label: 'MD: LH - 26', value: 'md:leading-28' },
+      { label: 'MD: LH - 27', value: 'md:leading-29' },
+      { label: 'MD: LH - Relaxed', value: 'md:leading-relaxed' },
+      { label: 'MD: LH - Loose', value: 'md:leading-loose' },
+
+      // LG line height
+      { label: 'LG: LH - 1', value: 'lg:leading-3' },
+      { label: 'LG: LH - 2', value: 'lg:leading-4' },
+      { label: 'LG: LH - 3', value: 'lg:leading-5' },
+      { label: 'LG: LH - 4', value: 'lg:leading-6' },
+      { label: 'LG: LH - 5', value: 'lg:leading-7' },
+      { label: 'LG: LH - 6', value: 'lg:leading-8' },
+      { label: 'LG: LH - 7', value: 'lg:leading-9' },
+      { label: 'LG: LH - 8', value: 'lg:leading-10' },
+      { label: 'LG: LH - 9', value: 'lg:leading-11' },
+      { label: 'LG: LH - 10', value: 'lg:leading-12' },
+      { label: 'LG: LH - 11', value: 'lg:leading-13' },
+      { label: 'LG: LH - 12', value: 'lg:leading-14' },
+      { label: 'LG: LH - 13', value: 'lg:leading-15' },
+      { label: 'LG: LH - 14', value: 'lg:leading-16' },
+      { label: 'LG: LH - 15', value: 'lg:leading-17' },
+      { label: 'LG: LH - 16', value: 'lg:leading-18' },
+      { label: 'LG: LH - 17', value: 'lg:leading-19' },
+      { label: 'LG: LH - 18', value: 'lg:leading-20' },
+      { label: 'LG: LH - 19', value: 'lg:leading-21' },
+      { label: 'LG: LH - 20', value: 'lg:leading-22' },
+      { label: 'LG: LH - 21', value: 'lg:leading-23' },
+      { label: 'LG: LH - 22', value: 'lg:leading-24' },
+      { label: 'LG: LH - 23', value: 'lg:leading-25' },
+      { label: 'LG: LH - 24', value: 'lg:leading-26' },
+      { label: 'LG: LH - 25', value: 'lg:leading-27' },
+      { label: 'LG: LH - 26', value: 'lg:leading-28' },
+      { label: 'LG: LH - 27', value: 'lg:leading-29' },
+      { label: 'LG: LH - Relaxed', value: 'lg:leading-relaxed' },
+      { label: 'LG: LH - Loose', value: 'lg:leading-loose' },
+
       // ------------------------
       // 11) ALIGNMENT
       // ------------------------
@@ -688,6 +828,18 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'Transform - Capitalize', value: 'capitalize' },
       { label: 'Transform - Normal', value: 'normal-case' },
 
+      // MD transform
+      { label: 'MD: Transform - Uppercase', value: 'md:uppercase' },
+      { label: 'MD: Transform - Lowercase', value: 'md:lowercase' },
+      { label: 'MD: Transform - Capitalize', value: 'md:capitalize' },
+      { label: 'MD: Transform - Normal', value: 'md:normal-case' },
+
+      // LG transform
+      { label: 'LG: Transform - Uppercase', value: 'lg:uppercase' },
+      { label: 'LG: Transform - Lowercase', value: 'lg:lowercase' },
+      { label: 'LG: Transform - Capitalize', value: 'lg:capitalize' },
+      { label: 'LG: Transform - Normal', value: 'lg:normal-case' },
+
       // ------------------------
       // 13) DECORATION
       // ------------------------
@@ -695,6 +847,18 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'Decoration - Line Through', value: 'line-through' },
       { label: 'Decoration - Underline', value: 'underline' },
       { label: 'Decoration - Hover Underline', value: 'hover:underline' },
+
+      // MD decoration
+      { label: 'MD: Decoration - None', value: 'md:no-underline' },
+      { label: 'MD: Decoration - Line Through', value: 'md:line-through' },
+      { label: 'MD: Decoration - Underline', value: 'md:underline' },
+      { label: 'MD: Decoration - Hover Underline', value: 'md:hover:underline' },
+
+      // LG decoration
+      { label: 'LG: Decoration - None', value: 'lg:no-underline' },
+      { label: 'LG: Decoration - Line Through', value: 'lg:line-through' },
+      { label: 'LG: Decoration - Underline', value: 'lg:underline' },
+      { label: 'LG: Decoration - Hover Underline', value: 'lg:hover:underline' },
 
       // ------------------------
       // 14) TRACKING
@@ -704,6 +868,20 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'Tracking - Wide', value: 'tracking-wide' },
       { label: 'Tracking - Wider', value: 'tracking-wider' },
       { label: 'Tracking - Widest', value: 'tracking-widest' },
+
+      // MD tracking
+      { label: 'MD: Tracking - Tight', value: 'md:tracking-tight' },
+      { label: 'MD: Tracking - Normal', value: 'md:tracking-normal' },
+      { label: 'MD: Tracking - Wide', value: 'md:tracking-wide' },
+      { label: 'MD: Tracking - Wider', value: 'md:tracking-wider' },
+      { label: 'MD: Tracking - Widest', value: 'md:tracking-widest' },
+
+      // LG tracking
+      { label: 'LG: Tracking - Tight', value: 'lg:tracking-tight' },
+      { label: 'LG: Tracking - Normal', value: 'lg:tracking-normal' },
+      { label: 'LG: Tracking - Wide', value: 'lg:tracking-wide' },
+      { label: 'LG: Tracking - Wider', value: 'lg:tracking-wider' },
+      { label: 'LG: Tracking - Widest', value: 'lg:tracking-widest' },
     ],
   }
 
