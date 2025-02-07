@@ -138,9 +138,9 @@ export const SocialIcon = ({ platform }: { platform: string }) => {
 
 export default function ComponentClient({ footer }: { footer: Footer }) {
   return (
-    <footer className="bg-black text-white py-12">
+    <footer className="bg-black text-white pt-8">
       <div className="container max-w-screen-2xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-4 xl:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-4 xl:gap-8  py-12">
           <div className="flex flex-col gap-8 col-span-2 md:col-span-4 lg:col-span-1 md:flex-row md:items-center md:pb-8 md:border-b md:border-white/10 lg:pb-0 lg:border-none lg:items-start lg:justify-start lg:flex-col">
             <Link href="/" className="block w-32">
               <Logo className="invert" />
@@ -183,6 +183,20 @@ export default function ComponentClient({ footer }: { footer: Footer }) {
               </nav>
             </div>
           ))}
+        </div>
+      </div>
+      {/* Add Privacy Policy and copyright text here */}
+      <div className="text-base text-center text-gray-400 border-t border-white/40 py-8">
+        <div className="container max-w-screen-2xl mx-auto px-4">
+          <p>
+            &copy; {new Date().getFullYear()}, 316 Group. All rights reserved.{' '}
+            <Link
+              href="/privacy-policy"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
