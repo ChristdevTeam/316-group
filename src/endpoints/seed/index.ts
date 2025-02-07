@@ -42,14 +42,14 @@ export const seed = async ({
   payload.logger.info(`— Clearing collections and globals...`)
 
   // clear the database
-  for (const global of globals) {
-    await payload.updateGlobal({
-      slug: global,
-      data: {
-        navItems: [],
-      },
-    })
-  }
+  // for (const global of globals) {
+  //   await payload.updateGlobal({
+  //     slug: global,
+  //     data: {
+  //       navItems: [],
+  //     },
+  //   })
+  // }
 
   for (const collection of collections) {
     await payload.delete({
@@ -301,36 +301,36 @@ export const seed = async ({
 
   payload.logger.info(`— Seeding footer...`)
 
-  await payload.updateGlobal({
-    slug: 'footer',
-    data: {
-      navItems: [
-        {
-          link: {
-            type: 'custom',
-            label: 'Admin',
-            url: '/admin',
-          },
-        },
-        {
-          link: {
-            type: 'custom',
-            label: 'Source Code',
-            newTab: true,
-            url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
-          },
-        },
-        {
-          link: {
-            type: 'custom',
-            label: 'Payload',
-            newTab: true,
-            url: 'https://payloadcms.com/',
-          },
-        },
-      ],
-    },
-  })
+  // await payload.updateGlobal({
+  //   slug: 'footer',
+  //   data: {
+  //     navItems: [
+  //       {
+  //         link: {
+  //           type: 'custom',
+  //           label: 'Admin',
+  //           url: '/admin',
+  //         },
+  //       },
+  //       {
+  //         link: {
+  //           type: 'custom',
+  //           label: 'Source Code',
+  //           newTab: true,
+  //           url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
+  //         },
+  //       },
+  //       {
+  //         link: {
+  //           type: 'custom',
+  //           label: 'Payload',
+  //           newTab: true,
+  //           url: 'https://payloadcms.com/',
+  //         },
+  //       },
+  //     ],
+  //   },
+  // })
 
   payload.logger.info('Seeded database successfully!')
 }
