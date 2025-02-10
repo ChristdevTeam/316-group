@@ -35,7 +35,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
       className="container max-w-screen-2xl relative z-20   "
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="py-8 border-border flex justify-between">
+      <div className="pt-6 pb-5 border-border flex justify-between items-center">
         <Link href="/">
           <Logo loading="eager" priority="high" className="dark:invert invert-0" />
         </Link>
