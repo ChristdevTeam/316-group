@@ -16,6 +16,7 @@ import { ContentClipPathBlock } from './ContentClipPath/Component'
 import { FullCardGradient } from './FullCardGradient/Component'
 import { ShowcaseBlock } from './Showcase/Component'
 import { GlobalAccounts } from './GlobalAccounts/Component'
+import { AnimatedText } from './Animatedtext/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -31,6 +32,7 @@ const blockComponents = {
   fullCardGradient: FullCardGradient,
   showcase: ShowcaseBlock,
   globalAccounts: GlobalAccounts,
+  animatedText: AnimatedText,
 }
 
 export const RenderBlocks: React.FC<{

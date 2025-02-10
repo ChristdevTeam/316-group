@@ -54,6 +54,11 @@ export const hero: Field = {
           label: 'Services Page Hero',
           value: 'servicesHero',
         },
+        {
+          //no hero
+          label: 'No Hero',
+          value: 'noHero',
+        },
       ],
       required: true,
     },
@@ -174,8 +179,21 @@ export const hero: Field = {
     linkGroup({
       overrides: {
         maxRows: 2,
+        admin: {
+          condition: (_, { type } = {}) =>
+            [
+              'highImpact',
+              'mediumImpact',
+              'lowImpact',
+              'specialHero',
+              'productHero',
+              'productHero2',
+              'servicesHero',
+            ].includes(type),
+        },
       },
     }),
+
     {
       name: 'media',
       label: 'Hero Background Image',
@@ -239,7 +257,12 @@ export const hero: Field = {
       type: 'checkbox',
       label: 'Pad page Top?',
       defaultValue: true,
+      admin: {
+        condition: (_, { type } = {}) =>
+          ['productHero', 'productHero2', 'specialHero', 'servicesHero'].includes(type),
+      },
     },
   ],
+
   label: false,
 }

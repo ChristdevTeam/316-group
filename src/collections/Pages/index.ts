@@ -29,6 +29,7 @@ import { FullCardGradient } from '@/blocks/FullCardGradient/config'
 import { BusinessSlider2 } from '@/blocks/BusinessSlider2/config'
 import { Showcase } from '@/blocks/Showcase/config'
 import { GlobalAccounts } from '@/blocks/GlobalAccounts/config'
+import { AnimatedText } from '@/blocks/Animatedtext/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -100,6 +101,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FullCardGradient,
                 Showcase,
                 GlobalAccounts,
+                AnimatedText,
               ],
               required: true,
             },

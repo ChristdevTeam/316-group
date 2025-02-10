@@ -343,6 +343,7 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'MD: Size - 10XL', value: 'md:text-10xl' },
       { label: 'MD: Size - 11XL', value: 'md:text-11xl' },
       { label: 'MD: Size - 12XL', value: 'md:text-12xl' },
+      { label: 'MD: Size - 13XL', value: 'md:text-13xl' },
 
       // LG size variants
       { label: 'LG: Size - XS', value: 'lg:text-xs' },
@@ -360,6 +361,7 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'LG: Size - 10XL', value: 'lg:text-10xl' },
       { label: 'LG: Size - 11XL', value: 'lg:text-11xl' },
       { label: 'LG: Size - 12XL', value: 'lg:text-12xl' },
+      { label: 'LG: Size - 13XL', value: 'lg:text-13xl' },
 
       // XL size variants
       { label: 'XL: Size - XS', value: 'xl:text-xs' },
@@ -377,22 +379,38 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'XL: Size - 10XL', value: 'xl:text-10xl' },
       { label: 'XL: Size - 11XL', value: 'xl:text-11xl' },
       { label: 'XL: Size - 12XL', value: 'xl:text-12xl' },
+      { label: 'XL: Size - 13XL', value: 'xl:text-13xl' },
 
       // ------------------------
       // 3) WEIGHT
       // ------------------------
+      { label: 'Weight - Thin', value: 'font-thin' },
+      { label: 'Weight - Light', value: 'font-light' },
+      { label: 'Weight - Normal', value: 'font-normal' },
       { label: 'Weight - Medium', value: 'font-medium' },
       { label: 'Weight - Semibold', value: 'font-semibold' },
       { label: 'Weight - Bold', value: 'font-bold' },
       { label: 'Weight - Extrabold', value: 'font-extrabold' },
       { label: 'Weight - Black', value: 'font-black' },
 
+      // MD weight variants
+      { label: 'MD: Weight - Thin', value: 'md:font-thin' },
+      { label: 'MD: Weight - Light', value: 'md:font-light' },
+      { label: 'MD: Weight - Normal', value: 'md:font-normal' },
+      { label: 'MD: Weight - Medium', value: 'md:font-medium' },
+      { label: 'MD: Weight - Semibold', value: 'md:font-semibold' },
+      { label: 'MD: Weight - Bold', value: 'md:font-bold' },
+      { label: 'MD: Weight - Extrabold', value: 'md:font-extrabold' },
+      { label: 'MD: Weight - Black', value: 'md:font-black' },
+
       // LG weight variants
-      { label: 'LG: Weight - Medium', value: 'lg:font-medium' },
-      { label: 'LG: Weight - Semibold', value: 'lg:font-semibold' },
-      { label: 'LG: Weight - Bold', value: 'lg:font-bold' },
       { label: 'LG: Weight - Extrabold', value: 'lg:font-extrabold' },
       { label: 'LG: Weight - Black', value: 'lg:font-black' },
+      { label: 'LG: Weight - Thin', value: 'lg:font-thin' },
+      { label: 'LG: Weight - Light', value: 'lg:font-light' },
+      { label: 'LG: Weight - Normal', value: 'lg:font-normal' },
+      { label: 'LG: Weight - Medium', value: 'lg:font-medium' },
+      { label: 'LG: Weight - Semibold', value: 'lg:font-semibold' },
 
       // ------------------------
       // 4) FONT FAMILY
@@ -704,6 +722,13 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'LG: Width - 80%', value: 'lg:w-4/5' },
       { label: 'LG: Width - 90%', value: 'lg:w-9/10' },
       { label: 'LG: Width - 100%', value: 'lg:w-full' },
+
+      // ------------------------
+      // 9.5) MARGIN AUTO
+      // ------------------------
+      { label: 'Margin X - Auto', value: 'mx-auto' },
+      { label: 'MD: Margin X - Auto', value: 'md:mx-auto' },
+      { label: 'LG: Margin X - Auto', value: 'lg:mx-auto' },
 
       // ------------------------
       // 10) LINE HEIGHT

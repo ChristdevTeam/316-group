@@ -163,7 +163,15 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                 )}
               >
                 {col.columnContent?.map((content, index) => {
-                  const { contentType, links, richText, media, verticalCTA, cardWithList } = content
+                  const {
+                    contentType,
+                    links,
+                    richText,
+                    media,
+                    verticalCTA,
+                    cardWithList,
+                    linkAlignment,
+                  } = content
 
                   if (contentType === 'media' && media && typeof media !== 'string') {
                     return (
@@ -307,7 +315,15 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   return (
                     Array.isArray(links) &&
                     links.length > 0 && (
-                      <div className="flex gap-4" key={index}>
+                      <div
+                        className={cn(
+                          'flex gap-4',
+                          linkAlignment === 'center' && 'justify-center',
+                          linkAlignment === 'right' && 'justify-end',
+                          linkAlignment === 'left' && 'justify-start',
+                        )}
+                        key={index}
+                      >
                         {links.map(({ link, buttonClasses, size }, i) => {
                           return (
                             <div key={i} className="flex">

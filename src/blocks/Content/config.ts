@@ -133,6 +133,19 @@ const columnFields: Field[] = [
         },
       }),
       {
+        name: 'linkAlignment',
+        type: 'select',
+        options: [
+          { label: 'Left', value: 'left' },
+          { label: 'Center', value: 'center' },
+          { label: 'Right', value: 'right' },
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'link',
+        },
+        defaultValue: 'left',
+      },
+      {
         name: 'verticalCTA',
         type: 'group',
         fields: VerticalCTAFields,
