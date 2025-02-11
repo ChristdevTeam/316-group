@@ -26421,6 +26421,7 @@ export interface ShowcaseBlock {
   showcaseItems: {
     itemType?: ('showcase' | 'divider') | null;
     showcaseItem?: {
+      image?: (string | null) | Media;
       itemTitle: string;
       itemTitleClasses?:
         | (
@@ -35304,6 +35305,7 @@ export interface ShowcaseBlockSelect<T extends boolean = true> {
         showcaseItem?:
           | T
           | {
+              image?: T;
               itemTitle?: T;
               itemTitleClasses?: T;
               description?: T;

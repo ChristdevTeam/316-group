@@ -7,7 +7,6 @@ import React, { useEffect, useState } from 'react'
 import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
-// import { HeaderNav } from './Nav'
 import { MegaMenu } from './menu/MegaMenu'
 
 interface HeaderClientProps {
@@ -39,7 +38,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
         <Link href="/">
           <Logo loading="eager" priority="high" className="dark:invert invert-0" />
         </Link>
-        {/* <HeaderNav header={header} /> */}
+
         <MegaMenu className="dark:text-gray-100" header={header} />
       </div>
     </header>

@@ -16,7 +16,7 @@ export const Showcase: Block = {
       overrides: {
         name: 'titleClasses',
         label: 'Title Classes',
-        defaultValue: ['text-4xl', 'lg:text-6xl', 'text-center'],
+        defaultValue: ['text-4xl', 'lg:text-6xl', 'text-center', 'font-semibold'],
       },
     }),
     {
@@ -36,6 +36,11 @@ export const Showcase: Block = {
           type: 'group',
           fields: [
             {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
               name: 'itemTitle',
               type: 'text',
               defaultValue: '<span class="text-green-500">6x</span> Faster',
@@ -46,7 +51,7 @@ export const Showcase: Block = {
                 name: 'itemTitleClasses',
                 label: 'ItemTitle Classes',
 
-                defaultValue: ['text-2xl', 'lg:text-3xl', 'text-center'],
+                defaultValue: ['text-2xl', 'text-center', 'font-semibold'],
               },
             }),
             {
@@ -59,7 +64,7 @@ export const Showcase: Block = {
               overrides: {
                 name: 'descriptionClasses',
                 label: 'Description Classes',
-                defaultValue: ['text-lg', 'text-center'],
+                defaultValue: ['text-lg', 'text-center', 'text-slate-600'],
               },
             }),
           ],

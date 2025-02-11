@@ -3,6 +3,7 @@ import type { ShowcaseBlock as ShowcaseBlockProps } from 'src/payload-types'
 import { cn } from '@/utilities/cn'
 import React from 'react'
 import Image from 'next/image'
+import { Media } from '@/components/Media'
 
 type Props = {
   className?: string
@@ -109,7 +110,16 @@ export const ShowcaseBlock: React.FC<Props> = ({
           {showcaseItems.map((item, index) => {
             if (item.itemType === 'showcase') {
               return (
-                <div key={index} className="flex flex-col gap-4 p-8 md:w-[50%] m-auto lg:w-[30%]">
+                <div key={index} className="flex flex-col gap-4 p-6 md:w-[50%] m-auto lg:w-[30%]">
+                  {item.showcaseItem?.image && typeof item.showcaseItem?.image !== 'string' && (
+                    <div className="flex justify-center items-center">
+                      <Media
+                        resource={item.showcaseItem?.image}
+                        className="w-[60px] h-[60px] object-fit"
+                      />
+                    </div>
+                  )}
+
                   {item.showcaseItem?.itemTitle && (
                     <h3
                       className={cn(item.showcaseItem?.itemTitleClasses)}
@@ -129,7 +139,7 @@ export const ShowcaseBlock: React.FC<Props> = ({
               return (
                 <div
                   key={index}
-                  className={cn('lg:h-40 h-32 w-1 rounded-full m-auto', item.dividerColor)}
+                  className={cn('lg:h-45 h-36 w-[2px] rounded-full m-auto', item.dividerColor)}
                 ></div>
               )
             }
