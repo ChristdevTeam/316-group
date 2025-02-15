@@ -13,6 +13,7 @@ export const VerticalCTAFields: Field[] = [
   {
     name: 'subtitle',
     type: 'text',
+    defaultValue: 'Why Us?',
   },
   textClasses({
     overrides: {
@@ -24,12 +25,14 @@ export const VerticalCTAFields: Field[] = [
   {
     name: 'title',
     type: 'text',
+    defaultValue:
+      'We fulfil your <span class="text-green-500">e-commerce dreams with every order</span>',
   },
   textClasses({
     overrides: {
       name: 'titleClasses',
       label: 'Title Classes',
-      defaultValue: ['text-3xl', 'md:text-5xl', 'font-semibold'],
+      defaultValue: ['text-3xl', 'md:text-5xl', 'font-semibold', 'pb-8'],
     },
   }),
   {
@@ -40,11 +43,43 @@ export const VerticalCTAFields: Field[] = [
         return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
       },
     }),
+    defaultValue: {
+      root: {
+        children: [
+          {
+            children: [
+              {
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'We empower financial institutions with cutting-edge tech solutions providing great customer experiences, ultimate performance, and extreme scalability. Our modular cloud-native digital banking platform, enables building unique fintech solutions across the world. With the partner ecosystem and API orchestration layer, our clients have quick access to payment services from market-leading companies.',
+                type: 'text',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            type: 'paragraph',
+            version: 1,
+            textFormat: 0,
+            textStyle: '',
+          },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        type: 'root',
+        version: 1,
+      },
+    },
   },
   textClasses({
     overrides: {
       name: 'descriptionClasses',
       label: 'Description Classes',
+      defaultValue: ['text-base', 'md:text-lg', 'pb-8'],
     },
   }),
   linkGroup({
