@@ -14,11 +14,24 @@ export const VerticalCTAFields: Field[] = [
     name: 'subtitle',
     type: 'text',
   },
+  textClasses({
+    overrides: {
+      name: 'subtitleClasses',
+      label: 'Subtitle Classes',
+      defaultValue: ['text-lg', 'md:text-xl', 'mb-4'],
+    },
+  }),
   {
     name: 'title',
     type: 'text',
   },
-  textClasses({ overrides: { name: 'titleClasses', label: 'Title Classes' } }),
+  textClasses({
+    overrides: {
+      name: 'titleClasses',
+      label: 'Title Classes',
+      defaultValue: ['text-3xl', 'md:text-5xl', 'font-semibold'],
+    },
+  }),
   {
     name: 'description',
     type: 'richText',

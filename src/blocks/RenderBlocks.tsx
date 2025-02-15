@@ -17,6 +17,10 @@ import { FullCardGradient } from './FullCardGradient/Component'
 import { ShowcaseBlock } from './Showcase/Component'
 import { GlobalAccounts } from './GlobalAccounts/Component'
 import { AnimatedText } from './Animatedtext/Component'
+import { NumbersBlock } from './Numbers/Component'
+import { TabBlockComponent } from './TabBlock/Component'
+import { InteractiveMediaGrid } from './InteractiveMediaGrid/Component'
+import { TestimonialSliderBlock } from './TestimonialSlider/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -33,6 +37,10 @@ const blockComponents = {
   showcase: ShowcaseBlock,
   globalAccounts: GlobalAccounts,
   animatedText: AnimatedText,
+  numbers: NumbersBlock,
+  tabBlock: TabBlockComponent,
+  interactiveMediaGrid: InteractiveMediaGrid,
+  testimonialSlider: TestimonialSliderBlock,
 }
 
 export const RenderBlocks: React.FC<{

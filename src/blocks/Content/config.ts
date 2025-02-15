@@ -14,6 +14,9 @@ import { linkGroup } from '@/fields/linkGroup'
 import { Testimonials } from '@/fields/testimonials'
 import { Carousel } from '@/fields/carousel'
 import CardInvert from '@/components/CardInvert'
+import { dimensionClasses } from '@/fields/dimensionClasses'
+import { shadowClasses } from '@/fields/shadowClasses'
+import { borderClasses } from '@/fields/borderClasses'
 
 const columnFields: Field[] = [
   {
@@ -62,6 +65,8 @@ const columnFields: Field[] = [
           { label: 'Image Carousel', value: 'carousel' },
           { label: 'Card Invert', value: 'cardInvert' },
           { label: 'Card with List', value: 'cardWithList' },
+          { label: 'Auto Scroll Slider', value: 'autoScrollSlider' },
+          { label: 'Styled Cards', value: 'styledCards' },
         ],
       },
       {
@@ -243,6 +248,132 @@ const columnFields: Field[] = [
         ],
         admin: {
           condition: (_, { contentType }) => contentType === 'cardWithList',
+        },
+      },
+      {
+        name: 'autoScrollSlider',
+        type: 'group',
+        fields: [
+          {
+            name: 'images',
+            type: 'array',
+            fields: [
+              {
+                name: 'image',
+                type: 'upload',
+                relationTo: 'media',
+                required: true,
+              },
+            ],
+          },
+          dimensionClasses({
+            overrides: {
+              defaultValue: ['w-40', 'h-40', 'md:w-48', 'md:h-48'],
+            },
+          }),
+          {
+            name: 'speed',
+            type: 'number',
+            defaultValue: 5000,
+            admin: {
+              description: 'Speed in milliseconds (5000 = 5 seconds)',
+            },
+          },
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'autoScrollSlider',
+        },
+      },
+      {
+        name: 'styledCards',
+        type: 'group',
+        fields: [
+          {
+            name: 'cards',
+            type: 'array',
+            fields: [
+              {
+                name: 'image',
+                type: 'upload',
+                relationTo: 'media',
+                required: true,
+              },
+              {
+                name: 'title',
+                type: 'text',
+                required: true,
+              },
+              {
+                name: 'description',
+                type: 'textarea',
+                required: true,
+              },
+            ],
+          },
+          dimensionClasses({
+            overrides: {
+              name: 'imageClasses',
+              label: 'Image Dimensions',
+              defaultValue: ['w-8', 'h-8', 'md:w-12', 'md:h-12'],
+            },
+          }),
+          {
+            name: 'gapClasses',
+            type: 'select',
+            defaultValue: 'gap-6',
+            options: [
+              { label: 'Gap 4', value: 'gap-4' },
+              { label: 'Gap 6', value: 'gap-6' },
+              { label: 'Gap 8', value: 'gap-8' },
+              { label: 'Gap 10', value: 'gap-10' },
+              { label: 'Gap 12', value: 'gap-12' },
+            ],
+          },
+          textClasses({
+            overrides: {
+              name: 'titleClasses',
+              label: 'Title Text Classes',
+              defaultValue: ['text-lg', 'font-semibold', 'text-slate-900'],
+            },
+          }),
+          textClasses({
+            overrides: {
+              name: 'descriptionClasses',
+              label: 'Description Text Classes',
+              defaultValue: ['text-base', 'text-slate-600'],
+            },
+          }),
+          shadowClasses({
+            overrides: {
+              defaultValue: ['shadow-md', 'hover:shadow-xl'],
+            },
+          }),
+          bgColorPickerAll({
+            overrides: {
+              name: 'cardBgColor',
+              label: 'Card Background Color',
+              defaultValue: 'bg-white',
+            },
+          }),
+          bgColorPickerAll({
+            overrides: {
+              name: 'cardHoverBgColor',
+              label: 'Card Hover Background Color',
+              admin: {
+                description: 'Background color when hovering over the card',
+              },
+            },
+          }),
+          borderClasses({
+            overrides: {
+              name: 'borderClasses',
+              label: 'Border Classes',
+              defaultValue: ['border', 'border-gray-500'],
+            },
+          }),
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'styledCards',
         },
       },
     ],

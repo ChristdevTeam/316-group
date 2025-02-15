@@ -10,6 +10,8 @@ import Image from 'next/image'
 import { TestimonialCarousel } from '@/components/ui/testimonial'
 import Carousel from '@/components/ui/Carousel'
 import CardInvert from '@/components/CardInvert'
+import { AutoScrollSlider } from '@/components/AutoScrollSlider'
+import { StyledCards } from '@/components/StyledCards'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns, backgroundMedia, backgroundType, sectionBackgroundColor, paddingType } = props
@@ -255,7 +257,9 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                           )}
                         >
                           {verticalCTA.subtitle && (
-                            <p className="lg:text-xl">{verticalCTA.subtitle}</p>
+                            <p className={cn(verticalCTA.subtitleClasses)}>
+                              {verticalCTA.subtitle}
+                            </p>
                           )}
 
                           {verticalCTA.title && (
@@ -309,6 +313,46 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                           ))}
                         </ul>
                       </div>
+                    )
+                  }
+
+                  if (contentType === 'autoScrollSlider' && content.autoScrollSlider) {
+                    const { images, dimensionClasses, speed } = content.autoScrollSlider
+                    return (
+                      <AutoScrollSlider
+                        key={index}
+                        images={images}
+                        dimensionClasses={dimensionClasses || []}
+                        speed={speed || 1000}
+                      />
+                    )
+                  }
+
+                  if (contentType === 'styledCards' && content.styledCards) {
+                    const {
+                      cards,
+                      imageClasses,
+                      gapClasses,
+                      titleClasses,
+                      descriptionClasses,
+                      shadowClasses,
+                      cardBgColor,
+                      cardHoverBgColor,
+                      borderClasses,
+                    } = content.styledCards
+                    return (
+                      <StyledCards
+                        key={index}
+                        cards={cards}
+                        imageClasses={imageClasses}
+                        gapClasses={gapClasses}
+                        titleClasses={titleClasses}
+                        descriptionClasses={descriptionClasses}
+                        shadowClasses={shadowClasses}
+                        cardBgColor={cardBgColor}
+                        cardHoverBgColor={cardHoverBgColor}
+                        borderClasses={borderClasses}
+                      />
                     )
                   }
 

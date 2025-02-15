@@ -331,6 +331,10 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'Size - 13XL', value: 'text-13xl' },
 
       // MD size variants
+      { label: 'MD: Size - XS', value: 'md:text-xs' },
+      { label: 'MD: Size - SM', value: 'md:text-sm' },
+      { label: 'MD: Size - Base', value: 'md:text-base' },
+      { label: 'MD: Size - LG', value: 'md:text-lg' },
       { label: 'MD: Size - XL', value: 'md:text-xl' },
       { label: 'MD: Size - 2XL', value: 'md:text-2xl' },
       { label: 'MD: Size - 3XL', value: 'md:text-3xl' },
@@ -722,6 +726,17 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'LG: Width - 80%', value: 'lg:w-4/5' },
       { label: 'LG: Width - 90%', value: 'lg:w-9/10' },
       { label: 'LG: Width - 100%', value: 'lg:w-full' },
+
+      // XL width variants
+      { label: 'XL: Width - 20%', value: 'xl:w-1/5' },
+      { label: 'XL: Width - 33%', value: 'xl:w-1/3' },
+      { label: 'XL: Width - 40%', value: 'xl:w-2/5' },
+      { label: 'XL: Width - 50%', value: 'xl:w-1/2' },
+      { label: 'XL: Width - 60%', value: 'xl:w-3/5' },
+      { label: 'XL: Width - 70%', value: 'xl:w-7/10' },
+      { label: 'XL: Width - 80%', value: 'xl:w-4/5' },
+      { label: 'XL: Width - 90%', value: 'xl:w-9/10' },
+      { label: 'XL: Width - 100%', value: 'xl:w-full' },
 
       // ------------------------
       // 9.5) MARGIN AUTO

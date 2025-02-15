@@ -175,3 +175,7 @@ html[data-theme='light'] {
     font-family: 'Ubuntu', sans-serif !important;
   }
 }
+
+.smooth-scroll .swiper-wrapper {
+  transition-timing-function: linear;
+}
