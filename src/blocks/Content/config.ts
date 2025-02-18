@@ -16,6 +16,7 @@ import { Carousel } from '@/fields/carousel'
 import { dimensionClasses } from '@/fields/dimensionClasses'
 import { shadowClasses } from '@/fields/shadowClasses'
 import { borderClasses } from '@/fields/borderClasses'
+import { bgOpacityPicker } from '@/fields/bgOpacityPicker'
 
 const columnFields: Field[] = [
   {
@@ -157,6 +158,25 @@ const columnFields: Field[] = [
           condition: (_, { contentType }) => contentType === 'verticalCTA',
         },
       },
+      bgColorPickerAll({
+        overrides: {
+          name: 'verticalCTABgColor',
+          label: 'Vertical CTA Background Color',
+          admin: {
+            condition: (_, { contentType }) => contentType === 'verticalCTA',
+          },
+        },
+      }),
+      bgOpacityPicker({
+        overrides: {
+          name: 'verticalCTABgOpacity',
+          label: 'Vertical CTA Background Opacity',
+          defaultValue: 'bg-opacity-50',
+          admin: {
+            condition: (_, { verticalCTABgColor }) => Boolean(verticalCTABgColor),
+          },
+        },
+      }),
       {
         name: 'testimonials',
         type: 'array',

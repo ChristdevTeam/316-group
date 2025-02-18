@@ -173,6 +173,8 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     verticalCTA,
                     cardWithList,
                     linkAlignment,
+                    verticalCTABgColor,
+                    verticalCTABgOpacity,
                   } = content
 
                   if (contentType === 'media' && media && typeof media !== 'string') {
@@ -254,6 +256,9 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                             verticalCTA.alignment === 'top' && 'justify-start h-full',
                             verticalCTA.alignment === 'center' && 'justify-center h-full',
                             verticalCTA.alignment === 'bottom' && 'justify-end h-full',
+                            verticalCTABgColor && verticalCTABgColor,
+                            verticalCTABgOpacity && verticalCTABgOpacity,
+                            verticalCTABgColor && 'p-8 md:p-12 rounded-2xl bg-opacity-50',
                           )}
                         >
                           {verticalCTA.subtitle && (
