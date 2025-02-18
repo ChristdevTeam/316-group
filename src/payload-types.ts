@@ -47081,6 +47081,10 @@ export interface InteractiveMediaGridBlock {
         | 'paddingBottomAdded'
       )
     | null;
+  /**
+   * Swap the position of content grid and media in desktop view
+   */
+  reverseDesktopLayout?: boolean | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'interactiveMediaGrid';
@@ -54230,6 +54234,7 @@ export interface InteractiveMediaGridBlockSelect<T extends boolean = true> {
       };
   activeCardBgColor?: T;
   paddingType?: T;
+  reverseDesktopLayout?: T;
   id?: T;
   blockName?: T;
 }

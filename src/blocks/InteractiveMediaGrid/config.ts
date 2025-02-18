@@ -38,7 +38,7 @@ export const InteractiveMediaGrid: Block = {
           overrides: {
             name: 'cardTitleClasses',
             label: 'Card Title Classes',
-            defaultValue: ['text-xl', 'font-semibold', 'mb-2'],
+            defaultValue: ['text-lg', 'xl:text-xl', 'font-semibold', 'mb-2'],
           },
         }),
         {
@@ -50,7 +50,7 @@ export const InteractiveMediaGrid: Block = {
           overrides: {
             name: 'cardDescriptionClasses',
             label: 'Card Description Classes',
-            defaultValue: ['text-gray-600'],
+            defaultValue: ['text-gray-600', 'text-sm', 'xl:text-base'],
           },
         }),
         {
@@ -90,6 +90,15 @@ export const InteractiveMediaGrid: Block = {
         { label: 'Padding Top Added', value: 'paddingTopAdded' },
         { label: 'Padding Bottom Added', value: 'paddingBottomAdded' },
       ],
+    },
+    {
+      name: 'reverseDesktopLayout',
+      type: 'checkbox',
+      label: 'Reverse Desktop Layout',
+      defaultValue: false,
+      admin: {
+        description: 'Swap the position of content grid and media in desktop view',
+      },
     },
   ],
 }

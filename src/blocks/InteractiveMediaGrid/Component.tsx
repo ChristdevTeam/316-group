@@ -12,6 +12,7 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
   cards,
   activeCardBgColor,
   paddingType,
+  reverseDesktopLayout,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -40,7 +41,7 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
     >
       <div className="flex flex-col lg:flex-row md:gap-16 gap-4">
         {/* Left Column - Cards */}
-        <div className="lg:w-1/2">
+        <div className={cn('lg:w-[55%]', reverseDesktopLayout ? 'lg:order-2' : 'lg:order-1')}>
           <h2 className={cn(headingClasses)} dangerouslySetInnerHTML={{ __html: heading }} />
           {/* Mobile Navigation */}
           <div className="flex justify-end gap-4  lg:!hidden">
@@ -83,7 +84,7 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
         </div>
 
         {/* Right Column - Media */}
-        <div className="lg:w-1/2">
+        <div className={cn('lg:w-[45%]', reverseDesktopLayout ? 'lg:order-1' : 'lg:order-2')}>
           {cards[activeIndex] && typeof cards[activeIndex].media === 'object' && (
             <div
               className={cn(
