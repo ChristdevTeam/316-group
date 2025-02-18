@@ -1,6 +1,7 @@
 import { Block } from 'payload'
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { textClasses } from '@/fields/textClasses'
+import { dimensionClasses } from '@/fields/dimensionClasses'
 
 export const InteractiveMediaGrid: Block = {
   slug: 'interactiveMediaGrid',
@@ -15,7 +16,28 @@ export const InteractiveMediaGrid: Block = {
       overrides: {
         name: 'headingClasses',
         label: 'Heading Classes',
-        defaultValue: ['text-4xl', 'font-bold', 'mb-8'],
+        defaultValue: ['text-4xl', 'lg:text-5xl', 'xl:text-6xl', 'font-bold', 'mb-8'],
+      },
+    }),
+    dimensionClasses({
+      overrides: {
+        name: 'iconDimensions',
+        label: 'Icon Dimensions',
+        defaultValue: ['w-8', 'h-8'],
+      },
+    }),
+    textClasses({
+      overrides: {
+        name: 'cardTitleClasses',
+        label: 'Card Title Classes (Applied to all cards)',
+        defaultValue: ['text-base', 'xl:text-lg', 'font-bold', 'mb-2', 'mt-4'],
+      },
+    }),
+    textClasses({
+      overrides: {
+        name: 'cardDescriptionClasses',
+        label: 'Card Description Classes (Applied to all cards)',
+        defaultValue: ['text-gray-600', 'text-sm', 'xl:text-base'],
       },
     }),
     {
@@ -34,25 +56,11 @@ export const InteractiveMediaGrid: Block = {
           type: 'text',
           required: true,
         },
-        textClasses({
-          overrides: {
-            name: 'cardTitleClasses',
-            label: 'Card Title Classes',
-            defaultValue: ['text-lg', 'xl:text-xl', 'font-semibold', 'mb-2'],
-          },
-        }),
         {
           name: 'cardDescription',
           type: 'text',
           required: true,
         },
-        textClasses({
-          overrides: {
-            name: 'cardDescriptionClasses',
-            label: 'Card Description Classes',
-            defaultValue: ['text-gray-600', 'text-sm', 'xl:text-base'],
-          },
-        }),
         {
           name: 'media',
           type: 'upload',

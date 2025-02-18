@@ -9,6 +9,9 @@ import type { InteractiveMediaGridBlock } from '@/payload-types'
 export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
   heading,
   headingClasses,
+  iconDimensions,
+  cardTitleClasses,
+  cardDescriptionClasses,
   cards,
   activeCardBgColor,
   paddingType,
@@ -41,7 +44,7 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
     >
       <div className="flex flex-col lg:flex-row md:gap-16 gap-4">
         {/* Left Column - Cards */}
-        <div className={cn('lg:w-[55%]', reverseDesktopLayout ? 'lg:order-2' : 'lg:order-1')}>
+        <div className={cn('lg:w-1/2', reverseDesktopLayout ? 'lg:order-2' : 'lg:order-1')}>
           <h2 className={cn(headingClasses)} dangerouslySetInnerHTML={{ __html: heading }} />
           {/* Mobile Navigation */}
           <div className="flex justify-end gap-4  lg:!hidden">
@@ -72,19 +75,19 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
                 onMouseEnter={() => setActiveIndex(index)}
               >
                 {typeof card.icon === 'object' && (
-                  <div className="w-8 h-8 mb-4">
+                  <div className={cn(iconDimensions)}>
                     <Media resource={card.icon} className="w-full h-full object-contain" />
                   </div>
                 )}
-                <h3 className={cn(card.cardTitleClasses)}>{card.cardTitle}</h3>
-                <p className={cn(card.cardDescriptionClasses)}>{card.cardDescription}</p>
+                <h3 className={cn(cardTitleClasses)}>{card.cardTitle}</h3>
+                <p className={cn(cardDescriptionClasses)}>{card.cardDescription}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Right Column - Media */}
-        <div className={cn('lg:w-[45%]', reverseDesktopLayout ? 'lg:order-1' : 'lg:order-2')}>
+        <div className={cn('lg:w-1/2', reverseDesktopLayout ? 'lg:order-1' : 'lg:order-2')}>
           {cards[activeIndex] && typeof cards[activeIndex].media === 'object' && (
             <div
               className={cn(
@@ -105,19 +108,15 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
         {cards[activeIndex] && (
           <div className={cn('p-6 rounded-xl')}>
             {typeof cards[activeIndex].icon === 'object' && (
-              <div className="w-8 h-8 mb-4">
+              <div className={cn(iconDimensions)}>
                 <Media
                   resource={cards[activeIndex].icon}
                   className="w-full h-full object-contain"
                 />
               </div>
             )}
-            <h3 className={cn(cards[activeIndex].cardTitleClasses)}>
-              {cards[activeIndex].cardTitle}
-            </h3>
-            <p className={cn(cards[activeIndex].cardDescriptionClasses)}>
-              {cards[activeIndex].cardDescription}
-            </p>
+            <h3 className={cn(cardTitleClasses)}>{cards[activeIndex].cardTitle}</h3>
+            <p className={cn(cardDescriptionClasses)}>{cards[activeIndex].cardDescription}</p>
           </div>
         )}
       </div>
