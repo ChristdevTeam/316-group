@@ -53,6 +53,24 @@ export const TestimonialSlider: Block = {
       },
     }),
     {
+      name: 'autoplayDelay',
+      type: 'number',
+      required: true,
+      defaultValue: 5000,
+      admin: {
+        description: 'Delay in milliseconds between slides',
+      },
+    },
+    {
+      name: 'speed',
+      type: 'number',
+      required: true,
+      defaultValue: 1000,
+      admin: {
+        description: 'Speed of the slider transition in milliseconds',
+      },
+    },
+    {
       name: 'testimonials',
       type: 'array',
       required: true,

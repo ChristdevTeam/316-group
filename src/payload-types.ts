@@ -50720,6 +50720,14 @@ export interface TestimonialSliderBlock {
         | 'lg:tracking-widest'
       )[]
     | null;
+  /**
+   * Delay in milliseconds between slides
+   */
+  autoplayDelay: number;
+  /**
+   * Speed of the slider transition in milliseconds
+   */
+  speed: number;
   testimonials: {
     companyName: string;
     platformIcons?:
@@ -54678,6 +54686,8 @@ export interface TestimonialSliderBlockSelect<T extends boolean = true> {
   companyNameClasses?: T;
   testimonialTextClasses?: T;
   authorInfoClasses?: T;
+  autoplayDelay?: T;
+  speed?: T;
   testimonials?:
     | T
     | {

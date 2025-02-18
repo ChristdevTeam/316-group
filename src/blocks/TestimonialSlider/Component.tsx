@@ -6,10 +6,11 @@ import { Media } from '@/components/Media'
 import { Star, MoveLeft, MoveRight } from 'lucide-react'
 import type { TestimonialSliderBlock as TestimonialSliderBlockProps } from '@/payload-types'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectCreative } from 'swiper/modules'
+import { Autoplay, EffectCreative } from 'swiper/modules'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/effect-creative'
+import 'swiper/css/autoplay'
 
 export const TestimonialSliderBlock: React.FC<TestimonialSliderBlockProps> = ({
   heading,
@@ -19,6 +20,8 @@ export const TestimonialSliderBlock: React.FC<TestimonialSliderBlockProps> = ({
   authorInfoClasses,
   testimonials,
   gradient,
+  autoplayDelay,
+  speed,
 }) => {
   const [swiper, setSwiper] = useState<any>(null)
 
@@ -35,7 +38,15 @@ export const TestimonialSliderBlock: React.FC<TestimonialSliderBlockProps> = ({
   }
 
   return (
-    <div className={cn(gradient?.type, gradient?.fromColor, gradient?.viaColor, gradient?.toColor)}>
+    <div
+      className={cn(
+        gradient?.type,
+        gradient?.fromColor,
+        gradient?.viaColor,
+        gradient?.toColor,
+        'overflow-hidden',
+      )}
+    >
       <div className="container max-w-screen-2xl py-24">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column */}
@@ -99,8 +110,9 @@ export const TestimonialSliderBlock: React.FC<TestimonialSliderBlockProps> = ({
               effect={'creative'}
               centeredSlides={false}
               loop={true}
+              speed={speed || 1000}
               autoplay={{
-                delay: 2500,
+                delay: autoplayDelay || 5000,
                 pauseOnMouseEnter: true,
               }}
               grabCursor={true}
@@ -115,7 +127,7 @@ export const TestimonialSliderBlock: React.FC<TestimonialSliderBlockProps> = ({
                   translate: ['110%', 0, 0], // Adjust translate to account for spaceBetween
                 },
               }}
-              modules={[EffectCreative]}
+              modules={[EffectCreative, Autoplay]}
               className="w-full"
               style={{ overflow: 'visible' }}
             >
