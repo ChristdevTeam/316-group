@@ -132,7 +132,7 @@ export const TestimonialSliderBlock: React.FC<TestimonialSliderBlockProps> = ({
               style={{ overflow: 'visible' }}
             >
               {testimonials.map((testimonial, index) => (
-                <SwiperSlide key={index}>
+                <SwiperSlide key={index} className="rounded-2xl">
                   <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg space-y-8 lg:space-y-12">
                     <h2 className="flex justify-between items-center mb-6">
                       <span className={cn(companyNameClasses)}>{testimonial.companyName}</span>
