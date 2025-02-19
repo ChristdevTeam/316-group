@@ -2,7 +2,7 @@
 
 import { TabBlock } from '@/payload-types'
 import { cn } from '@/utilities/cn'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Media } from '@/components/Media'
 import { Button } from '@/components/ui/button'
 import RichText from '@/components/RichText'
@@ -11,8 +11,29 @@ import { CMSLink } from '@/components/Link'
 export const TabBlockComponent: React.FC<TabBlock> = ({ tabs, paddingType }) => {
   const [activeTab, setActiveTab] = useState(0)
   const [isExpanded, setIsExpanded] = useState(false)
+  const tabsRef = useRef<HTMLDivElement>(null)
 
   const activeTabContent = tabs?.[activeTab]
+
+  useEffect(() => {
+    if (tabsRef.current) {
+      const tabsContainer = tabsRef.current
+      const activeTabElement = tabsContainer.children[activeTab] as HTMLElement
+
+      if (activeTabElement) {
+        const containerWidth = tabsContainer.offsetWidth
+        const tabWidth = activeTabElement.offsetWidth
+        const tabLeft = activeTabElement.offsetLeft
+
+        const scrollPosition = tabLeft - containerWidth / 2 + tabWidth / 2
+
+        tabsContainer.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth',
+        })
+      }
+    }
+  }, [activeTab])
 
   if (!activeTabContent) return null
 
@@ -34,7 +55,10 @@ export const TabBlockComponent: React.FC<TabBlock> = ({ tabs, paddingType }) => 
     >
       <div className="container max-w-screen-2xl">
         {/* Tab Navigation */}
-        <div className="flex gap-8 border-b-4 border-green-300/60 mb-12">
+        <div
+          ref={tabsRef}
+          className="flex gap-0 justify-between mb-12 overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] border-b-4 border-green-200"
+        >
           {tabs?.map((tab, index) => (
             <h2
               key={index}
@@ -43,10 +67,10 @@ export const TabBlockComponent: React.FC<TabBlock> = ({ tabs, paddingType }) => 
                 setIsExpanded(false)
               }}
               className={cn(
-                'pb-4 text-lg md:text-xl lg:text-2xl font-semibold transition-colors px-2 md:px-4 lg:px-6 -mb-1',
+                'py-4 text-lg md:text-xl lg:text-2xl font-semibold transition-colors px-4 md:px-8 lg:px-12 whitespace-nowrap rounded-t-xl',
                 activeTab === index
-                  ? 'border-b-4 border-green-600 text-slate-950'
-                  : 'border-b-4 border-green-50/10 text-slate-400 hover:text-slate-700',
+                  ? 'bg-green-200 text-slate-950'
+                  : 'text-slate-400 hover:text-slate-700',
               )}
             >
               {tab.tabName}

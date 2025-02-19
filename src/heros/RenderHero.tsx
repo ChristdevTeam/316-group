@@ -10,6 +10,8 @@ import { ProductHero } from './ProductHero'
 import { ProductHero2 } from './ProductHero2'
 import { ServicesHero } from './ServicesHero'
 import { NoHero } from './NoHero'
+import { SwiperHero } from './SwiperHero'
+// import { SwiperHero } from './SwiperHero'
 
 const heroes = {
   highImpact: HighImpactHero,
@@ -19,6 +21,7 @@ const heroes = {
   productHero: ProductHero,
   productHero2: ProductHero2,
   servicesHero: ServicesHero,
+  swiperHero: SwiperHero,
   noHero: NoHero,
 }
 

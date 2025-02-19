@@ -425,6 +425,7 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'Font - Urbanist', value: 'font-urbanist' },
       { label: 'Font - Ubuntu', value: 'font-ubuntu' },
       { label: 'Font - Inter', value: 'font-inter' },
+      { label: 'Font - Lufga', value: 'font-lufga' },
 
       // ------------------------
       // 5) PADDING TOP (PT)

@@ -11,7 +11,7 @@
   h6 {
     font-size: auto;
     font-weight: auto;
-    font-family: 'Urbanist', sans-serif;
+    font-family: 'Urbanist', var(--font-lufga), sans-serif;
   }
 
   :root {
@@ -91,13 +91,13 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-lufga), sans-serif;
   }
 }
 
 html {
   opacity: 0;
-  /* font-family: 'Urbanist', sans-serif; */
+  font-family: var(--font-lufga), sans-serif;
 }
 
 html[data-theme='dark'],
@@ -173,6 +173,9 @@ html[data-theme='light'] {
   }
   .font-Ubuntu {
     font-family: 'Ubuntu', sans-serif !important;
+  }
+  .font-lufga {
+    font-family: var(--font-lufga), sans-serif !important;
   }
 }
 
