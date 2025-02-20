@@ -8,6 +8,7 @@ import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { MegaMenu } from './menu/MegaMenu'
+import { LogoDark } from '@/components/Logo/LogoDark'
 
 interface HeaderClientProps {
   header: Header
@@ -35,11 +36,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
       {...(theme ? { 'data-theme': theme } : {})}
     >
       <div className="pt-6 pb-5 border-border flex justify-between items-center">
-        <Link href="/">
-          <Logo loading="eager" priority="high" className="dark:invert invert-0" />
-        </Link>
+        {theme && theme === 'light' ? (
+          <Link href="/">
+            <Logo loading="eager" priority="high" />
+          </Link>
+        ) : (
+          <Link href="/">
+            <LogoDark loading="eager" priority="high" />
+          </Link>
+        )}
 
-        <MegaMenu className="dark:text-gray-100" header={header} />
+        <MegaMenu className="dark:text-gray-100" header={header} theme={theme} />
       </div>
     </header>
   )

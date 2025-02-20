@@ -7,9 +7,18 @@ import type { Link as LinkType } from './types'
 import { cn } from '@/utilities/cn'
 import { Header } from '@/payload-types'
 import { Logo } from '@/components/Logo/Logo'
+import { LogoDark } from '@/components/Logo/LogoDark'
 import Link from 'next/link'
 
-export const MegaMenu = ({ className, header }: { className: string; header: Header }) => {
+export const MegaMenu = ({
+  className,
+  header,
+  theme,
+}: {
+  className: string
+  header: Header
+  theme: string | null
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
@@ -176,7 +185,11 @@ export const MegaMenu = ({ className, header }: { className: string; header: Hea
       >
         <div className="flex items-center justify-between px-1 pb-16 pt-4">
           <Link href="/">
-            <Logo loading="eager" priority="high" className="dark:invert invert-0" />
+            {theme && theme === 'light' ? (
+              <Logo loading="eager" priority="high" />
+            ) : (
+              <LogoDark loading="eager" priority="high" />
+            )}
           </Link>
           <button
             onClick={handleToggle}

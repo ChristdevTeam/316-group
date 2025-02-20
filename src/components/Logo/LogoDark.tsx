@@ -9,7 +9,7 @@ interface Props {
   priority?: 'auto' | 'high' | 'low'
 }
 
-export const Logo = (props: Props) => {
+export const LogoDark = (props: Props) => {
   const { loading: loadingFromProps, priority: priorityFromProps, className } = props
   const router = useRouter()
 
@@ -27,7 +27,7 @@ export const Logo = (props: Props) => {
       fetchPriority={priority}
       decoding="async"
       className={clsx('max-w-[15.375rem] w-full h-[60px]', className)}
-      src="/assets/logo.svg"
+      src="/assets/logodark.svg"
     />
   )
 }
