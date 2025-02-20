@@ -104,6 +104,8 @@ export const hero: Field = {
           ['productHero', 'productHero2', 'servicesHero', 'swiperHero'].includes(type),
       },
       required: true,
+      defaultValue:
+        'We back <span class="text-green-500"> disruptive</span> <br class="hidden lg:block " /> products and founders<br class="hidden lg:block " /> in retail',
     },
     textClasses({
       overrides: {
@@ -113,6 +115,7 @@ export const hero: Field = {
           condition: (_, { type }) =>
             ['productHero', 'productHero2', 'servicesHero', 'swiperHero'].includes(type),
         },
+        defaultValue: ['text-4xl', 'md:text-6xl', 'font-bold', 'text-white'],
       },
     }),
     {
@@ -237,7 +240,7 @@ export const hero: Field = {
         name: 'bgColor',
         label: 'Background Color',
         admin: {
-          condition: (_, { type }) => ['productHero2', 'servicesHero'].includes(type),
+          condition: (_, { type }) => ['productHero2', 'servicesHero', 'swiperHero'].includes(type),
         },
         defaultValue: 'bg-sky-800',
       },
@@ -276,6 +279,7 @@ export const hero: Field = {
       admin: {
         condition: (_, { type }) => type === 'swiperHero',
       },
+      defaultValue: '316 Retail Fund',
     },
     textClasses({
       overrides: {
@@ -284,9 +288,17 @@ export const hero: Field = {
         admin: {
           condition: (_, { type }) => type === 'swiperHero',
         },
-        defaultValue: ['text-4xl', 'md:text-6xl', 'font-bold'],
+        defaultValue: [
+          'text-6xl',
+          'md:text-8xl',
+          'font-bold',
+          'text-white',
+          'text-center',
+          'xl:text-11xl',
+        ],
       },
     }),
+
     {
       name: 'images',
       type: 'array',

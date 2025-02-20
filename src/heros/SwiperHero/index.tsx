@@ -2,12 +2,13 @@
 
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, EffectFade } from 'swiper/modules'
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules'
 import { Media } from '@/components/Media'
 import { cn } from '@/utilities/cn'
 
 import 'swiper/css'
-import 'swiper/css/effect-fade'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/pagination'
 import 'swiper/css/autoplay'
 import { CMSLink } from '@/components/Link'
 import { Page } from '@/payload-types'
@@ -24,61 +25,91 @@ export const SwiperHero: React.FC<Page['hero']> = ({
   overlayText,
   overlayTextClasses,
   images,
+  bgColor,
 }) => {
   if (!images?.length) return null
 
   return (
-    <div className={cn('relative w-full min-h-[60vh]')}>
-      {heroTitle && (
-        <div className={cn('absolute top-4 left-4 z-20', heroTitleClasses)}>{heroTitle}</div>
-      )}
-      {title && <div className={cn('absolute top-16 left-4 z-20', titleClasses)}>{title}</div>}
-      {descriptionText && (
-        <RichText
-          className={cn('absolute top-32 left-4 z-20 max-w-xl', descriptionClasses)}
-          content={descriptionText}
-        />
-      )}
-      {overlayText && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className={cn('text-center text-white', overlayTextClasses)}>{overlayText}</div>
-        </div>
-      )}
-      {Array.isArray(links) && links.length > 0 && (
-        <div className="flex gap-4">
-          {links.map(({ link, buttonClasses }, i) => {
-            return (
-              <div key={i} className="flex">
-                <CMSLink
-                  size={'sm'}
-                  {...link}
-                  className={cn('rounded-xl bg-transparent border-slate-950', buttonClasses)}
-                />
-              </div>
-            )
-          })}
-        </div>
-      )}
-      <Swiper
-        modules={[Autoplay, EffectFade]}
-        effect="fade"
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        className="absolute inset-0 w-full h-full"
-      >
-        {images.map((media, index) => (
-          <SwiperSlide key={index} className="relative w-full h-full">
-            <Media
-              resource={media.media}
-              className="object-cover w-full h-full"
-              imgClassName="object-cover w-full h-full"
+    <div className={cn('relative w-full min-h-[60vh] -mt-16', bgColor)}>
+      <div className="relative container max-w-screen-2xl flex flex-col lg:flex-row gap-16 justify-between overflow-hidden py-16 md:pb-28">
+        {overlayText && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center opacity-30">
+            <div className={cn(overlayTextClasses)}>{overlayText}</div>
+          </div>
+        )}
+        <div className="w-full lg:w-1/2 flex flex-col gap-8 justify-center">
+          <div>{heroTitle && <button className={cn(heroTitleClasses)}>{heroTitle}</button>}</div>
+          {title && (
+            <div className={cn(titleClasses)} dangerouslySetInnerHTML={{ __html: title }} />
+          )}
+          {descriptionText && (
+            <RichText
+              className={cn(descriptionClasses)}
+              enableGutter={false}
+              content={descriptionText}
             />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          )}
+
+          {Array.isArray(links) && links.length > 0 && (
+            <div className="flex gap-4">
+              {links.map(({ link, buttonClasses }, i) => {
+                return (
+                  <div key={i} className="flex">
+                    <CMSLink
+                      size={'sm'}
+                      {...link}
+                      className={cn('rounded-xl bg-transparent border-slate-950', buttonClasses)}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
+        <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden">
+          <Swiper
+            modules={[Autoplay, EffectCoverflow, Pagination]}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            className="relative inset-0 w-full h-full 
+              [&_.swiper-pagination]:bottom-[-2rem]
+              [&_.swiper-pagination-bullet]:w-4 
+              [&_.swiper-pagination-bullet]:h-4 
+              [&_.swiper-pagination-bullet]:bg-slate-300 
+              [&_.swiper-pagination-bullet-active]:bg-cyan-600
+              [&_.swiper-pagination-bullet-active]:w-5
+              [&_.swiper-pagination-bullet-active]:h-5"
+          >
+            {images.map((media, index) => (
+              <SwiperSlide key={index} className="relative w-full h-full">
+                <Media
+                  resource={media.media}
+                  className="object-cover w-full h-full rounded-2xl"
+                  imgClassName="object-cover w-full h-full rounded-2xl"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
     </div>
   )
 }
