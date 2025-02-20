@@ -15,6 +15,7 @@ export const TestimonialSlider: Block = {
     {
       name: 'heading',
       type: 'text',
+      defaultValue: 'What our clients say',
       required: true,
     },
     textClasses({

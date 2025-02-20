@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { Inter } from 'next/font/google'
 import { cn } from 'src/utilities/cn'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
@@ -25,6 +26,12 @@ import '@radix-ui/themes/styles.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
 const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+})
+
+// Add Inter font
+const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
 })
@@ -146,6 +153,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         ubuntu.className,
         GeistSans.variable,
         GeistMono.variable,
+        inter.className,
       )}
       lang="en"
       suppressHydrationWarning
