@@ -9,9 +9,14 @@ services:
       - --providers.file.watch=true
       - --entrypoints.web.address=:80
       - --metrics.prometheus=true
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.myresolver.acme.email=contact@christdev.com
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
     ports:
       - '80:80'
       - '8080:8080'
+      - '443:443'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ../traefik/traefik.yml:/etc/traefik/traefik.yml
@@ -23,7 +28,7 @@ services:
       options:
         max-size: '10m'
         max-file: '3'
-    restart: unless-stopped
+    restart: always
 
   prometheus:
     image: prom/prometheus:latest

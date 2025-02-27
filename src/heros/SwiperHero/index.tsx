@@ -37,7 +37,7 @@ export const SwiperHero: React.FC<Page['hero']> = ({
             <div className={cn(overlayTextClasses)}>{overlayText}</div>
           </div>
         )}
-        <div className="w-full lg:w-1/2 flex flex-col gap-8 justify-center">
+        <div className="w-full lg:w-1/2 flex flex-col gap-8">
           <div>{heroTitle && <button className={cn(heroTitleClasses)}>{heroTitle}</button>}</div>
           {title && (
             <div className={cn(titleClasses)} dangerouslySetInnerHTML={{ __html: title }} />

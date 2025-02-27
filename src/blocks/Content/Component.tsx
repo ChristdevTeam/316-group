@@ -258,7 +258,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                             verticalCTA.alignment === 'bottom' && 'justify-end h-full',
                             verticalCTABgColor && verticalCTABgColor,
                             verticalCTABgOpacity && verticalCTABgOpacity,
-                            verticalCTABgColor && 'p-8 md:p-12 rounded-2xl bg-opacity-50',
+                            verticalCTABgColor && 'p-8 md:p-12 rounded-2xl',
                           )}
                         >
                           {verticalCTA.subtitle && (
