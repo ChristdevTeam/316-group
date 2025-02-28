@@ -30,32 +30,6 @@ services:
         max-file: '3'
     restart: always
 
-  prometheus:
-    image: prom/prometheus:latest
-    volumes:
-      - ../traefik/prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - '9090:9090'
-    networks:
-      - web
-
-  grafana:
-    image: grafana/grafana:latest
-    environment:
-      - GF_SECURITY_ADMIN_USER=${ADMIN_USER}
-      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - GF_DATASOURCES__DATASOURCES_0_NAME=Prometheus
-      - GF_DATASOURCES__DATASOURCES_0_TYPE=prometheus
-      - GF_DATASOURCES__DATASOURCES_0_URL=${PROMETHEUS_HOST}
-      - GF_DATASOURCES__DATASOURCES_0_ACCESS=proxy
-    ports:
-      - '3001:3000'
-    networks:
-      - web
-    env_file:
-      - .env
-    restart: unless-stopped
-
   payload:
     build:
       context: .
