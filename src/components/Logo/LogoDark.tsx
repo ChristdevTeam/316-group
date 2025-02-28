@@ -20,14 +20,14 @@ export const LogoDark = (props: Props) => {
     /* eslint-disable @next/next/no-img-element */
     <img
       onClick={() => router.push('/')}
-      alt="Payload Logo"
+      alt="316 Group Logo"
       width={193}
       height={34}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
       className={clsx('max-w-[15.375rem] w-full h-[60px]', className)}
-      src="/assets/logodark.svg"
+      src="/assets/logoDark.svg"
     />
   )
 }

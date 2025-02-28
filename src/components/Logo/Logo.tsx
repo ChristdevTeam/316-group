@@ -20,7 +20,7 @@ export const Logo = (props: Props) => {
     /* eslint-disable @next/next/no-img-element */
     <img
       onClick={() => router.push('/')}
-      alt="Payload Logo"
+      alt="316 Group Logo"
       width={193}
       height={34}
       loading={loading}
