@@ -1,69 +1,14 @@
-# version: '3.9'
+version: '3.9'
 
 services:
-  traefik:
-    image: traefik:v2.10
-    command:
-      - --api.insecure=true
-      - --providers.docker=true
-      - --providers.file.watch=true
-      - --entrypoints.web.address=:80
-      - --metrics.prometheus=true
-      - --entrypoints.websecure.address=:443
-      - --certificatesresolvers.myresolver.acme.email=contact@christdev.com
-      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
-      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
-    ports:
-      - '80:80'
-      - '8080:8080'
-      - '443:443'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ../traefik/traefik.yml:/etc/traefik/traefik.yml
-      - ./public/media:/media
-    networks: # Connect to the 'web' network
-      - web
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '10m'
-        max-file: '3'
-    restart: always
-
-  payload:
+  payload_main:
     build:
       context: .
       dockerfile: Dockerfile
-    deploy:
-      replicas: 1
-      update_config:
-        parallelism: 1
-        delay: 10s
-      restart_policy:
-        condition: on-failure
+    ports:
+      - '3002:3000'
     env_file:
       - .env
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.http.routers.payload.rule=Host(`77.223.214.122`)'
-      - 'traefik.http.routers.payload-media.rule=PathPrefix(`/media`)'
-      - 'traefik.http.routers.payload-media.entrypoints=web'
-      - 'traefik.http.routers.payload.entrypoints=web'
-      - 'traefik.http.services.payload.loadbalancer.server.port=3000'
-      - 'traefik.http.middlewares.large-upload.headers.customrequestheaders.Content-Length=524288000'
-      - 'traefik.http.routers.payload.middlewares=large-upload'
-    networks:
-      - web
-    depends_on:
-      - traefik
     volumes:
       - ./public/media:/app/public/media
-      # - ./node_modules:/app/node_modules
-    restart: unless-stopped
-
-networks: # Create a network called 'web'
-  web:
-    external: false
-
-volumes:
-  prometheus_data:
+    restart: always
