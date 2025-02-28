@@ -27,7 +27,7 @@ export const LogoDark = (props: Props) => {
       fetchPriority={priority}
       decoding="async"
       className={clsx('max-w-[15.375rem] w-full h-[60px]', className)}
-      src="/assets/logoDark.svg"
+      src="/assets/logo-dark.svg"
     />
   )
 }
