@@ -152,7 +152,7 @@ export const hero: Field = {
       }),
       admin: {
         condition: (_, { type } = {}) =>
-          ['productHero', 'specialHero', 'productHero2', 'servicesHero', 'swiperHero'].includes(
+          ['productHero', 'productHero2', 'servicesHero', 'swiperHero'].includes(
             type,
           ),
       },
@@ -182,7 +182,10 @@ export const hero: Field = {
       }),
       label: false,
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'lowImpact'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'lowImpact','specialHero',
+              'productHero',
+              'productHero2',
+              'servicesHero',].includes(type),
       },
     },
 
