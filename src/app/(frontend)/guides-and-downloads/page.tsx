@@ -31,7 +31,7 @@ export default async function Page() {
     <div>
       <PageClient />
       {pageTitle && (
-        <div className="container">
+        <div className="container max-w-screen-2xl">
           <h1 dangerouslySetInnerHTML={{ __html: pageTitle }} className={cn(pageTitleClasses)}></h1>
         </div>
       )}
@@ -42,7 +42,7 @@ export default async function Page() {
           'flex flex-col justify-center items-center',
         )}
       >
-        <div className="container">
+        <div className="container max-w-screen-2xl">
           {subtitle && (
             <div className={cn('flex justify-center items-center gap-4 md:gap-6', subtitleClasses)}>
               <div className="h-6 w-6 bg-lime-400"></div>
