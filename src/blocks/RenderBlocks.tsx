@@ -21,6 +21,7 @@ import { NumbersBlock } from './Numbers/Component'
 import { TabBlockComponent } from './TabBlock/Component'
 import { InteractiveMediaGrid } from './InteractiveMediaGrid/Component'
 import { TestimonialSliderBlock } from './TestimonialSlider/Component'
+import { SpacingBlock } from './SpacingBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -41,6 +42,7 @@ const blockComponents = {
   tabBlock: TabBlockComponent,
   interactiveMediaGrid: InteractiveMediaGrid,
   testimonialSlider: TestimonialSliderBlock,
+  spacing: SpacingBlock,
 }
 
 export const RenderBlocks: React.FC<{

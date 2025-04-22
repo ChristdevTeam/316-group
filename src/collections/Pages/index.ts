@@ -34,6 +34,7 @@ import { Numbers } from '@/blocks/Numbers/config'
 import { TabBlock } from '@/blocks/TabBlock/config'
 import { InteractiveMediaGrid } from '@/blocks/InteractiveMediaGrid/config'
 import { TestimonialSlider } from '@/blocks/TestimonialSlider/config'
+import { SpacingBlock } from '@/blocks/SpacingBlock/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -110,6 +111,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 TabBlock,
                 InteractiveMediaGrid,
                 TestimonialSlider,
+                SpacingBlock,
               ],
               required: true,
             },
