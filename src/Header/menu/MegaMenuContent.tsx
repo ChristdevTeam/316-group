@@ -77,7 +77,7 @@ export const MegaMenuContent = ({ items, setIsOpen, setActiveSection }: MegaMenu
             <a
               key={index}
               href={getHref(item.link)}
-              className="block text-2xl font-base text-gray-1000 hover:text-teal-600 py-2 transition-colors duration-200"
+              className="block text-2xl font-normal text-gray-1000 hover:text-teal-600 py-2 transition-colors duration-200"
               onClick={() => {
                 setIsOpen(false)
                 setActiveSection(null)

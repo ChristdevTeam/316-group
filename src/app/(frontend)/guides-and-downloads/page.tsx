@@ -1,32 +1,15 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
-import { PageRange } from '@/components/PageRange'
-import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
-import PageClient from './page.client'
 import { cn } from '@/utilities/cn'
+import PageClient from './page.client'
 
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
 export const revalidate = 600
 
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
-
-  const posts = await payload.find({
-    collection: 'posts',
-    depth: 1,
-    limit: 12,
-    overrideAccess: false,
-    select: {
-      title: true,
-      slug: true,
-      categories: true,
-      meta: true,
-    },
-  })
 
   const settings = await payload.findGlobal({
     slug: 'settings',
@@ -42,7 +25,7 @@ export default async function Page() {
     titleClasses,
     description,
     descriptionClasses,
-  } = settings.blogArchiveHeroContent
+  } = settings.ebooksAndGuidesArchiveHeroContent
 
   return (
     <div>
@@ -77,29 +60,12 @@ export default async function Page() {
           )}
         </div>
       </div>
-
-      <div className="container max-w-screen-2xl mb-8 pt-8">
-        <PageRange
-          collection="posts"
-          currentPage={posts.page}
-          limit={12}
-          totalDocs={posts.totalDocs}
-        />
-      </div>
-
-      <CollectionArchive posts={posts.docs} />
-
-      <div className="container max-w-screen-2xl mb-24">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
-        )}
-      </div>
     </div>
   )
 }
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Blog - 316 Group`,
+    title: `Guides & Downloads - 316 Group`,
   }
 }

@@ -67,7 +67,17 @@ const columnFields: Field[] = [
           { label: 'Card with List', value: 'cardWithList' },
           { label: 'Auto Scroll Slider', value: 'autoScrollSlider' },
           { label: 'Styled Cards', value: 'styledCards' },
+          { label: 'Swiper Images Slider', value: 'swiperSlider' },
         ],
+      },
+      {
+        name: 'swiperImages',
+        type: 'upload',
+        relationTo: 'media',
+        hasMany: true,
+        admin: {
+          condition: (_, { contentType }) => contentType === 'swiperSlider',
+        },
       },
       {
         name: 'cardInvert',

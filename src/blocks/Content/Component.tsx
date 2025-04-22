@@ -12,6 +12,7 @@ import Carousel from '@/components/ui/Carousel'
 import CardInvert from '@/components/CardInvert'
 import { AutoScrollSlider } from '@/components/AutoScrollSlider'
 import { StyledCards } from '@/components/StyledCards'
+import { SwiperElement } from '@/components/Swiper'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns, backgroundMedia, backgroundType, sectionBackgroundColor, paddingType } = props
@@ -195,6 +196,11 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                           cardImage={cardImage}
                         />
                       )
+                  }
+
+                  if (contentType === 'swiperSlider' && content.swiperImages) {
+                    const images = content.swiperImages
+                    return <SwiperElement key={index} images={images} />
                   }
 
                   if (contentType === 'testimonials' && content.testimonials) {

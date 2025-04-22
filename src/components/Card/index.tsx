@@ -40,7 +40,9 @@ export const Card: React.FC<{
     >
       <div className="relative w-full ">
         {!metaImage && <div className="">No image</div>}
-        {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
+        {metaImage && typeof metaImage !== 'string' && (
+          <Media imgClassName="aspect-[16/11]" resource={metaImage} size="33vw" />
+        )}
         {showCategories && hasCategories && (
           <div className="uppercase text-sm mb-4 absolute top-6 right-0">
             {showCategories && hasCategories && (
@@ -80,7 +82,9 @@ export const Card: React.FC<{
             </div>
           )}
           {description && (
-            <div className="my-2">{description && <p>{sanitizedDescription}</p>}</div>
+            <div className="my-2 line-clamp-3 hover:line-clamp-none">
+              {description && <p>{sanitizedDescription}</p>}
+            </div>
           )}
         </div>
 

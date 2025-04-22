@@ -225,7 +225,7 @@ export const MegaMenu = ({
           <div className="p-1 space-y-8">
             {header.navItems?.map((section) => (
               <MenuItem
-                className={cn('font-small text-2xl justify-between w-[100%]')}
+                className={cn('font-normal text-2xl justify-between w-[100%]')}
                 key={section.title}
                 title={section.title}
                 hasMegaMenu={section.hasMegaMenu ? section.hasMegaMenu : false}
