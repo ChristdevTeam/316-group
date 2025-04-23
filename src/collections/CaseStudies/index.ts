@@ -117,7 +117,7 @@ export const CaseStudies: CollectionConfig<'case-studies'> = {
                 },
                 {
                   name: 'overview',
-                  type: 'text',
+                  type: 'textarea',
                 },
                 {
                   name: 'background',
