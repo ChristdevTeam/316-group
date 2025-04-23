@@ -1,5 +1,11 @@
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { textClasses } from '@/fields/textClasses'
+import {
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
 import { GlobalConfig } from 'payload'
 
 export const Settings: GlobalConfig = {
@@ -9,319 +15,354 @@ export const Settings: GlobalConfig = {
   },
   fields: [
     {
-      name: 'blogArchiveHeroContent',
-      type: 'group',
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          type: 'collapsible',
-          label: 'Blog Hero Content',
-          admin: {
-            initCollapsed: true,
-          },
+          label: 'Blog Hero Settings',
           fields: [
-            bgColorPickerAll({
-              overrides: {
-                name: 'sectionBackgroundColor',
-                defaultValue: 'bg-sky-800',
-              },
-            }),
             {
-              name: 'pageTitle',
-              type: 'text',
-              required: true,
-              defaultValue: 'Blog',
+              name: 'blogArchiveHeroContent',
+              type: 'group',
+              fields: [
+                bgColorPickerAll({
+                  overrides: {
+                    name: 'sectionBackgroundColor',
+                    defaultValue: 'bg-sky-800',
+                  },
+                }),
+                {
+                  name: 'pageTitle',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'Blog',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'pageTitleClasses',
+                    defaultValue: [
+                      'uppercase',
+                      'font-extrabold',
+                      'mb-4',
+                      'md:mb-8',
+                      'text-3xl',
+                      'md:text-5xl',
+                      'lg:text-6xl',
+                      'xl:text-8xl',
+                      'pt-8',
+                      'md:pt-16',
+                    ],
+                  },
+                }),
+                {
+                  name: 'subtitle',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'Case Studies',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'subtitleClasses',
+                    defaultValue: [
+                      'text-white',
+                      'uppercase',
+                      'md:text-2xl',
+                      'font-semibold',
+                      'mb-4',
+                      'md:mb-8',
+                    ],
+                  },
+                }),
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'We back  disruptive products and founders in retail',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'titleClasses',
+                    defaultValue: [
+                      'text-white',
+                      'text-3xl',
+                      'md:text-5xl',
+                      'xl:text-6xl',
+                      'font-bold',
+                      'mb-4',
+                      'md:mb-8',
+                      'mx-auto',
+                      'text-center',
+                      'md:w-4/5',
+                    ],
+                  },
+                }),
+                {
+                  name: 'description',
+                  type: 'textarea',
+                  required: true,
+                  defaultValue:
+                    'Our business-led approach to technology, focuses on outcomes and strategy over point solutions and technologies. Driving stakeholders towards a common goal, whilst providing a framework which allows for flexibility and adaptability.',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'descriptionClasses',
+                    defaultValue: [
+                      'text-white',
+                      'text-lg',
+                      'md:text-xl',
+                      'lg:text-2xl',
+                      'font-normal',
+                      'text-center',
+                      'md:w-4/5',
+                      'mx-auto',
+                    ],
+                  },
+                }),
+              ],
             },
-            textClasses({
-              overrides: {
-                name: 'pageTitleClasses',
-                defaultValue: [
-                  'uppercase',
-                  'font-extrabold',
-                  'mb-4',
-                  'md:mb-8',
-                  'text-3xl',
-                  'md:text-5xl',
-                  'lg:text-6xl',
-                  'xl:text-8xl',
-                  'pt-8',
-                  'md:pt-16',
-                ],
-              },
-            }),
-            {
-              name: 'subtitle',
-              type: 'text',
-              required: true,
-              defaultValue: 'Case Studies',
-            },
-            textClasses({
-              overrides: {
-                name: 'subtitleClasses',
-                defaultValue: [
-                  'text-white',
-                  'uppercase',
-                  'md:text-2xl',
-                  'font-semibold',
-                  'mb-4',
-                  'md:mb-8',
-                ],
-              },
-            }),
-            {
-              name: 'title',
-              type: 'text',
-              required: true,
-              defaultValue: 'We back  disruptive products and founders in retail',
-            },
-            textClasses({
-              overrides: {
-                name: 'titleClasses',
-                defaultValue: [
-                  'text-white',
-                  'text-3xl',
-                  'md:text-5xl',
-                  'xl:text-6xl',
-                  'font-bold',
-                  'mb-4',
-                  'md:mb-8',
-                  'mx-auto',
-                  'text-center',
-                  'md:w-4/5',
-                ],
-              },
-            }),
-            {
-              name: 'description',
-              type: 'textarea',
-              required: true,
-              defaultValue:
-                'Our business-led approach to technology, focuses on outcomes and strategy over point solutions and technologies. Driving stakeholders towards a common goal, whilst providing a framework which allows for flexibility and adaptability.',
-            },
-            textClasses({
-              overrides: {
-                name: 'descriptionClasses',
-                defaultValue: [
-                  'text-white',
-                  'text-lg',
-                  'md:text-xl',
-                  'lg:text-2xl',
-                  'font-normal',
-                  'text-center',
-                  'md:w-4/5',
-                  'mx-auto',
-                ],
-              },
-            }),
           ],
         },
-      ],
-    },
-    {
-      name: 'caseStudyArchiveHeroContent',
-      type: 'group',
-      fields: [
         {
-          type: 'collapsible',
-          label: 'Case Study Hero Content',
+          label: 'Case Study Settings',
           fields: [
-            bgColorPickerAll({
-              overrides: {
-                name: 'sectionBackgroundColor',
-                defaultValue: 'bg-sky-800',
-              },
-            }),
             {
-              name: 'pageTitle',
-              type: 'text',
-              required: true,
-              defaultValue: 'Case Studies',
+              name: 'caseStudyArchiveHeroContent',
+              type: 'group',
+              fields: [
+                bgColorPickerAll({
+                  overrides: {
+                    name: 'sectionBackgroundColor',
+                    defaultValue: 'bg-sky-800',
+                  },
+                }),
+                {
+                  name: 'pageTitle',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'Case Studies',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'pageTitleClasses',
+                    defaultValue: [
+                      'uppercase',
+                      'font-extrabold',
+                      'mb-4',
+                      'md:mb-8',
+                      'text-3xl',
+                      'md:text-5xl',
+                      'lg:text-6xl',
+                      'xl:text-8xl',
+                      'pt-8',
+                      'md:pt-16',
+                    ],
+                  },
+                }),
+                {
+                  name: 'subtitle',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'Case Studies',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'subtitleClasses',
+                    defaultValue: [
+                      'text-white',
+                      'uppercase',
+                      'md:text-2xl',
+                      'font-semibold',
+                      'mb-4',
+                      'md:mb-8',
+                    ],
+                  },
+                }),
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'We back  disruptive products and founders in retail',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'titleClasses',
+                    defaultValue: [
+                      'text-white',
+                      'text-3xl',
+                      'md:text-5xl',
+                      'xl:text-6xl',
+                      'font-bold',
+                      'mb-4',
+                      'md:mb-8',
+                      'mx-auto',
+                      'text-center',
+                      'md:w-4/5',
+                    ],
+                  },
+                }),
+                {
+                  name: 'description',
+                  type: 'textarea',
+                  required: true,
+                  defaultValue:
+                    'Our business-led approach to technology, focuses on outcomes and strategy over point solutions and technologies. Driving stakeholders towards a common goal, whilst providing a framework which allows for flexibility and adaptability.',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'descriptionClasses',
+                    defaultValue: [
+                      'text-white',
+                      'text-lg',
+                      'md:text-xl',
+                      'lg:text-2xl',
+                      'font-normal',
+                      'text-center',
+                      'md:w-4/5',
+                      'mx-auto',
+                    ],
+                  },
+                }),
+              ],
             },
-            textClasses({
-              overrides: {
-                name: 'pageTitleClasses',
-                defaultValue: [
-                  'uppercase',
-                  'font-extrabold',
-                  'mb-4',
-                  'md:mb-8',
-                  'text-3xl',
-                  'md:text-5xl',
-                  'lg:text-6xl',
-                  'xl:text-8xl',
-                  'pt-8',
-                  'md:pt-16',
-                ],
-              },
-            }),
             {
-              name: 'subtitle',
-              type: 'text',
-              required: true,
-              defaultValue: 'Case Studies',
+              name: 'caseStudySinglePageEndingContent',
+              type: 'group',
+              fields: [
+                bgColorPickerAll(),
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  defaultValue:
+                    'Is this case in line with <br class="hidden lg:block" />what you have planned ?',
+                },
+                {
+                  name: 'description',
+                  type: 'richText',
+                  editor: lexicalEditor({
+                    features: ({ rootFeatures }) => {
+                      return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+                    },
+                  }),
+                  required: true,
+                },
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
+                },
+                {
+                  name: 'form',
+                  type: 'relationship',
+                  relationTo: 'forms',
+                  required: true,
+                },
+              ],
             },
-            textClasses({
-              overrides: {
-                name: 'subtitleClasses',
-                defaultValue: [
-                  'text-white',
-                  'uppercase',
-                  'md:text-2xl',
-                  'font-semibold',
-                  'mb-4',
-                  'md:mb-8',
-                ],
-              },
-            }),
-            {
-              name: 'title',
-              type: 'text',
-              required: true,
-              defaultValue: 'We back  disruptive products and founders in retail',
-            },
-            textClasses({
-              overrides: {
-                name: 'titleClasses',
-                defaultValue: [
-                  'text-white',
-                  'text-3xl',
-                  'md:text-5xl',
-                  'xl:text-6xl',
-                  'font-bold',
-                  'mb-4',
-                  'md:mb-8',
-                  'mx-auto',
-                  'text-center',
-                  'md:w-4/5',
-                ],
-              },
-            }),
-            {
-              name: 'description',
-              type: 'textarea',
-              required: true,
-              defaultValue:
-                'Our business-led approach to technology, focuses on outcomes and strategy over point solutions and technologies. Driving stakeholders towards a common goal, whilst providing a framework which allows for flexibility and adaptability.',
-            },
-            textClasses({
-              overrides: {
-                name: 'descriptionClasses',
-                defaultValue: [
-                  'text-white',
-                  'text-lg',
-                  'md:text-xl',
-                  'lg:text-2xl',
-                  'font-normal',
-                  'text-center',
-                  'md:w-4/5',
-                  'mx-auto',
-                ],
-              },
-            }),
           ],
         },
-      ],
-    },
-    {
-      name: 'ebooksAndGuidesArchiveHeroContent',
-      type: 'group',
-      fields: [
         {
-          type: 'collapsible',
-          label: 'Ebooks and Guides Hero Content',
+          label: 'Ebooks & Guides Settings',
           fields: [
-            bgColorPickerAll({
-              overrides: {
-                name: 'sectionBackgroundColor',
-                defaultValue: 'bg-sky-800',
-              },
-            }),
             {
-              name: 'pageTitle',
-              type: 'text',
-              required: true,
-              defaultValue: 'Ebooks & Guides',
+              name: 'ebooksAndGuidesArchiveHeroContent',
+              type: 'group',
+              fields: [
+                bgColorPickerAll({
+                  overrides: {
+                    name: 'sectionBackgroundColor',
+                    defaultValue: 'bg-sky-800',
+                  },
+                }),
+                {
+                  name: 'pageTitle',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'Ebooks & Guides',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'pageTitleClasses',
+                    defaultValue: [
+                      'uppercase',
+                      'font-extrabold',
+                      'mb-4',
+                      'md:mb-8',
+                      'text-3xl',
+                      'md:text-5xl',
+                      'lg:text-6xl',
+                      'xl:text-8xl',
+                      'pt-8',
+                      'md:pt-16',
+                    ],
+                  },
+                }),
+                {
+                  name: 'subtitle',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'Guides & Downloads',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'subtitleClasses',
+                    defaultValue: [
+                      'text-white',
+                      'uppercase',
+                      'md:text-2xl',
+                      'font-semibold',
+                      'mb-4',
+                      'md:mb-8',
+                    ],
+                  },
+                }),
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'We back  disruptive products and founders in retail',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'titleClasses',
+                    defaultValue: [
+                      'text-white',
+                      'text-3xl',
+                      'md:text-5xl',
+                      'xl:text-6xl',
+                      'font-bold',
+                      'mb-4',
+                      'md:mb-8',
+                      'mx-auto',
+                      'text-center',
+                      'md:w-4/5',
+                    ],
+                  },
+                }),
+                {
+                  name: 'description',
+                  type: 'textarea',
+                  required: true,
+                  defaultValue:
+                    'Our business-led approach to technology, focuses on outcomes and strategy over point solutions and technologies. Driving stakeholders towards a common goal, whilst providing a framework which allows for flexibility and adaptability.',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'descriptionClasses',
+                    defaultValue: [
+                      'text-white',
+                      'text-lg',
+                      'md:text-xl',
+                      'lg:text-2xl',
+                      'font-normal',
+                      'text-center',
+                      'md:w-4/5',
+                      'mx-auto',
+                    ],
+                  },
+                }),
+              ],
             },
-            textClasses({
-              overrides: {
-                name: 'pageTitleClasses',
-                defaultValue: [
-                  'uppercase',
-                  'font-extrabold',
-                  'mb-4',
-                  'md:mb-8',
-                  'text-3xl',
-                  'md:text-5xl',
-                  'lg:text-6xl',
-                  'xl:text-8xl',
-                  'pt-8',
-                  'md:pt-16',
-                ],
-              },
-            }),
-            {
-              name: 'subtitle',
-              type: 'text',
-              required: true,
-              defaultValue: 'Guides & Downloads',
-            },
-            textClasses({
-              overrides: {
-                name: 'subtitleClasses',
-                defaultValue: [
-                  'text-white',
-                  'uppercase',
-                  'md:text-2xl',
-                  'font-semibold',
-                  'mb-4',
-                  'md:mb-8',
-                ],
-              },
-            }),
-            {
-              name: 'title',
-              type: 'text',
-              required: true,
-              defaultValue: 'We back  disruptive products and founders in retail',
-            },
-            textClasses({
-              overrides: {
-                name: 'titleClasses',
-                defaultValue: [
-                  'text-white',
-                  'text-3xl',
-                  'md:text-5xl',
-                  'xl:text-6xl',
-                  'font-bold',
-                  'mb-4',
-                  'md:mb-8',
-                  'mx-auto',
-                  'text-center',
-                  'md:w-4/5',
-                ],
-              },
-            }),
-            {
-              name: 'description',
-              type: 'textarea',
-              required: true,
-              defaultValue:
-                'Our business-led approach to technology, focuses on outcomes and strategy over point solutions and technologies. Driving stakeholders towards a common goal, whilst providing a framework which allows for flexibility and adaptability.',
-            },
-            textClasses({
-              overrides: {
-                name: 'descriptionClasses',
-                defaultValue: [
-                  'text-white',
-                  'text-lg',
-                  'md:text-xl',
-                  'lg:text-2xl',
-                  'font-normal',
-                  'text-center',
-                  'md:w-4/5',
-                  'mx-auto',
-                ],
-              },
-            }),
           ],
         },
       ],
