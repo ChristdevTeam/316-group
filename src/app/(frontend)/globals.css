@@ -183,3 +183,7 @@ html[data-theme='light'] {
 .smooth-scroll .swiper-wrapper {
   transition-timing-function: linear;
 }
+
+.animate-gradient-slow {
+  background-size: 400% 400%;
+}

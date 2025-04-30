@@ -53,6 +53,9 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'gradient': 'gradientBG 8s ease infinite',
+        'spin-slow': 'spin 60s linear infinite',
+        'gradient-slow': 'gradient 8s ease infinite',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -114,6 +117,22 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        gradientBG: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        gradient: {
+          '0%, 100%': {
+            backgroundPosition: '0% 50%',
+          },
+          '50%': {
+            backgroundPosition: '100% 50%',
+          },
+        },
+      },
+      backgroundSize: {
+        'size-200': '200% 200%',
+        'gradient': '400% 400%',
       },
       typography: ({ theme }) => ({
         DEFAULT: {

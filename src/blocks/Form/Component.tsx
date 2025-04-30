@@ -11,6 +11,8 @@ import { buildInitialFormState } from './buildInitialFormState'
 import { fields } from './fields'
 import { getClientSideURL } from '@/utilities/getURL'
 import { cn } from '@/utilities/cn'
+import { Loader2 } from 'lucide-react'
+import SuccessMessage from '@/components/SuccessMessage'
 
 export type Value = unknown
 
@@ -139,9 +141,10 @@ export const FormBlock: React.FC<
       <div>
         <FormProvider {...formMethods}>
           {!isLoading && hasSubmitted && confirmationType === 'message' && (
-            <RichText content={confirmationMessage} />
+            <SuccessMessage>
+              <RichText content={confirmationMessage} className="text-center" />
+            </SuccessMessage>
           )}
-          {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
@@ -169,8 +172,15 @@ export const FormBlock: React.FC<
                   })}
               </div>
               <div className="flex flex-col">
-                <Button form={formID} type="submit" variant="default" className={cn(submitClasses)}>
-                  {submitButtonLabel}
+                <Button
+                  form={formID}
+                  type="submit"
+                  variant="default"
+                  className={cn(submitClasses)}
+                  disabled={isLoading}
+                >
+                  {isLoading && !hasSubmitted && <Loader2 className="animate-spin duration-500" />}{' '}
+                  {isLoading ? 'Loading ...' : submitButtonLabel}
                 </Button>
               </div>
             </form>
