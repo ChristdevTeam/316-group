@@ -16,15 +16,26 @@ export const Text: React.FC<
       }>
     >
     register: UseFormRegister<FieldValues>
+    hideLabels?: boolean
   }
-> = ({ name, defaultValue, errors, label, register, required: requiredFromProps, width }) => {
+> = ({
+  name,
+  defaultValue,
+  errors,
+  label,
+  register,
+  required: requiredFromProps,
+  width,
+  hideLabels,
+}) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>{label}</Label>
+      {hideLabels ? '' : <Label htmlFor={name}>{label}</Label>}
       <Input
         defaultValue={defaultValue}
         id={name}
         type="text"
+        placeholder={label}
         {...register(name, { required: requiredFromProps })}
       />
       {requiredFromProps && errors[name] && <Error />}

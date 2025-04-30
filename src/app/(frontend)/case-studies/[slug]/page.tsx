@@ -16,6 +16,7 @@ import ProcessMapping from '@/components/ProcessMapping'
 import ClientObjectives from '@/components/ClientObjectives'
 import CTA from '@/components/CTA'
 import SolutionAndOutcome from '@/components/SolutionAndOutcome'
+import CaseStudyForm from '@/components/CaseStudyForm'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -46,13 +47,14 @@ export default async function Post({ params: paramsPromise }: Args) {
   const { slug = '' } = await paramsPromise
   const url = '/case-studies/' + slug
   const caseStudy = await queryCaseStudyBySlug({ slug })
+  const endContent = await getCaseStudySinglePageEndingContent()
 
   if (!caseStudy) return <PayloadRedirects url={url} />
 
   const { companyInfo, processMapping, objectives, callToAction, solutionAndOutcome } = caseStudy
 
   return (
-    <article className="pt-16 pb-16">
+    <article className="pt-16">
       <PageClient />
 
       {/* Allows redirects for valid pages too */}
@@ -64,8 +66,9 @@ export default async function Post({ params: paramsPromise }: Args) {
       <ClientObjectives objectives={objectives} />
       <CTA cta={callToAction} />
       <SolutionAndOutcome data={solutionAndOutcome} />
+      <CaseStudyForm endContent={endContent} />
 
-      <div className="flex flex-col items-center gap-4 pt-8">
+      {/* <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
           {caseStudy.relatedCaseStudies && caseStudy.relatedCaseStudies.length > 0 && (
             <RelatedPosts
@@ -76,7 +79,7 @@ export default async function Post({ params: paramsPromise }: Args) {
             />
           )}
         </div>
-      </div>
+      </div> */}
     </article>
   )
 }
@@ -116,4 +119,8 @@ const getCaseStudySinglePageEndingContent = cache(async () => {
     slug: 'settings',
     depth: 3,
   })
+
+  const endContent = result?.caseStudySinglePageEndingContent
+
+  return endContent
 })

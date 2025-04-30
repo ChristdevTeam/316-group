@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { buildInitialFormState } from './buildInitialFormState'
 import { fields } from './fields'
 import { getClientSideURL } from '@/utilities/getURL'
+import { cn } from '@/utilities/cn'
 
 export type Value = unknown
 
@@ -34,6 +35,8 @@ export type FormBlockType = {
 export const FormBlock: React.FC<
   {
     id?: string
+    hideLabels?: boolean
+    submitClasses?: string
   } & FormBlockType
 > = (props) => {
   const {
@@ -41,6 +44,7 @@ export const FormBlock: React.FC<
     form: formFromProps,
     form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
     introContent,
+    submitClasses,
   } = props
 
   const formMethods = useForm({
@@ -130,7 +134,7 @@ export const FormBlock: React.FC<
       {enableIntro && introContent && !hasSubmitted && (
         <RichText className="mb-8 lg:mb-12" content={introContent} enableGutter={false} />
       )}
-      <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
+      <div>
         <FormProvider {...formMethods}>
           {!isLoading && hasSubmitted && confirmationType === 'message' && (
             <RichText content={confirmationMessage} />
@@ -154,6 +158,7 @@ export const FormBlock: React.FC<
                             control={control}
                             errors={errors}
                             register={register}
+                            hideLabels={props.hideLabels}
                           />
                         </div>
                       )
@@ -161,10 +166,16 @@ export const FormBlock: React.FC<
                     return null
                   })}
               </div>
-
-              <Button form={formID} type="submit" variant="default">
-                {submitButtonLabel}
-              </Button>
+              <div className="flex flex-col">
+                <Button
+                  form={formID}
+                  type="submit"
+                  variant="default"
+                  className={cn(submitClasses)}
+                >
+                  {submitButtonLabel}
+                </Button>
+              </div>
             </form>
           )}
         </FormProvider>

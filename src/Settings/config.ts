@@ -230,7 +230,7 @@ export const Settings: GlobalConfig = {
                 bgColorPickerAll({
                   overrides: {
                     name: 'sectionBackgroundColor',
-                    defaultValue: 'bg-blue-50',
+                    defaultValue: 'bg-violet-200',
                   },
                 }),
                 {

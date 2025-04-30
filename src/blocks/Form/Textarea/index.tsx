@@ -17,6 +17,7 @@ export const Textarea: React.FC<
     >
     register: UseFormRegister<FieldValues>
     rows?: number
+    hideLabels?: boolean
   }
 > = ({
   name,
@@ -27,15 +28,17 @@ export const Textarea: React.FC<
   required: requiredFromProps,
   rows = 3,
   width,
+  hideLabels,
 }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>{label}</Label>
+      {hideLabels ? '' : <Label htmlFor={name}>{label}</Label>}
 
       <TextAreaComponent
         defaultValue={defaultValue}
         id={name}
         rows={rows}
+        placeholder={label}
         {...register(name, { required: requiredFromProps })}
       />
 
