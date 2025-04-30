@@ -37,6 +37,7 @@ export const FormBlock: React.FC<
     id?: string
     hideLabels?: boolean
     submitClasses?: string
+    className?: string
   } & FormBlockType
 > = (props) => {
   const {
@@ -45,6 +46,7 @@ export const FormBlock: React.FC<
     form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
     introContent,
     submitClasses,
+    className,
   } = props
 
   const formMethods = useForm({
@@ -130,7 +132,7 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="container lg:max-w-[48rem]">
+    <div className={className}>
       {enableIntro && introContent && !hasSubmitted && (
         <RichText className="mb-8 lg:mb-12" content={introContent} enableGutter={false} />
       )}
@@ -167,12 +169,7 @@ export const FormBlock: React.FC<
                   })}
               </div>
               <div className="flex flex-col">
-                <Button
-                  form={formID}
-                  type="submit"
-                  variant="default"
-                  className={cn(submitClasses)}
-                >
+                <Button form={formID} type="submit" variant="default" className={cn(submitClasses)}>
                   {submitButtonLabel}
                 </Button>
               </div>

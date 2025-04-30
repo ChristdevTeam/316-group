@@ -4,7 +4,7 @@ import React from 'react'
 import RichText from '../RichText'
 import { Media } from '../Media'
 import { FormBlock } from '@/blocks/Form/Component'
-import type { Form as FormBuilderForm } from '@payloadcms/plugin-form-builder/types'
+import type { Form as PluginForm } from '@payloadcms/plugin-form-builder/types'
 
 const CaseStudyForm: React.FC<{ endContent: Setting['caseStudySinglePageEndingContent'] }> = ({
   endContent,
@@ -29,15 +29,15 @@ const CaseStudyForm: React.FC<{ endContent: Setting['caseStudySinglePageEndingCo
           />
           <Media resource={image} className="w-[150px]" />
         </div>
-        <div>
-          {form && typeof form === 'object' && (
-            <FormBlock
-              hideLabels={true}
-              submitClasses="rounded-lg py-6 text-md bg-blue-700 hover:bg-slate-900 transition-all duration-300"
-              form={form}
-            />
-          )}
-        </div>
+
+        {form && typeof form === 'object' && (
+          <FormBlock
+            hideLabels={true}
+            submitClasses="rounded-lg py-6 text-md bg-blue-700 hover:bg-slate-900 transition-all duration-300"
+            form={form as PluginForm}
+            enableIntro={false}
+          />
+        )}
       </div>
     </div>
   )
