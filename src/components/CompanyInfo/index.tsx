@@ -7,7 +7,7 @@ import RichText from '../RichText'
 const CompanyInfo: React.FC<{ companyInfo: CaseStudy['companyInfo'] }> = ({ companyInfo }) => {
   return (
     <div className="container max-w-screen-2xl py-16">
-      <div className="flex flex-col lg:flex-row justify-between align-start gap-6 md:gap-8 lg:gap-12 pt-16">
+      <div className="flex flex-col lg:flex-row justify-between align-start gap-16 lg:gap-12 lg:pt-16">
         <div className="space-y-4 lg:space-y-8">
           {companyInfo?.background && (
             <div className="flex flex-col">

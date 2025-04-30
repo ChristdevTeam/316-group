@@ -44,12 +44,14 @@ const ProcessMapping: React.FC<{ processMapping: CaseStudy['processMapping'] }> 
                 )}
               </div>
             ))}
-          {processMapping?.link && (
-            <CMSLink
-              className="rounded-xl text-base lg:text-lg hover:bg-white hover:text-black px-10 py-6"
-              {...processMapping.link}
-            />
-          )}
+          <div className="pt-8 pl-8 lg:pt-0 lg:pl-0">
+            {processMapping?.link && (
+              <CMSLink
+                className="rounded-xl text-base lg:text-lg hover:bg-white hover:text-black px-10 py-6"
+                {...processMapping.link}
+              />
+            )}
+          </div>
         </div>
         <div className="flex flex-col sm:flex-row lg:flex-col w-full xl:w-1/2 justify-center">
           {processMapping?.image && <Media resource={processMapping.image} />}

@@ -12,7 +12,7 @@ const ClientObjectives: React.FC<{ objectives: CaseStudy['objectives'] }> = ({ o
         </h2>
         {intro && (
           <RichText
-            className="max-w-none text-lg md:text-xl lg:text-2xl mb-4 lg:mb-8 pb-12"
+            className="max-w-none text-lg md:text-xl mb-4 lg:mb-8 pb-12"
             enableGutter={false}
             content={intro}
           />

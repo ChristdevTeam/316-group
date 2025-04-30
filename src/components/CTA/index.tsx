@@ -15,7 +15,7 @@ const CTA: React.FC<{ cta: CaseStudy['callToAction'] }> = ({ cta }) => {
         <div className="p-8 md:p-12 bg-slate-100 space-y-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold">{cta?.title}</h2>
           <div className="bg-blue-700 h-1 w-3/4 lg:w-1/2 rounded-lg"></div>
-          <p className="text-lg lg:text-2xl">{cta?.description}</p>
+          <p className="text-lg md:text-xl">{cta?.description}</p>
         </div>
         <div className="flex justify-center items-center px-8">
           <CMSLink

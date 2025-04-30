@@ -21,14 +21,14 @@ const SolutionAndOutcome: React.FC<{ data: CaseStudy['solutionAndOutcome'] }> = 
       </h2>
       {content && (
         <RichText
-          className="text-lg md:text-xl lg:text-2xl mb-12"
+          className="text-lg md:text-xl mb-12 lg:mb-16"
           enableGutter={false}
           content={content}
         />
       )}
 
       {slider && slider.length > 0 && (
-        <div className="relative mt-8">
+        <div className="relative">
           <Swiper
             modules={[Navigation, EffectCoverflow, Autoplay]}
             spaceBetween={0}
@@ -73,7 +73,7 @@ const SolutionAndOutcome: React.FC<{ data: CaseStudy['solutionAndOutcome'] }> = 
                       />
                     )}
                   </div>
-                  <div className="flex flex-col justify-center p-12 md:p-none">
+                  <div className="flex flex-col justify-center p-8 md:p-none">
                     {slide.title && (
                       <h3
                         className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4"
