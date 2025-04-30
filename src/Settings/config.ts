@@ -227,7 +227,12 @@ export const Settings: GlobalConfig = {
               name: 'caseStudySinglePageEndingContent',
               type: 'group',
               fields: [
-                bgColorPickerAll(),
+                bgColorPickerAll({
+                  overrides: {
+                    name: 'sectionBackgroundColor',
+                    defaultValue: 'bg-blue-50',
+                  },
+                }),
                 {
                   name: 'title',
                   type: 'text',

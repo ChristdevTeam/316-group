@@ -1,0 +1,68 @@
+.solution-outcome-slider .swiper {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+}
+
+/* Fade effect customization */
+.solution-outcome-slider .swiper-slide {
+  opacity: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+  transform: translateX(20px);
+}
+
+.solution-outcome-slider .swiper-slide-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.solution-outcome-slider .swiper-slide-prev {
+  transform: translateX(-20px);
+}
+
+/* Navigation buttons styling */
+.solution-outcome-slider .slider-navigation {
+  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 10;
+}
+
+.solution-outcome-slider .nav-prev,
+.solution-outcome-slider .nav-next {
+  transition: all 0.3s ease;
+}
+
+.solution-outcome-slider .nav-prev:hover,
+.solution-outcome-slider .nav-next:hover {
+  background-color: #f8f8f8;
+  transform: scale(1.05);
+}
+
+/* Media section styling */
+.solution-outcome-slider .swiper-slide .grid {
+  height: 100%;
+}
+
+.solution-outcome-slider .swiper-slide img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .solution-outcome-slider .slider-navigation {
+    bottom: 4px;
+    left: 4px;
+  }
+
+  .solution-outcome-slider .nav-prev,
+  .solution-outcome-slider .nav-next {
+    width: 40px;
+    height: 40px;
+  }
+}

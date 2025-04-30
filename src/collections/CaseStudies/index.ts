@@ -22,6 +22,7 @@ import {
 import { slugField } from '@/fields/slug'
 import { getServerSideURL } from '@/utilities/getURL'
 import { link } from '@/fields/link'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 
 export const CaseStudies: CollectionConfig<'case-studies'> = {
   slug: 'case-studies',
@@ -60,7 +61,7 @@ export const CaseStudies: CollectionConfig<'case-studies'> = {
     preview: (data) => {
       const path = generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
+        collection: 'case-studies',
       })
 
       return `${getServerSideURL()}${path}`
@@ -153,6 +154,11 @@ export const CaseStudies: CollectionConfig<'case-studies'> = {
               name: 'processMapping',
               type: 'group',
               fields: [
+                bgColorPickerAll({
+                  overrides: {
+                    defaultValue: 'bg-blue-700',
+                  },
+                }),
                 { name: 'title', type: 'text' },
                 {
                   name: 'steps',
@@ -196,6 +202,11 @@ export const CaseStudies: CollectionConfig<'case-studies'> = {
                   type: 'textarea',
                 },
                 link(),
+                bgColorPickerAll({
+                  overrides: {
+                    defaultValue: 'bg-blue-700',
+                  },
+                }),
               ],
             },
             {
@@ -238,7 +249,7 @@ export const CaseStudies: CollectionConfig<'case-studies'> = {
         {
           fields: [
             {
-              name: 'relatedPosts',
+              name: 'relatedCaseStudies',
               type: 'relationship',
               admin: {
                 position: 'sidebar',
@@ -251,7 +262,7 @@ export const CaseStudies: CollectionConfig<'case-studies'> = {
                 }
               },
               hasMany: true,
-              relationTo: 'posts',
+              relationTo: 'case-studies',
             },
           ],
           label: 'Meta',

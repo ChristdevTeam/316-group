@@ -4,6 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 
 import type { Page, Post } from '@/payload-types'
+import { ArrowRight, ChevronRight, ExternalLink } from 'lucide-react'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
@@ -18,6 +19,8 @@ type CMSLinkType = {
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
+  icon?: boolean | null
+  iconType?: 'chevron-right' | 'arrow-right' | 'external-link'
 }
 
 export const CMSLink: React.FC<CMSLinkType> = (props) => {
@@ -31,6 +34,8 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     reference,
     size: sizeFromProps,
     url,
+    icon,
+    iconType,
   } = props
 
   const href =
@@ -48,8 +53,15 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
     return (
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link
+        className={cn(className, 'flex gap-4 items-center')}
+        href={href || url || ''}
+        {...newTabProps}
+      >
         {label && label}
+        {icon && iconType === 'arrow-right' && <ArrowRight />}
+        {icon && iconType === 'chevron-right' && <ChevronRight />}
+        {icon && iconType === 'external-link' && <ExternalLink />}
         {children && children}
       </Link>
     )
@@ -59,6 +71,9 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     <Button asChild className={className} size={size} variant={appearance}>
       <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
         {label && label}
+        {icon && iconType === 'arrow-right' && <ArrowRight />}
+        {icon && iconType === 'chevron-right' && <ChevronRight />}
+        {icon && iconType === 'external-link' && <ExternalLink />}
         {children && children}
       </Link>
     </Button>
