@@ -29,6 +29,9 @@ import { slugField } from '@/fields/slug'
 import { getServerSideURL } from '@/utilities/getURL'
 import { BusinessSlider } from '@/blocks/BusinessSlider/config'
 import { HoverSliderBlock } from '@/blocks/HoverSlider/config'
+import { Content } from '@/blocks/Content/config'
+import { SpacingBlock } from '@/blocks/SpacingBlock/config'
+import { TestimonialCard } from '@/blocks/TestimonialCard/config'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
@@ -82,26 +85,25 @@ export const Posts: CollectionConfig<'posts'> = {
       type: 'tabs',
       tabs: [
         {
+          label: 'Hero',
+          name: 'hero',
+          fields: [
+            { name: 'image', type: 'upload', relationTo: 'media', required: true },
+            {
+              name: 'description',
+              type: 'textarea',
+              required: true,
+              defaultValue:
+                'The banking industry has undergone significant changes in recent years, and technology has played a critical role in driving this transformation. The rise of digital banking has changed the way people interact with their money, and as a result, banks are investing heavily in technology.',
+            },
+          ],
+        },
+        {
           fields: [
             {
-              name: 'content',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
-                  return [
-                    ...rootFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({
-                      blocks: [Banner, Code, MediaBlock, BusinessSlider, HoverSliderBlock],
-                    }),
-                    FixedToolbarFeature(),
-                    InlineToolbarFeature(),
-                    HorizontalRuleFeature(),
-                  ]
-                },
-              }),
-              label: false,
-              required: true,
+              name: 'items',
+              type: 'blocks',
+              blocks: [Content, SpacingBlock, TestimonialCard],
             },
           ],
           label: 'Content',

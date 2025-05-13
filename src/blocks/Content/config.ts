@@ -1,8 +1,10 @@
 import type { Block, Field } from 'payload'
 
 import {
+  BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
+  HorizontalRuleFeature,
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
@@ -17,6 +19,11 @@ import { dimensionClasses } from '@/fields/dimensionClasses'
 import { shadowClasses } from '@/fields/shadowClasses'
 import { borderClasses } from '@/fields/borderClasses'
 import { bgOpacityPicker } from '@/fields/bgOpacityPicker'
+import { Banner } from '../Banner/config'
+import { Code } from '../Code/config'
+import { MediaBlock } from '../MediaBlock/config'
+import { BusinessSlider } from '../BusinessSlider/config'
+import { HoverSliderBlock } from '../HoverSlider/config'
 
 const columnFields: Field[] = [
   {
@@ -114,6 +121,10 @@ const columnFields: Field[] = [
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
+            HorizontalRuleFeature(),
+            BlocksFeature({
+              blocks: [Banner, Code, MediaBlock, BusinessSlider, HoverSliderBlock],
+            }),
           ],
         }),
         admin: {
