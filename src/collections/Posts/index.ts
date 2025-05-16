@@ -221,6 +221,15 @@ export const Posts: CollectionConfig<'posts'> = {
       ],
     },
     ...slugField(),
+    {
+      name: 'spotlight',
+      type: 'checkbox',
+      label: 'Is this a spotlight article?',
+      defaultValue: false,
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
   hooks: {
     afterChange: [revalidatePost],
