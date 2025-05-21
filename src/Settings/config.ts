@@ -322,6 +322,72 @@ export const Settings: GlobalConfig = {
                 },
               ],
             },
+            {
+              name: 'caseStudyArchiveFooter',
+              type: 'group',
+              fields: [
+                bgColorPickerAll({
+                  overrides: {
+                    name: 'sectionBackgroundColor',
+                    defaultValue: 'bg-blue-700',
+                  },
+                }),
+                { name: 'image', type: 'upload', relationTo: 'media' },
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  defaultValue:
+                    'We back  disruptive<br class="hidden lg:block" /> products and founders in retail',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'titleClasses',
+                    defaultValue: [
+                      'text-white',
+                      'md:text-3xl',
+                      'lg:text-4xl',
+                      'xl:text-6xl',
+                      'font-bold',
+                      'mb-4',
+                      'md:mb-8',
+                    ],
+                  },
+                }),
+                linkGroup({
+                  buttonClass: [
+                    'bg-white',
+                    'text-black',
+                    'text-xl',
+                    'px-12',
+                    'py-8',
+                    'rounded-full',
+                    'hover:text-white',
+                  ],
+                }),
+                // {
+                //   name: 'description',
+                //   type: 'richText',
+                //   editor: lexicalEditor({
+                //     features: ({ rootFeatures }) => {
+                //       return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+                //     },
+                //   }),
+                // },
+                // textClasses({
+                //   overrides: {
+                //     name: 'descriptionClasses',
+                //     defaultValue: ['text-white', 'text-base', 'lg:text-lg', 'font-normal'],
+                //   },
+                // }),
+                // {
+                //   name: 'download',
+                //   type: 'upload',
+                //   relationTo: 'media',
+                //   required: true,
+                // },
+              ],
+            },
           ],
         },
         {

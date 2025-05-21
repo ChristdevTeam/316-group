@@ -84,8 +84,8 @@ export default async function Page() {
       >
         <div className="container max-w-screen-2xl">
           {subtitle && (
-            <div className={cn('flex justify-center items-center gap-4 md:gap-6', subtitleClasses)}>
-              <div className="h-6 w-6 bg-lime-400"></div>
+            <div className={cn('flex gap-4 justify-center items-center md:gap-6', subtitleClasses)}>
+              <div className="w-6 h-6 bg-lime-400"></div>
               <h2 dangerouslySetInnerHTML={{ __html: subtitle }} />
             </div>
           )}
@@ -104,9 +104,9 @@ export default async function Page() {
       <CollectionArchive
         heading="Spotlight"
         posts={spotlight.docs}
-        className="mb-16 lg:mb-24 mt-16 lg:mt-24"
+        className="mt-16 mb-16 lg:mb-24 lg:mt-24"
       />
-      <div className="container max-w-screen-2xl mb-8 pt-8">
+      <div className="container pt-8 mb-8 max-w-screen-2xl">
         <PageRange
           collection="posts"
           currentPage={posts.page}
@@ -116,14 +116,14 @@ export default async function Page() {
       </div>
       <CollectionArchive heading="Latest Stories" posts={posts.docs} />
 
-      <div className="container max-w-screen-2xl mb-16 xl:mb-24">
+      <div className="container mb-16 max-w-screen-2xl xl:mb-24">
         {posts.totalPages > 1 && posts.page && (
           <Pagination page={posts.page} totalPages={posts.totalPages} />
         )}
       </div>
       {footer && (
         <div className={cn('py-16 lg:py-24', footer.sectionBackgroundColor)}>
-          <div className="container max-w-screen-2xl grid lg:grid-cols-2 gap-8 md:gap-10 xl:gap-16">
+          <div className="container grid gap-8 max-w-screen-2xl lg:grid-cols-2 md:gap-10 xl:gap-16">
             {footer.image && <Media resource={footer.image} imgClassName="" />}
 
             <div className="space-y-6 xl:space-y-8 2xl:space-y-12">
@@ -152,7 +152,7 @@ export default async function Page() {
                   <Link
                     href={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${footer.download.filename}`}
                     download
-                    className="mt-4 lg:mt-10 text-lg md:text-xl text-white underline font-semibold"
+                    className="mt-4 text-lg font-semibold text-white underline lg:mt-10 md:text-xl"
                   >
                     Download
                   </Link>

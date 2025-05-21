@@ -103,6 +103,11 @@ export const CaseStudies: CollectionConfig<'case-studies'> = {
               hasMany: true,
               relationTo: 'tags',
             },
+            {
+              name: 'download',
+              type: 'upload',
+              relationTo: 'media',
+            },
           ],
           label: 'Hero',
         },

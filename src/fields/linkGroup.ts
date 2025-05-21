@@ -9,9 +9,10 @@ import { buttonClasses } from './buttonClasses'
 type LinkGroupType = (options?: {
   appearances?: LinkAppearances[] | false
   overrides?: Partial<ArrayField>
+  buttonClass?: string[]
 }) => Field
 
-export const linkGroup: LinkGroupType = ({ appearances, overrides = {} } = {}) => {
+export const linkGroup: LinkGroupType = ({ appearances, overrides = {}, buttonClass } = {}) => {
   const generatedLinkGroup: Field = {
     name: 'links',
     type: 'array',
@@ -19,7 +20,11 @@ export const linkGroup: LinkGroupType = ({ appearances, overrides = {} } = {}) =
       link({
         appearances,
       }),
-      buttonClasses(),
+      buttonClasses({
+        overrides: {
+          defaultValue: buttonClass,
+        },
+      }),
       {
         name: 'size',
         type: 'select',

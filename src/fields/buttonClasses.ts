@@ -705,6 +705,7 @@ export const buttonClasses: buttonClassesType = ({
       { label: 'Text 4xl', value: 'text-4xl' },
       { label: 'Text 5xl', value: 'text-5xl' },
       { label: 'Text 6xl', value: 'text-6xl' },
+      // variations for text sizes on different screen sizes
       // font weights
       { label: 'Font Weight 100', value: 'font-thin' },
       { label: 'Font Weight 200', value: 'font-extralight' },
