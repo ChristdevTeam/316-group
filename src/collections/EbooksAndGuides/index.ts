@@ -1,22 +1,10 @@
 import type { CollectionConfig } from 'payload'
 
-import {
-  BlocksFeature,
-  FixedToolbarFeature,
-  HeadingFeature,
-  HorizontalRuleFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Banner } from '../../blocks/Banner/config'
-import { Code } from '../../blocks/Code/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
-import { revalidatePost } from './hooks/revalidatePost'
+import { revalidateGuidesAndDownloads } from './hooks/revalidateEbooksAndGuides'
 
 import {
   MetaDescriptionField,
@@ -27,32 +15,33 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug'
 import { getServerSideURL } from '@/utilities/getURL'
-import { BusinessSlider } from '@/blocks/BusinessSlider/config'
-import { HoverSliderBlock } from '@/blocks/HoverSlider/config'
 import { Content } from '@/blocks/Content/config'
 import { SpacingBlock } from '@/blocks/SpacingBlock/config'
 import { TestimonialCard } from '@/blocks/TestimonialCard/config'
 import { DownloadForm } from '@/blocks/DownloadForm/config'
 
-export const Posts: CollectionConfig<'posts'> = {
-  slug: 'posts',
+export const EbooksAndGuides: CollectionConfig = {
+  slug: 'ebooks-and-guides',
   access: {
     create: authenticated,
     delete: authenticated,
     read: authenticatedOrPublished,
     update: authenticated,
   },
-  // This config controls what's populated by default when a post is referenced
-  // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
-  // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'posts'>
+
   defaultPopulate: {
     title: true,
     slug: true,
     categories: true,
+    hero: {
+      image: true,
+      description: true,
+    },
     meta: {
       image: true,
       description: true,
     },
+    items: true,
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -60,7 +49,7 @@ export const Posts: CollectionConfig<'posts'> = {
       url: ({ data }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'posts',
+          collection: 'ebooks-and-guides',
         })
 
         return `${getServerSideURL()}${path}`
@@ -69,7 +58,7 @@ export const Posts: CollectionConfig<'posts'> = {
     preview: (data) => {
       const path = generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
+        collection: 'ebooks-and-guides',
       })
 
       return `${getServerSideURL()}${path}`
@@ -104,15 +93,118 @@ export const Posts: CollectionConfig<'posts'> = {
             {
               name: 'items',
               type: 'blocks',
+              required: false,
               blocks: [Content, SpacingBlock, TestimonialCard, DownloadForm],
             },
+            // {
+            //   name: 'downloadForm',
+            //   type: 'group',
+            //   fields: [
+            //     {
+            //       name: 'sectionTitle',
+            //       type: 'text',
+            //       defaultValue: 'Download the free PDF now',
+            //       required: true,
+            //     },
+            //     {
+            //       name: 'sectionTitleClasses',
+            //       type: 'relationship',
+            //       relationTo: 'text-styles',
+            //       required: true,
+            //     },
+            //     {
+            //       type: 'collapsible',
+            //       label: 'Left Column Data',
+            //       fields: [
+            //         {
+            //           name: 'columnTitle',
+            //           type: 'text',
+            //           required: true,
+            //           defaultValue: 'What you can expect',
+            //         },
+            //         {
+            //           name: 'columnTitleClasses',
+            //           type: 'relationship',
+            //           relationTo: 'text-styles',
+            //           required: true,
+            //         },
+            //         {
+            //           name: 'listTitleClasses',
+            //           type: 'relationship',
+            //           relationTo: 'text-styles',
+            //           required: true,
+            //         },
+            //         {
+            //           name: 'listItemClasses',
+            //           type: 'relationship',
+            //           relationTo: 'text-styles',
+            //           required: true,
+            //         },
+            //         {
+            //           name: 'listData',
+            //           type: 'array',
+            //           fields: [
+            //             {
+            //               name: 'listTitle',
+            //               type: 'text',
+            //               required: true,
+            //               defaultValue:
+            //                 'Reduce the shipping costs of your e-commerce the best tips and strategies',
+            //             },
+            //             {
+            //               name: 'listItems',
+            //               type: 'array',
+            //               fields: [
+            //                 {
+            //                   name: 'listItem',
+            //                   type: 'text',
+            //                   required: true,
+            //                   defaultValue:
+            //                     'Reduce the shipping costs of your e-commerce the best tips and strategies',
+            //                 },
+            //               ],
+            //             },
+            //           ],
+            //         },
+            //         {
+            //           name: 'endText',
+            //           type: 'text',
+            //           required: true,
+            //           defaultValue: 'And much more!',
+            //         },
+            //       ],
+            //     },
+            //     {
+            //       type: 'collapsible',
+            //       label: 'Form Data',
+            //       fields: [
+            //         {
+            //           name: 'form',
+            //           type: 'relationship',
+            //           relationTo: 'forms',
+            //           required: true,
+            //         },
+            //         {
+            //           name: 'fileToDownload',
+            //           type: 'upload',
+            //           relationTo: 'media',
+            //           required: true,
+            //           admin: {
+            //             description:
+            //               'This file link will be emailed to the submitter when the form is submitted',
+            //           },
+            //         },
+            //       ],
+            //     },
+            //   ],
+            // },
           ],
           label: 'Content',
         },
         {
           fields: [
             {
-              name: 'relatedPosts',
+              name: 'relatedEbooksAndGuides',
               type: 'relationship',
               admin: {
                 position: 'sidebar',
@@ -125,7 +217,7 @@ export const Posts: CollectionConfig<'posts'> = {
                 }
               },
               hasMany: true,
-              relationTo: 'posts',
+              relationTo: 'ebooks-and-guides',
             },
             {
               name: 'categories',
@@ -233,7 +325,7 @@ export const Posts: CollectionConfig<'posts'> = {
     },
   ],
   hooks: {
-    afterChange: [revalidatePost],
+    afterChange: [revalidateGuidesAndDownloads],
     afterRead: [populateAuthors],
   },
   versions: {

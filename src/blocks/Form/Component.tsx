@@ -13,6 +13,7 @@ import { getClientSideURL } from '@/utilities/getURL'
 import { cn } from '@/utilities/cn'
 import { Loader2 } from 'lucide-react'
 import SuccessMessage from '@/components/SuccessMessage'
+import { Media } from '@/payload-types'
 
 export type Value = unknown
 
@@ -32,6 +33,7 @@ export type FormBlockType = {
   introContent?: {
     [k: string]: unknown
   }[]
+  fileToDownload?: string | Media
 }
 
 export const FormBlock: React.FC<
@@ -49,6 +51,7 @@ export const FormBlock: React.FC<
     introContent,
     submitClasses,
     className,
+    fileToDownload,
   } = props
 
   const formMethods = useForm({

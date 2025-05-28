@@ -22,6 +22,7 @@ import { TabBlockComponent } from './TabBlock/Component'
 import { InteractiveMediaGrid } from './InteractiveMediaGrid/Component'
 import { TestimonialSliderBlock } from './TestimonialSlider/Component'
 import { SpacingBlock } from './SpacingBlock/Component'
+import { DownloadFormBlock } from './DownloadForm/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -43,6 +44,7 @@ const blockComponents = {
   interactiveMediaGrid: InteractiveMediaGrid,
   testimonialSlider: TestimonialSliderBlock,
   spacing: SpacingBlock,
+  downloadForm: DownloadFormBlock,
 }
 
 export const RenderBlocks: React.FC<{

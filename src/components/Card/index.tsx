@@ -15,7 +15,7 @@ export const Card: React.FC<{
   alignItems?: 'center'
   className?: string
   doc?: CardPostData
-  relationTo?: 'posts'
+  relationTo?: 'posts' | 'ebooks-and-guides'
   showCategories?: boolean
   title?: string
 }> = (props) => {
@@ -43,35 +43,34 @@ export const Card: React.FC<{
         {metaImage && typeof metaImage !== 'string' && (
           <Media imgClassName="aspect-[16/11]" resource={metaImage} size="33vw" />
         )}
-        {showCategories && hasCategories && (
-          <div className="uppercase text-sm mb-4 absolute top-6 right-0">
-            {showCategories && hasCategories && (
-              <div className="bg-[#2374D7] px-4 py-3 text-white">
-                {categories?.map((category, index) => {
-                  if (typeof category === 'object') {
-                    const { title: titleFromCategory } = category
-
-                    const categoryTitle = titleFromCategory || 'Untitled category'
-
-                    const isLast = index === categories.length - 1
-
-                    return (
-                      <Fragment key={index}>
-                        {categoryTitle}
-                        {!isLast && <Fragment>, &nbsp;</Fragment>}
-                      </Fragment>
-                    )
-                  }
-
-                  return null
-                })}
-              </div>
-            )}
-          </div>
-        )}
       </div>
       <div className="flex flex-col flex-grow p-6 md:p-8">
         <div className=" flex-grow">
+          {showCategories && hasCategories && (
+            <div className="flex gap-4 mb-4">
+              {categories?.map((category, index) => {
+                if (typeof category === 'object') {
+                  const { title: titleFromCategory } = category
+
+                  const categoryTitle = titleFromCategory || 'Untitled category'
+
+                  const isLast = index === categories.length - 1
+
+                  return (
+                    <button
+                      className="flex gap-2 justify-center items-center px-4 py-2 text-sm font-medium border border-slate-950 lg:px-8 lg:py-3"
+                      key={index}
+                    >
+                      {categoryTitle}
+                    </button>
+                  )
+                }
+
+                return null
+              })}
+            </div>
+          )}
+
           {titleToUse && (
             <div className="prose">
               <h3>

@@ -492,6 +492,63 @@ export const Settings: GlobalConfig = {
                 }),
               ],
             },
+            {
+              name: 'ebooksAndGuidesArchiveFooter',
+              type: 'group',
+              fields: [
+                bgColorPickerAll({
+                  overrides: {
+                    name: 'sectionBackgroundColor',
+                    defaultValue: 'bg-blue-700',
+                  },
+                }),
+                { name: 'image', type: 'upload', relationTo: 'media' },
+                linkGroup(),
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  defaultValue:
+                    'We back  disruptive<br class="hidden lg:block" /> products and founders in retail',
+                },
+                textClasses({
+                  overrides: {
+                    name: 'titleClasses',
+                    defaultValue: [
+                      'text-white',
+                      'text-xl',
+                      'md:text-2xl',
+                      'lg:text-3xl',
+                      'xl:text-5xl',
+                      'font-bold',
+                      'mb-4',
+                      'md:mb-8',
+                    ],
+                  },
+                }),
+                {
+                  name: 'description',
+                  type: 'richText',
+                  editor: lexicalEditor({
+                    features: ({ rootFeatures }) => {
+                      return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+                    },
+                  }),
+                },
+                textClasses({
+                  overrides: {
+                    name: 'descriptionClasses',
+                    defaultValue: ['text-white', 'text-base', 'lg:text-lg', 'font-normal'],
+                  },
+                }),
+                {
+                  name: 'download',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
+                },
+              ],
+            },
           ],
         },
       ],

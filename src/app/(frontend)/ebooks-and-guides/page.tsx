@@ -1,20 +1,54 @@
 import type { Metadata } from 'next'
 
+import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import { cn } from '@/utilities/cn'
+import React from 'react'
 import PageClient from './page.client'
-import CaseStudyCard from '@/components/CaseStudyCard'
-import { CMSLink } from '@/components/Link'
+import { cn } from '@/utilities/cn'
 import { Media } from '@/components/Media'
+import { CMSLink } from '@/components/Link'
+import RichText from '@/components/RichText'
+import Link from 'next/link'
+import { GuideCollectionArchive } from '@/components/GuideCollectionArchive'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
 
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
+
+  const ebooksAndGuides = await payload.find({
+    collection: 'ebooks-and-guides',
+    depth: 1,
+    limit: 12,
+    overrideAccess: false,
+    select: {
+      title: true,
+      slug: true,
+      categories: true,
+      meta: true,
+    },
+    where: {
+      spotlight: {
+        not_equals: true,
+      },
+    },
+  })
+
+  const spotlight = await payload.find({
+    collection: 'ebooks-and-guides',
+    depth: 1,
+    limit: 3,
+    overrideAccess: false,
+    where: {
+      spotlight: {
+        equals: true,
+      },
+    },
+  })
 
   const settings = await payload.findGlobal({
     slug: 'settings',
@@ -30,17 +64,9 @@ export default async function Page() {
     titleClasses,
     description,
     descriptionClasses,
-  } = settings.caseStudyArchiveHeroContent
-  const footer = settings.caseStudyArchiveFooter
+  } = settings.ebooksAndGuidesArchiveHeroContent
 
-  const caseStudyDocs = await payload.find({
-    collection: 'case-studies',
-    depth: 1,
-    limit: 12,
-    overrideAccess: false,
-    sort: '-createdAt',
-  })
-  const caseStudies = caseStudyDocs.docs
+  const footer = settings.ebooksAndGuidesArchiveFooter
 
   return (
     <div>
@@ -76,36 +102,24 @@ export default async function Page() {
         </div>
       </div>
 
+      <GuideCollectionArchive
+        heading="Spotlight"
+        guides={spotlight.docs}
+        className="mt-16 mb-16 lg:mb-24 lg:mt-24"
+      />
       <div className="container pt-8 mb-8 max-w-screen-2xl">
         <PageRange
-          collection="case-studies"
-          currentPage={caseStudyDocs.page}
+          collection="ebooks-and-guides"
+          currentPage={ebooksAndGuides.page}
           limit={12}
-          totalDocs={caseStudyDocs.totalDocs}
+          totalDocs={ebooksAndGuides.totalDocs}
         />
       </div>
-
-      <div className="container py-16 space-y-8 max-w-screen-2xl md:space-y-12 xl:space-y-16 xl:py-24">
-        {caseStudies.map((caseStudy, index) => {
-          const doc = {
-            title: caseStudy.title,
-            heroImage: caseStudy.heroImage,
-            tags: caseStudy.tags,
-            slug: caseStudy.slug,
-            excerpt: caseStudy.excerpt,
-            download: caseStudy.download,
-          }
-          return (
-            <div key={index}>
-              <CaseStudyCard doc={doc}></CaseStudyCard>
-            </div>
-          )
-        })}
-      </div>
+      <GuideCollectionArchive heading="Latest Guides & Downloads" guides={ebooksAndGuides.docs} />
 
       <div className="container mb-16 max-w-screen-2xl xl:mb-24">
-        {caseStudyDocs.totalPages > 1 && caseStudyDocs.page && (
-          <Pagination page={caseStudyDocs.page} totalPages={caseStudyDocs.totalPages} />
+        {ebooksAndGuides.totalPages > 1 && ebooksAndGuides.page && (
+          <Pagination page={ebooksAndGuides.page} totalPages={ebooksAndGuides.totalPages} />
         )}
       </div>
       {footer && (
@@ -113,20 +127,38 @@ export default async function Page() {
           <div className="container grid gap-8 max-w-screen-2xl lg:grid-cols-2 md:gap-10 xl:gap-16">
             {footer.image && <Media resource={footer.image} imgClassName="" />}
 
-            <div className="flex flex-col justify-center space-y-6 xl:space-y-8">
-              {footer.title && (
-                <h3
-                  dangerouslySetInnerHTML={{ __html: footer.title }}
-                  className={cn(footer.titleClasses, 'w-7/10')}
-                ></h3>
-              )}
-
+            <div className="space-y-6 xl:space-y-8 2xl:space-y-12">
               {footer.links &&
                 footer.links.map(({ link, buttonClasses }, index) => (
                   <div key={index}>
                     <CMSLink {...link} className={cn(buttonClasses)}></CMSLink>
                   </div>
                 ))}
+              {footer.title && (
+                <h3
+                  dangerouslySetInnerHTML={{ __html: footer.title }}
+                  className={cn(footer.titleClasses)}
+                ></h3>
+              )}
+              {footer.description && (
+                <RichText
+                  enableGutter={false}
+                  enableProse={false}
+                  content={footer.description}
+                  className={cn(footer.descriptionClasses)}
+                ></RichText>
+              )}
+              <div>
+                {typeof footer.download === 'object' && footer.download.filename && (
+                  <Link
+                    href={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${footer.download.filename}`}
+                    download
+                    className="mt-4 text-lg font-semibold text-white underline lg:mt-10 md:text-xl"
+                  >
+                    Download
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -137,6 +169,6 @@ export default async function Page() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Case Studies - 316 Group`,
+    title: `Guides & Downloads - 316 Group`,
   }
 }

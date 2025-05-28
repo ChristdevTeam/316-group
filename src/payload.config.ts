@@ -20,6 +20,8 @@ import { getServerSideURL } from './utilities/getURL'
 import { TypeGenerator } from './collections/TypeGenerator'
 import { CaseStudies } from './collections/CaseStudies'
 import { Tags } from './collections/Tags'
+import { EbooksAndGuides } from './collections/EbooksAndGuides'
+import { TextStyles } from './collections/TextStyles'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -80,7 +82,18 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, CaseStudies, Media, Categories, Tags, Users, TypeGenerator],
+  collections: [
+    Pages,
+    Posts,
+    CaseStudies,
+    Media,
+    Categories,
+    Tags,
+    Users,
+    TypeGenerator,
+    EbooksAndGuides,
+    TextStyles,
+  ],
   upload: {
     limits: {
       fileSize: 300000000, // 300MB, written in bytes

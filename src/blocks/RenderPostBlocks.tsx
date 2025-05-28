@@ -1,17 +1,19 @@
-import { Post } from '@/payload-types'
+import { EbooksAndGuide, Post } from '@/payload-types'
 import { ContentBlock } from './Content/Component'
 import { SpacingBlock } from './SpacingBlock/Component'
 import { TestimonialCard } from './TestimonialCard/Component'
 import { Fragment } from 'react'
+import { DownloadFormBlock } from './DownloadForm/Component'
 
 const blockComponents = {
   content: ContentBlock,
   spacing: SpacingBlock,
   testimonialCard: TestimonialCard,
+  downloadFormBlock: DownloadFormBlock,
 }
 
 export const RenderPostBlocks: React.FC<{
-  blocks: Post['items']
+  blocks: Post['items'] | EbooksAndGuide['items']
 }> = (props) => {
   const { blocks } = props
 
