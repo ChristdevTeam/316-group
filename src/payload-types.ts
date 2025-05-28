@@ -59376,33 +59376,7 @@ export interface EbooksAndGuide {
     image: string | Media;
     description: string;
   };
-  items?: (ContentBlock | SpacingBlock | TestimonialCard)[] | null;
-  downloadForm: {
-    sectionTitle: string;
-    sectionTitleClasses: string | TextStyle;
-    columnTitle: string;
-    columnTitleClasses: string | TextStyle;
-    listTitleClasses: string | TextStyle;
-    listItemClasses: string | TextStyle;
-    listData?:
-      | {
-          listTitle: string;
-          listItems?:
-            | {
-                listItem: string;
-                id?: string | null;
-              }[]
-            | null;
-          id?: string | null;
-        }[]
-      | null;
-    endText: string;
-    form: string | Form;
-    /**
-     * This file link will be emailed to the submitter when the form is submitted
-     */
-    fileToDownload: string | Media;
-  };
+  items?: (ContentBlock | SpacingBlock | TestimonialCard | DownloadFormBlock)[] | null;
   relatedEbooksAndGuides?: (string | EbooksAndGuide)[] | null;
   categories?: (string | Category)[] | null;
   meta?: {
@@ -60786,31 +60760,7 @@ export interface EbooksAndGuidesSelect<T extends boolean = true> {
         content?: T | ContentBlockSelect<T>;
         spacing?: T | SpacingBlockSelect<T>;
         testimonialCard?: T | TestimonialCardSelect<T>;
-      };
-  downloadForm?:
-    | T
-    | {
-        sectionTitle?: T;
-        sectionTitleClasses?: T;
-        columnTitle?: T;
-        columnTitleClasses?: T;
-        listTitleClasses?: T;
-        listItemClasses?: T;
-        listData?:
-          | T
-          | {
-              listTitle?: T;
-              listItems?:
-                | T
-                | {
-                    listItem?: T;
-                    id?: T;
-                  };
-              id?: T;
-            };
-        endText?: T;
-        form?: T;
-        fileToDownload?: T;
+        downloadFormBlock?: T | DownloadFormBlockSelect<T>;
       };
   relatedEbooksAndGuides?: T;
   categories?: T;

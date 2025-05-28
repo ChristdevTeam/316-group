@@ -25,6 +25,7 @@ export const DownloadForm: Block = {
           name: 'columnTitle',
           type: 'text',
           required: true,
+          defaultValue: 'What you can expect',
         },
         {
           name: 'columnTitleClasses',
@@ -52,6 +53,8 @@ export const DownloadForm: Block = {
               name: 'listTitle',
               type: 'text',
               required: true,
+              defaultValue:
+                'Reduce the shipping costs of your e-commerce the best tips and strategies',
             },
             {
               name: 'listItems',
@@ -61,6 +64,8 @@ export const DownloadForm: Block = {
                   name: 'listItem',
                   type: 'text',
                   required: true,
+                  defaultValue:
+                    'Reduce the shipping costs of your e-commerce the best tips and strategies',
                 },
               ],
             },

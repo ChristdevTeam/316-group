@@ -11,6 +11,7 @@ import { GuidesHero } from '@/heros/GuidesHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { RenderPostBlocks } from '@/blocks/RenderPostBlocks'
+import { GuideCollectionArchive } from '@/components/GuideCollectionArchive'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -59,11 +60,12 @@ export default async function EbookAndGuide({ params: paramsPromise }: Args) {
         <div className="container max-w-screen-2xl">
           {ebookAndGuide.relatedEbooksAndGuides &&
             ebookAndGuide.relatedEbooksAndGuides.length > 0 && (
-              <RelatedPosts
+              <GuideCollectionArchive
                 className="mt-12 lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-                docs={ebookAndGuide.relatedEbooksAndGuides.filter(
+                guides={ebookAndGuide.relatedEbooksAndGuides.filter(
                   (item) => typeof item === 'object',
                 )}
+                heading="Related Guides"
               />
             )}
         </div>
