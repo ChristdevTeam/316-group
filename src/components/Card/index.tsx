@@ -93,7 +93,7 @@ export const Card: React.FC<{
 
         <Link href={href} ref={link.ref} className="mt-auto">
           <Button variant={'default'} className="rounded-full bg-blue-800 mt-4">
-            Learn More
+            {relationTo === 'ebooks-and-guides' ? 'Download' : 'Learn More'}
           </Button>
         </Link>
       </div>

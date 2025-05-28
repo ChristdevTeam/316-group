@@ -65,7 +65,7 @@ export default async function EbookAndGuide({ params: paramsPromise }: Args) {
                 guides={ebookAndGuide.relatedEbooksAndGuides.filter(
                   (item) => typeof item === 'object',
                 )}
-                heading="Related Guides"
+                heading="Browse more guides & reports "
               />
             )}
         </div>

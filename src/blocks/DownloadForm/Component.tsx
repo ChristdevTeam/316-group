@@ -78,7 +78,11 @@ export const DownloadFormBlock: React.FC<
           </p>
         </div>
         <div>
-          <FormBlock enableIntro={false} form={form as PluginForm} />
+          <FormBlock
+            submitClasses="rounded-lg py-8 bg-blue-600"
+            enableIntro={false}
+            form={form as PluginForm}
+          />
         </div>
       </div>
     </div>
