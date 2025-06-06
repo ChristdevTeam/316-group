@@ -18,14 +18,11 @@ export const MegaMenuContent = ({ items, setIsOpen, setActiveSection }: MegaMenu
       return link.url || '#'
     }
 
-    if (link.type === 'reference') {
-      if (link.reference?.relationTo === 'pages' && typeof link.reference.value !== 'string') {
+    if (link.type === 'reference' && typeof link.reference?.value !== 'string') {
+      if (link.reference?.relationTo === 'pages') {
         return `/${link.reference.value.slug}`
-      } else if (
-        link.reference?.relationTo === 'posts' &&
-        typeof link.reference.value !== 'string'
-      ) {
-        return `/posts/${link.reference.value.slug}`
+      } else {
+        return `/${link.reference?.relationTo}/${link.reference?.value.slug}`
       }
     }
 

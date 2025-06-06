@@ -1,4 +1,4 @@
-import { Page, Post } from '@/payload-types'
+import { CaseStudy, EbooksAndGuide, Page, Post } from '@/payload-types'
 
 // export interface MegaMenuItem {
 //   type: 'link' | 'subHeading' | 'divider' | 'text'
@@ -18,8 +18,8 @@ export type Link = {
   type?: 'reference' | 'custom' | null
   newTab?: boolean | null
   reference?: {
-    relationTo: 'pages' | 'posts'
-    value: string | Page | Post
+    relationTo: 'pages' | 'posts' | 'case-studies' | 'ebooks-and-guides'
+    value: string | Page | Post | CaseStudy | EbooksAndGuide
   } | null
   url?: string | null
   label?: string
@@ -40,6 +40,14 @@ export type NavItems = {
           relationTo: 'posts'
           value: string | Post
         } | null)
+      | ({
+          relationTo: 'case-studies'
+          value: string | CaseStudy
+        } | null)
+      | ({
+          relationTo: 'ebooks-and-guides'
+          value: string | EbooksAndGuide
+        } | null)
     url?: string | null
     label: string
   }
@@ -59,6 +67,14 @@ export type NavItems = {
             | ({
                 relationTo: 'posts'
                 value: string | Post
+              } | null)
+            | ({
+                relationTo: 'case-studies'
+                value: string | CaseStudy
+              } | null)
+            | ({
+                relationTo: 'ebooks-and-guides'
+                value: string | EbooksAndGuide
               } | null)
           url?: string | null
           label: string
@@ -85,6 +101,14 @@ export type MegaMenuItem = {
       | ({
           relationTo: 'posts'
           value: string | Post
+        } | null)
+      | ({
+          relationTo: 'case-studies'
+          value: string | CaseStudy
+        } | null)
+      | ({
+          relationTo: 'ebooks-and-guides'
+          value: string | EbooksAndGuide
         } | null)
     url?: string | null
     label: string

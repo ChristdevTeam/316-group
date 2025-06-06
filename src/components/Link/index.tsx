@@ -6,7 +6,7 @@ import React from 'react'
 import type { CaseStudy, EbooksAndGuide, Page, Post } from '@/payload-types'
 import { ArrowRight, ChevronRight, ExternalLink } from 'lucide-react'
 
-type CMSLinkType = {
+export type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
   children?: React.ReactNode
   className?: string
