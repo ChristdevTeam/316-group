@@ -23,6 +23,9 @@ import { InteractiveMediaGrid } from './InteractiveMediaGrid/Component'
 import { TestimonialSliderBlock } from './TestimonialSlider/Component'
 import { SpacingBlock } from './SpacingBlock/Component'
 import { DownloadFormBlock } from './DownloadForm/Component'
+import { CaseStudyArchiveBlock } from './CaseStudyArchiveBlock/Component'
+import { ResourcesHeroBlock } from './ResourcesHero/Component'
+import { EbooksAndGuidesArchiveBlock } from './EbooksAndGuidesArchiveBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -45,6 +48,9 @@ const blockComponents = {
   testimonialSlider: TestimonialSliderBlock,
   spacing: SpacingBlock,
   downloadForm: DownloadFormBlock,
+  caseStudyArchive: CaseStudyArchiveBlock,
+  resourcesHero: ResourcesHeroBlock,
+  ebooksAndGuidesArchive: EbooksAndGuidesArchiveBlock,
 }
 
 export const RenderBlocks: React.FC<{

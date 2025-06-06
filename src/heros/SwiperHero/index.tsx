@@ -19,7 +19,8 @@ export const SwiperHero: React.FC<Page['hero']> = ({
   heroTitleClasses,
   title,
   titleClasses,
-  subTitle,subTitleClasses,
+  subTitle,
+  subTitleClasses,
   descriptionText,
   descriptionClasses,
   links,
@@ -44,7 +45,12 @@ export const SwiperHero: React.FC<Page['hero']> = ({
             <div className={cn(titleClasses)} dangerouslySetInnerHTML={{ __html: title }} />
           )}
 
-          {subTitle && <div className={cn(subTitleClasses)} dangerouslySetInnerHTML={{ __html: subTitle }}></div>}
+          {subTitle && (
+            <div
+              className={cn(subTitleClasses)}
+              dangerouslySetInnerHTML={{ __html: subTitle }}
+            ></div>
+          )}
 
           {descriptionText && (
             <RichText

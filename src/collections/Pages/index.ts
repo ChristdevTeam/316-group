@@ -35,6 +35,9 @@ import { TabBlock } from '@/blocks/TabBlock/config'
 import { InteractiveMediaGrid } from '@/blocks/InteractiveMediaGrid/config'
 import { TestimonialSlider } from '@/blocks/TestimonialSlider/config'
 import { SpacingBlock } from '@/blocks/SpacingBlock/config'
+import { CaseStudyArchive } from '@/blocks/CaseStudyArchiveBlock/config'
+import { ResourcesHeroBlock } from '@/blocks/ResourcesHero/config'
+import { EbooksAndGuidesArchive } from '@/blocks/EbooksAndGuidesArchiveBlock/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -93,9 +96,11 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               blocks: [
+                ResourcesHeroBlock,
                 Archive,
                 CallToAction,
                 Content,
+                EbooksAndGuidesArchive,
                 FormBlock,
                 MediaBlock,
                 BusinessSlider,
@@ -112,6 +117,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 InteractiveMediaGrid,
                 TestimonialSlider,
                 SpacingBlock,
+                CaseStudyArchive,
               ],
               required: true,
             },

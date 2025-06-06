@@ -33,7 +33,7 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        'border border-border rounded-xl overflow-hidden bg-white 0 hover:cursor-pointer flex flex-col h-full shadow-md hover:shadow-xl scale-100 hover:scale-105 transition-all duration-300',
+        'border border-border rounded-xl overflow-hidden bg-white text-slate-900 dark:bg-black dark:text-white 0 hover:cursor-pointer flex flex-col h-full shadow-md hover:shadow-xl scale-100 hover:scale-105 transition-all duration-300',
         className,
       )}
       ref={card.ref}

@@ -3,7 +3,7 @@ import { cn } from 'src/utilities/cn'
 import Link from 'next/link'
 import React from 'react'
 
-import type { Page, Post } from '@/payload-types'
+import type { CaseStudy, EbooksAndGuide, Page, Post } from '@/payload-types'
 import { ArrowRight, ChevronRight, ExternalLink } from 'lucide-react'
 
 type CMSLinkType = {
@@ -13,8 +13,8 @@ type CMSLinkType = {
   label?: string | null
   newTab?: boolean | null
   reference?: {
-    relationTo: 'pages' | 'posts'
-    value: Page | Post | string | number
+    relationTo: 'pages' | 'posts' | 'ebooks-and-guides' | 'case-studies'
+    value: Page | Post | string | number | CaseStudy | EbooksAndGuide
   } | null
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
