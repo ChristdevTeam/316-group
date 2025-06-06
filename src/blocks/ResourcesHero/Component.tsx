@@ -52,7 +52,7 @@ export const ResourcesHeroBlock: React.FC<ResourcesHeroBlockType> = (props) => {
       )}
       <div
         className={cn(
-          'w-full min-h-[60dvh]',
+          'w-full min-h-[60dvh] lg:min-h[70dvh]',
           bgColor,
           'flex flex-col justify-center items-center text-white',
         )}
@@ -109,7 +109,7 @@ export const ResourcesHeroBlock: React.FC<ResourcesHeroBlockType> = (props) => {
               {swiperData?.map((slide, index) => (
                 <SwiperSlide key={index} className="rounded-2xl">
                   <div className="grid grid-cols-1 md:grid-cols-2 bg-white text-slate-900 p-0 rounded-2xl overflow-clip">
-                    <div className="relative min-h-[200px] md:min-h-[250px] order-1 md:order-none col-span-1">
+                    <div className="relative min-h-[300px] md:min-h-[350px] order-1 md:order-none col-span-1">
                       <Media resource={slide.image} fill imgClassName="object-cover w-full" />
                     </div>
                     <div className="space-y-6 p-6 order-2 md:order-none col-span-1">

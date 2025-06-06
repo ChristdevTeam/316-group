@@ -167,7 +167,7 @@ export const CaseStudyArchiveBlock: React.FC<
             <Button
               size="lg"
               variant="outline"
-              className="flex items-center gap-2 relative transition-all"
+              className="flex items-center gap-2 relative transition-all bg-white text-black hover:bg-black hover:text-white"
             >
               <span>See All</span>
               <span className="text-xl transform transition-transform duration-300 ease-in-out hover:translate-x-2">
