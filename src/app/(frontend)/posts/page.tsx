@@ -82,7 +82,7 @@ export default async function Page() {
         className={cn(
           'w-full min-h-[60dvh]',
           sectionBackgroundColor,
-          'flex flex-col justify-center items-center',
+          'flex flex-col justify-center items-center text-white',
         )}
       >
         <div className="container max-w-screen-2xl">
