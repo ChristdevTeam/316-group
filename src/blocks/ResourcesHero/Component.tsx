@@ -31,22 +31,7 @@ export const ResourcesHeroBlock: React.FC<ResourcesHeroBlockType> = (props) => {
         <div className="container max-w-screen-2xl">
           <h1
             dangerouslySetInnerHTML={{ __html: mainTitle }}
-            className={cn(
-              typeof mainTitleStyle === 'object'
-                ? mainTitleStyle?.classes
-                : [
-                    'uppercase',
-                    'font-extrabold',
-                    'mb-4',
-                    'md:mb-8',
-                    'text-3xl',
-                    'md:text-5xl',
-                    'lg:text-6xl',
-                    'xl:text-8xl',
-                    'pt-8',
-                    'md:pt-16',
-                  ],
-            )}
+            className={cn(typeof mainTitleStyle === 'object' && mainTitleStyle?.classes)}
           ></h1>
         </div>
       )}
