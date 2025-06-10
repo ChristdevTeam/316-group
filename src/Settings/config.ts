@@ -37,23 +37,29 @@ export const Settings: GlobalConfig = {
                   required: true,
                   defaultValue: 'Blog',
                 },
-                textClasses({
-                  overrides: {
-                    name: 'pageTitleClasses',
-                    defaultValue: [
-                      'uppercase',
-                      'font-extrabold',
-                      'mb-4',
-                      'md:mb-8',
-                      'text-3xl',
-                      'md:text-5xl',
-                      'lg:text-6xl',
-                      'xl:text-8xl',
-                      'pt-8',
-                      'md:pt-16',
-                    ],
-                  },
-                }),
+                {
+                  name: 'pageTitleClasses',
+                  type: 'relationship',
+                  relationTo: 'text-styles',
+                  // required: true,
+                },
+                // textClasses({
+                //   overrides: {
+                //     name: 'pageTitleClasses',
+                //     defaultValue: [
+                //       'uppercase',
+                //       'font-extrabold',
+                //       'mb-4',
+                //       'md:mb-8',
+                //       'text-3xl',
+                //       'md:text-5xl',
+                //       'lg:text-6xl',
+                //       'xl:text-8xl',
+                //       'pt-8',
+                //       'md:pt-16',
+                //     ],
+                //   },
+                // }),
                 {
                   name: 'subtitle',
                   type: 'text',
@@ -139,21 +145,11 @@ export const Settings: GlobalConfig = {
                   defaultValue:
                     'We back  disruptive<br class="hidden lg:block" /> products and founders in retail',
                 },
-                textClasses({
-                  overrides: {
-                    name: 'titleClasses',
-                    defaultValue: [
-                      'text-white',
-                      'text-xl',
-                      'md:text-2xl',
-                      'lg:text-3xl',
-                      'xl:text-5xl',
-                      'font-bold',
-                      'mb-4',
-                      'md:mb-8',
-                    ],
-                  },
-                }),
+                {
+                  name: 'titleClasses',
+                  type: 'relationship',
+                  relationTo: 'text-styles',
+                },
                 {
                   name: 'description',
                   type: 'richText',
@@ -198,23 +194,12 @@ export const Settings: GlobalConfig = {
                   required: true,
                   defaultValue: 'Case Studies',
                 },
-                textClasses({
-                  overrides: {
-                    name: 'pageTitleClasses',
-                    defaultValue: [
-                      'uppercase',
-                      'font-extrabold',
-                      'mb-4',
-                      'md:mb-8',
-                      'text-3xl',
-                      'md:text-5xl',
-                      'lg:text-6xl',
-                      'xl:text-8xl',
-                      'pt-8',
-                      'md:pt-16',
-                    ],
-                  },
-                }),
+                {
+                  name: 'pageTitleClasses',
+                  type: 'relationship',
+                  relationTo: 'text-styles',
+                  // required: true,
+                },
                 {
                   name: 'subtitle',
                   type: 'text',
@@ -409,23 +394,12 @@ export const Settings: GlobalConfig = {
                   required: true,
                   defaultValue: 'Ebooks & Guides',
                 },
-                textClasses({
-                  overrides: {
-                    name: 'pageTitleClasses',
-                    defaultValue: [
-                      'uppercase',
-                      'font-extrabold',
-                      'mb-4',
-                      'md:mb-8',
-                      'text-3xl',
-                      'md:text-5xl',
-                      'lg:text-6xl',
-                      'xl:text-8xl',
-                      'pt-8',
-                      'md:pt-16',
-                    ],
-                  },
-                }),
+                {
+                  name: 'pageTitleClasses',
+                  type: 'relationship',
+                  relationTo: 'text-styles',
+                  // required: true,
+                },
                 {
                   name: 'subtitle',
                   type: 'text',

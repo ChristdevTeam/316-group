@@ -73,7 +73,10 @@ export default async function Page() {
       <PageClient />
       {pageTitle && (
         <div className="container max-w-screen-2xl">
-          <h1 dangerouslySetInnerHTML={{ __html: pageTitle }} className={cn(pageTitleClasses)}></h1>
+          <h1
+            dangerouslySetInnerHTML={{ __html: pageTitle }}
+            className={cn(typeof pageTitleClasses === 'object' ? pageTitleClasses?.classes : '')}
+          ></h1>
         </div>
       )}
       <div
