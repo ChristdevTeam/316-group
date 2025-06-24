@@ -84,12 +84,6 @@ export const DownloadForm: Block = {
       label: 'Form Data',
       fields: [
         {
-          name: 'form',
-          type: 'relationship',
-          relationTo: 'forms',
-          required: true,
-        },
-        {
           name: 'fileToDownload',
           type: 'upload',
           relationTo: 'media',
@@ -97,6 +91,70 @@ export const DownloadForm: Block = {
           admin: {
             description:
               'This file link will be emailed to the submitter when the form is submitted',
+          },
+        },
+        {
+          name: 'emailHeroImage',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          admin: {
+            description: 'Hero image for the email',
+          },
+        },
+        {
+          name: 'formTitle',
+          type: 'text',
+          required: true,
+          defaultValue: 'Download the free PDF now',
+          admin: {
+            description: 'Title displayed above the form',
+          },
+        },
+        {
+          name: 'submitButtonText',
+          type: 'text',
+          required: true,
+          defaultValue: 'Download',
+          admin: {
+            description: 'Text displayed on the submit button',
+          },
+        },
+        {
+          name: 'successMessage',
+          type: 'text',
+          required: true,
+          defaultValue: 'Thank you! Check your email for the download link.',
+          admin: {
+            description: 'Message displayed after successful form submission',
+          },
+        },
+        {
+          name: 'documentName',
+          type: 'text',
+          required: true,
+          defaultValue: 'Your 2025 e-commerce Playbook',
+          admin: {
+            description: 'Name of the document that will appear in the email template',
+          },
+        },
+        {
+          name: 'introText',
+          type: 'textarea',
+          required: true,
+          defaultValue:
+            'Thank you for your interest in our latest E-Book on efficient E-Commerce.<br>Discover the best strategies to reduce your shipping costs and returns!',
+          admin: {
+            description: 'Introductory text that appears in the email template',
+          },
+        },
+        {
+          name: 'sourceDocument',
+          type: 'text',
+          required: false,
+          defaultValue: '',
+          admin: {
+            description: 'Source document or page identifier for tracking form submissions (optional)',
           },
         },
       ],
