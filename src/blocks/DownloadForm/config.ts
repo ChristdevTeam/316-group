@@ -102,15 +102,7 @@ export const DownloadForm: Block = {
             description: 'Hero image for the email',
           },
         },
-        {
-          name: 'formTitle',
-          type: 'text',
-          required: true,
-          defaultValue: 'Download the free PDF now',
-          admin: {
-            description: 'Title displayed above the form',
-          },
-        },
+
         {
           name: 'submitButtonText',
           type: 'text',
@@ -120,15 +112,7 @@ export const DownloadForm: Block = {
             description: 'Text displayed on the submit button',
           },
         },
-        {
-          name: 'successMessage',
-          type: 'text',
-          required: true,
-          defaultValue: 'Thank you! Check your email for the download link.',
-          admin: {
-            description: 'Message displayed after successful form submission',
-          },
-        },
+
         {
           name: 'documentName',
           type: 'text',
@@ -154,7 +138,8 @@ export const DownloadForm: Block = {
           required: false,
           defaultValue: '',
           admin: {
-            description: 'Source document or page identifier for tracking form submissions (optional)',
+            description:
+              'Source document or page identifier for tracking form submissions (optional)',
           },
         },
       ],

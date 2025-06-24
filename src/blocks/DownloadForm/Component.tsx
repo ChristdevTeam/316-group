@@ -8,8 +8,6 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
-import SuccessMessage from '@/components/SuccessMessage'
-import type { Media } from '@/payload-types'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -25,9 +23,7 @@ interface DownloadFormProps
     DownloadFormBlockProps,
     | 'fileToDownload'
     | 'emailHeroImage'
-    | 'formTitle'
     | 'submitButtonText'
-    | 'successMessage'
     | 'documentName'
     | 'introText'
     | 'sourceDocument'
@@ -36,15 +32,12 @@ interface DownloadFormProps
 const DownloadForm: React.FC<DownloadFormProps> = ({
   fileToDownload,
   emailHeroImage,
-  formTitle = 'Download the free PDF now',
   submitButtonText = 'Download',
-  successMessage = 'Thank you! Check your email for the download link.',
   documentName = 'Your 2025 e-commerce Playbook',
   introText = 'Thank you for your interest in our latest E-Book on efficient E-Commerce.<br>Discover the best strategies to reduce your shipping costs and returns!',
   sourceDocument,
 }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [hasSubmitted, setHasSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
@@ -302,9 +295,7 @@ export const DownloadFormBlock: React.FC<
         <DownloadForm
           fileToDownload={fileToDownload}
           emailHeroImage={emailHeroImage}
-          formTitle={formTitle}
           submitButtonText={submitButtonText}
-          successMessage={successMessage}
           documentName={documentName}
           introText={introText}
           sourceDocument={sourceDocument}
