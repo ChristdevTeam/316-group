@@ -126,17 +126,17 @@ export const generateDownloadEmailTemplate = ({
                    <tr>
                      <td>
                        <a href="https://linkedin.com/company/316group" style="display: inline-block; text-decoration: none;" title="LinkedIn">
-                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/linkedin-svgrepo-com.png" alt="LinkedIn" width="24" height="24" style="width: 28px; height: 28px; display: block; object-fit:contain; margin: 0 auto;" />
+                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/linkedin.png" alt="LinkedIn" width="24" height="24" style="width: 28px; height: 28px; display: block; object-fit:contain; margin: 0 auto;" />
                        </a>
                      </td>
                      <td>
                        <a href="https://instagram.com/316group" style="display: inline-block; text-decoration: none;" title="Instagram">
-                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/instagram-svgrepo-com.png" alt="Instagram" width="24" height="24" style="width: 28px; height: 28px; display: block; object-fit:contain; margin: 0 auto;" />
+                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/instagram.png" alt="Instagram" width="24" height="24" style="width: 28px; height: 28px; display: block; object-fit:contain; margin: 0 auto;" />
                        </a>
                      </td>
                      <td>
                        <a href="https://facebook.com/316group" style="display: inline-block; text-decoration: none;" title="Facebook">
-                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/facebook-svgrepo-com.png" alt="Facebook" width="24" height="24" style="width: 28px; height: 28px; display: block; object-fit: contain; margin: 0 auto;" />
+                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/facebook.png" alt="Facebook" width="24" height="24" style="width: 28px; height: 28px; display: block; object-fit: contain; margin: 0 auto;" />
                        </a>
                      </td>
                    </tr>
