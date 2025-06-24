@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button'
 import SuccessMessage from '@/components/SuccessMessage'
 import type { Media } from '@/payload-types'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface DownloadFormData {
   email: string
@@ -45,6 +46,7 @@ const DownloadForm: React.FC<DownloadFormProps> = ({
   const [isLoading, setIsLoading] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
 
   const {
     register,
@@ -85,7 +87,8 @@ const DownloadForm: React.FC<DownloadFormProps> = ({
         throw new Error(result.error || 'Failed to submit form')
       }
 
-      setHasSubmitted(true)
+      // Redirect to download confirmation page
+      router.push('/ebooks-and-guides/download-confirmation')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
@@ -93,15 +96,7 @@ const DownloadForm: React.FC<DownloadFormProps> = ({
     }
   }
 
-  if (hasSubmitted) {
-    return (
-      <div className="bg-background text-foreground p-8 rounded-lg shadow-lg">
-        <SuccessMessage>
-          <p>{successMessage}</p>
-        </SuccessMessage>
-      </div>
-    )
-  }
+  // Remove the hasSubmitted check since we're redirecting instead
 
   return (
     <div>
