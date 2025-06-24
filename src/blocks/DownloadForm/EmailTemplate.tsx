@@ -73,24 +73,6 @@ export const generateDownloadEmailTemplate = ({
           margin-bottom: 20px;
           color: #ffffff;
         }
-        .download-button {
-          display: inline-block;
-          background-color: #0B68EC;
-          color: #FFFFFF;
-          padding: 16px 32px;
-          text-decoration: none;
-          border-radius: 8px;
-          font-weight: 700;
-          font-size: 16px;
-          margin-bottom: 30px;
-          transition: all 0.2s;
-          border: 2px solid #FFFFFF;
-        }
-        .download-button:hover {
-          background-color: #0861ED;
-          border-color: #FFFFFF;
-          transform: translateY(-1px);
-        }
         .note {
           font-size: 14px;
           color: #d1d5db;
@@ -104,54 +86,12 @@ export const generateDownloadEmailTemplate = ({
         .contact-link:hover {
           color: #34d399;
         }
-        .footer {
-          text-align: center;
-          padding: 30px 20px 20px;
-          border-top: 1px solid #4b5563;
-          margin-top: 20px;
-        }
-        .footer-text {
-          font-size: 14px;
-          color: #d1d5db;
-          margin-bottom: 20px;
-        }
-        .social-links {
-          display: flex;
-          justify-content: center;
-          gap: 15px;
-          margin-bottom: 20px;
-        }
-        .social-link {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          color: #ffffff;
-          transition: all 0.2s;
-          border: 1px solid #ffffff;
-        }
-        .social-link:hover {
-          background-color: #10b981;
-          border-color: #10b981;
-          transform: translateY(-2px);
-        }
-        .social-icon {
-          width: 20px;
-          height: 20px;
-          fill: currentColor;
-        }
+       
         .company-logo {
           width: 100px;
           height: 40px;
           display: inline-block;
           margin-bottom: 15px;
-        }
-        .copyright {
-          font-size: 12px;
-          color: #efefef;
         }
       </style>
     </head>
@@ -159,7 +99,7 @@ export const generateDownloadEmailTemplate = ({
       <div class="container">
         <div class="header">
           <div class="logo">
-            <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/logo.svg" alt="316 Group Logo" style="width: 100%; height: 100%; object-fit: contain;" />
+            <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/logo.png" alt="316 Group Logo" style="width: 100%; height: 100%; object-fit: contain;" />
           </div>
           <img src="${emailHeroImageUrl}" alt="${downloadFileName} Preview" class="hero-image" />
           <h1 class="greeting">Hey ${firstName} ${lastName}</h1>
@@ -171,7 +111,7 @@ export const generateDownloadEmailTemplate = ({
         <div class="download-section">
           <h2 class="download-title">Here's your free file download</h2>
           <h3 style="font-size: 18px; margin-bottom: 20px; font-weight: 600;">${downloadFileName}</h3>
-          <a href="${downloadFileUrl}" class="download-button">Download E-Book</a>
+          <a href="${downloadFileUrl}" style="display: inline-block; background-color: #0B68EC; color: #FFFFFF; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 16px; margin-bottom: 30px; transition: all 0.2s; border: 2px solid #FFFFFF;">Download E-Book</a>
           <p class="note">
             Take a look at it and if you have any questions<br>
             <a href="mailto:contact@316group.com" class="contact-link">Contact us at any time!</a>
@@ -180,26 +120,24 @@ export const generateDownloadEmailTemplate = ({
             Keep Dreaming Big! Your <strong style="color: #FFFFFF;">316 Team</strong>
           </p>
         </div>
-        
-        <div class="footer">
-          <div class="social-links">
-            <a href="https://linkedin.com/company/316group" class="social-link" title="LinkedIn">
-             <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/linkedin-svgrepo-com.png" alt="LinkedIn" width="32" height="32" />
-            </a>
-            <a href="https://instagram.com/316group" class="social-link" title="Instagram">
-              <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/instagram-svgrepo-com.png" alt="Instagram" width="32" height="32" />
-            </a>
-            <a href="https://facebook.com/316group" class="social-link" title="Facebook">
-              <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/facebook-svgrepo-com.png" alt="Facebook" width="32" height="32" />
-            </a>
-          </div>
-          <div class="company-logo">
-            <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/logo.svg" alt="316 Group" style="width: 100%; height: 100%; object-fit: contain;" />
-          </div>
-          <p class="copyright">
-            2023 316 Group. All rights reserved | Policy
-          </p>
+        <hr style="border: 1px solid #4b5563; margin: 20px 0;">
+        <div style="display:flex; justify-content: center; gap:15px; text-align: center; padding: 30px 20px 20px;">
+          <a href="https://linkedin.com/company/316group" style="padding:10px; border-radius:50%; border: 1px solid #ffffff" title="LinkedIn">
+            <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/linkedin-svgrepo-com.png" alt="LinkedIn" width="32" height="32" style="width:32px; height:32px; object-fit: contain;" />
+          </a>
+          <a href="https://instagram.com/316group" style="padding:10px; border-radius:50%; border: 1px solid #ffffff" title="Instagram">
+            <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/instagram-svgrepo-com.png" alt="Instagram" width="32" height="32" style="width:32px; height:32px; object-fit: contain;" /> 
+          </a>
+          <a href="https://facebook.com/316group" style="padding:10px; border-radius:50%; border: 1px solid #ffffff" title="Facebook">
+            <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/facebook-svgrepo-com.png" alt="Facebook" width="32" height="32" style="width:32px; height:32px; object-fit: contain;" />
+          </a>
         </div>
+        <div class="company-logo">
+          <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/logo.png" alt="316 Group" style="width: 100%; height: 100%; object-fit: contain;" />
+        </div>
+        <p style="font-size: 12px; color: #efefef; margin-bottom: 20px text-align: center; padding: 10px 10px 10px;">
+          2023 316 Group. All rights reserved | Policy
+        </p>
       </div>
     </body>
     </html>
