@@ -45,11 +45,9 @@ export const generateDownloadEmailTemplate = ({
         }
         .hero-image {
           width: 100%;
-          max-width: 400px;
+          max-width: 600px;
           height: auto;
-          border-radius: 12px;
           margin-bottom: 30px;
-          border: 2px solid #374151;
         }
         .greeting {
           font-size: 32px;
@@ -128,17 +126,17 @@ export const generateDownloadEmailTemplate = ({
                    <tr>
                      <td>
                        <a href="https://linkedin.com/company/316group" style="display: inline-block; padding: 8px; border-radius: 50%; border: 1px solid #ffffff; width: 32px; height: 32px; text-decoration: none;" title="LinkedIn">
-                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/linkedin-svgrepo-com.png" alt="LinkedIn" width="24" height="24" style="width: 24px; height: 24px; display: block; margin: 0 auto;" />
+                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/linkedin-svgrepo-com.png" alt="LinkedIn" width="24" height="24" style="width: 24px; height: 24px; display: block; object-fit:contain; margin: 0 auto;" />
                        </a>
                      </td>
                      <td>
                        <a href="https://instagram.com/316group" style="display: inline-block; padding: 8px; border-radius: 50%; border: 1px solid #ffffff; width: 32px; height: 32px; text-decoration: none;" title="Instagram">
-                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/instagram-svgrepo-com.png" alt="Instagram" width="24" height="24" style="width: 24px; height: 24px; display: block; margin: 0 auto;" />
+                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/instagram-svgrepo-com.png" alt="Instagram" width="24" height="24" style="width: 24px; height: 24px; display: block; object-fit:contain; margin: 0 auto;" />
                        </a>
                      </td>
                      <td>
                        <a href="https://facebook.com/316group" style="display: inline-block; padding: 8px; border-radius: 50%; border: 1px solid #ffffff; width: 32px; height: 32px; text-decoration: none;" title="Facebook">
-                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/facebook-svgrepo-com.png" alt="Facebook" width="24" height="24" style="width: 24px; height: 24px; display: block; margin: 0 auto;" />
+                         <img src="${process.env.NEXT_PUBLIC_SERVER_URL}/assets/facebook-svgrepo-com.png" alt="Facebook" width="24" height="24" style="width: 24px; height: 24px; display: block; object-fit: contain; margin: 0 auto;" />
                        </a>
                      </td>
                    </tr>
