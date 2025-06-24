@@ -10,6 +10,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 import SuccessMessage from '@/components/SuccessMessage'
 import type { Media } from '@/payload-types'
+import Link from 'next/link'
 
 interface DownloadFormData {
   email: string
@@ -18,10 +19,18 @@ interface DownloadFormData {
   privacyPolicyAccepted: boolean
 }
 
-interface DownloadFormProps extends Pick<DownloadFormBlockProps, 
-  'fileToDownload' | 'emailHeroImage' | 'formTitle' | 'submitButtonText' | 
-  'successMessage' | 'documentName' | 'introText' | 'sourceDocument'
-> {}
+interface DownloadFormProps
+  extends Pick<
+    DownloadFormBlockProps,
+    | 'fileToDownload'
+    | 'emailHeroImage'
+    | 'formTitle'
+    | 'submitButtonText'
+    | 'successMessage'
+    | 'documentName'
+    | 'introText'
+    | 'sourceDocument'
+  > {}
 
 const DownloadForm: React.FC<DownloadFormProps> = ({
   fileToDownload,
@@ -193,9 +202,9 @@ const DownloadForm: React.FC<DownloadFormProps> = ({
           />
           <Label htmlFor="privacyPolicy" className="text-lg text-gray-900 leading-relaxed">
             I agree to{' '}
-            <a href="/privacy-policy" className="text-blue-600 underline">
+            <Link href="/privacy-policy" className="text-blue-600 underline">
               Privacy policy
-            </a>
+            </Link>
           </Label>
         </div>
         {errors.privacyPolicyAccepted && (
