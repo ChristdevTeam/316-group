@@ -105,11 +105,13 @@ export default async function Page() {
         </div>
       </div>
 
-      <GuideCollectionArchive
-        heading="Spotlight"
-        guides={spotlight.docs}
-        className="mt-16 mb-16 lg:mb-24 lg:mt-24"
-      />
+      {spotlight.docs.length > 0 && (
+        <GuideCollectionArchive
+          heading="Spotlight"
+          guides={spotlight.docs}
+          className="mt-16 mb-16 lg:mb-24 lg:mt-24"
+        />
+      )}
       <div className="container pt-8 mb-8 max-w-screen-2xl">
         <PageRange
           collection="ebooks-and-guides"

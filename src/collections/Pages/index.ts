@@ -38,6 +38,7 @@ import { SpacingBlock } from '@/blocks/SpacingBlock/config'
 import { CaseStudyArchive } from '@/blocks/CaseStudyArchiveBlock/config'
 import { ResourcesHeroBlock } from '@/blocks/ResourcesHero/config'
 import { EbooksAndGuidesArchive } from '@/blocks/EbooksAndGuidesArchiveBlock/config'
+import { ContentWithForm } from '@/blocks/ContentWithForm/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -100,6 +101,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Archive,
                 CallToAction,
                 Content,
+                ContentWithForm,
                 EbooksAndGuidesArchive,
                 FormBlock,
                 MediaBlock,

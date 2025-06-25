@@ -101,11 +101,13 @@ export default async function Page({ params: paramsPromise }: Args) {
         </div>
       </div>
 
-      <GuideCollectionArchive
-        heading="Spotlight"
-        guides={spotlight.docs}
-        className="mt-16 mb-16 lg:mb-24 lg:mt-24"
-      />
+      {spotlight.docs.length > 0 && (
+        <GuideCollectionArchive
+          heading="Spotlight"
+          guides={spotlight.docs}
+          className="mt-16 mb-16 lg:mb-24 lg:mt-24"
+        />
+      )}
 
       <div className="container mb-8">
         <PageRange

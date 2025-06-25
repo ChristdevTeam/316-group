@@ -173,6 +173,31 @@ export const Settings: GlobalConfig = {
                 },
               ],
             },
+            {
+              name: 'blogPostSeparatorContent',
+              type: 'group',
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  defaultValue: 'Heard about our Beyond The Now Podcast Yet?',
+                },
+                {
+                  name: 'titleClasses',
+                  type: 'relationship',
+                  relationTo: 'text-styles',
+                  required: true,
+                },
+                linkGroup(),
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
+                },
+              ],
+            },
           ],
         },
         {

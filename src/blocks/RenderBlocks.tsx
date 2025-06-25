@@ -26,10 +26,12 @@ import { DownloadFormBlock } from './DownloadForm/Component'
 import { CaseStudyArchiveBlock } from './CaseStudyArchiveBlock/Component'
 import { ResourcesHeroBlock } from './ResourcesHero/Component'
 import { EbooksAndGuidesArchiveBlock } from './EbooksAndGuidesArchiveBlock/Component'
+import { ContentWithFormComponent } from './ContentWithForm/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
+  contentWithForm: ContentWithFormComponent,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,

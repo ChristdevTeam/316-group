@@ -151,24 +151,24 @@ export const FormBlock: React.FC<
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-              <div className="mb-4 last:mb-0">
+              <div className="mb-4 last:mb-0 grid grid-cols-12 gap-4 md:gap-6 lg:gap-8">
                 {formFromProps &&
                   formFromProps.fields &&
                   formFromProps.fields?.map((field, index) => {
                     const Field: React.FC<any> = fields?.[field.blockType]
                     if (Field) {
                       return (
-                        <div className="mb-6 last:mb-0" key={index}>
-                          <Field
-                            form={formFromProps}
-                            {...field}
-                            {...formMethods}
-                            control={control}
-                            errors={errors}
-                            register={register}
-                            hideLabels={props.hideLabels}
-                          />
-                        </div>
+                        <Field
+                          form={formFromProps}
+                          {...field}
+                          {...formMethods}
+                          control={control}
+                          errors={errors}
+                          register={register}
+                          hideLabels={props.hideLabels}
+                          key={index}
+                          className="mb-6 last:mb-0"
+                        />
                       )
                     }
                     return null
