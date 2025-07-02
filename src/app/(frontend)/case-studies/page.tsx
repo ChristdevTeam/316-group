@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { getPayload, PaginatedDocs } from 'payload'
 import { cn } from '@/utilities/cn'
 import PageClient from './page.client'
 import CaseStudyCard from '@/components/CaseStudyCard'
@@ -33,7 +33,7 @@ export default async function Page() {
   } = settings.caseStudyArchiveHeroContent
   const footer = settings.caseStudyArchiveFooter
 
-  const caseStudyDocs = await payload.find({
+  const caseStudyDocs: PaginatedDocs = await payload.find({
     collection: 'case-studies',
     depth: 1,
     limit: 12,

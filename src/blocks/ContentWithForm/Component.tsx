@@ -66,7 +66,7 @@ export const ContentWithFormComponent: React.FC<ContentWithFormBlock> = ({
       )}
     >
       <div className="container max-w-screen-2xl">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Column */}
           <div
             className={cn('flex flex-col h-full text-white', alignmentClasses[leftColumnAlignment])}

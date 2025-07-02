@@ -1,9 +1,10 @@
 import { Card, CardPostData } from '@/components/Card'
+import { EbooksAndGuide } from '@/payload-types'
 import { cn } from '@/utilities/cn'
 
 export type Props = {
   className?: string
-  guides: CardPostData[]
+  guides: EbooksAndGuide[]
   heading?: string
 }
 
@@ -20,7 +21,7 @@ export const GuideCollectionArchive: React.FC<Props> = (props) => {
       <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-4 gap-x-4 lg:gap-y-8 lg:gap-x-8 xl:gap-x-8">
         {guides?.map((doc) => (
           <div key={doc.slug} className="col-span-4">
-            <Card relationTo="ebooks-and-guides" doc={doc} showCategories />
+            <Card relationTo="ebooks-and-guides" doc={doc as CardPostData} showCategories />
           </div>
         ))}
       </div>

@@ -4,7 +4,7 @@ import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { getPayload, PaginatedDocs } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { cn } from '@/utilities/cn'
@@ -19,7 +19,7 @@ export const revalidate = 600
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
 
-  const posts = await payload.find({
+  const posts: PaginatedDocs = await payload.find({
     collection: 'posts',
     depth: 1,
     limit: 12,
@@ -37,7 +37,7 @@ export default async function Page() {
     },
   })
 
-  const spotlight = await payload.find({
+  const spotlight: PaginatedDocs = await payload.find({
     collection: 'posts',
     depth: 1,
     limit: 3,

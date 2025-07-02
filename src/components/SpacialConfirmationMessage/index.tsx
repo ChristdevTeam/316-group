@@ -19,16 +19,25 @@ const SpecialConfirmation = ({
 }: SpecialConfirmationProps) => {
   // console.log('Card Data', cardData)
   return (
-    <div>
+    <div className="py-8">
       <div>
-        <h2 className="text-3xl font-bold text-center text-primary">{title}</h2>
-        <p className="text-center text-primary py-4">{description}</p>
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-primary">
+          {title}
+        </h2>
+        <p className="md:text-lg lg:text-2xl text-center text-primary py-4">{description}</p>
       </div>
       {card && typeof cardData === 'object' && (
-        <div className="w-full">
-          {cardType === 'Post' && <Card doc={cardData as Post} {...cardData} />}
+        <div className="mt-8">
+          {cardType === 'Post' && (
+            <Card doc={cardData as Post} {...cardData} className="m-auto max-w-lg" />
+          )}
           {cardType === 'EbooksAndGuide' && (
-            <Card doc={cardData as EbooksAndGuide} relationTo="ebooks-and-guides" {...cardData} />
+            <Card
+              doc={cardData as EbooksAndGuide}
+              relationTo="ebooks-and-guides"
+              {...cardData}
+              className="m-auto max-w-lg shadow-none border-none bg-slate-50"
+            />
           )}
           {cardType === 'CaseStudy' && <CaseStudyCard doc={cardData as CaseStudy} {...cardData} />}
         </div>

@@ -6,10 +6,11 @@ import { getPayload } from 'payload'
 import { Card, CardPostData } from '@/components/Card'
 import { CMSLink } from '../Link'
 import { Media } from '../Media'
+import { Post } from '@/payload-types'
 
 export type Props = {
   className?: string
-  posts: CardPostData[]
+  posts: Post[]
   heading?: string
 }
 
@@ -38,7 +39,7 @@ export const CollectionArchive: React.FC<Props> = async (props) => {
               if (typeof result === 'object' && result !== null) {
                 items.push(
                   <div className="col-span-4" key={index}>
-                    <Card className="h-full" doc={result} relationTo="posts" />
+                    <Card className="h-full" doc={result as CardPostData} relationTo="posts" />
                   </div>,
                 )
               }

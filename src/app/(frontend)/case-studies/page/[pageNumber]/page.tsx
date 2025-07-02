@@ -3,7 +3,7 @@ import type { Metadata } from 'next/types'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { getPayload, PaginatedDocs } from 'payload'
 import React from 'react'
 import { notFound } from 'next/navigation'
 import CaseStudyCard from '@/components/CaseStudyCard'
@@ -25,7 +25,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   if (!Number.isInteger(sanitizedPageNumber)) notFound()
 
-  const caseStudyDocs = await payload.find({
+  const caseStudyDocs: PaginatedDocs = await payload.find({
     collection: 'case-studies',
     depth: 1,
     limit: 12,
