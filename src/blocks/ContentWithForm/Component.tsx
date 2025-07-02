@@ -8,6 +8,7 @@ import { Media } from '@/components/Media'
 import { CMSLink } from '@/components/Link'
 import { FormBlock } from '@/blocks/Form/Component'
 import RichText from '@/components/RichText'
+import { SpecialConfirmationProps } from '@/components/SpacialConfirmationMessage'
 
 export const ContentWithFormComponent: React.FC<ContentWithFormBlock> = ({
   leftColumnItems,
@@ -33,6 +34,20 @@ export const ContentWithFormComponent: React.FC<ContentWithFormBlock> = ({
   const gradientClasses = backgroundGradient
     ? `${backgroundGradient.type || 'bg-gradient-to-b'} ${backgroundGradient.fromColor || 'from-blue-800'} ${backgroundGradient.toColor || 'to-blue-600'}`
     : 'bg-gradient-to-b from-blue-800 to-blue-600'
+
+  // Prepare special confirmation data
+  const specialConfirmationData: SpecialConfirmationProps | undefined =
+    formBlock?.enableSpecialConfirmation
+      ? {
+          title: formBlock.specialConfirmationTitle,
+          description: formBlock.specialConfirmationDescription,
+          card: formBlock.enableConfirmationCard,
+          cardType: formBlock.confirmationCardType as 'Post' | 'EbooksAndGuide' | 'CaseStudy',
+          cardData:
+            typeof formBlock.confirmationCardData === 'object' &&
+            formBlock.confirmationCardData?.value,
+        }
+      : undefined
 
   return (
     <section
@@ -122,6 +137,8 @@ export const ContentWithFormComponent: React.FC<ContentWithFormBlock> = ({
                   form={formBlock.form as FormType}
                   className=""
                   submitClasses="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                  specialConfirmation={formBlock.enableSpecialConfirmation}
+                  specialConfirmationData={specialConfirmationData}
                 />
               )}
             </div>

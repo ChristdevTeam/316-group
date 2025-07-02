@@ -93,6 +93,70 @@ export const ContentWithForm: Block = {
             condition: (_, { enableIntro }) => Boolean(enableIntro),
           },
         },
+        {
+          name: 'enableSpecialConfirmation',
+          type: 'checkbox',
+          defaultValue: false,
+          required: true,
+          label: 'Enable Special Confirmation',
+          admin: {
+            description: 'Use custom confirmation instead of default form confirmation',
+          },
+        },
+        {
+          name: 'specialConfirmationTitle',
+          type: 'text',
+          label: 'Confirmation Title',
+          required: true,
+          admin: {
+            condition: (_, { enableSpecialConfirmation }) => Boolean(enableSpecialConfirmation),
+          },
+        },
+        {
+          name: 'specialConfirmationDescription',
+          type: 'textarea',
+          label: 'Confirmation Description',
+          required: true,
+          admin: {
+            condition: (_, { enableSpecialConfirmation }) => Boolean(enableSpecialConfirmation),
+          },
+        },
+        {
+          name: 'enableConfirmationCard',
+          type: 'checkbox',
+          defaultValue: false,
+          required: true,
+          label: 'Show Card in Confirmation',
+          admin: {
+            condition: (_, { enableSpecialConfirmation }) => Boolean(enableSpecialConfirmation),
+          },
+        },
+        {
+          name: 'confirmationCardType',
+          type: 'select',
+          label: 'Card Type',
+          required: true,
+          options: [
+            { label: 'Post', value: 'Post' },
+            { label: 'Ebooks and Guides', value: 'EbooksAndGuide' },
+            { label: 'Case Study', value: 'CaseStudy' },
+          ],
+          admin: {
+            condition: (_, { enableSpecialConfirmation, enableConfirmationCard }) =>
+              Boolean(enableSpecialConfirmation) && Boolean(enableConfirmationCard),
+          },
+        },
+        {
+          name: 'confirmationCardData',
+          type: 'relationship',
+          label: 'Card Data',
+          required: true,
+          relationTo: ['posts', 'ebooks-and-guides', 'case-studies'],
+          admin: {
+            condition: (_, { enableSpecialConfirmation, enableConfirmationCard }) =>
+              Boolean(enableSpecialConfirmation) && Boolean(enableConfirmationCard),
+          },
+        },
       ],
     },
     {

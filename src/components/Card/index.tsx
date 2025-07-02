@@ -9,7 +9,7 @@ import type { Post } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { Button } from '../ui/button'
 
-export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
+export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'hero'>
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -22,8 +22,9 @@ export const Card: React.FC<{
   const { card, link } = useClickableCard({})
   const { className, doc, relationTo, showCategories, title: titleFromProps } = props
 
-  const { slug, categories, meta, title } = doc || {}
+  const { slug, categories, meta, title, hero } = doc || {}
   const { description, image: metaImage } = meta || {}
+  const { image: heroImage, description: heroDescription } = hero || {}
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
@@ -39,9 +40,12 @@ export const Card: React.FC<{
       ref={card.ref}
     >
       <div className="relative w-full ">
-        {!metaImage && <div className="">No image</div>}
+        {!metaImage && !heroImage && <div className="">No image</div>}
         {metaImage && typeof metaImage !== 'string' && (
           <Media imgClassName="aspect-[16/11]" resource={metaImage} size="33vw" />
+        )}
+        {!metaImage && heroImage && typeof heroImage !== 'string' && (
+          <Media imgClassName="aspect-[16/11]" resource={heroImage} size="33vw" />
         )}
       </div>
       <div className="flex flex-col flex-grow p-6 md:p-8">

@@ -14,6 +14,9 @@ import { cn } from '@/utilities/cn'
 import { Loader2 } from 'lucide-react'
 import SuccessMessage from '@/components/SuccessMessage'
 import { Media } from '@/payload-types'
+import SpecialConfirmation, {
+  SpecialConfirmationProps,
+} from '@/components/SpacialConfirmationMessage'
 
 export type Value = unknown
 
@@ -42,6 +45,8 @@ export const FormBlock: React.FC<
     hideLabels?: boolean
     submitClasses?: string
     className?: string
+    specialConfirmation?: boolean
+    specialConfirmationData?: SpecialConfirmationProps
   } & FormBlockType
 > = (props) => {
   const {
@@ -52,6 +57,8 @@ export const FormBlock: React.FC<
     submitClasses,
     className,
     fileToDownload,
+    specialConfirmation = false,
+    specialConfirmationData,
   } = props
 
   const formMethods = useForm({
@@ -143,7 +150,10 @@ export const FormBlock: React.FC<
       )}
       <div>
         <FormProvider {...formMethods}>
-          {!isLoading && hasSubmitted && confirmationType === 'message' && (
+          {specialConfirmation && specialConfirmationData && !isLoading && hasSubmitted && (
+            <SpecialConfirmation {...specialConfirmationData} />
+          )}
+          {!specialConfirmation && !isLoading && hasSubmitted && confirmationType === 'message' && (
             <SuccessMessage>
               <RichText content={confirmationMessage} className="text-center" />
             </SuccessMessage>

@@ -21,6 +21,7 @@ import { NumbersBlock } from './Numbers/Component'
 import { TabBlockComponent } from './TabBlock/Component'
 import { InteractiveMediaGrid } from './InteractiveMediaGrid/Component'
 import { TestimonialSliderBlock } from './TestimonialSlider/Component'
+import { TestimonialSliderSimpleBlock } from './TestimonialSliderSimple/Component'
 import { SpacingBlock } from './SpacingBlock/Component'
 import { DownloadFormBlock } from './DownloadForm/Component'
 import { CaseStudyArchiveBlock } from './CaseStudyArchiveBlock/Component'
@@ -48,6 +49,7 @@ const blockComponents = {
   tabBlock: TabBlockComponent,
   interactiveMediaGrid: InteractiveMediaGrid,
   testimonialSlider: TestimonialSliderBlock,
+  testimonialSliderSimple: TestimonialSliderSimpleBlock,
   spacing: SpacingBlock,
   downloadForm: DownloadFormBlock,
   caseStudyArchive: CaseStudyArchiveBlock,
