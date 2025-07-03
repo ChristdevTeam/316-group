@@ -45,7 +45,6 @@ export const FormBlock: Block = {
     {
       name: 'disappearingIntroOnSubmit',
       type: 'checkbox',
-      required: true,
       defaultValue: false,
     },
   ],

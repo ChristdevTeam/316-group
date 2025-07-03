@@ -45,7 +45,7 @@ export type FormBlockType = {
     }
   } | null
   fileToDownload?: string | Media
-  disappearingIntroOnSubmit: boolean
+  disappearingIntroOnSubmit?: boolean
 }
 
 export const FormBlock: React.FC<
