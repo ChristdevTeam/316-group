@@ -128,17 +128,16 @@ export const ContentWithFormComponent: React.FC<ContentWithFormBlock> = ({
           {/* Right Column - Form */}
           <div className={cn('relative z-10', overflowClasses[formOverflowAmount])}>
             <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-8">
-              {formBlock?.introContent && (
-                <RichText content={formBlock.introContent} className="mb-8" />
-              )}
               {formBlock?.form && typeof formBlock.form !== 'string' && (
                 <FormBlock
                   enableIntro={false}
                   form={formBlock.form as FormType}
+                  introContent={formBlock.introContent}
                   className=""
                   submitClasses="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                   specialConfirmation={formBlock.enableSpecialConfirmation}
                   specialConfirmationData={specialConfirmationData}
+                  disappearingIntroOnSubmit={formBlock.disappearingIntroOnSubmit}
                 />
               )}
             </div>

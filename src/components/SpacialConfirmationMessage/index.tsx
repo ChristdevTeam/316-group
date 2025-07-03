@@ -36,7 +36,7 @@ const SpecialConfirmation = ({
               doc={cardData as EbooksAndGuide}
               relationTo="ebooks-and-guides"
               {...cardData}
-              className="m-auto max-w-lg shadow-none border-none bg-slate-50"
+              className="m-auto max-w-lg shadow-none border-none bg-slate-50 hover:shadow-none"
             />
           )}
           {cardType === 'CaseStudy' && <CaseStudyCard doc={cardData as CaseStudy} {...cardData} />}

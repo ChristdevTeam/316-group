@@ -22460,6 +22460,7 @@ export interface ContentWithFormBlock {
       };
       [k: string]: unknown;
     } | null;
+    disappearingIntroOnSubmit: boolean;
     /**
      * Use custom confirmation instead of default form confirmation
      */
@@ -23753,6 +23754,7 @@ export interface FormBlock {
     };
     [k: string]: unknown;
   } | null;
+  disappearingIntroOnSubmit: boolean;
   id?: string | null;
   blockName?: string | null;
   blockType: 'formBlock';
@@ -65853,6 +65855,7 @@ export interface ContentWithFormBlockSelect<T extends boolean = true> {
         form?: T;
         enableIntro?: T;
         introContent?: T;
+        disappearingIntroOnSubmit?: T;
         enableSpecialConfirmation?: T;
         specialConfirmationTitle?: T;
         specialConfirmationDescription?: T;
@@ -65901,6 +65904,7 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  disappearingIntroOnSubmit?: T;
   id?: T;
   blockName?: T;
 }

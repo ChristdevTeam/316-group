@@ -35,8 +35,17 @@ export type FormBlockType = {
   form: FormType
   introContent?: {
     [k: string]: unknown
-  }[]
+    root: {
+      type: string
+      children: { [k: string]: unknown; type: string; version: number }[]
+      direction: 'ltr' | 'rtl' | null
+      format: '' | 'start' | 'center' | 'end' | 'left' | 'right' | 'justify'
+      indent: number
+      version: number
+    }
+  } | null
   fileToDownload?: string | Media
+  disappearingIntroOnSubmit: boolean
 }
 
 export const FormBlock: React.FC<
@@ -59,8 +68,10 @@ export const FormBlock: React.FC<
     fileToDownload,
     specialConfirmation = false,
     specialConfirmationData,
+    disappearingIntroOnSubmit = true,
   } = props
 
+  console.log('introContent', introContent)
   const formMethods = useForm({
     defaultValues: buildInitialFormState(formFromProps.fields),
   })
@@ -145,7 +156,7 @@ export const FormBlock: React.FC<
 
   return (
     <div className={className}>
-      {enableIntro && introContent && !hasSubmitted && (
+      {enableIntro && introContent && !hasSubmitted && !disappearingIntroOnSubmit && (
         <RichText className="mb-8 lg:mb-12" content={introContent} enableGutter={false} />
       )}
       <div>
@@ -161,6 +172,13 @@ export const FormBlock: React.FC<
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
+              {disappearingIntroOnSubmit && introContent && (
+                <RichText
+                  className="mb-8 lg:mb-12 w-full"
+                  content={introContent}
+                  enableGutter={false}
+                />
+              )}
               <div className="mb-4 last:mb-0 grid grid-cols-12 gap-4 md:gap-6 lg:gap-8">
                 {formFromProps &&
                   formFromProps.fields &&

@@ -2,6 +2,13 @@ import type { Block } from 'payload'
 import { textClasses } from '@/fields/textClasses'
 import { linkGroup } from '@/fields/linkGroup'
 import { gradientClasses } from '@/fields/gradientClasses'
+import {
+  AlignFeature,
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
 
 export const ContentWithForm: Block = {
   slug: 'contentWithForm',
@@ -92,6 +99,23 @@ export const ContentWithForm: Block = {
           admin: {
             condition: (_, { enableIntro }) => Boolean(enableIntro),
           },
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => {
+              return [
+                ...rootFeatures,
+                HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+                AlignFeature(),
+              ]
+            },
+          }),
+        },
+        {
+          name: 'disappearingIntroOnSubmit',
+          type: 'checkbox',
+          required: true,
+          defaultValue: false,
         },
         {
           name: 'enableSpecialConfirmation',

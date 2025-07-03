@@ -131,16 +131,32 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               return <br className="col-start-2" key={index} />
             }
             case 'paragraph': {
+              const alignmentClass =
+                node.format === 'center'
+                  ? 'text-center'
+                  : node.format === 'right'
+                    ? 'text-right'
+                    : node.format === 'justify'
+                      ? 'text-justify'
+                      : ''
               return (
-                <p className="col-start-2" key={index}>
+                <p className={`col-start-2 ${alignmentClass}`} key={index}>
                   {serializedChildren}
                 </p>
               )
             }
             case 'heading': {
               const Tag = node?.tag
+              const alignmentClass =
+                node.format === 'center'
+                  ? 'text-center'
+                  : node.format === 'right'
+                    ? 'text-right'
+                    : node.format === 'justify'
+                      ? 'text-justify'
+                      : ''
               return (
-                <Tag className="" key={index}>
+                <Tag className={alignmentClass} key={index}>
                   {serializedChildren}
                 </Tag>
               )

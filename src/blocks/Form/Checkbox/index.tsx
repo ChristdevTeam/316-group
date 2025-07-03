@@ -27,7 +27,7 @@ export const Checkbox: React.FC<
 
   return (
     <Width width={width}>
-      <div className="flex items-center gap-2">
+      <div className="flex items-start gap-2 lg:gap-4">
         <CheckboxUi
           defaultChecked={defaultValue}
           id={name}
@@ -40,7 +40,7 @@ export const Checkbox: React.FC<
           <Label
             htmlFor={name}
             dangerouslySetInnerHTML={{ __html: label }}
-            className="font-normal"
+            className="font-normal leading-tight text-sm -mt-2"
           ></Label>
         )}
       </div>
