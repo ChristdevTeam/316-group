@@ -15,7 +15,14 @@ import { StyledCards } from '@/components/StyledCards'
 import { SwiperElement } from '@/components/Swiper'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
-  const { columns, backgroundMedia, backgroundType, sectionBackgroundColor, paddingType } = props
+  const {
+    columns,
+    backgroundMedia,
+    backgroundType,
+    sectionBackgroundColor,
+    paddingType,
+    bgoverlay,
+  } = props
 
   const colsSpanClasses = {
     full: 'lg:col-span-12 md:col-span-4',
@@ -105,23 +112,37 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
     if (mimeType?.startsWith('image/') && url) {
       return (
-        <Image
-          src={url}
-          fill
-          alt={backgroundMedia.alt ? backgroundMedia.alt : 'background image'}
-          className="absolute inset-0 w-full h-full object-cover z-[-1]"
-        />
+        <>
+          <Image
+            src={url}
+            fill
+            alt={backgroundMedia.alt ? backgroundMedia.alt : 'background image'}
+            className="absolute inset-0 w-full h-full object-cover z-[-1]"
+          />
+          <div
+            className={cn(
+              bgoverlay && 'bg-black/30 absolute inset-0 w-full h-full object-cover z-[-1]',
+            )}
+          />
+        </>
       )
     } else if (mimeType?.startsWith('video/') && url) {
       return (
-        <video
-          src={url}
-          className="absolute inset-0 w-full h-full object-cover z-[-1]"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+        <>
+          <video
+            src={url}
+            className="absolute inset-0 w-full h-full object-cover z-[-1]"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div
+            className={cn(
+              bgoverlay && 'bg-black/30 absolute inset-0 w-full h-full object-cover z-[-1]',
+            )}
+          />
+        </>
       )
     }
 
@@ -250,6 +271,22 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       )
                     )
                   }
+                  if (contentType === 'styledHeading') {
+                    const styledHeading = content.styledHeading
+                    return (
+                      styledHeading?.heading && (
+                        <h2
+                          key={index}
+                          className={cn(
+                            styledHeading?.headingClasses,
+                            styledHeading?.leftBorderStyle &&
+                              `pl-4 md:pl-8 border-l-4 border-${styledHeading?.borderColor}`,
+                          )}
+                          dangerouslySetInnerHTML={{ __html: styledHeading?.heading }}
+                        />
+                      )
+                    )
+                  }
 
                   if (contentType === 'verticalCTA') {
                     // const verticalCTA = content.verticalCTA
@@ -363,6 +400,16 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                         cardBgColor={cardBgColor}
                         cardHoverBgColor={cardHoverBgColor}
                         borderClasses={borderClasses}
+                      />
+                    )
+                  }
+
+                  if (contentType === 'spacer' && content.spacer) {
+                    const spacer = content.spacer
+                    return (
+                      <div
+                        key={index}
+                        className={cn(spacer.spacing, spacer.bgColor, spacer.width)}
                       />
                     )
                   }

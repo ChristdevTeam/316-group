@@ -11,7 +11,7 @@
   h6 {
     font-size: auto;
     font-weight: auto;
-    font-family: 'Urbanist', var(--font-lufga), sans-serif;
+    font-family:  var(--font-lufga), 'Urbanist', sans-serif;
   }
 
   :root {
