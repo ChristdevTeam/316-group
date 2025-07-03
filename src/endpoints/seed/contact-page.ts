@@ -10,6 +10,7 @@ export const contact: Partial<Page> = {
     {
       blockType: 'formBlock',
       enableIntro: true,
+      disappearingIntroOnSubmit: true,
       // @ts-ignore
       form: '{{CONTACT_FORM_ID}}',
       introContent: {

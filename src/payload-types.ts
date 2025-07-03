@@ -23754,7 +23754,7 @@ export interface FormBlock {
     };
     [k: string]: unknown;
   } | null;
-  disappearingIntroOnSubmit: boolean;
+  disappearingIntroOnSubmit?: boolean | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'formBlock';
