@@ -9,6 +9,7 @@ import { Ubuntu } from 'next/font/google'
 import { Jost } from 'next/font/google'
 
 import React from 'react'
+import { Toaster } from 'sonner'
 
 import { AdminBar } from '@/components/AdminBar'
 import { Footer } from '@/Footer/Component'
@@ -175,6 +176,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Header />
           {children}
           <Footer />
+          <Toaster richColors position="top-right" />
         </Providers>
       </body>
     </html>

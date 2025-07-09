@@ -54,7 +54,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   if (appearance === 'inline') {
     return (
       <Link
-        className={cn(className, 'flex gap-4 items-center')}
+        className={cn('flex gap-4 items-center', className)}
         href={href || url || ''}
         {...newTabProps}
       >

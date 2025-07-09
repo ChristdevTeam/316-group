@@ -209,6 +209,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                   reference={fields.doc as any}
                   type={fields.linkType === 'internal' ? 'reference' : 'custom'}
                   url={fields.url}
+                  className="inline-flex"
                 >
                   {serializedChildren}
                 </CMSLink>

@@ -24,6 +24,8 @@ import { Tags } from './collections/Tags'
 import { EbooksAndGuides } from './collections/EbooksAndGuides'
 import { TextStyles } from './collections/TextStyles'
 import { DownloadFormSubmissions } from './collections/DownloadFormSubmissions'
+import { Investors } from './collections/Investors'
+import { DownloadTracking } from './collections/DownloadTracking'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -96,6 +98,8 @@ export default buildConfig({
     EbooksAndGuides,
     TextStyles,
     DownloadFormSubmissions,
+    Investors,
+    DownloadTracking,
   ],
   upload: {
     limits: {

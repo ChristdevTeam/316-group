@@ -28,6 +28,9 @@ import { CaseStudyArchiveBlock } from './CaseStudyArchiveBlock/Component'
 import { ResourcesHeroBlock } from './ResourcesHero/Component'
 import { EbooksAndGuidesArchiveBlock } from './EbooksAndGuidesArchiveBlock/Component'
 import { ContentWithFormComponent } from './ContentWithForm/Component'
+import { InvestorRelationsBlock } from './InvestorRelations/Component'
+import { AnnouncementsAndEventsBlock } from './AnnouncementsAndEvents/Component'
+import { IndustriesBlockComponent } from './Industries/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -55,6 +58,9 @@ const blockComponents = {
   caseStudyArchive: CaseStudyArchiveBlock,
   resourcesHero: ResourcesHeroBlock,
   ebooksAndGuidesArchive: EbooksAndGuidesArchiveBlock,
+  investorRelations: InvestorRelationsBlock,
+  announcementsAndEvents: AnnouncementsAndEventsBlock,
+  industries: IndustriesBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{

@@ -40,6 +40,9 @@ import { CaseStudyArchive } from '@/blocks/CaseStudyArchiveBlock/config'
 import { ResourcesHeroBlock } from '@/blocks/ResourcesHero/config'
 import { EbooksAndGuidesArchive } from '@/blocks/EbooksAndGuidesArchiveBlock/config'
 import { ContentWithForm } from '@/blocks/ContentWithForm/config'
+import { InvestorRelations } from '../../blocks/InvestorRelations/config'
+import { AnnouncementsAndEvents } from '../../blocks/AnnouncementsAndEvents/config'
+import { Industries } from '../../blocks/Industries/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -122,6 +125,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 TestimonialSliderSimple,
                 SpacingBlock,
                 CaseStudyArchive,
+                InvestorRelations,
+                AnnouncementsAndEvents,
+                Industries,
               ],
               required: true,
             },
