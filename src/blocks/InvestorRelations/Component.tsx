@@ -596,11 +596,25 @@ export const InvestorRelationsBlock: React.FC<
                       <select
                         value={irCalendarYear}
                         onChange={(e) => setIrCalendarYear(e.target.value)}
-                        className="bg-white text-black px-3 py-2 rounded border text-xs md:text-sm w-full md:w-auto"
+                        className="bg-transparent text-white px-3 py-2 rounded-lg text-xs md:text-sm md:w-auto hover:bg-white/10 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 appearance-none cursor-pointer"
+                        style={{
+                          colorScheme: 'dark',
+                          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                          backgroundPosition: 'right 0.5rem center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: '1.5em 1.5em',
+                          paddingRight: '2.5rem',
+                        }}
                       >
-                        <option value="all">All Years</option>
+                        <option value="all" className="bg-slate-800 text-white">
+                          All Years
+                        </option>
                         {irCalendarYears.map((year) => (
-                          <option key={year} value={year.toString()}>
+                          <option
+                            key={year}
+                            value={year.toString()}
+                            className="bg-slate-800 text-white"
+                          >
                             {year}
                           </option>
                         ))}
@@ -699,11 +713,25 @@ export const InvestorRelationsBlock: React.FC<
                       <select
                         value={financialResultsYear}
                         onChange={(e) => setFinancialResultsYear(e.target.value)}
-                        className="bg-white text-black px-3 py-2 rounded border text-xs md:text-sm w-full md:w-auto"
+                        className="bg-transparent text-white px-3 py-2 rounded-lg text-xs md:text-sm w-full md:w-auto hover:bg-white/10 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 appearance-none cursor-pointer"
+                        style={{
+                          colorScheme: 'dark',
+                          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                          backgroundPosition: 'right 0.5rem center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: '1.5em 1.5em',
+                          paddingRight: '2.5rem',
+                        }}
                       >
-                        <option value="all">All Years</option>
+                        <option value="all" className="bg-slate-800 text-white">
+                          All Years
+                        </option>
                         {financialResultsYears.map((year) => (
-                          <option key={year} value={year.toString()}>
+                          <option
+                            key={year}
+                            value={year.toString()}
+                            className="bg-slate-800 text-white"
+                          >
                             {year}
                           </option>
                         ))}
@@ -787,11 +815,25 @@ export const InvestorRelationsBlock: React.FC<
                       <select
                         value={financialRatiosYear}
                         onChange={(e) => setFinancialRatiosYear(e.target.value)}
-                        className="bg-white text-black px-3 py-2 rounded border text-xs md:text-sm w-full md:w-auto"
+                        className="bg-transparent text-white px-3 py-2 rounded-lg text-xs md:text-sm w-full md:w-auto hover:bg-white/10 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 appearance-none cursor-pointer"
+                        style={{
+                          colorScheme: 'dark',
+                          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                          backgroundPosition: 'right 0.5rem center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: '1.5em 1.5em',
+                          paddingRight: '2.5rem',
+                        }}
                       >
-                        <option value="all">All Years</option>
+                        <option value="all" className="bg-slate-800 text-white">
+                          All Years
+                        </option>
                         {financialRatiosYears.map((year) => (
-                          <option key={year} value={year.toString()}>
+                          <option
+                            key={year}
+                            value={year.toString()}
+                            className="bg-slate-800 text-white"
+                          >
                             {year}
                           </option>
                         ))}
