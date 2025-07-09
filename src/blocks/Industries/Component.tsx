@@ -78,7 +78,7 @@ export const IndustriesBlockComponent: React.FC<Props> = ({
           >
             {slides?.map((slide, index) => (
               <SwiperSlide key={`${slide.industry}-${index}`}>
-                <div className="grid lg:grid-cols-2 min-h-[500px] lg:min-h-[600px]">
+                <div className="grid lg:grid-cols-2 min-h-[400px] lg:min-h-[600px]">
                   {/* Image Section - First on mobile, left on desktop */}
                   <div className="order-1 lg:order-1 relative overflow-hidden">
                     {slide?.image && (
@@ -92,16 +92,16 @@ export const IndustriesBlockComponent: React.FC<Props> = ({
 
                   {/* Content Section - Second on mobile, right on desktop */}
                   <div className="order-2 lg:order-2 bg-blue-600 text-white p-8 lg:p-12 flex flex-col justify-center">
-                    <div className="space-y-6">
+                    <div className="space-y-4 md:space-y-6">
                       {slide?.industry && (
-                        <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold tracking-wide text-green-400">
+                        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-wide text-green-400">
                           {slide.industry}
                         </h3>
                       )}
 
                       {slide?.tagline && (
                         <div className="border-t border-green-400 py-4">
-                          <p className="text-lg lg:text-xl font-medium">{slide.tagline}</p>
+                          <p className="md:text-lg lg:text-xl font-medium">{slide.tagline}</p>
                         </div>
                       )}
 
@@ -113,7 +113,7 @@ export const IndustriesBlockComponent: React.FC<Props> = ({
                         <div className="pt-4">
                           <CMSLink
                             {...slide.link}
-                            className="inline-block bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors duration-200"
+                            className="inline-block bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
                           />
                         </div>
                       )}
