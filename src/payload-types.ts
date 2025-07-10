@@ -67263,7 +67263,7 @@ export interface Investor {
   name: string;
   email: string;
   /**
-   * Password that investors will use to download files from the Investor Relations section.
+   * Auto-generated 6-digit PIN code that investors will use to download files from the Investor Relations section.
    */
   password: string;
   updatedAt: string;

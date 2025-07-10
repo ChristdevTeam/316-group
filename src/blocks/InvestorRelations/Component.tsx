@@ -2,78 +2,202 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+// import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+// import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { toast } from 'sonner'
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
+// import { toast } from 'sonner'
 import { cn } from '@/utilities/cn'
-import { Calendar, ChevronDown, ChevronUp, Download, FileDown, Table } from 'lucide-react'
+import { Calendar, ChevronDown, ChevronUp, Dot, Download, FileDown, Table } from 'lucide-react'
 import type { InvestorRelationsBlock as InvestorRelationsBlockProps } from '@/payload-types'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
+import { Logo } from '@/components/Logo/Logo'
 
 interface PasswordDialogProps {
   onPasswordSubmit: (password: string) => void
   isOpen: boolean
   onOpenChange: (open: boolean) => void
+  fileName: string
+  successMessage?: string
 }
+
+type DialogState = 'initial' | 'loading' | 'success' | 'error'
 
 const PasswordDialog: React.FC<PasswordDialogProps> = ({
   onPasswordSubmit,
   isOpen,
   onOpenChange,
+  fileName,
+  successMessage,
 }) => {
-  const [password, setPassword] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const [pin, setPin] = useState('')
+  const [dialogState, setDialogState] = useState<DialogState>('initial')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!password.trim()) {
-      toast.error('Please enter a password')
+  const handleSubmit = async () => {
+    if (pin.length !== 6) {
+      setErrorMessage('Please enter a complete 6-digit code')
+      setDialogState('error')
       return
     }
 
-    setIsLoading(true)
+    setDialogState('loading')
     try {
-      await onPasswordSubmit(password)
-      setPassword('')
-      onOpenChange(false)
-    } catch (error) {
-      console.error('Password submission error:', error)
-    } finally {
-      setIsLoading(false)
+      await onPasswordSubmit(pin)
+      setDialogState('success')
+      // Auto-close after 3 seconds on success
+      setTimeout(() => {
+        handleClose()
+      }, 5000)
+    } catch (error: any) {
+      setErrorMessage(error.message || 'Invalid code. Please try again.')
+      setDialogState('error')
     }
   }
 
+  const handleClose = () => {
+    setPin('')
+    setDialogState('initial')
+    setErrorMessage('')
+    onOpenChange(false)
+  }
+
+  const handleTryAgain = () => {
+    setPin('')
+    setDialogState('initial')
+    setErrorMessage('')
+  }
+
+  const getContent = () => {
+    switch (dialogState) {
+      case 'initial':
+        return {
+          title: 'Provide partner code',
+          description:
+            'As 316 Group is a private holding, company and financial data is only available for download to 316 Group partners. Please provide your unique 6 digit partner code below to download',
+          showPinInput: true,
+          showButtons: true,
+        }
+      case 'loading':
+        return {
+          title: 'Verifying code...',
+          description: 'Please wait while we verify your partner code.',
+          showPinInput: false,
+          showButtons: false,
+        }
+      case 'success':
+        return {
+          title: 'Download successful',
+          description:
+            successMessage ||
+            `Thank you for downloading ${fileName}. The file has been downloaded to your device.`,
+          showPinInput: false,
+          showButtons: false,
+        }
+      case 'error':
+        return {
+          title: 'Invalid code',
+          description: errorMessage,
+          showPinInput: true,
+          showButtons: true,
+        }
+    }
+  }
+
+  const content = getContent()
+
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Enter Password to Download</DialogTitle>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={isLoading}
-          />
-          <div className="flex justify-end space-x-2">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => onOpenChange(false)}
-              disabled={isLoading}
-            >
-              Cancel
-            </Button>
-            <Button type="submit" disabled={isLoading}>
-              {isLoading ? 'Verifying...' : 'Download'}
-            </Button>
+    <Dialog open={isOpen} onOpenChange={handleClose}>
+      <DialogContent className="sm:max-w-md bg-white text-gray-900">
+        <div className="flex flex-col items-center space-y-6 py-6">
+          {/* Logo */}
+          <div className="flex justify-center">
+            <Logo className="h-12 w-auto" />
           </div>
-        </form>
+
+          {/* Title */}
+          <h2 className="text-xl font-semibold text-center text-gray-900">{content.title}</h2>
+
+          {/* Description */}
+          <p className="text-sm text-gray-600 text-center max-w-sm leading-relaxed">
+            {content.description}
+          </p>
+
+          {/* PIN Input */}
+          {content.showPinInput && (
+            <div className="flex flex-col items-center space-y-4">
+              <InputOTP
+                maxLength={6}
+                value={pin}
+                onChange={(value) => setPin(value)}
+                onComplete={handleSubmit}
+                disabled={dialogState === 'loading'}
+              >
+                <InputOTPGroup>
+                  <InputOTPSlot index={0} className="w-12 h-12 text-lg border-gray-600" />
+                  <InputOTPSlot index={1} className="w-12 h-12 text-lg border-gray-600" />
+                  <InputOTPSlot index={2} className="w-12 h-12 text-lg border-gray-600" />
+                </InputOTPGroup>
+                <div className="mx-2 rounded-full w-2 h-2 bg-blue-700" />
+                <InputOTPGroup>
+                  <InputOTPSlot index={3} className="w-12 h-12 text-lg border-gray-600" />
+                  <InputOTPSlot index={4} className="w-12 h-12 text-lg border-gray-600" />
+                  <InputOTPSlot index={5} className="w-12 h-12 text-lg border-gray-600" />
+                </InputOTPGroup>
+              </InputOTP>
+            </div>
+          )}
+
+          {/* Loading indicator */}
+          {dialogState === 'loading' && (
+            <div className="flex items-center space-x-2">
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+              <span className="text-sm text-gray-600">Verifying...</span>
+            </div>
+          )}
+
+          {/* Buttons */}
+          {content.showButtons && (
+            <div className="flex space-x-3 w-full max-w-sm">
+              {dialogState === 'error' ? (
+                <>
+                  <Button
+                    onClick={handleTryAgain}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg"
+                  >
+                    Try Again
+                  </Button>
+                  <Button
+                    onClick={handleClose}
+                    variant="outline"
+                    className="flex-1 border-gray-900 text-gray-50 bg-gray-800 hover:bg-gray-950 rounded-lg"
+                  >
+                    Cancel
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    onClick={handleSubmit}
+                    disabled={pin.length !== 6}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300 rounded-lg"
+                  >
+                    Download
+                  </Button>
+                  <Button
+                    onClick={handleClose}
+                    variant="outline"
+                    className="flex-1 border-gray-900 text-gray-50 bg-gray-800 hover:bg-gray-950 rounded-lg"
+                  >
+                    Cancel
+                  </Button>
+                </>
+              )}
+            </div>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   )
@@ -129,7 +253,9 @@ export const InvestorRelationsBlock: React.FC<
     })
   }
 
-  const handlePasswordSubmit = async (password: string) => {
+  const [successMessage, setSuccessMessage] = useState('')
+
+  const handlePasswordSubmit = async (pin: string) => {
     try {
       const response = await fetch('/api/verify-investor-password', {
         method: 'POST',
@@ -137,7 +263,7 @@ export const InvestorRelationsBlock: React.FC<
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          password,
+          password: pin,
           fileId: passwordDialog.fileId,
           fileName: passwordDialog.fileName,
           downloadType: passwordDialog.downloadType,
@@ -147,6 +273,9 @@ export const InvestorRelationsBlock: React.FC<
       const result = await response.json()
 
       if (response.ok && result.success) {
+        // Store the personalized success message
+        setSuccessMessage(result.message || `Thank you for downloading ${passwordDialog.fileName}!`)
+
         // Create download link and trigger download
         const downloadLink = document.createElement('a')
         downloadLink.href = result.downloadUrl
@@ -154,14 +283,11 @@ export const InvestorRelationsBlock: React.FC<
         document.body.appendChild(downloadLink)
         downloadLink.click()
         document.body.removeChild(downloadLink)
-
-        toast.success(`Thank you for downloading ${passwordDialog.fileName}!`)
       } else {
-        toast.error(result.message || 'Invalid password. Please try again.')
-        throw new Error('Invalid password')
+        throw new Error(result.message || 'Invalid partner code. Please try again.')
       }
-    } catch (error) {
-      console.error('Download error:', error)
+    } catch (error: any) {
+      console.error('PIN verification failed:', error)
       throw error
     }
   }
@@ -916,8 +1042,15 @@ export const InvestorRelationsBlock: React.FC<
 
       <PasswordDialog
         isOpen={passwordDialog.isOpen}
-        onOpenChange={(open) => setPasswordDialog((prev) => ({ ...prev, isOpen: open }))}
+        onOpenChange={(open) => {
+          setPasswordDialog((prev) => ({ ...prev, isOpen: open }))
+          if (!open) {
+            setSuccessMessage('')
+          }
+        }}
         onPasswordSubmit={handlePasswordSubmit}
+        fileName={passwordDialog.fileName}
+        successMessage={successMessage}
       />
     </div>
   )

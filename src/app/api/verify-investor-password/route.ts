@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     if (!password || !fileId || !fileName || !downloadType) {
       return NextResponse.json(
         { success: false, message: 'Missing required fields' },
-        { status: 400 }
+        { status: 400 },
       )
     }
 
@@ -27,10 +27,7 @@ export async function POST(request: NextRequest) {
     })
 
     if (!investors.docs || investors.docs.length === 0) {
-      return NextResponse.json(
-        { success: false, message: 'Invalid password' },
-        { status: 401 }
-      )
+      return NextResponse.json({ success: false, message: 'Invalid Pin Code' }, { status: 401 })
     }
 
     const investor = investors.docs[0]
@@ -42,10 +39,7 @@ export async function POST(request: NextRequest) {
     })
 
     if (!file) {
-      return NextResponse.json(
-        { success: false, message: 'File not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ success: false, message: 'File not found' }, { status: 404 })
     }
 
     // Create download tracking record
@@ -61,16 +55,15 @@ export async function POST(request: NextRequest) {
     })
 
     // Return success with download URL
+    const partnerName = investor.name || investor.email || 'Partner'
     return NextResponse.json({
       success: true,
       downloadUrl: file.url,
-      message: `Thank you for downloading ${fileName}!`,
+      message: `Dear ${partnerName}, thank you for downloading ${fileName}!`,
+      partnerName: investor.name,
     })
   } catch (error) {
     console.error('Password verification error:', error)
-    return NextResponse.json(
-      { success: false, message: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ success: false, message: 'Internal server error' }, { status: 500 })
   }
 }
