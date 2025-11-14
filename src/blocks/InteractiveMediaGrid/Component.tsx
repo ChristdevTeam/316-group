@@ -106,9 +106,9 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
       {/* Mobile Active Card */}
       <div className="lg:hidden gap-8 mt-6">
         {cards[activeIndex] && (
-          <div className={cn('p-6 rounded-xl')}>
+          <div className={cn('p-6 rounded-xl text-center')}>
             {typeof cards[activeIndex].icon === 'object' && (
-              <div className={cn(iconDimensions)}>
+              <div className={cn(iconDimensions, 'mx-auto scale-125')}>
                 <Media
                   resource={cards[activeIndex].icon}
                   className="w-full h-full object-contain"

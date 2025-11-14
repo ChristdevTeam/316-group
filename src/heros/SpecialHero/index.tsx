@@ -17,12 +17,12 @@ export const SpecialHero: React.FC<Page['hero']> = ({ links, media, richText }) 
 
   return (
     <div data-theme="light">
-      <div className="px-0 2xl:mx-14 inset-0 flex flex-col justify-end items-center">
+      <div className="px-0 2xl:mx-14 inset-0 flex flex-col justify-end items-center pt-16">
         <div className="container max-w-screen-2xl ">
-          <div className="flex flex-col sm:flex-row gap-8 justify-end sm:justify-between sm:items-end items-start bg-white px-0 mb-[2em] min-h-[30vh] md:min-h-[47vh]">
+          <div className="flex flex-col sm:flex-row gap-8 justify-end sm:justify-between sm:items-end items-start  px-0 mb-[2em] min-h-[30vh] md:min-h-[47vh]">
             {richText && (
               <RichText
-                className="text-black font-medium text-5xl sm:text-5xl md:text-8xl text-start"
+                className="font-normal text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] text-start"
                 content={richText}
                 enableGutter={false}
                 enableProse={false}
@@ -43,7 +43,7 @@ export const SpecialHero: React.FC<Page['hero']> = ({ links, media, richText }) 
         </div>
         <div className="w-full hidden md:block">
           {media && typeof media === 'object' && (
-            <div className="relative rounded-t-[3em] h-[60vh]">
+            <div className="relative rounded-t-[3em] h-[60vh] overflow-hidden">
               <Media
                 fill
                 imgClassName="-z-10 object-cover inset-0 w-full h-full"
@@ -58,7 +58,7 @@ export const SpecialHero: React.FC<Page['hero']> = ({ links, media, richText }) 
         </div>
         <div className="w-[100%]  block md:hidden">
           {media && typeof media === 'object' && (
-            <div className="relative rounded-t-[3em] h-[50vh]">
+            <div className="relative rounded-t-[3em] h-[50vh] overflow-hidden">
               <Media
                 fill
                 imgClassName="-z-10 object-cover inset-0 w-full h-full"
