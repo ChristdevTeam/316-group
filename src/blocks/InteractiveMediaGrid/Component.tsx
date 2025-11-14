@@ -91,7 +91,7 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
           {cards[activeIndex] && typeof cards[activeIndex].media === 'object' && (
             <div
               className={cn(
-                'rounded-2xl p-8 overflow-hidden transition-colors',
+                'rounded-2xl p-10 lg:p-16 overflow-hidden transition-colors',
                 cards[activeIndex].mediaContainerBgColor,
               )}
             >
