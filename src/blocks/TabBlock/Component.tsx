@@ -67,7 +67,7 @@ export const TabBlockComponent: React.FC<TabBlock> = ({ tabs, paddingType }) => 
                 setIsExpanded(false)
               }}
               className={cn(
-                'py-4 text-lg md:text-xl lg:text-2xl font-semibold transition-colors px-4 md:px-8 lg:px-12 whitespace-nowrap rounded-t-xl',
+                'py-4 text-lg md:text-xl lg:text-2xl font-semibold transition-colors px-4 md:px-8 lg:px-12 whitespace-nowrap rounded-t-xl cursor-pointer',
                 activeTab === index
                   ? 'bg-green-200 text-slate-950'
                   : 'text-slate-400 hover:text-slate-700',
