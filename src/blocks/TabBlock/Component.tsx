@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 import { paddingGenerator } from '@/utilities/paddingGenerator'
+import Link from 'next/link'
 
 export const TabBlockComponent: React.FC<TabBlock> = ({ tabs, paddingType }) => {
   const [activeTab, setActiveTab] = useState(0)
@@ -94,10 +95,11 @@ export const TabBlockComponent: React.FC<TabBlock> = ({ tabs, paddingType }) => 
                 )}
               >
                 {activeTabContent.mainContent.vcta.subtitle && (
-                  <p className="text-lg">{activeTabContent.mainContent.vcta.subtitle}</p>
+                  <h4 className="text-lg">{activeTabContent.mainContent.vcta.subtitle}</h4>
                 )}
                 {activeTabContent.mainContent.vcta.title && (
                   <h3
+                    onClick={() => setIsExpanded(!isExpanded)}
                     className={cn(activeTabContent.mainContent.vcta.titleClasses)}
                     dangerouslySetInnerHTML={{ __html: activeTabContent.mainContent.vcta.title }}
                   />
