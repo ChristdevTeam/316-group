@@ -9,6 +9,7 @@ import { CMSLink } from '@/components/Link'
 import { FormBlock } from '@/blocks/Form/Component'
 import RichText from '@/components/RichText'
 import { SpecialConfirmationProps } from '@/components/SpacialConfirmationMessage'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 export const ContentWithFormComponent: React.FC<ContentWithFormBlock> = ({
   leftColumnItems,
@@ -50,21 +51,7 @@ export const ContentWithFormComponent: React.FC<ContentWithFormBlock> = ({
       : undefined
 
   return (
-    <section
-      className={cn(
-        'relative',
-        gradientClasses,
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
-      )}
-    >
+    <section className={cn('relative', gradientClasses, paddingGenerator(paddingType))}>
       <div className="container max-w-screen-2xl">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Column */}

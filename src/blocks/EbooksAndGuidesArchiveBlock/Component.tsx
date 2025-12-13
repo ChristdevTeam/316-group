@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Card } from '@/components/Card'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 export const EbooksAndGuidesArchiveBlock: React.FC<
   EbooksAndGuidesArchiveBlockProps & {
@@ -138,15 +139,7 @@ export const EbooksAndGuidesArchiveBlock: React.FC<
         backgroundType === 'color' && sectionBackgroundColor,
         backgroundType === 'color' && getBestContrastTextColor(sectionBackgroundColor),
         backgroundType === 'media' && 'text-white',
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
+        paddingGenerator(paddingType),
       )}
       id={`block-${id}`}
     >

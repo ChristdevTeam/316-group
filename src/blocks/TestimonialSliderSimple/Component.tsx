@@ -10,6 +10,7 @@ import { Autoplay, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/autoplay'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 export const TestimonialSliderSimpleBlock: React.FC<TestimonialSliderSimpleBlockProps> = ({
   heading,
@@ -23,21 +24,7 @@ export const TestimonialSliderSimpleBlock: React.FC<TestimonialSliderSimpleBlock
   paddingType,
 }) => {
   return (
-    <div
-      className={cn(
-        'overflow-hidden',
-        backgroundClasses,
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
-      )}
-    >
+    <div className={cn('overflow-hidden', backgroundClasses, paddingGenerator(paddingType))}>
       <div className="container max-w-screen-2xl">
         <div className="flex flex-col items-center text-center mb-12">
           {heading && (

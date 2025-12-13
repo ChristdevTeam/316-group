@@ -4,6 +4,7 @@ import { cn } from '@/utilities/cn'
 import React from 'react'
 import Image from 'next/image'
 import { Media } from '@/components/Media'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 type Props = {
   className?: string
@@ -88,15 +89,7 @@ export const ShowcaseBlock: React.FC<Props> = ({
     <div
       className={cn(
         'w-full relative',
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
+        paddingGenerator(paddingType),
         backgroundType === 'color' && sectionBackgroundColor,
         backgroundType === 'color' && getBestContrastTextColor(sectionBackgroundColor),
         backgroundType === 'media' && 'text-white',

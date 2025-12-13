@@ -4,6 +4,7 @@ import { cn } from '@/utilities/cn'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import colors from 'tailwindcss/colors'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 export const FullCardGradient: React.FC<FullCardGradientProps> = (props) => {
   const {
@@ -26,20 +27,7 @@ export const FullCardGradient: React.FC<FullCardGradientProps> = (props) => {
   const resolvedColor2 = resolveColor(bgColor2) // e.g., colors.teal[600]
 
   return (
-    <div
-      className={cn(
-        'container max-w-screen-2xl',
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
-      )}
-    >
+    <div className={cn('container max-w-screen-2xl', paddingGenerator(paddingType))}>
       <div>
         <h3 className={cn(titleClasses, 'lg:py-12 py-8')}>{title}</h3>
       </div>

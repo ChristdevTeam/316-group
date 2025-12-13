@@ -7,6 +7,7 @@ import { Media } from '@/components/Media'
 import { Button } from '@/components/ui/button'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 export const TabBlockComponent: React.FC<TabBlock> = ({ tabs, paddingType }) => {
   const [activeTab, setActiveTab] = useState(0)
@@ -41,15 +42,7 @@ export const TabBlockComponent: React.FC<TabBlock> = ({ tabs, paddingType }) => 
     <div
       className={cn(
         'w-full',
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
+        paddingGenerator(paddingType),
         activeTabContent.mainContent?.backgroundColor,
       )}
     >

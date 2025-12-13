@@ -5,6 +5,7 @@ import { cn } from '@/utilities/cn'
 import { Media } from '@/components/Media'
 import { MoveLeft, MoveRight } from 'lucide-react'
 import type { InteractiveMediaGridBlock } from '@/payload-types'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
   heading,
@@ -28,20 +29,7 @@ export const InteractiveMediaGrid: React.FC<InteractiveMediaGridBlock> = ({
   }
 
   return (
-    <div
-      className={cn(
-        'container max-w-screen-2xl',
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
-      )}
-    >
+    <div className={cn('container max-w-screen-2xl', paddingGenerator(paddingType))}>
       <div className="flex flex-col lg:flex-row md:gap-16 gap-4">
         {/* Left Column - Cards */}
         <div className={cn('lg:w-1/2', reverseDesktopLayout ? 'lg:order-2' : 'lg:order-1')}>

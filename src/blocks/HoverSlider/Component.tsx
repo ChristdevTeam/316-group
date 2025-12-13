@@ -8,6 +8,7 @@ import { Link } from '@/Header/menu/types'
 import type { HoverSliderBlock as HoverSliderBlockProps } from '@/payload-types'
 import { cn } from '@/utilities/cn'
 import RichText from '@/components/RichText'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 export interface Slide {
   id: number
@@ -54,21 +55,7 @@ export const HoverSlider: React.FC<Props> = ({
   }
 
   return (
-    <div
-      className={cn(
-        'container max-w-screen-2xl',
-        className,
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
-      )}
-    >
+    <div className={cn('container max-w-screen-2xl', className, paddingGenerator(paddingType))}>
       <h3 className={cn(sliderTitleClasses)}>{sliderTitle}</h3>
       {sliderDescription && (
         <RichText

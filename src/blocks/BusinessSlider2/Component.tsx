@@ -9,6 +9,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import { cn } from '@/utilities/cn'
 import { Media } from '@/components/Media'
+import { paddingGenerator } from '@/utilities/paddingGenerator'
 
 type Props = {
   className?: string
@@ -52,15 +53,7 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
       className={cn(
         'overflow-hidden min-h-[300px] bg-white',
         className,
-        paddingType === 'default' && 'py-16',
-        paddingType === 'noPadding' && 'py-0',
-        paddingType === 'paddingAdded' && 'py-32',
-        paddingType === 'paddingTopOnly' && 'pt-16 pb-0',
-        paddingType === 'paddingBottomOnly' && 'pb-16 pt-0',
-        paddingType === 'paddingTopOnlyAdded' && 'pt-32 pb-0',
-        paddingType === 'paddingBottomOnlyAdded' && 'pb-32 pt-0',
-        paddingType === 'paddingTopAdded' && 'pt-32 pb-16',
-        paddingType === 'paddingBottomAdded' && 'pb-32 pt-16',
+        paddingGenerator(paddingType),
       )}
     >
       <div className="container relative px-4 py-12 max-w-screen-2xl">
