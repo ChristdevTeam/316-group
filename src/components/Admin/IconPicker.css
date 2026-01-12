@@ -1,0 +1,130 @@
+/* src/components/Admin/IconPicker.css */
+.admin-icon-picker {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.admin-icon-picker .icon-picker-modal {
+  position: absolute;
+  z-index: 50;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 28rem;
+  background-color: var(--theme-elevation-50, #fff); /* Payload generic var or fallback */
+  border: 1px solid var(--theme-elevation-100, #e5e7eb);
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.admin-icon-picker .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.admin-icon-picker .search-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.admin-icon-picker .close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.admin-icon-picker .icon-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  max-height: 15rem;
+  overflow-y: auto;
+  padding: 0.25rem;
+}
+
+.admin-icon-picker .icon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.admin-icon-picker .icon-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.admin-icon-picker .icon-btn.selected {
+  background-color: #e5e7eb;
+  border-color: #000;
+}
+
+.admin-icon-picker .trigger-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-icon-picker .preview-box {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+  cursor: pointer;
+}
+
+.admin-icon-picker .action-btn {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.admin-icon-picker .action-btn:hover {
+  background-color: #f9fafb;
+}
+
+.admin-icon-picker .clear-btn {
+  color: #ef4444;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+/* Dark mode overrides if Payload uses a class or data-theme */
+[data-theme='dark'] .admin-icon-picker .icon-picker-modal {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #f3f4f6;
+}
+
+[data-theme='dark'] .admin-icon-picker .icon-btn:hover {
+  background-color: #374151;
+}
+
+[data-theme='dark'] .admin-icon-picker .icon-btn.selected {
+  background-color: #4b5563;
+  border-color: #fff;
+}

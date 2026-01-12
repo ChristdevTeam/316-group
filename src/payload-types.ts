@@ -4917,6 +4917,7 @@ export interface Page {
     | InvestorRelationsBlock
     | AnnouncementsAndEventsBlock
     | IndustriesBlock
+    | CardGridBlock
   )[];
   meta?: {
     title?: string | null;
@@ -64173,6 +64174,52 @@ export interface IndustriesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardGridBlock".
+ */
+export interface CardGridBlock {
+  title: string;
+  description?: string | null;
+  cards: {
+    icon: string;
+    title: string;
+    description: string;
+    image: string | Media;
+    link?: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: string | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: string | Post;
+          } | null)
+        | ({
+            relationTo: 'case-studies';
+            value: string | CaseStudy;
+          } | null)
+        | ({
+            relationTo: 'ebooks-and-guides';
+            value: string | EbooksAndGuide;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'outline' | 'ghost' | 'secondary') | null;
+    };
+    colorTheme: 'blue' | 'purple' | 'orange' | 'pink' | 'green' | 'sky';
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cardGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "typesgenerator".
  */
 export interface Typesgenerator {
@@ -67557,6 +67604,7 @@ export interface PagesSelect<T extends boolean = true> {
         investorRelations?: T | InvestorRelationsBlockSelect<T>;
         announcementsAndEvents?: T | AnnouncementsAndEventsBlockSelect<T>;
         industries?: T | IndustriesBlockSelect<T>;
+        cardGrid?: T | CardGridBlockSelect<T>;
       };
   meta?:
     | T
@@ -68548,6 +68596,36 @@ export interface IndustriesBlockSelect<T extends boolean = true> {
               label?: T;
               appearance?: T;
             };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardGridBlock_select".
+ */
+export interface CardGridBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  cards?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        image?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        colorTheme?: T;
         id?: T;
       };
   id?: T;

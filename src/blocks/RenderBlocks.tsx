@@ -31,6 +31,7 @@ import { ContentWithFormComponent } from './ContentWithForm/Component'
 import { InvestorRelationsBlock } from './InvestorRelations/Component'
 import { AnnouncementsAndEventsBlock } from './AnnouncementsAndEvents/Component'
 import { IndustriesBlockComponent } from './Industries/Component'
+import { CardGridBlock } from './CardGrid/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -61,6 +62,7 @@ const blockComponents = {
   investorRelations: InvestorRelationsBlock,
   announcementsAndEvents: AnnouncementsAndEventsBlock,
   industries: IndustriesBlockComponent,
+  cardGrid: CardGridBlock,
 }
 
 export const RenderBlocks: React.FC<{

@@ -43,6 +43,7 @@ import { ContentWithForm } from '@/blocks/ContentWithForm/config'
 import { InvestorRelations } from '../../blocks/InvestorRelations/config'
 import { AnnouncementsAndEvents } from '../../blocks/AnnouncementsAndEvents/config'
 import { Industries } from '../../blocks/Industries/config'
+import { CardGrid } from '@/blocks/CardGrid/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -128,6 +129,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 InvestorRelations,
                 AnnouncementsAndEvents,
                 Industries,
+                CardGrid,
               ],
               required: true,
             },
