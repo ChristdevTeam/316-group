@@ -73,22 +73,21 @@ export const CardGridBlock: React.FC<Props> = ({ className, title, description, 
               <div
                 key={index}
                 className={cn(
-                  'relative overflow-hidden rounded-3xl text-white flex flex-col h-[500px] transition-transform hover:-translate-y-1 duration-300',
+                  'relative overflow-hidden rounded-3xl text-white flex flex-col min-h-[300px] md:h-[500px] transition-transform hover:-translate-y-1 duration-300',
                   themeClass,
                 )}
               >
                 {/* Content Container */}
                 <div className="px-8 pt-8 flex flex-col h-full z-10 relative">
                   {/* Header: Icon and Title */}
-                  <div className="mb-4">
-                    <div className="flex items-center justify-center gap-4 p-0">
-                      <IconDisplay name={card.icon} className="w-8 h-8 text-white" />
-                      <h3 className="text-2xl font-bold font-sans">{card.title}</h3>
-                    </div>
+
+                  <div className="flex items-center justify-center gap-4 p-0 mb-4">
+                    <IconDisplay name={card.icon} className="w-8 h-8 text-white" />
+                    <h3 className="text-lg xl:text-2xl font-bold font-sans">{card.title}</h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-white/90 text-base leading-relaxed mb-6 opacity-90 line-clamp-3 text-center">
+                  <p className="text-white/90 text-base leading-relaxed mb-6 text-center">
                     {card.description}
                   </p>
 

@@ -9,10 +9,13 @@ export const CardGrid: Block = {
       name: 'title',
       type: 'text',
       required: true,
+      defaultValue: 'Build from Scratch, launch in weeks',
     },
     {
       name: 'description',
       type: 'textarea',
+      defaultValue:
+        'Our global account allows you to easily convert funds between different assets, either manually or automatically, ensuring access to favourable exchange rates at any time.',
     },
     {
       name: 'cards',
@@ -34,14 +37,13 @@ export const CardGrid: Block = {
           name: 'title',
           type: 'text',
           required: true,
-          defaultValue: 'Build from Scratch, launch in weeks',
+          defaultValue: 'Business Accounts',
         },
         {
           name: 'description',
           type: 'textarea',
           required: true,
-          defaultValue:
-            'Our global account allows you to easily convert funds between different assets, either manually or automatically, ensuring access to favourable exchange rates at any time.',
+          defaultValue: 'All-in-one business accounts to collect, manage, nd move money globally',
         },
         {
           name: 'image',
@@ -51,7 +53,7 @@ export const CardGrid: Block = {
         },
         link({
           overrides: {
-            name: 'link', // Explicitly naming it 'link' to access it easily
+            name: 'link',
           },
         }),
         {
