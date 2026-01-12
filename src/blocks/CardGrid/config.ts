@@ -26,7 +26,7 @@ export const CardGrid: Block = {
           required: true,
           admin: {
             components: {
-              Field: '@/components/Admin/IconPicker#IconPicker',
+              Field: '@/components/Admin/IconPicker',
             },
           },
         },
