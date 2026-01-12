@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { cn } from '@/utilities/cn'
 import type { CardGridBlock as CardGridBlockProps } from '@/payload-types'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import * as FaIcons from 'react-icons/fa'
 import * as MdIcons from 'react-icons/md'
@@ -11,6 +10,7 @@ import * as BiIcons from 'react-icons/bi'
 import * as BsIcons from 'react-icons/bs'
 import * as HiIcons from 'react-icons/hi'
 import * as IoIcons from 'react-icons/io'
+import { Media } from '@/components/Media'
 
 type Props = {
   className?: string
@@ -78,22 +78,22 @@ export const CardGridBlock: React.FC<Props> = ({ className, title, description, 
                 )}
               >
                 {/* Content Container */}
-                <div className="p-8 flex flex-col h-full z-10 relative">
+                <div className="px-8 pt-8 flex flex-col h-full z-10 relative">
                   {/* Header: Icon and Title */}
-                  <div className="mb-6">
-                    <div className="mb-4 inline-flex items-center justify-center p-0">
+                  <div className="mb-4">
+                    <div className="flex items-center justify-center gap-4 p-0">
                       <IconDisplay name={card.icon} className="w-8 h-8 text-white" />
+                      <h3 className="text-2xl font-bold font-sans">{card.title}</h3>
                     </div>
-                    <h3 className="text-2xl font-bold font-sans">{card.title}</h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-white/90 text-sm leading-relaxed mb-6 opacity-90 line-clamp-3">
+                  <p className="text-white/90 text-base leading-relaxed mb-6 opacity-90 line-clamp-3 text-center">
                     {card.description}
                   </p>
 
                   {/* Link Arrow */}
-                  <div className="mb-4">
+                  <div className="mb-4 justify-center flex">
                     <Link
                       href={href}
                       className="inline-flex items-center text-sm font-semibold hover:gap-2 transition-all"
@@ -103,16 +103,14 @@ export const CardGridBlock: React.FC<Props> = ({ className, title, description, 
                   </div>
 
                   {/* Image Container - Pushed to bottom */}
-                  <div className="mt-auto relative w-full h-[220px] -mx-8 -mb-8 translate-y-2">
+                  <div className="mt-auto relative w-full translate-y-2">
                     {card.image && typeof card.image === 'object' && (
-                      <Image
-                        src={card.image.url || ''}
+                      <Media
+                        resource={card.image}
                         alt={card.image.alt || card.title}
-                        fill
-                        className="object-cover object-top rounded-t-lg shadow-lg"
+                        className="object-fit object-top rounded-t-lg shadow-lg"
                       />
                     )}
-                    {/* Mock UI if no image provided? No, image is required */}
                   </div>
                 </div>
               </div>

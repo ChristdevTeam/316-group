@@ -34,11 +34,14 @@ export const CardGrid: Block = {
           name: 'title',
           type: 'text',
           required: true,
+          defaultValue: 'Build from Scratch, launch in weeks',
         },
         {
           name: 'description',
           type: 'textarea',
           required: true,
+          defaultValue:
+            'Our global account allows you to easily convert funds between different assets, either manually or automatically, ensuring access to favourable exchange rates at any time.',
         },
         {
           name: 'image',
