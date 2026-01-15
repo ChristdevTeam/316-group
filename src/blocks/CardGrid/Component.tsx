@@ -73,7 +73,7 @@ export const CardGridBlock: React.FC<Props> = ({ className, title, description, 
               <div
                 key={index}
                 className={cn(
-                  'relative overflow-hidden rounded-3xl text-white flex flex-col min-h-[300px] md:h-[500px] transition-transform hover:-translate-y-1 duration-300',
+                  'relative overflow-hidden rounded-3xl text-white flex flex-col transition-transform hover:-translate-y-1 duration-300',
                   themeClass,
                 )}
               >
@@ -102,7 +102,7 @@ export const CardGridBlock: React.FC<Props> = ({ className, title, description, 
                   </div>
 
                   {/* Image Container - Pushed to bottom */}
-                  <div className="mt-auto relative w-full translate-y-2">
+                  <div className="mt-auto relative aspect-[4/3] lg:aspect-square translate-y-2">
                     {card.image && typeof card.image === 'object' && (
                       <Media
                         resource={card.image}
