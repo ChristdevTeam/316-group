@@ -379,6 +379,29 @@ const columnFields: Field[] = [
           condition: (_, { contentType }) => contentType === 'media',
         },
       },
+      {
+        name: 'mediaWidth',
+        type: 'select',
+        defaultValue: 'default',
+        options: [
+          { label: 'Default', value: 'default' },
+          { label: 'Full Width', value: 'full' },
+          { label: 'Fill Container', value: 'fill' },
+          { label: 'Custom', value: 'custom' },
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'media',
+        },
+      },
+      {
+        name: 'mediaCustomWidth',
+        type: 'text',
+        admin: {
+          condition: (_, { contentType, mediaWidth }) =>
+            contentType === 'media' && mediaWidth === 'custom',
+          description: 'Enter a valid CSS width value (e.g. 500px, 50%, 20rem)',
+        },
+      },
 
       linkGroup({
         overrides: {
@@ -665,6 +688,7 @@ export const Content: Block = {
       defaultValue: 'color',
       options: [
         { label: 'Color', value: 'color' },
+        { label: 'Gradient', value: 'gradient' },
         { label: 'Media', value: 'media' },
       ],
     },
@@ -693,6 +717,90 @@ export const Content: Block = {
         },
       },
     }),
+    {
+      name: 'gradientSettings',
+      type: 'group',
+      admin: {
+        condition: (_, { backgroundType }) => backgroundType === 'gradient',
+      },
+      fields: [
+        {
+          name: 'gradientDirection',
+          type: 'select',
+          defaultValue: 'to-r',
+          options: [
+            { label: 'To Right', value: 'to-r' },
+            { label: 'To Left', value: 'to-l' },
+            { label: 'To Bottom', value: 'to-b' },
+            { label: 'To Top', value: 'to-t' },
+            { label: 'To Bottom Right', value: 'to-br' },
+            { label: 'To Bottom Left', value: 'to-bl' },
+            { label: 'To Top Right', value: 'to-tr' },
+            { label: 'To Top Left', value: 'to-tl' },
+          ],
+        },
+        {
+          type: 'row',
+          fields: [
+            colorPickerAll({
+              overrides: {
+                label: 'Start Color',
+                name: 'gradientStartColor',
+              },
+            }),
+            {
+              name: 'gradientStartPercentage',
+              type: 'number',
+              min: 0,
+              max: 100,
+              admin: {
+                width: '50%',
+              },
+            },
+          ],
+        },
+        {
+          type: 'row',
+          fields: [
+            colorPickerAll({
+              overrides: {
+                label: 'Via Color',
+                name: 'gradientViaColor',
+              },
+            }),
+            {
+              name: 'gradientViaPercentage',
+              type: 'number',
+              min: 0,
+              max: 100,
+              admin: {
+                width: '50%',
+              },
+            },
+          ],
+        },
+        {
+          type: 'row',
+          fields: [
+            colorPickerAll({
+              overrides: {
+                label: 'Stop Color',
+                name: 'gradientStopColor',
+              },
+            }),
+            {
+              name: 'gradientStopPercentage',
+              type: 'number',
+              min: 0,
+              max: 100,
+              admin: {
+                width: '50%',
+              },
+            },
+          ],
+        },
+      ],
+    },
     {
       name: 'backgroundMedia',
       type: 'upload',

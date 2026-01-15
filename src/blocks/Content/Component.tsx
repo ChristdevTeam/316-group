@@ -23,6 +23,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     sectionBackgroundColor,
     paddingType,
     bgoverlay,
+    gradientSettings,
   } = props
 
   const colsSpanClasses = {
@@ -151,14 +152,52 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     return null
   }
 
+  const gradientStyle: React.CSSProperties = {}
+
+  if (backgroundType === 'gradient' && gradientSettings) {
+    if (
+      gradientSettings.gradientStartPercentage !== undefined &&
+      gradientSettings.gradientStartPercentage !== null
+    ) {
+      // @ts-ignore
+      gradientStyle['--tw-gradient-from-position'] = `${gradientSettings.gradientStartPercentage}%`
+    }
+    if (
+      gradientSettings.gradientViaPercentage !== undefined &&
+      gradientSettings.gradientViaPercentage !== null
+    ) {
+      // @ts-ignore
+      gradientStyle['--tw-gradient-via-position'] = `${gradientSettings.gradientViaPercentage}%`
+    }
+    if (
+      gradientSettings.gradientStopPercentage !== undefined &&
+      gradientSettings.gradientStopPercentage !== null
+    ) {
+      // @ts-ignore
+      gradientStyle['--tw-gradient-to-position'] = `${gradientSettings.gradientStopPercentage}%`
+    }
+  }
+
   return (
     <div
+      style={gradientStyle}
       className={cn(
         'w-full relative',
         paddingGenerator(paddingType),
         backgroundType === 'color' && sectionBackgroundColor,
         backgroundType === 'color' && getBestContrastTextColor(sectionBackgroundColor),
         backgroundType === 'media' && 'text-white',
+        backgroundType === 'gradient' &&
+          gradientSettings &&
+          cn(
+            `bg-gradient-${gradientSettings.gradientDirection}`,
+            gradientSettings.gradientStartColor && `from-${gradientSettings.gradientStartColor}`,
+            gradientSettings.gradientViaColor && `via-${gradientSettings.gradientViaColor}`,
+            gradientSettings.gradientStopColor && `to-${gradientSettings.gradientStopColor}`,
+          ),
+        backgroundType === 'gradient' &&
+          gradientSettings?.gradientStartColor &&
+          getBestContrastTextColor(`bg-${gradientSettings.gradientStartColor}`),
       )}
     >
       {backgroundType === 'media' && renderBackgroundMedia()}
@@ -193,9 +232,27 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   } = content
 
                   if (contentType === 'media' && media && typeof media !== 'string') {
+                    const { mediaWidth, mediaCustomWidth } = content
+                    let wrapperClasses = 'rounded-xl overflow-hidden'
+                    let imgClasses = 'rounded-xl'
+                    let fill = false
+                    const wrapperStyle: React.CSSProperties = {}
+
+                    if (mediaWidth === 'fill') {
+                      wrapperClasses = cn(wrapperClasses, 'relative w-full h-full')
+                      imgClasses = cn(imgClasses, 'object-cover')
+                      fill = true
+                    } else if (mediaWidth === 'full') {
+                      wrapperClasses = cn(wrapperClasses, 'w-full')
+                      imgClasses = cn(imgClasses, 'w-full h-auto')
+                    } else if (mediaWidth === 'custom' && mediaCustomWidth) {
+                      wrapperStyle.width = mediaCustomWidth
+                      imgClasses = cn(imgClasses, 'w-full h-auto')
+                    }
+
                     return (
-                      <div className="rounded-xl overflow-hidden" key={index}>
-                        <Media resource={media} size="33vw" imgClassName="rounded-xl" />
+                      <div className={wrapperClasses} style={wrapperStyle} key={index}>
+                        <Media resource={media} size="33vw" imgClassName={imgClasses} fill={fill} />
                       </div>
                     )
                   }
@@ -298,9 +355,10 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                           )}
                         >
                           {verticalCTA.subtitle && (
-                            <p className={cn(verticalCTA.subtitleClasses)}>
-                              {verticalCTA.subtitle}
-                            </p>
+                            <p
+                              className={cn(verticalCTA.subtitleClasses)}
+                              dangerouslySetInnerHTML={{ __html: verticalCTA.subtitle }}
+                            />
                           )}
 
                           {verticalCTA.title && (
