@@ -3,11 +3,11 @@ import React from 'react'
 import { cn } from '@/utilities/cn'
 import type { CardGridBlock as CardGridBlockProps } from '@/payload-types'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Media } from '@/components/Media'
 import { Icon } from '@/components/Icon'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react'
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
@@ -34,6 +34,29 @@ const colorThemes: Record<string, string> = {
   cyan: 'bg-gradient-to-br from-cyan-500 via-cyan-600 to-blue-700',
   lime: 'bg-gradient-to-br from-lime-500 via-lime-600 to-green-700',
   grey: 'bg-gradient-to-br from-slate-600 via-slate-700 to-gray-800',
+}
+
+const SwiperNavButtons = () => {
+  const swiper = useSwiper()
+
+  return (
+    <>
+      <button
+        onClick={() => swiper.slidePrev()}
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/30 backdrop-blur-md border border-white/40 text-slate-800 hover:bg-white/50 transition-all shadow-lg md:-ml-6"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={() => swiper.slideNext()}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/30 backdrop-blur-md border border-white/40 text-slate-800 hover:bg-white/50 transition-all shadow-lg md:-mr-6"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+    </>
+  )
 }
 
 export const CardGridBlock: React.FC<Props> = ({
@@ -113,7 +136,7 @@ export const CardGridBlock: React.FC<Props> = ({
 
         {displayStyle === 'swiper' ? (
           <Swiper
-            modules={[Autoplay, Pagination]}
+            modules={[Autoplay, Pagination, Navigation]}
             spaceBetween={30}
             pagination={{
               clickable: true,
@@ -136,13 +159,14 @@ export const CardGridBlock: React.FC<Props> = ({
                 slidesPerView: 3,
               },
             }}
-            className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary"
+            className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary overflow-visible"
           >
             {cards?.map((card, index) => (
               <SwiperSlide key={index} className="h-auto">
                 <CardItem card={card} index={index} />
               </SwiperSlide>
             ))}
+            <SwiperNavButtons />
           </Swiper>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
