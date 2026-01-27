@@ -66454,12 +66454,12 @@ export interface CardGridBlock {
         | 'lg:tracking-widest'
       )[]
     | null;
+  displayStyle?: ('grid' | 'swiper') | null;
   cards: {
     icon: string;
     title: string;
     description: string;
     image: string | Media;
-    displayStyle?: ('grid' | 'swiper') | null;
     link?: {
       type?: ('reference' | 'custom') | null;
       newTab?: boolean | null;
@@ -70931,6 +70931,7 @@ export interface CardGridBlockSelect<T extends boolean = true> {
   description?: T;
   titleTextClasses?: T;
   descriptionTextClasses?: T;
+  displayStyle?: T;
   cards?:
     | T
     | {
@@ -70938,7 +70939,6 @@ export interface CardGridBlockSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         image?: T;
-        displayStyle?: T;
         link?:
           | T
           | {

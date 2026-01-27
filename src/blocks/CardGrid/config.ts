@@ -33,6 +33,15 @@ export const CardGrid: Block = {
       },
     }),
     {
+      name: 'displayStyle',
+      type: 'select',
+      defaultValue: 'grid',
+      options: [
+        { label: 'Grid', value: 'grid' },
+        { label: 'Swiper', value: 'swiper' },
+      ],
+    },
+    {
       name: 'cards',
       type: 'array',
       required: true,
@@ -66,15 +75,7 @@ export const CardGrid: Block = {
           relationTo: 'media',
           required: true,
         },
-        {
-          name: 'displayStyle',
-          type: 'select',
-          defaultValue: 'grid',
-          options: [
-            { label: 'Grid', value: 'grid' },
-            { label: 'Swiper', value: 'swiper' },
-          ],
-        },
+
         link({
           overrides: {
             name: 'link',
