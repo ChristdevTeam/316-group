@@ -159,7 +159,7 @@ export const CardGridBlock: React.FC<Props> = ({
                 slidesPerView: 3,
               },
             }}
-            className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary overflow-visible"
+            className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary !overflow-visible"
           >
             {cards?.map((card, index) => (
               <SwiperSlide key={index} className="h-auto">
