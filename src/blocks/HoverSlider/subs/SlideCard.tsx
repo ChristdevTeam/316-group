@@ -52,7 +52,7 @@ const SlideCard = ({ slide, isProductSlider }: SlideCardProps) => {
             {slide.link && slide.enableLink && (
               <CMSLink
                 {...slide.link}
-                className="bg-black text-white px-6 py-3 rounded-full hover:bg-slate-200 hover:text-slate-900 transition-colors text-left animate__animated"
+                className="bg-black text-white px-6 py-3 rounded-full inline-block hover:bg-slate-200 hover:text-slate-900 transition-colors text-left animate__animated"
               />
             )}
           </div>
