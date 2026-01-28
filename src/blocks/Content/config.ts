@@ -25,6 +25,7 @@ import { MediaBlock } from '../MediaBlock/config'
 import { BusinessSlider } from '../BusinessSlider/config'
 import { HoverSliderBlock } from '../HoverSlider/config'
 import { colorPickerAll } from '@/fields/colorPicker'
+import { icon } from '@/fields/icon'
 
 const columnFields: Field[] = [
   {
@@ -76,7 +77,9 @@ const columnFields: Field[] = [
           { label: 'Card with List', value: 'cardWithList' },
           { label: 'Auto Scroll Slider', value: 'autoScrollSlider' },
           { label: 'Styled Cards', value: 'styledCards' },
+          { label: 'Styled Cards', value: 'styledCards' },
           { label: 'Swiper Images Slider', value: 'swiperSlider' },
+          { label: 'Status Banner', value: 'statusBanner' },
           { label: 'Spacer', value: 'spacer' },
         ],
       },
@@ -667,6 +670,57 @@ const columnFields: Field[] = [
         ],
         admin: {
           condition: (_, { contentType }) => contentType === 'styledCards',
+        },
+      },
+      {
+        name: 'statusBanner',
+        type: 'group',
+        fields: [
+          icon(),
+          {
+            name: 'content',
+            type: 'text',
+            required: true,
+            defaultValue: '100% safe and secure • PCI DSS Compliant',
+          },
+          textClasses({
+            overrides: {
+              name: 'contentClasses',
+              label: 'Content Text Classes',
+              defaultValue: ['text-sm', 'font-medium'],
+            },
+          }),
+          {
+            name: 'flavor',
+            type: 'select',
+            required: true,
+            defaultValue: 'success',
+            options: [
+              { label: 'Success', value: 'success' },
+              { label: 'Danger', value: 'danger' },
+              { label: 'Warning', value: 'warning' },
+              { label: 'Info', value: 'info' },
+              { label: 'Primary', value: 'primary' },
+              { label: 'Secondary', value: 'secondary' },
+            ],
+            admin: {
+              description: 'Determines the background and text color theme',
+            },
+          },
+          {
+            name: 'alignment',
+            type: 'select',
+            required: true,
+            defaultValue: 'center',
+            options: [
+              { label: 'Left', value: 'left' },
+              { label: 'Center', value: 'center' },
+              { label: 'Right', value: 'right' },
+            ],
+          },
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'statusBanner',
         },
       },
     ],

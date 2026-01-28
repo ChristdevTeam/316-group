@@ -12,6 +12,7 @@ import Carousel from '@/components/ui/Carousel'
 import CardInvert from '@/components/CardInvert'
 import { AutoScrollSlider } from '@/components/AutoScrollSlider'
 import { StyledCards } from '@/components/StyledCards'
+import { Icon } from '@/components/Icon'
 import { SwiperElement } from '@/components/Swiper'
 import { paddingGenerator } from '@/utilities/paddingGenerator'
 
@@ -452,6 +453,72 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                         cardHoverBgColor={cardHoverBgColor}
                         borderClasses={borderClasses}
                       />
+                    )
+                  }
+
+                  if (contentType === 'statusBanner' && content.statusBanner) {
+                    const {
+                      content: bannerContent,
+                      contentClasses,
+                      flavor,
+                      alignment,
+                      icon,
+                    } = content.statusBanner
+
+                    const flavorClasses = {
+                      success: {
+                        bg: 'bg-green-900/30',
+                        text: 'text-green-500',
+                        border: 'border-green-800',
+                      },
+                      danger: {
+                        bg: 'bg-red-900/30',
+                        text: 'text-red-500',
+                        border: 'border-red-800',
+                      },
+                      warning: {
+                        bg: 'bg-amber-900/30',
+                        text: 'text-amber-500',
+                        border: 'border-amber-800',
+                      },
+                      info: {
+                        bg: 'bg-blue-900/30',
+                        text: 'text-blue-500',
+                        border: 'border-blue-800',
+                      },
+                      primary: {
+                        bg: 'bg-slate-800',
+                        text: 'text-white',
+                        border: 'border-slate-700',
+                      },
+                      secondary: {
+                        bg: 'bg-gray-100',
+                        text: 'text-gray-800',
+                        border: 'border-gray-200',
+                      },
+                    }
+
+                    const selectedFlavor = flavorClasses[flavor || 'success']
+
+                    return (
+                      <div
+                        key={index}
+                        className={cn(
+                          'w-full py-4 px-6 rounded-lg border flex items-center gap-3',
+                          selectedFlavor.bg,
+                          selectedFlavor.border,
+                          alignment === 'center' && 'justify-center',
+                          alignment === 'right' && 'justify-end',
+                          alignment === 'left' && 'justify-start',
+                        )}
+                      >
+                        {icon && (
+                          <Icon name={icon} className={cn('w-6 h-6', selectedFlavor.text)} />
+                        )}
+                        <span className={cn(contentClasses, selectedFlavor.text)}>
+                          {bannerContent}
+                        </span>
+                      </div>
                     )
                   }
 

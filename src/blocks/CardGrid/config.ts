@@ -1,6 +1,7 @@
 import { Block } from 'payload'
 import { link } from '@/fields/link'
 import { textClasses } from '@/fields/textClasses'
+import { icon } from '@/fields/icon'
 
 export const CardGrid: Block = {
   slug: 'cardGrid',
@@ -47,16 +48,12 @@ export const CardGrid: Block = {
       required: true,
       minRows: 1,
       fields: [
-        {
-          name: 'icon',
-          type: 'text',
-          required: true,
-          admin: {
-            components: {
-              Field: '@/components/Admin/IconPicker',
-            },
+        icon({
+          overrides: {
+            required: true,
           },
-        },
+        }),
+
         {
           name: 'title',
           type: 'text',
