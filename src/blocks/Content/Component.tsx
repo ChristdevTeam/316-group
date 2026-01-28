@@ -504,7 +504,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       <div
                         key={index}
                         className={cn(
-                          'w-full py-4 px-6 rounded-lg border flex items-center gap-3',
+                          'w-full py-4 px-6 rounded-xl border flex items-center gap-3',
                           selectedFlavor.bg,
                           selectedFlavor.border,
                           alignment === 'center' && 'justify-center',

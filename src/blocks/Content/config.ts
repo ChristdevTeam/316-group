@@ -687,7 +687,7 @@ const columnFields: Field[] = [
             overrides: {
               name: 'contentClasses',
               label: 'Content Text Classes',
-              defaultValue: ['text-sm', 'font-medium'],
+              defaultValue: ['text-base', 'font-medium'],
             },
           }),
           {
