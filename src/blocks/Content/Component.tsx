@@ -513,7 +513,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                         )}
                       >
                         {icon && (
-                          <Icon name={icon} className={cn('w-6 h-6', selectedFlavor.text)} />
+                          <Icon name={icon} className={cn('w-8 h-8', selectedFlavor.text)} />
                         )}
                         <span className={cn(contentClasses, selectedFlavor.text)}>
                           {bannerContent}
