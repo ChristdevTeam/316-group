@@ -82,8 +82,8 @@ export const CardGridBlock: React.FC<Props> = ({
       >
         <div className="px-8 pt-8 flex flex-col h-full z-10 relative">
           <div className="flex items-center justify-center gap-4 p-0 mb-4">
-            <Icon name={card.icon} className="w-8 h-8 text-white" />
-            <h3 className="text-lg xl:text-2xl font-bold font-sans">{card.title}</h3>
+            <Icon name={card.icon} className="w-6 md:w-8 h-6 md:h-8 text-white" />
+            <h3 className="text-lg xl:text-xl font-bold font-sans">{card.title}</h3>
           </div>
 
           <p className="text-white/90 text-base leading-relaxed mb-6 text-center">
