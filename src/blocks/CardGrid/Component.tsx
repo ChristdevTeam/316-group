@@ -137,7 +137,7 @@ export const CardGridBlock: React.FC<Props> = ({
         {displayStyle === 'swiper' ? (
           <Swiper
             modules={[Autoplay, Pagination, Navigation]}
-            spaceBetween={30}
+            spaceBetween={25}
             pagination={{
               clickable: true,
               dynamicBullets: true,
@@ -156,7 +156,7 @@ export const CardGridBlock: React.FC<Props> = ({
                 slidesPerView: 3,
               },
               1024: {
-                slidesPerView: 5,
+                slidesPerView: 4,
               },
             }}
             className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary !overflow-visible"
