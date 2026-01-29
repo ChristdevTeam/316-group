@@ -127,13 +127,12 @@ export const CardGridBlock: React.FC<Props> = ({
               {title}
             </h2>
           )}
-          {description && (
-            <p className={cn('text-lg text-slate-600 leading-relaxed', descriptionTextClasses)}>
-              {description}
-            </p>
-          )}
         </div>
-
+        {description && (
+          <p className={cn('text-lg text-slate-600 leading-relaxed', descriptionTextClasses)}>
+            {description}
+          </p>
+        )}
         {displayStyle === 'swiper' ? (
           <Swiper
             modules={[Autoplay, Pagination, Navigation]}
@@ -153,10 +152,10 @@ export const CardGridBlock: React.FC<Props> = ({
                 slidesPerView: 1,
               },
               768: {
-                slidesPerView: 2,
+                slidesPerView: 3,
               },
               1024: {
-                slidesPerView: 3,
+                slidesPerView: 5,
               },
             }}
             className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary !overflow-visible"
