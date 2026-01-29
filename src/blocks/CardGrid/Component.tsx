@@ -115,8 +115,8 @@ export const CardGridBlock: React.FC<Props> = ({
 
   return (
     <div className={cn('py-16 bg-gray-50', className)}>
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12 max-w-4xl mx-auto">
+      <div className="container">
+        <div className="text-center mb-12 md:max-w-4xl mx-auto">
           {title && (
             <h2
               className={cn(
@@ -127,12 +127,13 @@ export const CardGridBlock: React.FC<Props> = ({
               {title}
             </h2>
           )}
+          {description && (
+            <p className={cn('text-lg text-slate-600 leading-relaxed', descriptionTextClasses)}>
+              {description}
+            </p>
+          )}
         </div>
-        {description && (
-          <p className={cn('text-lg text-slate-600 leading-relaxed', descriptionTextClasses)}>
-            {description}
-          </p>
-        )}
+
         {displayStyle === 'swiper' ? (
           <Swiper
             modules={[Autoplay, Pagination, Navigation]}
