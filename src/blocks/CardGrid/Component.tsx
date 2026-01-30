@@ -119,6 +119,7 @@ const CardSwiper = ({
         clickable: true,
         dynamicBullets: true,
       }}
+      slidesPerView={1.2}
       autoplay={{
         delay: 5000,
         disableOnInteraction: false,
