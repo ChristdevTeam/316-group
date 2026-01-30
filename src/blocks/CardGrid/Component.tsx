@@ -59,6 +59,89 @@ const SwiperNavButtons = () => {
   )
 }
 
+const CardItem = ({ card, index }: { card: any; index: number }) => {
+  const themeClass = colorThemes[card.colorTheme] || colorThemes.blue
+  const href = card.link?.url || (card.link?.reference?.value as any)?.slug || '#'
+
+  return (
+    <div
+      key={index}
+      className={cn(
+        'relative overflow-hidden rounded-3xl text-white flex flex-col transition-transform hover:-translate-y-1 duration-300 h-full',
+        themeClass,
+      )}
+    >
+      <div className="px-8 pt-8 flex flex-col h-full z-10 relative">
+        <div className="flex items-center justify-center gap-4 p-0 mb-4">
+          <Icon name={card.icon} className="w-6 md:w-8 h-6 md:h-8 text-white" />
+          <h3 className="text-lg xl:text-xl font-bold font-sans">{card.title}</h3>
+        </div>
+
+        <p className="text-white/90 text-base leading-relaxed mb-6 text-center">
+          {card.description}
+        </p>
+
+        <div className="mb-4 justify-center flex">
+          <Link
+            href={href}
+            className="inline-flex items-center text-sm font-semibold hover:gap-2 transition-all"
+          >
+            <ArrowRight className="w-4 h-4 ml-1" />
+          </Link>
+        </div>
+
+        <div className="mt-auto relative aspect-[4/3] lg:aspect-square translate-y-2">
+          {card.image && typeof card.image === 'object' && (
+            <Media
+              resource={card.image}
+              alt={card.image.alt || card.title}
+              className="object-fit object-top"
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const CardSwiper = ({ cards }: { cards: any[] }) => {
+  return (
+    <Swiper
+      modules={[Autoplay, Pagination, Navigation]}
+      spaceBetween={25}
+      pagination={{
+        clickable: true,
+        dynamicBullets: true,
+      }}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
+      loop={true}
+      breakpoints={{
+        640: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      }}
+      className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary !overflow-visible"
+    >
+      {cards?.map((card, index) => (
+        <SwiperSlide key={index} className="h-auto">
+          <CardItem card={card} index={index} />
+        </SwiperSlide>
+      ))}
+      <SwiperNavButtons />
+    </Swiper>
+  )
+}
+
 export const CardGridBlock: React.FC<Props> = ({
   className,
   title,
@@ -68,54 +151,9 @@ export const CardGridBlock: React.FC<Props> = ({
   descriptionTextClasses,
   displayStyle = 'grid',
 }) => {
-  const CardItem = ({ card, index }: { card: any; index: number }) => {
-    const themeClass = colorThemes[card.colorTheme] || colorThemes.blue
-    const href = card.link?.url || (card.link?.reference?.value as any)?.slug || '#'
-
-    return (
-      <div
-        key={index}
-        className={cn(
-          'relative overflow-hidden rounded-3xl text-white flex flex-col transition-transform hover:-translate-y-1 duration-300 h-full',
-          themeClass,
-        )}
-      >
-        <div className="px-8 pt-8 flex flex-col h-full z-10 relative">
-          <div className="flex items-center justify-center gap-4 p-0 mb-4">
-            <Icon name={card.icon} className="w-6 md:w-8 h-6 md:h-8 text-white" />
-            <h3 className="text-lg xl:text-xl font-bold font-sans">{card.title}</h3>
-          </div>
-
-          <p className="text-white/90 text-base leading-relaxed mb-6 text-center">
-            {card.description}
-          </p>
-
-          <div className="mb-4 justify-center flex">
-            <Link
-              href={href}
-              className="inline-flex items-center text-sm font-semibold hover:gap-2 transition-all"
-            >
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Link>
-          </div>
-
-          <div className="mt-auto relative aspect-[4/3] lg:aspect-square translate-y-2">
-            {card.image && typeof card.image === 'object' && (
-              <Media
-                resource={card.image}
-                alt={card.image.alt || card.title}
-                className="object-fit object-top"
-              />
-            )}
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className={cn('py-16 bg-gray-50', className)}>
-      <div className="container">
+    <div className={cn('py-16 bg-gray-50 overflow-hidden', className)}>
+      <div className="container max-w-screen-2xl">
         <div className="text-center mb-12 md:max-w-4xl mx-auto">
           {title && (
             <h2
