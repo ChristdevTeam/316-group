@@ -104,7 +104,13 @@ const CardItem = ({ card, index }: { card: any; index: number }) => {
   )
 }
 
-const CardSwiper = ({ cards }: { cards: any[] }) => {
+const CardSwiper = ({
+  cards,
+  className,
+}: {
+  cards: CardGridBlockProps['cards']
+  className?: string
+}) => {
   return (
     <Swiper
       modules={[Autoplay, Pagination, Navigation]}
@@ -130,7 +136,10 @@ const CardSwiper = ({ cards }: { cards: any[] }) => {
           slidesPerView: 4,
         },
       }}
-      className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary !overflow-visible"
+      className={cn(
+        'w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary !overflow-visible',
+        className,
+      )}
     >
       {cards?.map((card, index) => (
         <SwiperSlide key={index} className="h-auto">
@@ -173,43 +182,14 @@ export const CardGridBlock: React.FC<Props> = ({
         </div>
 
         {displayStyle === 'swiper' ? (
-          <Swiper
-            modules={[Autoplay, Pagination, Navigation]}
-            spaceBetween={25}
-            pagination={{
-              clickable: true,
-              dynamicBullets: true,
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            loop={true}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 3,
-              },
-              1024: {
-                slidesPerView: 4,
-              },
-            }}
-            className="w-full pb-12 [&_.swiper-pagination-bullet]:bg-slate-300 [&_.swiper-pagination-bullet-active]:bg-primary !overflow-visible"
-          >
-            {cards?.map((card, index) => (
-              <SwiperSlide key={index} className="h-auto">
-                <CardItem card={card} index={index} />
-              </SwiperSlide>
-            ))}
-            <SwiperNavButtons />
-          </Swiper>
+          <CardSwiper cards={cards} />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cards?.map((card, index) => <CardItem key={index} card={card} index={index} />)}
-          </div>
+          <React.Fragment>
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {cards?.map((card, index) => <CardItem key={index} card={card} index={index} />)}
+            </div>
+            <CardSwiper cards={cards} className="mt-12 md:hidden" />
+          </React.Fragment>
         )}
       </div>
     </div>
