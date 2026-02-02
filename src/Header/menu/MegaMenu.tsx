@@ -124,11 +124,11 @@ export const MegaMenu = ({
       {/* Desktop Mega Menu */}
       <div
         className={cn(
-          'hidden lg:block fixed top-0 right-0 bg-white dark:bg-gray-900 shadow-xl z-50 transition-all duration-300 ease-in-out pl-8',
+          'hidden lg:block fixed top-0 right-0 bg-white dark:bg-gray-900 shadow-xl z-50 pl-8',
           'rounded-l-2xl',
           'animate-in slide-in-from-top',
           {
-            'translate-y-0 opacity-100': activeSection,
+            'translate-y-0 opacity-100 transition-all duration-300 ease-in-out': activeSection,
             '-translate-y-4 opacity-0 pointer-events-none': !activeSection,
           },
         )}
