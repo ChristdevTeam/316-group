@@ -32,15 +32,22 @@ export const SwiperHero: React.FC<Page['hero']> = ({
   if (!images?.length) return null
 
   return (
-    <div className={cn('relative w-full min-h-[60vh] -mt-16', bgColor)}>
+    <div className={cn('relative w-full min-h-[60vh]', bgColor)}>
       <div className="relative container max-w-screen-2xl flex flex-col lg:flex-row gap-16 justify-between overflow-hidden py-16 md:pb-28">
         {overlayText && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center opacity-30">
+          <div className="absolute inset-0 z-10 hidden lg:flex items-center justify-center opacity-30 pointer-events-none select-none">
             <div className={cn(overlayTextClasses)}>{overlayText}</div>
           </div>
         )}
-        <div className="w-full lg:w-1/2 flex flex-col gap-8">
-          <div>{heroTitle && <button className={cn(heroTitleClasses)}>{heroTitle}</button>}</div>
+        <div className="w-full lg:w-1/2 flex flex-col gap-8 z-20">
+          <div>
+            {heroTitle && (
+              <button
+                className={cn(heroTitleClasses)}
+                dangerouslySetInnerHTML={{ __html: heroTitle }}
+              ></button>
+            )}
+          </div>
           {title && (
             <div className={cn(titleClasses)} dangerouslySetInnerHTML={{ __html: title }} />
           )}
@@ -76,7 +83,12 @@ export const SwiperHero: React.FC<Page['hero']> = ({
             </div>
           )}
         </div>
-        <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden">
+        <div className="relative w-full lg:w-1/2 rounded-2xl overflow-hidden">
+          {overlayText && (
+            <div className="absolute inset-0 z-10 flex lg:hidden items-center justify-center opacity-30 pointer-events-none select-none">
+              <div className={cn(overlayTextClasses)}>{overlayText}</div>
+            </div>
+          )}
           <Swiper
             modules={[Autoplay, EffectCoverflow, Pagination]}
             effect="coverflow"
@@ -109,7 +121,7 @@ export const SwiperHero: React.FC<Page['hero']> = ({
               [&_.swiper-pagination-bullet-active]:h-5"
           >
             {images.map((media, index) => (
-              <SwiperSlide key={index} className="relative w-full h-full">
+              <SwiperSlide key={index} className="relative aspect-square w-full">
                 <Media
                   resource={media.media}
                   className="object-cover w-full h-full rounded-2xl"
