@@ -10,7 +10,7 @@ export const icon: IconType = ({ condition, overrides } = {}) => {
   const iconField: Field = {
     name: 'icon',
     type: 'text',
-    required: true,
+    required: false,
     admin: {
       components: {
         Field: '@/components/Admin/IconPicker',

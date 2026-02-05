@@ -81,6 +81,7 @@ const columnFields: Field[] = [
           { label: 'Swiper Images Slider', value: 'swiperSlider' },
           { label: 'Status Banner', value: 'statusBanner' },
           { label: 'Spacer', value: 'spacer' },
+          { label: 'Modern Card', value: 'modernCard' },
         ],
       },
       {
@@ -721,6 +722,68 @@ const columnFields: Field[] = [
         ],
         admin: {
           condition: (_, { contentType }) => contentType === 'statusBanner',
+        },
+      },
+      {
+        name: 'modernCard',
+        type: 'group',
+        fields: [
+          icon(),
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+          },
+          textClasses({
+            overrides: {
+              name: 'titleClasses',
+              label: 'Title Classes',
+              defaultValue: ['text-4xl', 'font-bold', 'text-slate-900', 'mb-2'],
+            },
+          }),
+          {
+            name: 'description',
+            type: 'richText',
+            editor: lexicalEditor({
+              features: ({ rootFeatures }) => [
+                ...rootFeatures,
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+              ],
+            }),
+          },
+          textClasses({
+            overrides: {
+              name: 'descriptionClasses',
+              label: 'Description Classes',
+              defaultValue: ['text-lg', 'text-slate-700', 'mb-6'],
+            },
+          }),
+          linkGroup({
+            overrides: {
+              maxRows: 2,
+            },
+          }),
+          bgColorPickerAll({
+            overrides: {
+              name: 'cardBgColor',
+              label: 'Card Background Color',
+              defaultValue: 'bg-gray-100',
+            },
+          }),
+          bgOpacityPicker({
+            overrides: {
+              name: 'cardBgOpacity',
+              label: 'Card Background Opacity',
+              defaultValue: 'bg-opacity-100',
+              admin: {
+                condition: (_, { cardBgColor }) => Boolean(cardBgColor),
+              },
+            },
+          }),
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'modernCard',
         },
       },
     ],

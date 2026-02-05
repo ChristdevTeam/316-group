@@ -522,6 +522,55 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     )
                   }
 
+                  if (contentType === 'modernCard' && content.modernCard) {
+                    const {
+                      title,
+                      titleClasses,
+                      description,
+                      descriptionClasses,
+                      links,
+                      cardBgColor,
+                      cardBgOpacity,
+                      icon: iconName,
+                    } = content.modernCard
+
+                    return (
+                      <div
+                        key={index}
+                        className={cn(
+                          'rounded-3xl p-8 md:p-12 flex flex-col gap-6',
+                          cardBgColor,
+                          cardBgOpacity,
+                        )}
+                      >
+                        {iconName && (
+                          <Icon name={iconName} className="w-12 h-12 mb-4 text-blue-600" />
+                        )}
+                        {title && (
+                          <h3
+                            dangerouslySetInnerHTML={{ __html: title }}
+                            className={cn(titleClasses)}
+                          />
+                        )}
+                        {description && (
+                          <RichText
+                            content={description}
+                            enableGutter={false}
+                            enableProse={false}
+                            className={cn(descriptionClasses)}
+                          />
+                        )}
+                        {links && Array.isArray(links) && links.length > 0 && (
+                          <div className="flex gap-4 mt-auto">
+                            {links.map(({ link, buttonClasses }, i) => (
+                              <CMSLink key={i} size="lg" {...link} className={cn(buttonClasses)} />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  }
+
                   if (contentType === 'spacer' && content.spacer) {
                     const spacer = content.spacer
                     return (
