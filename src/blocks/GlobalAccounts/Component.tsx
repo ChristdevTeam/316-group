@@ -23,6 +23,8 @@ export const GlobalAccounts: React.FC<Props> = ({
   description,
   descriptionClasses,
   paddingType,
+  styles,
+  ctaTextClasses,
 }) => {
   return (
     <div
@@ -49,7 +51,7 @@ export const GlobalAccounts: React.FC<Props> = ({
                 features.map((item, index) => (
                   <p key={index} className="flex items-center gap-2 md:gap-4">
                     <div className="h-6 w-6">
-                      <Plus strokeWidth={3} className="w-6 h-6 text-green-600" />
+                      <Plus strokeWidth={3} className={cn('w-6 h-6', styles?.accentColour)} />
                     </div>
                     <span className="text-lg md:text-xl xl:text-2xl">{item.feature}</span>
                   </p>
@@ -62,12 +64,14 @@ export const GlobalAccounts: React.FC<Props> = ({
         </div>
 
         <div className="rounded-2xl overflow-hidden">
-          <div className="w-full py-20 bg-gradient-to-br from-blue-100 to-violet-100">
+          <div
+            className={cn(
+              'w-full py-20 bg-gradient-to-br from-blue-100 to-violet-100',
+              styles?.ctaBackground,
+            )}
+          >
             <div className="max-w-4xl mx-auto text-center px-4">
-              <h2
-                className="text-2xl md:text-3xl xl:text-4xl font-semibold mb-6"
-                dangerouslySetInnerHTML={{ __html: ctaText }}
-              />
+              <h2 className={cn(ctaTextClasses)} dangerouslySetInnerHTML={{ __html: ctaText }} />
               <div className="flex items-center justify-center">
                 {ctaLink &&
                   ctaLink.map(({ link, buttonClasses, size }, i) => {
