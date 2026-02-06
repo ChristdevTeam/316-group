@@ -64,12 +64,7 @@ export const GlobalAccounts: React.FC<Props> = ({
         </div>
 
         <div className="rounded-2xl overflow-hidden">
-          <div
-            className={cn(
-              'w-full py-20 bg-gradient-to-br from-blue-100 to-violet-100',
-              styles?.ctaBackground,
-            )}
-          >
+          <div className={cn('w-full py-20', styles?.ctaBackground)}>
             <div className="max-w-4xl mx-auto text-center px-4">
               <h2 className={cn(ctaTextClasses)} dangerouslySetInnerHTML={{ __html: ctaText }} />
               <div className="flex items-center justify-center">
