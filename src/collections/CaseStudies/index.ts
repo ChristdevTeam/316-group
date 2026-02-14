@@ -338,7 +338,7 @@ export const CaseStudies: CollectionConfig<'case-studies'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 60000,
+        interval: 10000,
       },
     },
     maxPerDoc: 50,
