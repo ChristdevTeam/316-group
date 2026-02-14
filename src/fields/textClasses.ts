@@ -925,6 +925,23 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'LG: Tracking - Wide', value: 'lg:tracking-wide' },
       { label: 'LG: Tracking - Wider', value: 'lg:tracking-wider' },
       { label: 'LG: Tracking - Widest', value: 'lg:tracking-widest' },
+
+      // ------------------------
+      // 15) MAX WIDTH
+      // ------------------------
+      { label: 'Max Width - XS', value: 'max-w-xs' },
+      { label: 'Max Width - SM', value: 'max-w-sm' },
+      { label: 'Max Width - MD', value: 'max-w-md' },
+      { label: 'Max Width - LG', value: 'max-w-lg' },
+      { label: 'Max Width - XL', value: 'max-w-xl' },
+      { label: 'Max Width - 2XL', value: 'max-w-2xl' },
+      { label: 'Max Width - 3XL', value: 'max-w-3xl' },
+      { label: 'Max Width - 4XL', value: 'max-w-4xl' },
+      { label: 'Max Width - 5XL', value: 'max-w-5xl' },
+      { label: 'Max Width - 6XL', value: 'max-w-6xl' },
+      { label: 'Max Width - 7XL', value: 'max-w-7xl' },
+      { label: 'Max Width - Full', value: 'max-w-full' },
+      { label: 'Max Width - None', value: 'max-w-none' },
     ],
   }
 

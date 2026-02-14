@@ -1,6 +1,6 @@
 // storage-adapter-import-placeholder
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
@@ -26,6 +26,7 @@ import { TextStyles } from './collections/TextStyles'
 import { DownloadFormSubmissions } from './collections/DownloadFormSubmissions'
 import { Investors } from './collections/Investors'
 import { DownloadTracking } from './collections/DownloadTracking'
+import { Brands } from './collections/Brands'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -100,6 +101,7 @@ export default buildConfig({
     DownloadFormSubmissions,
     Investors,
     DownloadTracking,
+    Brands,
   ],
   upload: {
     limits: {
@@ -108,26 +110,15 @@ export default buildConfig({
   },
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Settings],
-  plugins: [
-    ...plugins,
-    // storage-adapter-placeholder
-  ],
+  plugins: [...plugins],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  email: nodemailerAdapter({
-    defaultFromAddress: `${process.env.SMTP_FROM}`,
-    defaultFromName: `${process.env.SMTP_FROM_NAME}`,
-    // Nodemailer transportOptions
-    transportOptions: {
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    },
+  email: resendAdapter({
+    defaultFromAddress: 'contact@316group.co.uk',
+    defaultFromName: '316 Group',
+    apiKey: process.env.RESEND_API_KEY || '',
   }),
 })
