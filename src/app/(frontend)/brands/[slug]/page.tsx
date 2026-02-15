@@ -59,7 +59,7 @@ export default async function BrandPage({ params: paramsPromise }: Args) {
       {brand.content?.brandPillars && <BrandPillars pillars={brand.content.brandPillars} />}
 
       {brand.content?.introSection && (
-        <section className="py-16 text-center container">
+        <section className="py-16 text-center container max-w-screen-2xl">
           {brand.content.introSection.title && (
             <h2 className={cn('max-w-4xl mx-auto', brand.content.introSection.titleClassName)}>
               {brand.content.introSection.title}
