@@ -143,6 +143,7 @@ export const link: LinkType = ({
       appearanceOptions.outline,
       appearanceOptions.ghost,
       appearanceOptions.secondary,
+      appearanceOptions.underline,
     ]
 
     if (appearances) {
