@@ -14,18 +14,18 @@ export const BrandMixed: React.FC<Props> = ({ data }) => {
 
   return (
     <section className="py-16 md:py-24">
-      <div className="container">
+      <div className="container max-w-screen-2xl">
         <div className="text-center mb-12">
           {title && <h2 className={cn('text-3xl font-bold mb-4', titleClassName)}>{title}</h2>}
           {description && (
-            <p className={cn('text-lg text-gray-600 max-w-4xl mx-auto', descriptionClassName)}>
+            <p className={cn('text-lg text-gray-600 max-w-6xl mx-auto', descriptionClassName)}>
               {description}
             </p>
           )}
         </div>
 
         {gallery && gallery.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {gallery.map((item, index) => {
               if (typeof item !== 'string') {
                 return (
@@ -40,8 +40,13 @@ export const BrandMixed: React.FC<Props> = ({ data }) => {
         )}
 
         {richText && (
-          <div className="max-w-4xl mx-auto">
-            <RichText content={richText} />
+          <div>
+            <RichText
+              enableGutter={false}
+              enableProse={false}
+              content={richText}
+              className="text-lg text-gray-600"
+            />
           </div>
         )}
       </div>

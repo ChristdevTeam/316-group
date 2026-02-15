@@ -14,15 +14,9 @@ export const BrandGallery: React.FC<Props> = ({ data }) => {
 
   return (
     <section className="py-16 bg-gray-50">
-      <div className="container">
-        {description && (
-          <div className={cn('mb-12', descriptionClassName)}>
-            <RichText content={description} />
-          </div>
-        )}
-
+      <div className="container max-w-screen-2xl space-y-12">
         {gallery && gallery.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {gallery.map((item, index) => {
               if (typeof item !== 'string') {
                 return (
@@ -40,6 +34,11 @@ export const BrandGallery: React.FC<Props> = ({ data }) => {
               }
               return null
             })}
+          </div>
+        )}
+        {description && (
+          <div className={cn('mb-12', descriptionClassName)}>
+            <RichText content={description} enableGutter={false} enableProse={false} />
           </div>
         )}
       </div>

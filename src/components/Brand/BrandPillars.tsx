@@ -23,7 +23,7 @@ export const BrandPillars: React.FC<Props> = ({ pillars }) => {
 
   return (
     <div className="py-12 bg-white border-b border-gray-100 overflow-hidden">
-      <div className="container flex items-center justify-center">
+      <div className="container max-w-screen-2xl flex items-center justify-center">
         <div className="flex flex-wrap justify-center gap-8 md:gap-16 items-center">
           {pillars.map((pillar, index) => (
             <div

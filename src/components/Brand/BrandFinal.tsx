@@ -12,8 +12,8 @@ export const BrandFinal: React.FC<Props> = ({ data }) => {
   const { title, titleClassName, description, descriptionClassName, image } = data
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mb-12 text-center">
+    <section className="pt-16 md:pt-24 border-t border-border">
+      <div className="container max-w-screen-2xl mb-12 text-center">
         {title && <h2 className={cn('text-3xl font-bold mb-4', titleClassName)}>{title}</h2>}
         {description && (
           <p className={cn('text-lg text-gray-600 max-w-4xl mx-auto', descriptionClassName)}>
@@ -21,7 +21,7 @@ export const BrandFinal: React.FC<Props> = ({ data }) => {
           </p>
         )}
       </div>
-      <div className="w-full h-[50vh] relative">
+      <div className="w-full h-[50vh] md:h-[60vh] relative">
         {image && typeof image !== 'string' && (
           <Media resource={image} fill imgClassName="object-cover w-full h-full" />
         )}

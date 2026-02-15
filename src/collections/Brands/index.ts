@@ -221,13 +221,7 @@ export const Brands: CollectionConfig<'brands'> = {
                 textClasses({
                   overrides: {
                     name: 'descriptionClassName',
-                    defaultValue: [
-                      'text-lg',
-                      'text-gray-600',
-                      'max-w-4xl',
-                      'mx-auto',
-                      'text-center',
-                    ],
+                    defaultValue: ['text-lg', 'text-gray-600', 'text-center'],
                   },
                 }),
                 {

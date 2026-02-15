@@ -19,7 +19,7 @@ export const BrandFullscreen: React.FC<Props> = ({ data }) => {
         )}
         <div className="absolute inset-0 bg-black/40" />
       </div>
-      <div className="container relative z-10 flex flex-col items-center text-center">
+      <div className="container max-w-screen-2xl relative z-10 flex flex-col items-center text-center">
         {title && <h2 className={cn('mb-6', titleClassName)}>{title}</h2>}
         {description && <p className={cn('max-w-3xl', descriptionClassName)}>{description}</p>}
       </div>

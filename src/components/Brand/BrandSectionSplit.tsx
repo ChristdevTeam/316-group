@@ -22,9 +22,11 @@ export const BrandSectionSplit: React.FC<Props> = ({ data }) => {
     imageHeight = 60,
   } = data
 
+  const imageHeightClassName = `h-[${imageHeight}vh] min-h-[500px]`
+
   return (
     <section className={cn('py-16 md:py-24', bgColor)}>
-      <div className="container">
+      <div className="container max-w-screen-2xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             {title && <h2 className={cn('text-3xl font-bold mb-6', titleClassName)}>{title}</h2>}
@@ -35,12 +37,9 @@ export const BrandSectionSplit: React.FC<Props> = ({ data }) => {
             )}
             {link && <CMSLink {...link} />}
           </div>
-          <div>
+          <div className={cn(imageHeightClassName, 'relative')}>
             {image && typeof image !== 'string' && (
-              <Media
-                resource={image}
-                imgClassName={cn('w-full object-cover rounded-lg', `h-[${imageHeight}dvh]`)}
-              />
+              <Media resource={image} imgClassName={cn('w-full object-cover rounded-lg')} fill />
             )}
           </div>
         </div>

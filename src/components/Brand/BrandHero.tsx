@@ -14,7 +14,13 @@ export const BrandHero: React.FC<Props> = ({ data }) => {
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         {heroImage && typeof heroImage !== 'string' && (
-          <Media resource={heroImage} fill priority imgClassName="object-cover w-full h-full" />
+          <Media
+            resource={heroImage}
+            loading="eager"
+            fill
+            priority
+            imgClassName="object-cover w-full h-full"
+          />
         )}
         <div className="absolute inset-0 bg-black/30" />
       </div>

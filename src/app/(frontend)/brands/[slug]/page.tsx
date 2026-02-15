@@ -50,7 +50,7 @@ export default async function BrandPage({ params: paramsPromise }: Args) {
   if (!brand) return <PayloadRedirects url={url} />
 
   return (
-    <article className="pt-16">
+    <article className="">
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
