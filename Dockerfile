@@ -8,6 +8,8 @@ COPY . .
 
 RUN npm install -g pnpm
 RUN pnpm install
+# Rebuild sharp to ensure linux binaries are present
+RUN pnpm rebuild sharp
 RUN pnpm run build
 
 # Production image, copy all the files and run next
