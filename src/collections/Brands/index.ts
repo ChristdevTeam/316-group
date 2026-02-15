@@ -23,6 +23,7 @@ import { slugField } from '@/fields/slug'
 import { getServerSideURL } from '@/utilities/getURL'
 import { link } from '@/fields/link'
 import { textClasses } from '@/fields/textClasses'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 
 export const Brands: CollectionConfig<'brands'> = {
   slug: 'brands',
@@ -156,6 +157,12 @@ export const Brands: CollectionConfig<'brands'> = {
               name: 'splitSection',
               type: 'group',
               fields: [
+                bgColorPickerAll({
+                  overrides: {
+                    defaultValue: 'bg-gray-200',
+                    label: 'Background Color',
+                  },
+                }),
                 {
                   name: 'title',
                   type: 'text',
@@ -181,6 +188,15 @@ export const Brands: CollectionConfig<'brands'> = {
                   name: 'image',
                   type: 'upload',
                   relationTo: 'media',
+                },
+                {
+                  name: 'imageHeight',
+                  type: 'number',
+                  defaultValue: 60,
+                  label: 'Image Height (dvh)',
+                  admin: {
+                    description: 'Enter the height in dvh (e.g. 60 for 60dvh). Default is 60.',
+                  },
                 },
               ],
             },

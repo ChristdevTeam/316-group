@@ -11,10 +11,19 @@ type Props = {
 
 export const BrandSectionSplit: React.FC<Props> = ({ data }) => {
   if (!data) return null
-  const { title, titleClassName, description, descriptionClassName, link, image } = data
+  const {
+    title,
+    titleClassName,
+    description,
+    descriptionClassName,
+    link,
+    image,
+    bgColor,
+    imageHeight = 60,
+  } = data
 
   return (
-    <section className="py-16 md:py-24">
+    <section className={cn('py-16 md:py-24', bgColor)}>
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
@@ -28,7 +37,10 @@ export const BrandSectionSplit: React.FC<Props> = ({ data }) => {
           </div>
           <div>
             {image && typeof image !== 'string' && (
-              <Media resource={image} imgClassName="w-full h-auto object-cover rounded-lg" />
+              <Media
+                resource={image}
+                imgClassName={cn('w-full object-cover rounded-lg', `h-[${imageHeight}dvh]`)}
+              />
             )}
           </div>
         </div>
