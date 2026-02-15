@@ -69,11 +69,11 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   if (appearance === 'underline') {
     const underlineClass =
-      'relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[60%] after:bg-current after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full'
+      'relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-[60%] after:bg-current after:transition-all after:duration-300 hover:after:w-full'
     return (
       <Link
         className={cn(
-          'flex gap-4 items-center w-fit text-primary hover:text-primary/80 transition-colors',
+          'inline-flex gap-4 items-center text-primary hover:text-primary/80 transition-colors pb-1',
           underlineClass,
           className,
         )}
