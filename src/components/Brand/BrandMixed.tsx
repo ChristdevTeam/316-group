@@ -1,8 +1,13 @@
+'use client'
+
 import React from 'react'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/cn'
 import type { Brand } from '@/payload-types'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
 
 type Props = {
   data: NonNullable<Brand['content']>['mixedSection']
@@ -11,6 +16,8 @@ type Props = {
 export const BrandMixed: React.FC<Props> = ({ data }) => {
   if (!data) return null
   const { title, titleClassName, description, descriptionClassName, gallery, richText } = data
+
+  const validGallery = gallery?.filter((item) => typeof item !== 'string') || []
 
   return (
     <section className="py-16 md:py-24">
@@ -24,18 +31,42 @@ export const BrandMixed: React.FC<Props> = ({ data }) => {
           )}
         </div>
 
-        {gallery && gallery.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {gallery.map((item, index) => {
-              if (typeof item !== 'string') {
-                return (
-                  <div key={index} className="relative aspect-square overflow-hidden rounded-lg">
-                    <Media resource={item} fill imgClassName="object-cover w-full h-full" />
+        {validGallery.length > 0 && (
+          <div className="mb-12">
+            <Swiper
+              spaceBetween={24}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: true,
+              }}
+              speed={600}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                },
+                1024: {
+                  slidesPerView: 3,
+                },
+                1280: {
+                  slidesPerView: 4,
+                },
+              }}
+              className="w-full"
+            >
+              {validGallery.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg group">
+                    <Media
+                      resource={item}
+                      fill
+                      imgClassName="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
-                )
-              }
-              return null
-            })}
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         )}
 

@@ -115,6 +115,23 @@ export const Brands: CollectionConfig<'brands'> = {
                   required: true,
                 },
               ],
+              defaultValue: [
+                {
+                  word: 'Quality First',
+                },
+
+                {
+                  word: 'Design Expertise',
+                },
+
+                {
+                  word: 'Production & sustainability',
+                },
+
+                {
+                  word: 'Logistics',
+                },
+              ],
             },
             {
               name: 'introSection',

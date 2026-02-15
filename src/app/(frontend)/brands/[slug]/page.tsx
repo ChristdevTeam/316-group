@@ -78,15 +78,23 @@ export default async function BrandPage({ params: paramsPromise }: Args) {
         </section>
       )}
 
-      <BrandSectionSplit data={brand.content?.splitSection} />
+      <div id="brand-split" className="scroll-mt-24">
+        <BrandSectionSplit data={brand.content?.splitSection} />
+      </div>
 
       <BrandGallery data={brand.content?.gallerySection} />
 
-      <BrandFullscreen data={brand.content?.fullscreenSection} />
+      <div id="brand-fullscreen" className="scroll-mt-24">
+        <BrandFullscreen data={brand.content?.fullscreenSection} />
+      </div>
 
-      <BrandMixed data={brand.content?.mixedSection} />
+      <div id="brand-mixed" className="scroll-mt-24">
+        <BrandMixed data={brand.content?.mixedSection} />
+      </div>
 
-      <BrandFinal data={brand.content?.finalSection} />
+      <div id="brand-final" className="scroll-mt-24">
+        <BrandFinal data={brand.content?.finalSection} />
+      </div>
     </article>
   )
 }
