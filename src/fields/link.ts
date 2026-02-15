@@ -95,7 +95,7 @@ export const link: LinkType = ({
       },
       label: 'Document to link to',
       maxDepth: 1,
-      relationTo: ['pages', 'posts', 'case-studies', 'ebooks-and-guides'],
+      relationTo: ['pages', 'posts', 'case-studies', 'ebooks-and-guides', 'brands'],
       required: true,
     },
     {

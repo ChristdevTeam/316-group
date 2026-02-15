@@ -3,18 +3,18 @@ import { cn } from 'src/utilities/cn'
 import Link from 'next/link'
 import React from 'react'
 
-import type { CaseStudy, EbooksAndGuide, Page, Post } from '@/payload-types'
+import type { Brand, CaseStudy, EbooksAndGuide, Page, Post } from '@/payload-types'
 import { ArrowRight, ChevronRight, ExternalLink } from 'lucide-react'
 
 export type CMSLinkType = {
-  appearance?: 'inline' | ButtonProps['variant']
+  appearance?: 'inline' | ButtonProps['variant'] | 'underline'
   children?: React.ReactNode
   className?: string
   label?: string | null
   newTab?: boolean | null
   reference?: {
-    relationTo: 'pages' | 'posts' | 'ebooks-and-guides' | 'case-studies'
-    value: Page | Post | string | number | CaseStudy | EbooksAndGuide
+    relationTo: 'pages' | 'posts' | 'ebooks-and-guides' | 'case-studies' | 'brands'
+    value: Page | Post | string | number | CaseStudy | EbooksAndGuide | Brand
   } | null
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
@@ -55,6 +55,28 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     return (
       <Link
         className={cn('flex gap-4 items-center', className)}
+        href={href || url || ''}
+        {...newTabProps}
+      >
+        {label && label}
+        {icon && iconType === 'arrow-right' && <ArrowRight />}
+        {icon && iconType === 'chevron-right' && <ChevronRight />}
+        {icon && iconType === 'external-link' && <ExternalLink />}
+        {children && children}
+      </Link>
+    )
+  }
+
+  if (appearance === 'underline') {
+    const underlineClass =
+      'relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[60%] after:bg-current after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full'
+    return (
+      <Link
+        className={cn(
+          'flex gap-4 items-center w-fit text-primary hover:text-primary/80 transition-colors',
+          underlineClass,
+          className,
+        )}
         href={href || url || ''}
         {...newTabProps}
       >
