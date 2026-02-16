@@ -1,4 +1,4 @@
-import { CaseStudy, EbooksAndGuide, Page, Post } from '@/payload-types'
+import { Brand, CaseStudy, EbooksAndGuide, Page, Post } from '@/payload-types'
 
 // export interface MegaMenuItem {
 //   type: 'link' | 'subHeading' | 'divider' | 'text'
@@ -18,8 +18,8 @@ export type Link = {
   type?: 'reference' | 'custom' | null
   newTab?: boolean | null
   reference?: {
-    relationTo: 'pages' | 'posts' | 'case-studies' | 'ebooks-and-guides'
-    value: string | Page | Post | CaseStudy | EbooksAndGuide
+    relationTo: 'pages' | 'posts' | 'case-studies' | 'ebooks-and-guides' | 'brands'
+    value: string | Page | Post | CaseStudy | EbooksAndGuide | Brand
   } | null
   url?: string | null
   label?: string
@@ -47,6 +47,10 @@ export type NavItems = {
       | ({
           relationTo: 'ebooks-and-guides'
           value: string | EbooksAndGuide
+        } | null)
+      | ({
+          relationTo: 'brands'
+          value: string | Brand
         } | null)
     url?: string | null
     label: string
@@ -76,9 +80,13 @@ export type NavItems = {
                 relationTo: 'ebooks-and-guides'
                 value: string | EbooksAndGuide
               } | null)
+            | ({
+                relationTo: 'brands'
+                value: string | Brand
+              } | null)
           url?: string | null
           label: string
-          appearance?: ('default' | 'outline' | 'ghost' | 'secondary') | null
+          appearance?: ('default' | 'outline' | 'ghost' | 'secondary' | 'underline') | null
         }
         id?: string | null
       }[]
@@ -110,9 +118,13 @@ export type MegaMenuItem = {
           relationTo: 'ebooks-and-guides'
           value: string | EbooksAndGuide
         } | null)
+      | ({
+          relationTo: 'brands'
+          value: string | Brand
+        } | null)
     url?: string | null
     label: string
-    appearance?: ('default' | 'outline' | 'ghost' | 'secondary') | null
+    appearance?: ('default' | 'outline' | 'ghost' | 'secondary' | 'underline') | null
   }
   id?: string | null
 }

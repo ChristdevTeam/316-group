@@ -61,6 +61,21 @@ export const MegaMenu = ({
         typeof link.reference.value !== 'string'
       ) {
         return `/posts/${link.reference.value.slug}`
+      } else if (
+        link.reference?.relationTo === 'brands' &&
+        typeof link.reference.value !== 'string'
+      ) {
+        return `/brands/${link.reference.value.slug}`
+      } else if (
+        link.reference?.relationTo === 'case-studies' &&
+        typeof link.reference.value !== 'string'
+      ) {
+        return `/case-studies/${link.reference.value.slug}`
+      } else if (
+        link.reference?.relationTo === 'ebooks-and-guides' &&
+        typeof link.reference.value !== 'string'
+      ) {
+        return `/ebooks-and-guides/${link.reference.value.slug}`
       }
     }
 
