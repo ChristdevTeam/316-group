@@ -66,15 +66,17 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
         <div className="mb-8">
           {sliderTitle && <h2 className={cn(sliderTitleClasses)}>{sliderTitle}</h2>}
           {sliderDescription && (
-            <div className={cn('max-w-4xl', sliderDescriptionClasses)}>
-              <RichText content={sliderDescription} enableGutter={false} />
+            <div className={cn(sliderDescriptionClasses)}>
+              <RichText content={sliderDescription} enableGutter={false} enableProse={false} />
             </div>
           )}
         </div>
 
         <div className="flex justify-between items-center mb-8">
           <div className="text-2xl font-medium">
-            <span>{String(activeIndex + 1).padStart(2, '0')}</span>
+            <span className={cn(bgColor && 'text-gray-200')}>
+              {String(activeIndex + 1).padStart(2, '0')}
+            </span>
             <span className="mx-2 text-gray-400">—</span>
             <span className="text-gray-400">{String(sliderItems.length).padStart(2, '0')}</span>
           </div>
@@ -144,7 +146,7 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
                     <div>
                       <h3
                         className={cn(
-                          'text-xl md:text-2xl xl:text-3xl font-medium mb-4',
+                          'text-xl md:text-2xl font-medium mb-4',
                           cardStyles?.cardTitleClasses,
                         )}
                       >
@@ -152,7 +154,7 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
                       </h3>
                       <p
                         className={cn(
-                          'mb-8 flex-grow text-base md:text-xl',
+                          'mb-8 flex-grow text-base md:text-lg',
                           cardStyles?.cardDescriptionClasses || 'text-gray-500',
                         )}
                       >

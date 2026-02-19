@@ -40005,6 +40005,8 @@ export interface FormBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
+  layout?: ('default' | 'fullWidth') | null;
+  borderRadius?: ('none' | 'sm' | 'default' | 'lg' | 'xl' | '2xl' | '3xl' | 'full') | null;
   media: string | Media;
   id?: string | null;
   blockName?: string | null;
@@ -89840,6 +89842,8 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "MediaBlock_select".
  */
 export interface MediaBlockSelect<T extends boolean = true> {
+  layout?: T;
+  borderRadius?: T;
   media?: T;
   id?: T;
   blockName?: T;

@@ -27,23 +27,37 @@ export const MediaBlock: React.FC<Props> = (props) => {
     media,
     staticImage,
     disableInnerContainer,
+    layout = 'default',
+    borderRadius = 'default',
   } = props
 
   let caption
   if (media && typeof media === 'object') caption = media.caption
+
+  const radiusClass = {
+    none: 'rounded-none',
+    sm: 'rounded-sm',
+    default: 'rounded',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
+    '2xl': 'rounded-2xl',
+    '3xl': 'rounded-3xl',
+    full: 'rounded-full',
+  }[borderRadius || 'default']
 
   return (
     <div
       className={cn(
         '',
         {
-          'container max-w-screen-2xl': enableGutter,
+          'container max-w-screen-2xl': enableGutter && layout === 'default',
+          'w-full': layout === 'fullWidth',
         },
         className,
       )}
     >
       <Media
-        imgClassName={cn('border border-border rounded-[0.8rem]', imgClassName)}
+        imgClassName={cn('border border-border', radiusClass, imgClassName)}
         resource={media}
         src={staticImage}
       />
@@ -52,7 +66,8 @@ export const MediaBlock: React.FC<Props> = (props) => {
           className={cn(
             'mt-6',
             {
-              container: !disableInnerContainer,
+              container: !disableInnerContainer && layout === 'default',
+              'px-4': layout === 'fullWidth',
             },
             captionClassName,
           )}
