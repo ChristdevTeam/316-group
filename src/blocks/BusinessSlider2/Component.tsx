@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay } from 'swiper/modules'
 import { ArrowRightIcon, MoveRight, MoveLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import RichText from '@/components/RichText'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { cn } from '@/utilities/cn'
@@ -30,6 +31,10 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
   paddingType,
   sliderTitle,
   sliderTitleClasses,
+  bgColor,
+  sliderDescription,
+  sliderDescriptionClasses,
+  cardStyles,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [swiper, setSwiper] = useState<any>(null)
@@ -51,13 +56,21 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        'overflow-hidden min-h-[300px] bg-white',
+        'overflow-hidden min-h-[300px]',
+        bgColor || 'bg-white',
         className,
         paddingGenerator(paddingType),
       )}
     >
       <div className="container relative px-4 py-12 max-w-screen-2xl">
-        {sliderTitle && <h2 className={cn(sliderTitleClasses)}>{sliderTitle}</h2>}
+        <div className="mb-8">
+          {sliderTitle && <h2 className={cn(sliderTitleClasses)}>{sliderTitle}</h2>}
+          {sliderDescription && (
+            <div className={cn('max-w-4xl', sliderDescriptionClasses)}>
+              <RichText content={sliderDescription} enableGutter={false} />
+            </div>
+          )}
+        </div>
 
         <div className="flex justify-between items-center mb-8">
           <div className="text-2xl font-medium">
@@ -114,13 +127,35 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
             const href = getHref(item.link)
             return (
               <SwiperSlide key={index}>
-                <div className="group sm:aspect-[4/5] md:aspect-[5/6] lg:aspect-[5/6] p-8 rounded-2xl transition-all duration-300 hover:bg-[#7FFFD4] border border-gray-300 hover:border-[#7FFFD4]">
+                <div
+                  className={cn(
+                    'group sm:aspect-[4/5] md:aspect-[5/6] lg:aspect-[5/6] p-8 rounded-2xl transition-all duration-300 border',
+                    cardStyles?.cardBgColor || 'bg-white',
+                    cardStyles?.cardHoverBgColor
+                      ? `hover:${cardStyles.cardHoverBgColor}`
+                      : 'hover:bg-[#7FFFD4]',
+                    'border-gray-300',
+                    cardStyles?.cardHoverBgColor
+                      ? `hover:border-${cardStyles.cardHoverBgColor.replace('bg-', '')}`
+                      : 'hover:border-[#7FFFD4]',
+                  )}
+                >
                   <div className="h-full flex flex-col justify-between">
                     <div>
-                      <h3 className="text-xl md:text-2xl xl:text-3xl font-medium mb-4">
+                      <h3
+                        className={cn(
+                          'text-xl md:text-2xl xl:text-3xl font-medium mb-4',
+                          cardStyles?.cardTitleClasses,
+                        )}
+                      >
                         {item.title}
                       </h3>
-                      <p className="text-gray-500 mb-8 flex-grow text-base md:text-xl">
+                      <p
+                        className={cn(
+                          'mb-8 flex-grow text-base md:text-xl',
+                          cardStyles?.cardDescriptionClasses || 'text-gray-500',
+                        )}
+                      >
                         {item.description}
                       </p>
                     </div>

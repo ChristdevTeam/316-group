@@ -2,9 +2,22 @@ import { link } from '@/fields/link'
 import { textClasses } from '@/fields/textClasses'
 import type { Block } from 'payload'
 
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
+import {
+  FixedToolbarFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
+
 export const BusinessSlider2: Block = {
   slug: 'bslider2',
   fields: [
+    bgColorPickerAll({
+      overrides: {
+        label: 'Block Background',
+        defaultValue: 'bg-black',
+      },
+    }),
     { name: 'sliderTitle', type: 'text' },
     textClasses({
       overrides: {
@@ -13,6 +26,56 @@ export const BusinessSlider2: Block = {
         defaultValue: ['text-4xl', 'md:text-6xl', 'pb-8', 'md:text-2xl'],
       },
     }),
+    {
+      name: 'sliderDescription',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+        ],
+      }),
+    },
+    textClasses({
+      overrides: {
+        name: 'sliderDescriptionClasses',
+        label: 'Slider Description Classes',
+      },
+    }),
+    {
+      name: 'cardStyles',
+      type: 'group',
+      label: 'Global Card Styles',
+      fields: [
+        bgColorPickerAll({
+          overrides: {
+            name: 'cardBgColor',
+            label: 'Card Background Color',
+            defaultValue: 'bg-white',
+          },
+        }),
+        bgColorPickerAll({
+          overrides: {
+            name: 'cardHoverBgColor',
+            label: 'Card Hover Background Color',
+            defaultValue: 'bg-slate-100',
+          },
+        }),
+        textClasses({
+          overrides: {
+            name: 'cardTitleClasses',
+            label: 'Card Title Classes',
+          },
+        }),
+        textClasses({
+          overrides: {
+            name: 'cardDescriptionClasses',
+            label: 'Card Description Classes',
+          },
+        }),
+      ],
+    },
     {
       name: 'sliderItems',
       type: 'array',
