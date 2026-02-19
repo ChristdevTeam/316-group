@@ -68,7 +68,7 @@ export const BrandSliderClient: React.FC<Props> = ({
               slidesPerView: 3.2,
             },
             1280: {
-              slidesPerView: 4, // Auto mode in large screens (fit as many as reasonable)
+              slidesPerView: 3.5, // Auto mode in large screens (fit as many as reasonable)
             },
           }}
           loop={true}
@@ -97,7 +97,7 @@ export const BrandSliderClient: React.FC<Props> = ({
                       <Media
                         resource={BrandImage}
                         fill
-                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                        imgClassName="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                       />
                     )}
                   </div>
