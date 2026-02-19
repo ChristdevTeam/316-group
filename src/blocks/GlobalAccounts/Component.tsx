@@ -49,12 +49,12 @@ export const GlobalAccounts: React.FC<Props> = ({
               {features &&
                 features.length > 0 &&
                 features.map((item, index) => (
-                  <p key={index} className="flex items-center gap-2 md:gap-4">
+                  <div key={index} className="flex items-center gap-2 md:gap-4">
                     <div className="h-6 w-6">
                       <Plus strokeWidth={3} className={cn('w-6 h-6', styles?.accentColour)} />
                     </div>
                     <span className="text-lg md:text-xl xl:text-2xl">{item.feature}</span>
-                  </p>
+                  </div>
                 ))}
             </div>
           </div>
