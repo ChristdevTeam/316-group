@@ -43,10 +43,10 @@ export const BrandSliderClient: React.FC<Props> = ({
   return (
     <div className="bg-black text-white py-24 overflow-hidden">
       <div className="container max-w-screen-2xl">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-6">
           <h2 className={cn(headingClasses)}>{heading}</h2>
 
-          <div className="flex gap-4 mb-4 md:mb-0">
+          <div className="flex gap-4">
             <button onClick={goPrev} className="text-white hover:text-gray-300 transition-colors">
               <MoveLeft size={32} />
             </button>
