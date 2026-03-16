@@ -83586,6 +83586,7 @@ export interface IndustriesBlock {
  * via the `definition` "CardGridBlock".
  */
 export interface CardGridBlock {
+  variant?: ('colored' | 'light') | null;
   title: string;
   description?: string | null;
   titleTextClasses?:
@@ -85127,7 +85128,7 @@ export interface CardGridBlock {
     icon: string;
     title: string;
     description: string;
-    image: string | Media;
+    image?: (string | null) | Media;
     link?: {
       type?: ('reference' | 'custom') | null;
       newTab?: boolean | null;
@@ -85159,22 +85160,25 @@ export interface CardGridBlock {
        */
       appearance?: ('default' | 'outline' | 'ghost' | 'secondary' | 'underline') | null;
     };
-    colorTheme:
-      | 'blue'
-      | 'purple'
-      | 'orange'
-      | 'pink'
-      | 'green'
-      | 'sky'
-      | 'teal'
-      | 'indigo'
-      | 'rose'
-      | 'amber'
-      | 'emerald'
-      | 'fuchsia'
-      | 'cyan'
-      | 'lime'
-      | 'grey';
+    colorTheme?:
+      | (
+          | 'blue'
+          | 'purple'
+          | 'orange'
+          | 'pink'
+          | 'green'
+          | 'sky'
+          | 'teal'
+          | 'indigo'
+          | 'rose'
+          | 'amber'
+          | 'emerald'
+          | 'fuchsia'
+          | 'cyan'
+          | 'lime'
+          | 'grey'
+        )
+      | null;
     id?: string | null;
   }[];
   id?: string | null;
@@ -90489,6 +90493,7 @@ export interface IndustriesBlockSelect<T extends boolean = true> {
  * via the `definition` "CardGridBlock_select".
  */
 export interface CardGridBlockSelect<T extends boolean = true> {
+  variant?: T;
   title?: T;
   description?: T;
   titleTextClasses?: T;

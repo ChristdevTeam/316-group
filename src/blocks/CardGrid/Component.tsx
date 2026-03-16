@@ -59,7 +59,8 @@ const SwiperNavButtons = () => {
   )
 }
 
-const CardItem = ({ card, index }: { card: any; index: number }) => {
+/** Original gradient card — used by the "colored" variant */
+const ColoredCardItem = ({ card, index }: { card: any; index: number }) => {
   const themeClass = colorThemes[card.colorTheme] || colorThemes.blue
   const href = card.link?.url || (card.link?.reference?.value as any)?.slug || '#'
 
@@ -104,11 +105,45 @@ const CardItem = ({ card, index }: { card: any; index: number }) => {
   )
 }
 
+/** Light white card — used by the "light" variant */
+const LightCardItem = ({ card, index }: { card: any; index: number }) => {
+  return (
+    <div
+      key={index}
+      className="bg-white border border-slate-100 rounded-2xl p-8 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow duration-300 h-full"
+    >
+      {/* Small icon image — not full-width, constrained to top-left */}
+      {card.image && typeof card.image === 'object' && (
+        <div className="w-14 h-14 relative flex-shrink-0">
+          <Media
+            resource={card.image}
+            alt={card.image.alt || card.title}
+            className="object-contain"
+          />
+        </div>
+      )}
+
+      {/* Fallback: lucide icon when no image is uploaded */}
+      {(!card.image || typeof card.image !== 'object') && card.icon && (
+        <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-primary/10">
+          <Icon name={card.icon} className="w-8 h-8 text-primary" />
+        </div>
+      )}
+
+      <h3 className="text-lg font-semibold text-primary leading-snug">{card.title}</h3>
+
+      <p className="text-slate-600 text-base leading-relaxed">{card.description}</p>
+    </div>
+  )
+}
+
 const CardSwiper = ({
   cards,
+  variant,
   className,
 }: {
   cards: CardGridBlockProps['cards']
+  variant?: string
   className?: string
 }) => {
   return (
@@ -146,7 +181,11 @@ const CardSwiper = ({
     >
       {cards?.map((card, index) => (
         <SwiperSlide key={index} className="h-auto">
-          <CardItem card={card} index={index} />
+          {variant === 'light' ? (
+            <LightCardItem card={card} index={index} />
+          ) : (
+            <ColoredCardItem card={card} index={index} />
+          )}
         </SwiperSlide>
       ))}
       <SwiperNavButtons />
@@ -162,15 +201,24 @@ export const CardGridBlock: React.FC<Props> = ({
   titleTextClasses,
   descriptionTextClasses,
   displayStyle = 'grid',
+  variant = 'colored',
 }) => {
+  const isLight = variant === 'light'
+
   return (
     <div className={cn('py-16 bg-gray-50 overflow-hidden', className)}>
       <div className="container max-w-screen-2xl">
-        <div className="text-center mb-12 md:max-w-4xl mx-auto">
+        {/* Header: left-aligned for light variant, centred for colored */}
+        <div
+          className={cn(
+            'mb-12',
+            isLight ? 'md:max-w-2xl' : 'text-center md:max-w-4xl mx-auto',
+          )}
+        >
           {title && (
             <h2
               className={cn(
-                'text-3xl md:text-5xl font-semibold mb-6 text-slate-900',
+                'text-3xl md:text-5xl font-semibold mb-4 text-slate-900',
                 titleTextClasses,
               )}
             >
@@ -178,21 +226,38 @@ export const CardGridBlock: React.FC<Props> = ({
             </h2>
           )}
           {description && (
-            <p className={cn('text-lg text-slate-600 leading-relaxed', descriptionTextClasses)}>
+            <p className={cn('text-base text-slate-600 leading-relaxed', descriptionTextClasses)}>
               {description}
             </p>
           )}
         </div>
 
         {displayStyle === 'swiper' ? (
-          <CardSwiper cards={cards} />
+          <CardSwiper cards={cards} variant={variant as string} />
         ) : (
           <React.Fragment>
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {cards?.map((card, index) => <CardItem key={index} card={card} index={index} />)}
+            {/* Tablet + Desktop: responsive grid — 1 col → 2 col (md) → 3 col (lg) */}
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {cards?.map((card, index) =>
+                isLight ? (
+                  <LightCardItem key={index} card={card} index={index} />
+                ) : (
+                  <ColoredCardItem key={index} card={card} index={index} />
+                ),
+              )}
             </div>
+
+            {/* Mobile: single-column grid for light, swiper for colored */}
             <div className="md:hidden">
-              <CardSwiper cards={cards} />
+              {isLight ? (
+                <div className="grid grid-cols-1 gap-6">
+                  {cards?.map((card, index) => (
+                    <LightCardItem key={index} card={card} index={index} />
+                  ))}
+                </div>
+              ) : (
+                <CardSwiper cards={cards} variant={variant as string} />
+              )}
             </div>
           </React.Fragment>
         )}

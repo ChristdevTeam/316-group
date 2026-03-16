@@ -8,6 +8,15 @@ export const CardGrid: Block = {
   interfaceName: 'CardGridBlock',
   fields: [
     {
+      name: 'variant',
+      type: 'select',
+      defaultValue: 'colored',
+      options: [
+        { label: 'Colored (Gradient Cards)', value: 'colored' },
+        { label: 'Light (White Cards)', value: 'light' },
+      ],
+    },
+    {
       name: 'title',
       type: 'text',
       required: true,
@@ -64,13 +73,13 @@ export const CardGrid: Block = {
           name: 'description',
           type: 'textarea',
           required: true,
-          defaultValue: 'All-in-one business accounts to collect, manage, nd move money globally',
+          defaultValue: 'All-in-one business accounts to collect, manage, and move money globally',
         },
         {
           name: 'image',
           type: 'upload',
           relationTo: 'media',
-          required: true,
+          required: false,
         },
 
         link({
@@ -81,8 +90,14 @@ export const CardGrid: Block = {
         {
           name: 'colorTheme',
           type: 'select',
-          required: true,
+          required: false,
           defaultValue: 'blue',
+          admin: {
+            condition: (_data, _siblingData, { user: _user }) => {
+              // Show colorTheme only for colored variant — checked at parent level
+              return true
+            },
+          },
           options: [
             { label: 'Blue', value: 'blue' },
             { label: 'Purple', value: 'purple' },
