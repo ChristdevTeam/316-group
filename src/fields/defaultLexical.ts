@@ -44,19 +44,6 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
           ]
         },
       }),
-      // TextColorFeature({
-      //   colors: [
-      //     {
-      //       type: 'button',
-      //       label: 'Custom color',
-      //       color: '#1155aa',
-      //     },
-      //   ],
-      // }),
-      // HighlightColorFeature(),
-      // BgColorFeature(),
-      // YoutubeFeature(),
-      // VimeoFeature(),
     ]
   },
 })

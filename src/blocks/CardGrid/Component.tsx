@@ -15,6 +15,8 @@ type Props = {
   className?: string
   titleTextClasses?: string[]
   descriptionTextClasses?: string[]
+  cardTitleTextClasses?: string[]
+  cardDescriptionTextClasses?: string[]
   displayStyle?: 'grid' | 'swiper'
 } & CardGridBlockProps
 
@@ -106,7 +108,17 @@ const ColoredCardItem = ({ card, index }: { card: any; index: number }) => {
 }
 
 /** Light white card — used by the "light" variant */
-const LightCardItem = ({ card, index }: { card: any; index: number }) => {
+const LightCardItem = ({
+  card,
+  index,
+  cardTitleTextClasses,
+  cardDescriptionTextClasses,
+}: {
+  card: any
+  index: number
+  cardTitleTextClasses?: string[]
+  cardDescriptionTextClasses?: string[]
+}) => {
   return (
     <div
       key={index}
@@ -130,9 +142,13 @@ const LightCardItem = ({ card, index }: { card: any; index: number }) => {
         </div>
       )}
 
-      <h3 className="text-lg font-semibold text-primary leading-snug">{card.title}</h3>
+      <h3 className={cn('text-lg font-semibold text-primary leading-snug', cardTitleTextClasses)}>
+        {card.title}
+      </h3>
 
-      <p className="text-slate-600 text-base leading-relaxed">{card.description}</p>
+      <p className={cn('text-slate-600 text-base leading-relaxed', cardDescriptionTextClasses)}>
+        {card.description}
+      </p>
     </div>
   )
 }
@@ -141,10 +157,14 @@ const CardSwiper = ({
   cards,
   variant,
   className,
+  cardTitleTextClasses,
+  cardDescriptionTextClasses,
 }: {
   cards: CardGridBlockProps['cards']
   variant?: string
   className?: string
+  cardTitleTextClasses?: string[]
+  cardDescriptionTextClasses?: string[]
 }) => {
   return (
     <Swiper
@@ -182,7 +202,12 @@ const CardSwiper = ({
       {cards?.map((card, index) => (
         <SwiperSlide key={index} className="h-auto">
           {variant === 'light' ? (
-            <LightCardItem card={card} index={index} />
+            <LightCardItem
+              card={card}
+              index={index}
+              cardTitleTextClasses={cardTitleTextClasses}
+              cardDescriptionTextClasses={cardDescriptionTextClasses}
+            />
           ) : (
             <ColoredCardItem card={card} index={index} />
           )}
@@ -200,6 +225,8 @@ export const CardGridBlock: React.FC<Props> = ({
   cards,
   titleTextClasses,
   descriptionTextClasses,
+  cardTitleTextClasses,
+  cardDescriptionTextClasses,
   displayStyle = 'grid',
   variant = 'colored',
 }) => {
@@ -209,12 +236,7 @@ export const CardGridBlock: React.FC<Props> = ({
     <div className={cn('py-16 bg-gray-50 overflow-hidden', className)}>
       <div className="container max-w-screen-2xl">
         {/* Header: left-aligned for light variant, centred for colored */}
-        <div
-          className={cn(
-            'mb-12',
-            isLight ? 'md:max-w-2xl' : 'text-center md:max-w-4xl mx-auto',
-          )}
-        >
+        <div className={cn('mb-12', isLight ? 'md:max-w-2xl' : 'text-center md:max-w-4xl mx-auto')}>
           {title && (
             <h2
               className={cn(
@@ -240,7 +262,13 @@ export const CardGridBlock: React.FC<Props> = ({
             <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {cards?.map((card, index) =>
                 isLight ? (
-                  <LightCardItem key={index} card={card} index={index} />
+                  <LightCardItem
+                    key={index}
+                    card={card}
+                    index={index}
+                    cardTitleTextClasses={cardTitleTextClasses}
+                    cardDescriptionTextClasses={cardDescriptionTextClasses}
+                  />
                 ) : (
                   <ColoredCardItem key={index} card={card} index={index} />
                 ),
@@ -252,7 +280,13 @@ export const CardGridBlock: React.FC<Props> = ({
               {isLight ? (
                 <div className="grid grid-cols-1 gap-6">
                   {cards?.map((card, index) => (
-                    <LightCardItem key={index} card={card} index={index} />
+                    <LightCardItem
+                      key={index}
+                      card={card}
+                      index={index}
+                      cardTitleTextClasses={cardTitleTextClasses}
+                      cardDescriptionTextClasses={cardDescriptionTextClasses}
+                    />
                   ))}
                 </div>
               ) : (

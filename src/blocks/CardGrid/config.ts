@@ -32,7 +32,14 @@ export const CardGrid: Block = {
       overrides: {
         name: 'titleTextClasses',
         label: 'Title Text Classes',
-        defaultValue: ['text-3xl', 'md:text-5xl', 'font-semibold', 'mb-6', 'text-slate-900'],
+        defaultValue: [
+          'text-3xl',
+          'md:text-5xl',
+          'font-semibold',
+          'mb-6',
+          'text-slate-900',
+          'lg:w-3/5',
+        ],
       },
     }),
     textClasses({
@@ -51,6 +58,26 @@ export const CardGrid: Block = {
         { label: 'Swiper', value: 'swiper' },
       ],
     },
+    textClasses({
+      overrides: {
+        name: 'cardTitleTextClasses',
+        label: 'Card Title Text Classes',
+        defaultValue: ['text-lg', 'text-blue-600', 'leading-relaxed'],
+        admin: {
+          condition: (_, siblingData) => siblingData.variant === 'light',
+        },
+      },
+    }),
+    textClasses({
+      overrides: {
+        name: 'cardDescriptionTextClasses',
+        label: 'Card Description Text Classes',
+        defaultValue: ['text-lg', 'text-slate-600', 'leading-relaxed'],
+        admin: {
+          condition: (_, siblingData) => siblingData.variant === 'light',
+        },
+      },
+    }),
     {
       name: 'cards',
       type: 'array',
