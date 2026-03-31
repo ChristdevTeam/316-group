@@ -5,6 +5,7 @@ import React from 'react'
 import type { Footer } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { LogoDark } from '@/components/Logo/LogoDark'
+import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 
 export const SocialIcon = ({ platform }: { platform: string }) => {
   const icons = {
@@ -165,6 +166,7 @@ export default function ComponentClient({ footer }: { footer: Footer }) {
                   <SocialIcon platform={social.platform} />
                 </Link>
               ))}
+              <ThemeSelector />
             </div>
           </div>
 
