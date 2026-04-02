@@ -69,7 +69,6 @@ const TestimonialCarousel = React.forwardRef<HTMLDivElement, TestimonialCarousel
                   'shadow-xl',
                   testimonialModifier?.bgColor || 'bg-slate-950 dark:bg-slate-700',
                   testimonialModifier?.textClasses || 'text-white dark:text-white',
-                  'dark:bg-card dark:shadow-[2px_2px_4px_rgba(0,0,0,0.4),-1px_-1px_3px_rgba(255,255,255,0.1)]',
                   'p-8',
                 )}
                 style={{

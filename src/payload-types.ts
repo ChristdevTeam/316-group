@@ -12464,6 +12464,7 @@ export interface ContentBlock {
                   | null;
               };
               carousel?: {
+                sliderMode?: boolean | null;
                 imageColumns?: {
                   mobile?: number | null;
                   tablet?: number | null;
@@ -94415,6 +94416,7 @@ export interface VerticalCallToActionBlock {
  * via the `definition` "CarouselBlock".
  */
 export interface CarouselBlock {
+  sliderMode?: boolean | null;
   imageColumns?: {
     mobile?: number | null;
     tablet?: number | null;
@@ -94983,6 +94985,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
               carousel?:
                 | T
                 | {
+                    sliderMode?: T;
                     imageColumns?:
                       | T
                       | {
@@ -96352,6 +96355,7 @@ export interface VerticalCallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "CarouselBlock_select".
  */
 export interface CarouselBlockSelect<T extends boolean = true> {
+  sliderMode?: T;
   imageColumns?:
     | T
     | {

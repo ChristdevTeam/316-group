@@ -11,6 +11,7 @@ import 'swiper/css/navigation'
 import { cn } from '@/utilities/cn'
 import { Media } from '@/components/Media'
 import { paddingGenerator } from '@/utilities/paddingGenerator'
+import { getBestContrastTextColor } from '@/utilities/getBestContrastTextColor'
 
 type Props = {
   className?: string
@@ -58,6 +59,7 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
       className={cn(
         'overflow-hidden min-h-[300px]',
         bgColor || 'bg-white',
+        getBestContrastTextColor(bgColor || 'bg-white'),
         className,
         paddingGenerator(paddingType),
       )}
@@ -74,23 +76,23 @@ export const BusinessSliderBlock2: React.FC<Props> = ({
 
         <div className="flex justify-between items-center mb-8">
           <div className="text-2xl font-medium">
-            <span className={cn(bgColor && 'text-gray-200')}>
+            <span>
               {String(activeIndex + 1).padStart(2, '0')}
             </span>
-            <span className="mx-2 text-gray-400">—</span>
-            <span className="text-gray-400">{String(sliderItems.length).padStart(2, '0')}</span>
+            <span className="mx-2 opacity-50">—</span>
+            <span className="opacity-50">{String(sliderItems.length).padStart(2, '0')}</span>
           </div>
           <div className="flex gap-4">
             <button
               onClick={goPrev}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-full transition-colors"
               aria-label="Previous slide"
             >
               <MoveLeft className="w-6 h-6" strokeWidth={1.5} />
             </button>
             <button
               onClick={goNext}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-full transition-colors"
               aria-label="Next slide"
             >
               <MoveRight className="w-6 h-6" strokeWidth={1.5} />

@@ -20,9 +20,10 @@ interface AccordionProps {
     contentClasses?: string[] | null
     items?: AccordionItem[] | null
   }
+  textColor?: string
 }
 
-export const AccordionClient: React.FC<AccordionProps> = ({ accordion }) => {
+export const AccordionClient: React.FC<AccordionProps> = ({ accordion, textColor }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
 
   if (!accordion || !accordion.items || accordion.items.length === 0) {
@@ -41,7 +42,8 @@ export const AccordionClient: React.FC<AccordionProps> = ({ accordion }) => {
             <div
               key={index}
               className={cn(
-                'flex flex-col border-b border-gray-200 pb-8 lg:pb-12 mb-4 lg:mb-10',
+                'flex flex-col border-b pb-8 lg:pb-12 mb-4 lg:mb-10',
+                textColor === 'text-black' ? 'border-black/10' : 'border-gray-200 dark:border-gray-800',
                 index === items.length - 1 && 'border-b-0',
               )}
             >
@@ -54,7 +56,7 @@ export const AccordionClient: React.FC<AccordionProps> = ({ accordion }) => {
                     titleClasses,
                     // apply bold, uppercase, text-2xl as base styles per requirements if absent
                     'font-bold uppercase text-2xl duration-200',
-                    isActive ? 'text-teal-500' : 'text-foreground',
+                    isActive ? 'text-teal-500' : 'text-inherit',
                   )}
                 >
                   {item.title}
@@ -63,7 +65,7 @@ export const AccordionClient: React.FC<AccordionProps> = ({ accordion }) => {
                   {isActive ? (
                     <Minus className="w-6 h-6 text-cyan-400" />
                   ) : (
-                    <Plus className="w-6 h-6 text-foreground" />
+                    <Plus className="w-6 h-6 text-inherit" />
                   )}
                 </div>
               </button>
@@ -75,7 +77,12 @@ export const AccordionClient: React.FC<AccordionProps> = ({ accordion }) => {
                 )}
               >
                 <div className="overflow-hidden">
-                  <div className={cn('flex flex-col gap-4', contentClasses)}>
+                  <div className={cn(
+                    'flex flex-col gap-4', 
+                    contentClasses,
+                    // If the text is forced black because of a light background, override prose inversion in dark mode
+                    textColor === 'text-black' && "dark:prose-headings:text-black dark:prose-p:text-black dark:prose-strong:text-black dark:prose-li:text-black dark:text-black"
+                  )}>
                     {item.content && <RichText content={item.content} enableGutter={false} />}
                     {item.links && item.links.length > 0 && (
                       <div className="flex gap-4 mt-2">

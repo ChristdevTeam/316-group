@@ -5,8 +5,17 @@ import { textClasses } from './textClasses'
 
 export const Carousel: Field[] = [
   {
+    name: 'sliderMode',
+    type: 'checkbox',
+    label: 'Enable Slider Mode (Edge to Edge)',
+    defaultValue: false,
+  },
+  {
     name: 'imageColumns',
     type: 'group',
+    admin: {
+      condition: (_, siblingData) => !siblingData?.sliderMode,
+    },
     fields: [
       {
         name: 'mobile',
