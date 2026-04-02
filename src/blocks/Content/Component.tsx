@@ -15,6 +15,7 @@ import { StyledCards } from '@/components/StyledCards'
 import { Icon } from '@/components/Icon'
 import { SwiperElement } from '@/components/Swiper'
 import { paddingGenerator } from '@/utilities/paddingGenerator'
+import { AccordionClient } from './AccordionClient'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const {
@@ -578,6 +579,12 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                         key={index}
                         className={cn(spacer.spacing, spacer.bgColor, spacer.width)}
                       />
+                    )
+                  }
+
+                  if (contentType === 'accordion' && content.accordion) {
+                    return (
+                      <AccordionClient key={index} accordion={content.accordion} />
                     )
                   }
 

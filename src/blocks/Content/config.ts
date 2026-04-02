@@ -82,6 +82,7 @@ const columnFields: Field[] = [
           { label: 'Status Banner', value: 'statusBanner' },
           { label: 'Spacer', value: 'spacer' },
           { label: 'Modern Card', value: 'modernCard' },
+          { label: 'Accordion', value: 'accordion' },
         ],
       },
       {
@@ -784,6 +785,62 @@ const columnFields: Field[] = [
         ],
         admin: {
           condition: (_, { contentType }) => contentType === 'modernCard',
+        },
+      },
+      {
+        name: 'accordion',
+        type: 'group',
+        fields: [
+          textClasses({
+            overrides: {
+              name: 'titleClasses',
+              label: 'Title Classes',
+              defaultValue: ['text-xl', 'md:text-2xl', 'font-bold', 'uppercase'],
+            },
+          }),
+          textClasses({
+            overrides: {
+              name: 'contentClasses',
+              label: 'Content Classes',
+              defaultValue: ['text-base'],
+            },
+          }),
+          {
+            name: 'items',
+            type: 'array',
+            fields: [
+              {
+                name: 'title',
+                type: 'text',
+                required: true,
+              },
+              {
+                name: 'content',
+                type: 'richText',
+                editor: lexicalEditor({
+                  features: ({ rootFeatures }) => [
+                    ...rootFeatures,
+                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                    FixedToolbarFeature(),
+                    InlineToolbarFeature(),
+                  ],
+                }),
+              },
+              {
+                name: 'media',
+                type: 'upload',
+                relationTo: 'media',
+              },
+              linkGroup({
+                overrides: {
+                  maxRows: 3,
+                },
+              }),
+            ],
+          },
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'accordion',
         },
       },
     ],
