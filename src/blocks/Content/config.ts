@@ -83,6 +83,7 @@ const columnFields: Field[] = [
           { label: 'Spacer', value: 'spacer' },
           { label: 'Modern Card', value: 'modernCard' },
           { label: 'Accordion', value: 'accordion' },
+          { label: 'Case Study Slider', value: 'caseStudySlider' },
         ],
       },
       {
@@ -841,6 +842,97 @@ const columnFields: Field[] = [
         ],
         admin: {
           condition: (_, { contentType }) => contentType === 'accordion',
+        },
+      },
+      {
+        name: 'caseStudySlider',
+        type: 'group',
+        fields: [
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+            defaultValue:"Explore our <span class='text-blue-500'>No code solutions </span>"
+          },
+          textClasses({
+            overrides: {
+              name: 'titleClasses',
+              label: 'Title Classes',
+            },
+          }),
+          {
+            name: 'cards',
+            type: 'array',
+            fields: [
+              {
+                name: 'cardBgColor',
+                type: 'select',
+                options: [
+                  { label: 'Red', value: 'red' },
+                  { label: 'Orange', value: 'orange' },
+                  { label: 'Amber', value: 'amber' },
+                  { label: 'Yellow', value: 'yellow' },
+                  { label: 'Lime', value: 'lime' },
+                  { label: 'Green', value: 'green' },
+                  { label: 'Emerald', value: 'emerald' },
+                  { label: 'Teal', value: 'teal' },
+                  { label: 'Cyan', value: 'cyan' },
+                  { label: 'Sky', value: 'sky' },
+                  { label: 'Blue', value: 'blue' },
+                  { label: 'Indigo', value: 'indigo' },
+                  { label: 'Violet', value: 'violet' },
+                  { label: 'Purple', value: 'purple' },
+                  { label: 'Fuchsia', value: 'fuchsia' },
+                  { label: 'Pink', value: 'pink' },
+                  { label: 'Rose', value: 'rose' },
+                  { label: 'Slate', value: 'slate' },
+                  { label: 'Gray', value: 'gray' },
+                  { label: 'Zinc', value: 'zinc' },
+                  { label: 'Neutral', value: 'neutral' },
+                  { label: 'Stone', value: 'stone' },
+                ],
+                required: true,
+              },
+              {
+                name: 'image',
+                type: 'upload',
+                relationTo: 'media',
+                required: true,
+              },
+              {
+                name: 'industries',
+                type: 'array',
+                fields: [
+                  {
+                    name: 'text',
+                    type: 'text',
+                    required: true,
+                  },
+                ],
+              },
+              {
+                name: 'content',
+                type: 'textarea',
+                required: true,
+              },
+              {
+                name: 'person',
+                type: 'group',
+                fields: [
+                  { name: 'name', type: 'text', required: true },
+                  { name: 'position', type: 'text', required: true },
+                ],
+              },
+              linkGroup({
+                overrides: {
+                  maxRows: 1,
+                },
+              }),
+            ],
+          },
+        ],
+        admin: {
+          condition: (_, { contentType }) => contentType === 'caseStudySlider',
         },
       },
     ],

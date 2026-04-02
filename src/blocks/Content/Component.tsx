@@ -16,6 +16,7 @@ import { Icon } from '@/components/Icon'
 import { SwiperElement } from '@/components/Swiper'
 import { paddingGenerator } from '@/utilities/paddingGenerator'
 import { AccordionClient } from './AccordionClient'
+import { CaseStudySliderClient } from './CaseStudySliderClient'
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const {
@@ -585,6 +586,12 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   if (contentType === 'accordion' && content.accordion) {
                     return (
                       <AccordionClient key={index} accordion={content.accordion} />
+                    )
+                  }
+
+                  if (contentType === 'caseStudySlider' && content.caseStudySlider) {
+                    return (
+                      <CaseStudySliderClient key={index} caseStudySlider={content.caseStudySlider} />
                     )
                   }
 
