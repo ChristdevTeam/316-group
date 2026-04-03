@@ -240,7 +240,7 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <div
             ref={gridRef}
-            className="relative w-full max-w-[550px]"
+            className="relative w-full"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -314,8 +314,8 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
                   }}
                   className={cn(
                     'rounded-md flex flex-col items-center justify-center p-4 cursor-pointer transition-all duration-300 text-center relative',
-                    'bg-white/5 border border-white/10 hover:bg-white/10',
-                    isActive && cn('bg-white/[0.08]', borderColorClass),
+                    'bg-white/5 border border-white/10 hover:bg-slate-900/60',
+                    isActive && cn('bg-slate-900/80', borderColorClass),
                   )}
                   style={{
                     gridColumn: pos.col,
