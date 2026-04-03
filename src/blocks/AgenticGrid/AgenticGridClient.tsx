@@ -244,9 +244,8 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
-              gridTemplateRows: `repeat(${totalRows}, 1fr)`,
+              gridTemplateRows: `repeat(${totalRows}, auto)`,
               gap: '1.25rem',
-              aspectRatio: `3 / ${totalRows}`,
             }}
           >
             {/* SVG Overlay */}
@@ -313,7 +312,7 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
                     if (el) cardRefs.current.set(index, el)
                   }}
                   className={cn(
-                    'rounded-md flex flex-col items-center justify-center p-4 cursor-pointer transition-all duration-300 text-center relative',
+                    'rounded-md flex flex-col items-center justify-center px-4 py-6 cursor-pointer transition-all duration-300 text-center relative min-h-[130px]',
                     'bg-white/5 border border-white/10 hover:bg-slate-900/60',
                     isActive && cn('bg-slate-900/80', borderColorClass),
                   )}
