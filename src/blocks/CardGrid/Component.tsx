@@ -236,7 +236,7 @@ export const CardGridBlock: React.FC<Props> = ({
     <div className={cn('py-16 bg-gray-50 overflow-hidden', className)}>
       <div className="container max-w-screen-2xl">
         {/* Header: left-aligned for light variant, centred for colored */}
-        <div className={cn('mb-12', isLight ? 'md:max-w-2xl' : 'text-center md:max-w-4xl mx-auto')}>
+        <div className={cn('mb-12', isLight ? 'md:max-w-6xl' : 'text-center md:max-w-4xl mx-auto')}>
           {title && (
             <h2
               className={cn(

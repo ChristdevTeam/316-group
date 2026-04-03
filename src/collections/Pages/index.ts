@@ -45,6 +45,7 @@ import { AnnouncementsAndEvents } from '../../blocks/AnnouncementsAndEvents/conf
 import { Industries } from '../../blocks/Industries/config'
 import { CardGrid } from '@/blocks/CardGrid/config'
 import { BrandSlider } from '@/blocks/BrandSlider/config'
+import { ImageTextSplit } from '@/blocks/ImageTextSplit/config'
 // import { VerticalCallToAction } from '@/blocks/VerticalCTA/config'
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -132,6 +133,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Industries,
                 CardGrid,
                 BrandSlider,
+                ImageTextSplit,
               ],
               required: true,
             },

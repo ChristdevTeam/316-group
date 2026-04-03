@@ -33,6 +33,7 @@ import { AnnouncementsAndEventsBlock } from './AnnouncementsAndEvents/Component'
 import { IndustriesBlockComponent } from './Industries/Component'
 import { CardGridBlock } from './CardGrid/Component'
 import { BrandSliderBlock } from './BrandSlider/Component'
+import { ImageTextSplitBlock } from './ImageTextSplit/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -65,6 +66,7 @@ const blockComponents = {
   industries: IndustriesBlockComponent,
   cardGrid: CardGridBlock,
   brandSlider: BrandSliderBlock,
+  imageTextSplit: ImageTextSplitBlock,
 }
 
 export const RenderBlocks: React.FC<{
