@@ -90,18 +90,27 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
     const acy = a.top + a.height / 2
 
     let sx: number, sy: number, ex: number, ey: number
+    // Offset to extend diagonal lines so they visually reach the rounded center card border
+    const diagonalOffset = 4
 
     if (acy < c.top) {
       // Above center
       sy = a.bottom
       ey = c.top
       if (acx < c.left) {
-        sx = a.right
-        ex = c.left
+        // Top-left card → diagonal
+        sx = a.right + diagonalOffset
+        ex = c.left - diagonalOffset
+        sy += diagonalOffset
+        ey -= diagonalOffset
       } else if (acx > c.right) {
-        sx = a.left
-        ex = c.right
+        // Top-right card → diagonal
+        sx = a.left - diagonalOffset
+        ex = c.right + diagonalOffset
+        sy += diagonalOffset
+        ey -= diagonalOffset
       } else {
+        // Top-center card → vertical
         sx = acx
         ex = acx
       }
@@ -110,17 +119,24 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
       sy = a.top
       ey = c.bottom
       if (acx < c.left) {
-        sx = a.right
-        ex = c.left
+        // Bottom-left card → diagonal
+        sx = a.right + diagonalOffset
+        ex = c.left - diagonalOffset
+        sy -= diagonalOffset
+        ey += diagonalOffset
       } else if (acx > c.right) {
-        sx = a.left
-        ex = c.right
+        // Bottom-right card → diagonal
+        sx = a.left - diagonalOffset
+        ex = c.right + diagonalOffset
+        sy -= diagonalOffset
+        ey += diagonalOffset
       } else {
+        // Bottom-center card → vertical
         sx = acx
         ex = acx
       }
     } else {
-      // Same rows as center
+      // Same rows as center → horizontal
       sy = acy
       ey = acy
       if (acx < c.left) {
