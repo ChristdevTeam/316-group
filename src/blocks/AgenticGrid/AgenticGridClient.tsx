@@ -329,8 +329,8 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
                   }}
                   className={cn(
                     'rounded-md flex flex-col items-center justify-center px-4 py-6 cursor-pointer transition-all duration-300 text-center relative min-h-[130px]',
-                    'bg-white/5 border border-white/10 hover:bg-slate-900/60',
-                    isActive && cn('bg-slate-900/80', borderColorClass),
+                    'bg-white/5 border border-white/10 hover:bg-[#000a5a]',
+                    isActive && cn('bg-[#000a1a]', borderColorClass),
                   )}
                   style={{
                     gridColumn: pos.col,
