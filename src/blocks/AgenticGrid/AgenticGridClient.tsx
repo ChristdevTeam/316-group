@@ -98,17 +98,17 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
       sy = a.bottom
       ey = c.top
       if (acx < c.left) {
-        // Top-left card → diagonal
-        sx = a.right + diagonalOffset
-        ex = c.left - diagonalOffset
-        sy += diagonalOffset
-        ey -= diagonalOffset
+        // Top-left card → diagonal: extend into card (left/up) and into center (right/down)
+        sx = a.right - diagonalOffset
+        ex = c.left + diagonalOffset
+        sy -= diagonalOffset
+        ey += diagonalOffset
       } else if (acx > c.right) {
-        // Top-right card → diagonal
-        sx = a.left - diagonalOffset
-        ex = c.right + diagonalOffset
-        sy += diagonalOffset
-        ey -= diagonalOffset
+        // Top-right card → diagonal: extend into card (right/up) and into center (left/down)
+        sx = a.left + diagonalOffset
+        ex = c.right - diagonalOffset
+        sy -= diagonalOffset
+        ey += diagonalOffset
       } else {
         // Top-center card → vertical
         sx = acx
@@ -119,17 +119,17 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
       sy = a.top
       ey = c.bottom
       if (acx < c.left) {
-        // Bottom-left card → diagonal
-        sx = a.right + diagonalOffset
-        ex = c.left - diagonalOffset
-        sy -= diagonalOffset
-        ey += diagonalOffset
+        // Bottom-left card → diagonal: extend into card (left/down) and into center (right/up)
+        sx = a.right - diagonalOffset
+        ex = c.left + diagonalOffset
+        sy += diagonalOffset
+        ey -= diagonalOffset
       } else if (acx > c.right) {
-        // Bottom-right card → diagonal
-        sx = a.left - diagonalOffset
-        ex = c.right + diagonalOffset
-        sy -= diagonalOffset
-        ey += diagonalOffset
+        // Bottom-right card → diagonal: extend into card (right/down) and into center (left/up)
+        sx = a.left + diagonalOffset
+        ex = c.right - diagonalOffset
+        sy += diagonalOffset
+        ey -= diagonalOffset
       } else {
         // Bottom-center card → vertical
         sx = acx
