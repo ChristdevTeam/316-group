@@ -328,7 +328,7 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
                     if (el) cardRefs.current.set(index, el)
                   }}
                   className={cn(
-                    'rounded-md flex flex-col items-center justify-center px-4 py-8 lg:py-16 cursor-pointer transition-all duration-300 text-center relative min-h-[150px]',
+                    'rounded-md flex flex-col items-center justify-center px-4 py-8 lg:py-12 cursor-pointer transition-all duration-300 text-center relative min-h-[150px]',
                     'bg-white/5 border border-white/10 hover:bg-[#000a5a]',
                     isActive && cn('bg-[#000a1a]', borderColorClass),
                   )}
@@ -341,9 +341,9 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
                   onClick={() => setActiveId(index)}
                 >
                   {item.icon && (
-                    <Icon name={item.icon} className="text-2xl lg:text-3xl xl:text-4xl mb-2 opacity-80" size={24} />
+                    <Icon name={item.icon} className="w-8 h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 mb-2 opacity-80" />
                   )}
-                  <span className="text-[0.7rem] font-medium leading-tight">{item.title}</span>
+                  <span className="text-[0.7rem] lg:text-sm xl:text-base  font-medium leading-tight">{item.title}</span>
                 </div>
               )
             })}
