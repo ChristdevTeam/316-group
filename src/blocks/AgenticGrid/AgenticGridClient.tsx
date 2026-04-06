@@ -328,7 +328,7 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
                     if (el) cardRefs.current.set(index, el)
                   }}
                   className={cn(
-                    'rounded-md flex flex-col items-center justify-center px-4 py-6 cursor-pointer transition-all duration-300 text-center relative min-h-[130px]',
+                    'rounded-md flex flex-col items-center justify-center px-4 py-8 lg:py-16 cursor-pointer transition-all duration-300 text-center relative min-h-[150px]',
                     'bg-white/5 border border-white/10 hover:bg-[#000a5a]',
                     isActive && cn('bg-[#000a1a]', borderColorClass),
                   )}
