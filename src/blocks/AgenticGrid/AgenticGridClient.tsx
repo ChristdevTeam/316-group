@@ -341,7 +341,7 @@ export const AgenticGridClient: React.FC<AgenticGridBlock> = ({
                   onClick={() => setActiveId(index)}
                 >
                   {item.icon && (
-                    <Icon name={item.icon} className="text-2xl mb-2 opacity-80" size={24} />
+                    <Icon name={item.icon} className="text-2xl lg:text-3xl xl:text-4xl mb-2 opacity-80" size={24} />
                   )}
                   <span className="text-[0.7rem] font-medium leading-tight">{item.title}</span>
                 </div>
