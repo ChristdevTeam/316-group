@@ -14605,6 +14605,10 @@ export interface ContentBlock {
                  * Speed in milliseconds (5000 = 5 seconds)
                  */
                 speed?: number | null;
+                /**
+                 * When enabled, adds a white gradient fade on the left and right edges of the slider.
+                 */
+                showFadingEffect?: boolean | null;
               };
               styledCards?: {
                 cards?:
@@ -102428,6 +102432,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
                         };
                     dimensionClasses?: T;
                     speed?: T;
+                    showFadingEffect?: T;
                   };
               styledCards?:
                 | T

@@ -18,12 +18,14 @@ interface AutoScrollSliderProps {
     | undefined
   dimensionClasses?: string[]
   speed?: number
+  showFadingEffect?: boolean
 }
 
 export const AutoScrollSlider: React.FC<AutoScrollSliderProps> = ({
   images,
   dimensionClasses,
   speed = 5000,
+  showFadingEffect = true,
 }) => {
   const [mounted, setMounted] = useState(false)
 
@@ -36,8 +38,12 @@ export const AutoScrollSlider: React.FC<AutoScrollSliderProps> = ({
   return (
     <div className="relative w-full overflow-hidden">
       {/* Gradient Overlays */}
-      <div className="absolute left-0 top-0 z-10 h-full w-[20%] bg-gradient-to-r from-white via-white/50 to-transparent" />
-      <div className="absolute right-0 top-0 z-10 h-full w-[20%] bg-gradient-to-l from-white via-white/50 to-transparent" />
+      {showFadingEffect && (
+        <>
+          <div className="absolute left-0 top-0 z-10 h-full w-[20%] bg-gradient-to-r from-white via-white/50 to-transparent" />
+          <div className="absolute right-0 top-0 z-10 h-full w-[20%] bg-gradient-to-l from-white via-white/50 to-transparent" />
+        </>
+      )}
 
       <Swiper
         modules={[Autoplay]}

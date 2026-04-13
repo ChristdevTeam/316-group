@@ -578,6 +578,15 @@ const columnFields: Field[] = [
               description: 'Speed in milliseconds (5000 = 5 seconds)',
             },
           },
+          {
+            name: 'showFadingEffect',
+            type: 'checkbox',
+            label: 'Show Edge Fading Effect',
+            defaultValue: true,
+            admin: {
+              description: 'When enabled, adds a white gradient fade on the left and right edges of the slider.',
+            },
+          },
         ],
         admin: {
           condition: (_, { contentType }) => contentType === 'autoScrollSlider',

@@ -386,13 +386,14 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   }
 
                   if (contentType === 'autoScrollSlider' && content.autoScrollSlider) {
-                    const { images, dimensionClasses, speed } = content.autoScrollSlider
+                    const { images, dimensionClasses, speed, showFadingEffect } = content.autoScrollSlider
                     return (
                       <AutoScrollSlider
                         key={index}
                         images={images}
                         dimensionClasses={dimensionClasses || []}
                         speed={speed || 1000}
+                        showFadingEffect={showFadingEffect ?? true}
                       />
                     )
                   }
