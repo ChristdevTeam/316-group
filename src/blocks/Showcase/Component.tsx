@@ -132,7 +132,13 @@ export const ShowcaseBlock: React.FC<Props> = ({
               return (
                 <div
                   key={index}
-                  className={cn('lg:h-45 h-36 w-[2px] rounded-full m-auto', item.dividerColor)}
+                  className={cn(
+                    'w-[2px] rounded-full',
+                    item.dividerFullHeight
+                      ? 'self-stretch mx-auto h-36 lg:h-auto'
+                      : 'lg:h-45 h-36 m-auto',
+                    item.dividerColor,
+                  )}
                 ></div>
               )
             }

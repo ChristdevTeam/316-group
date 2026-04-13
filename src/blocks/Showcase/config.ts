@@ -82,6 +82,16 @@ export const Showcase: Block = {
             },
           },
         }),
+        {
+          name: 'dividerFullHeight',
+          type: 'checkbox',
+          label: 'Full Height Divider',
+          defaultValue: false,
+          admin: {
+            description: 'When enabled, the divider stretches to the full height of the adjacent items.',
+            condition: (_, { itemType }) => itemType === 'divider',
+          },
+        },
       ],
       required: true,
     },

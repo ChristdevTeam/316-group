@@ -63418,6 +63418,10 @@ export interface ShowcaseBlock {
           | 'bg-rose-950'
         )
       | null;
+    /**
+     * When enabled, the divider stretches to the full height of the adjacent items.
+     */
+    dividerFullHeight?: boolean | null;
     id?: string | null;
   }[];
   backgroundType?: ('color' | 'media') | null;
@@ -102924,6 +102928,7 @@ export interface ShowcaseBlockSelect<T extends boolean = true> {
               descriptionClasses?: T;
             };
         dividerColor?: T;
+        dividerFullHeight?: T;
         id?: T;
       };
   backgroundType?: T;
